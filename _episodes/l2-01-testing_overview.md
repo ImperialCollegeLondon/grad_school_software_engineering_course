@@ -10,7 +10,7 @@ objectives:
 - "Appreciate the benefits of testing research software"
 - "Understand what testing can and can't achieve"
 - "Describe various approaches to testing, and relevant trade-offs"
-- "Understand the concept of test coverage, and how it relates to sofware quality and sustainability"
+- "Understand the concept of test coverage, and how it relates to software quality and sustainability"
 - "Appreciate the benefits of test automation"
 keypoints:
 - "Testing is the standard approach to software quality assurance"
@@ -24,13 +24,16 @@ keypoints:
 - "Types of testing and the kinds of bugs they can help to avoid: Unit, e.g. a function; Functional, e.g. a library; Regression, e.g. a bug"
 - "Test coverage can provide a coarse- or fine-grained metric of comprehensiveness, if not quality. But typically does provide another signal of code quality."
 - "Automated tests (and coverage calculation) is another such signal: Lowers friction; Ensures that breakage is identified sooner, and isn't released; Implies that machine-readable instructions exist for building and code and running the tests"
-- "Ultimately contributes to sustainability i.e. that software is, and remains, fit for purpose as its functionality and/or contributor-base grows, and its dependencies and/or runtime environments change"
+- "Testing ultimately contributes to sustainability i.e. that software is, and remains, fit for purpose as its functionality and/or contributor-base grows, and its dependencies and/or runtime environments change"
 ---
 
 ### Why Test?
 
-There are a number of compelling reasons to properly test a research code:
-* Show that physical laws or mathematical relationships are correctly encoded
+We test software to ensure that it is (and remains) fit for purpose.
+
+In the context of research software typically we want to validate that it correctly
+encodes physical laws or mathematical relationships, but there are many other reasons:
+
 * Check that code works when running on a new system
 * Make sure new code changes do not break existing functionality
 * Ensure code correctly handles edge or corner cases
@@ -44,15 +47,19 @@ sit works and proceeds to use it straight away in research. Instead development
 is in practice more piecemeal - you generally think about a simple input and the
 expected output then write some simple code that works. Then, iteratively, you
 think about more complicated example inputs and outputs and flesh out the code
-until those work as well. When developers talk about testing all this means is
-formalising the above process and making it automatically repeatable on demand.
+until those work as well.
+
+When developers talk about testing it means formalising the above process to create
+a programmatic test suite which makes validation easily repeatable on demand.
 
 This has numerous advantages over a more ad hoc approach:
+
 * Provides a record of the tests that have been carried out
 * Faster development times - get feedback on changes quickly
 * Encourages writing more modular code
 * Ensures breakages are caught early in development
 * Prevent manual testing mistakes
+* Enables tests to be run automatically e.g. by Continuous Integration systems
 
 As you're performing checks on your code anyway it's worth putting in the time
 to formalise your tests and take advantage of the above.
@@ -72,7 +79,7 @@ to formalise your tests and take advantage of the above.
 > trust any implementation of the method that you write? Why should you trust
 > work you did a year ago? What about a reviewer for a paper?
 >
-> This scenario illustrates the sociological value of automated testing. If
+> This scenario illustrates the sociological value of programmatic testing. If
 > published code has tests then you have instant assurance that its authors have
 > invested time in the checking the correctness of their code. You can even see
 > exactly the tests they've tried and add your own if you're not
@@ -103,12 +110,13 @@ components that can be easily unit tested.
 Unlike unit testing that focuses on independent parts of the system, functional
 testing checks the compliance of the system overall against a defined set of
 criteria. In other words does the software as a whole do what it's supposed to
-do? 
+do?
 
 #### Regression Testing
 
 This refers to the practice of running previously written tests whenever a new
-change is introduced to the code. This is good to do even when making seemingly
+change is introduced to the code, and adding new tests when issues are resolved
+to ensure that bugs don't reoccur. This is good to do even when making seemingly
 insignificant changes. Carrying out regression testing allows you to remain
 confident that your code is functioning as expected even as it grows in
 complexity and capability.
@@ -124,8 +132,8 @@ little value at all. What should be the aim therefore when developing software
 tests?
 
 In practice this is difficult to define universally but one useful mantra is
-that good tests ***thoroughly exercise critical code***. One way to achieve this is
-to design test examples of increasing complexity that cover the most general
+that good tests ***thoroughly exercise critical code***. One way to achieve this
+is to design test examples of increasing complexity that cover the most general
 case the unit should encounter. Also try to consider examples of special or edge
 cases that your function needs to handle especially?
 
@@ -135,20 +143,20 @@ are being exercised by its tests. This can be useful to ensure, for instance,
 that all logical branching points within the code are being used by the test
 inputs.
 
-
 > ## Testing and Coverage
+>
 > Consider the following Python function:
-> ~~~
+>
+> ~~~python
 > def recursive_fibonacci(n):
->     """Return the n'th number of the fibonacci sequence"""
+>     """Return the nth number of the fibonacci sequence"""
 >     if n <= 1:
 >         return n
 >     else:
->         return(recursive_fibonacci(n-1) + recursive_fibonacci(n-2))
+>         return recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2)
 > ~~~
-> {: .language-python}
-> 
-> Try to think up some test cases of increasing complexity, there are four
+>
+> Try to think up some test cases of increasing complexity, there are at least four
 > distinct cases worth considering. What input value would you use for each case
 > and what output value would you expect? Which lines of code will be exercised
 > by each test case?
@@ -156,8 +164,11 @@ inputs.
 > For convenience, some initial terms from the Fibonacci sequence are given
 > below:  
 > 0, 1, 1, 2, 3, 5, 8, 13, 21
+>
 > > ## Solution
-> > #### Case 1 - Use either 0 or 1 as input
+> >
+> > ### Case 1 - Use either 0 or 1 as input
+> >
 > > **Correct output:** Same as input  
 > > **Coverage:** First section of if-block  
 > > **Reason:** This represents the simplest possible test for the function. The
@@ -165,6 +176,7 @@ inputs.
 > > the if-block.
 > >
 > > #### Case 2 - Use a value > 1 as input
+> >
 > > **Correct output:** Appropriate value from the Fibonacci sequence  
 > > **Coverage:** All of the code  
 > > **Reason:** This is a more fully fledged case that is representative of the
@@ -173,6 +185,7 @@ inputs.
 > > case where recursion is invoked.
 > >
 > > #### Case 3 - Use a negative value as input
+> >
 > > **Correct output:** Depends...  
 > > **Coverage:** First section of if-block  
 > > **Reason:** This represents the case of a possible input to the function
@@ -185,6 +198,7 @@ inputs.
 > > considered this scenario and the function behaviour is as intended.
 > >
 > > #### Case 4 - Use a non-integer input e.g. 3.5
+> >
 > > **Correct output:** Depends...  
 > > **Coverage:** Whole function  
 > > **Reason:** This is similar to case 3, but may not arise in more strongly
@@ -195,7 +209,7 @@ inputs.
 
 ### Summary
 
-The importance of automated testing for software development is difficult to
+The importance of programmatic testing for software development is difficult to
 overstate. As testing on some level is always carried out there is relatively
 low cost in formalising the process and much to be gained. The rest of this
 course will focus on how to carry out unit testing.
