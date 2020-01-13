@@ -1,0 +1,13 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "editor.formatOnType": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "python.formatting.blackArgs": [
+        "-l 80"
+    ]
+}

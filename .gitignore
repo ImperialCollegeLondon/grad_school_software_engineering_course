@@ -9,4 +9,9 @@ _site
 .Rproj.user
 .Rhistory
 .RData
-
+.local/
+.bin/
+.envrc
+shell.nix
+.direnv/
+.vim/
