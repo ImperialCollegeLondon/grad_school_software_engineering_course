@@ -31,14 +31,14 @@ options with which to fidle.
 
 # Example:
 
-Setup vs-code:
+Setup vs-code ([install it first](https://code.visualstudio.com/)):
 
 1. Open options or the file ".vscode/settings.json"
 1. Set up the black as the "python.formatting.provider"
 1. Optionally, set up "editor.formatOnSave" and "editor.formatOnType"
 
 ```python
-{% include tools-I/unformatted.py %}
+{% include softeng/unformatted.py %}
 ```
 
 {% include links.md %}

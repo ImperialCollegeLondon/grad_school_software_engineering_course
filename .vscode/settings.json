@@ -8,7 +8,6 @@
     "python.formatting.blackArgs": [
         "-l 80"
     ],
-    "python.pythonPath": ".direnv/python-venv-3.7.4/bin/python3",
     "python.linting.pylintUseMinimalCheckers": false,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": true,

@@ -8,7 +8,7 @@ objectives:
 - Install and use a linter in vscode without sweat
 keypoints:
 - Linting is about discovering errors and code-smells before running the code
-- It shortcuts the code-run-correct workflow
+- It shortcuts the `edit-run-debug and repeat` workflow
 - Almost all editors and IDE's have some means to setup an automatic linters
 - 5 minutes to setup a linter is redeemed across the time of the project
 - I.e. the cost is close to nothing
@@ -23,7 +23,8 @@ code, e.g.:
 - use `CamelCase` for classes
 - disallow nesting more than n deep
 - detect code-smells (patterns that are often bugs)
-- static type detection ([mypy](http://mypy-lang.org/))
+- static type detection ([mypy](http://mypy-lang.org/)) where we tell the editor
+what kind of objects (`dict`, `list`, `int`, etc) a function expects
 
 
 # Why linting matters?
@@ -31,11 +32,12 @@ code, e.g.:
 * code is read more often than written
 * setting up a linter in your editor takes 5 minutes
 * those 5 minutes are redeemed across the lifetime of the project
+* linters shortcut the `edit-run-debug and repeat` workflow
 
 # Rules to choose linters
 
 1. Choose a few
-1. Stick with with them
+1. Stick with them
 
 We chose:
   - [flake8](https://pypi.org/project/black/) because it simple,
@@ -59,11 +61,11 @@ Setup vs-code:
   ```
 1. Check the current errors (click on errors in status bar)
 1. Try and correct them
-1. Alternatively, try and disable them (but remember, with great power...)
+1. Alternatively, try and disable them (but remember: _with great power..._)
 
 
 ```python
-{% include tools-II/unlinted.py %}
+{% include softeng/unlinted.py %}
 ```
 
 {% include links.md %}
