@@ -1,7 +1,7 @@
 ---
-title: "Tools III: Packaging and vitual-environments"
-teaching: 3
-exercises: 2
+title: "Tools I: Packaging and vitual-environments"
+teaching: 4
+exercises: 6
 questions:
 - How to use a package manager to install third party tools and libraries
 objectives:
@@ -51,17 +51,23 @@ standard for installing packages (but it does help with virtual environments).
 
 1. Create a file `environment.yml`
 
-  ```yaml
-  {% include environment.yml %}
-  ```
+   ```yaml
+   {% include softeng/environment.yml %}
+   ```
 
 1. Create the conda environment with
 
-  ```bash
-  conda env create -f environment.yml
-  ```
+   ```bash
+   conda env create -f environment.yml
+   ```
 
   Windows users will want to use [Powershell](https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7)
+
+1. Add and remove packages from the yml file, the run
+
+   ```bash
+   conda env update -f environment.yml
+   ```
 
 
 {% include links.md %}

@@ -1,7 +1,7 @@
 ---
-title: "Tools II: Linters"
-teaching: 3
-exercises: 2
+title: "Tools III: Linters"
+teaching: 10
+exercises: 5
 questions:
 - How to make the editor pro-actively find errors and code-smells
 objectives:
