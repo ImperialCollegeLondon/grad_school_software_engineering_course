@@ -4,7 +4,7 @@ teaching: 40
 exercises: 60
 questions:
   - "What is a unit test?"
-  - "How do I write and run unit tests"
+  - "How do I write and run unit tests?"
   - "How can I avoid test duplication and ensure isolation?"
   - "How can I run tests automatically and measure their coverage?"
 objectives:
