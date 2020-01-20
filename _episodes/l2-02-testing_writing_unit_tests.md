@@ -3,27 +3,27 @@ title: "Writing unit tests"
 teaching: 40
 exercises: 60
 questions:
-- "What is a unit test?"
-- "How do I write and run unit tests"
-- "How can I avoid test duplication and ensure isolation?"
-- "How can I run tests automatically and measure their coverage?"
+  - "What is a unit test?"
+  - "How do I write and run unit tests"
+  - "How can I avoid test duplication and ensure isolation?"
+  - "How can I run tests automatically and measure their coverage?"
 objectives:
- - "Implement effective unit tests using pytest"
- - "Execute tests in Visual Studio Code"
- - "Explain the issues relating to non-deterministic code"
- - "Implement mocking, fixtures and test parametrisation using pytest decorators"
- - "Configure git hooks and pytest-coverage"
- - "Apply best-practices when setting up a new Python project"
- - "Recognise analogous tools for other programming languages"
- - "Apply testing to Jupyter notebooks"
+  - "Implement effective unit tests using pytest"
+  - "Execute tests in Visual Studio Code"
+  - "Explain the issues relating to non-deterministic code"
+  - "Implement mocking, fixtures and test parametrisation using pytest decorators"
+  - "Configure git hooks and pytest-coverage"
+  - "Apply best-practices when setting up a new Python project"
+  - "Recognise analogous tools for other programming languages"
+  - "Apply testing to Jupyter notebooks"
 keypoints:
- - "Python has a built-in testing framework, but pytest is not only more extensible, it's also more concise even for the simplest case"
- - "Testing with VS Code is fairly frictionless and encourages good habits (writing tests as you code, test-driven development)"
- - "Seeding random number generators and adding tolerances can help to test non-deterministic code (though presents challenges)"
- - "It is important to have a set-up you can use for every project - so that it becomes as routine in your workflow as version control itself"
- - "pytest has a myriad of extensions that are worthy of mention such as Jupyter, benchmark, Hypothesis, tox etc"
- - "Testing is not only standard practice in mainstream software engineering, it also provides distinct benefits for any non-trivial research software"
- - "Adding unit tests can verify the correct of software, but also its improve its structure: isolating logical distinct code for testing often involves untangling complex structures"
+  - "Python has a built-in testing framework, but pytest is not only more extensible, it's also more concise even for the simplest case"
+  - "Testing with VS Code is fairly frictionless and encourages good habits (writing tests as you code, test-driven development)"
+  - "Seeding random number generators and adding tolerances can help to test non-deterministic code (though presents challenges)"
+  - "It is important to have a set-up you can use for every project - so that it becomes as routine in your workflow as version control itself"
+  - "pytest has a myriad of extensions that are worthy of mention such as Jupyter, benchmark, Hypothesis, tox etc"
+  - "Testing is not only standard practice in mainstream software engineering, it also provides distinct benefits for any non-trivial research software"
+  - "Adding unit tests can verify the correct of software, but also its improve its structure: isolating logical distinct code for testing often involves untangling complex structures"
 ---
 
 ## Introduction
@@ -111,7 +111,7 @@ def test_initial_numbers(number, expected):
     assert recursive_fibonacci(number) == expected
 ```
 
-This corresponds to running the _same_ test with _different_ parameters, and  is our first example of a pytest decorator (`@pytest`).
+This corresponds to running the _same_ test with _different_ parameters, and is our first example of a pytest decorator (`@pytest`).
 
 ### Skipping tests and ignoring failures
 
