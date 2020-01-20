@@ -197,7 +197,7 @@ They make sense when:
     # Or maybe?
     {"mammal": {"horse", "cow"}, "alien": {"millipede", "Jadoo"}}
     ```
-- given x you want to know it's y: given the name of an animal you want to know
+- given x you want to know its y: given the name of an animal you want to know
   the number of legs.
 
 - often used as bags of configuration options
