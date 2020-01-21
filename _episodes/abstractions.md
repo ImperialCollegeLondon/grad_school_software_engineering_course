@@ -37,8 +37,10 @@ infinite capacity for misunderstanding:
 
 This audience is future-**you** reading past-**you**'s code.
 
-Intelligible code avoids sources of confusion (what does index `0` reference?)
-and lessens the cognitive load (ah! before using `c` don't forget to call the
+Intelligible code aims to:
+
+- avoid sources of confusion (what does index `0` reference?)
+- lessen the cognitive load (ah! before using `c` don't forget to call the
 function `nothing_to_do_with_c` because of historical implementation detail
 `z`).
 
