@@ -1,5 +1,5 @@
 ---
-title: "Tools I: Packaging and vitual-environments"
+title: "Tools I: Packaging and virtual-environments"
 teaching: 4
 exercises: 6
 questions:
