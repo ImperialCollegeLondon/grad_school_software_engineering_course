@@ -82,12 +82,13 @@ Projects that use pytest:
 
 We've chosen [Visual Studio Code](https://code.visualstudio.com/) as our editor. It's free, open source, cross-platform and has excellent Python (and pytest) support. It also has built-in Git integration, can be used to edit files on remote systems (e.g. HPC), and handles Jupyter notebooks (plus many more formats).
 
-### Demo of pytest + VS Code + coverage
-
-- Test annotations, indicator and ability to run tests inline
-- Test perspective and Test Output
-- Coverage (`assert recursive_fibonacci(7) == 13`)
-- TDD: adding a new test (`test_negative_number_`) and fixing it (`test_negative_number`)
+> ## Demonstration of pytest + VS Code + coverage
+>
+> - Test annotations, status indicators and ability to run tests inline
+> - Test perspective and Test Output
+> - Increasing coverage (`assert recursive_fibonacci(7) == 13`)
+> - Test-driven development: adding a new test (`test_negative_number_`) and fixing it (`test_negative_number`)
+{: .callout}
 
 ## A tour of pytest
 
@@ -245,15 +246,15 @@ The test provided (`test_heat`) compares the approximation with the exact soluti
 >
 > ### Bonus task(s)
 >
-> TODO: write a doctest compatible docstring for `step()` or `heat()`?
-> TODO: use a mock to test `heat()` without testing `step()`?
+> - TODO: write a doctest compatible docstring for `step()` or `heat()`?
+> - TODO: use a mock to test `heat()` without testing `step()`?
 {: .challenge}
 
-## More advanced topics
+## Advanced topics
 
 ### More pytest plugins
 
-[`pytest-benchmark`](https://pytest-benchmark.readthedocs.io/en/stable/) provides a fixture that can transparently measure _and track_ performance while running your tests:
+* [`pytest-benchmark`](https://pytest-benchmark.readthedocs.io/en/stable/) provides a fixture that can transparently measure _and track_ performance while running your tests:
 
 ```python
 def test_fibonacci(benchmark):
@@ -261,9 +262,12 @@ def test_fibonacci(benchmark):
     assert result == 13
 ```
 
-_Demo using recursive and formulaic approaches_
+> ## pytest-benchmark example
+>
+> Demonstration of performance regression via recursive and formulaic approaches to Fibonacci calculation
+{: .callout}
 
-[`pytest-notebook`](https://pytest-notebook.readthedocs.io/en/latest/) can check for regressions in your Jupyter notebooks (see also [Jupyter CI](https://github.com/mwoodbri/jupyter-ci))
+* [`pytest-notebook`](https://pytest-notebook.readthedocs.io/en/latest/) can check for regressions in your Jupyter notebooks (see also [Jupyter CI](https://github.com/mwoodbri/jupyter-ci))
 
 ### Related tools
 
