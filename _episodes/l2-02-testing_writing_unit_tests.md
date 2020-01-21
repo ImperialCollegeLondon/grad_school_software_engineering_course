@@ -185,7 +185,7 @@ _Hint: If your simulation or approximation technique depends on random numbers t
 > 1. Download and extract [this zip file](https://github.com/ImperialCollegeLondon/diffusion/archive/master.zip)
 > 1. Make the folder your working directory and run the following commands:
 >
-> ```sh
+> ```bash
 > python3 -m venv .venv
 > source .venv/bin/activate  # or `.venv\Scripts\activate.bat` if you're using Windows
 > python -m pip install -U pip
@@ -197,7 +197,6 @@ _Hint: If your simulation or approximation technique depends on random numbers t
 > 1. Download, install and run [Visual Studio Code](https://code.visualstudio.com/download)
 > 1. Go to **File > Open Folder...** and find the files you just extracted
 > 1. If you see an alert **This workspace has extension recommendations.** then click "Install All"
-> 1. If you see an alert **The 'Python' extension is recommended for this file type** then click **Install** (ignore any subsequent warnings about pylint)
 > 1. Open `test_diffusion.py`
 > 1. You should now be able to click on **Run Test** above the `test_heat()` function and see a warning symbol appear, indicating that the test is currently failing
 > 1. Switch to the **Test** perspective by clicking on the flask icon on the left-hand toolbar. From here you can **Run All Tests**, and **Show Test Output** to view the coverage report
@@ -271,6 +270,16 @@ _Demo using recursive and formulaic approaches_
 - [tox](https://tox.readthedocs.io/en/latest/) provides a means of testing code using different versions of Python and/or libraries. It essentially acts as wrapper for pytest (and alternative test frameworks)
 - [Hypothesis](https://hypothesis.readthedocs.io/en/latest/) provides property-based testing, which is useful for verifying edge cases):
 
+```python
+from fibonacci import recursive_fibonacci
+from hypothesis import given, strategies
+
+@given(strategies.integers())
+def test_recursive_fibonacci(n):
+    phi = (5 ** 0.5 + 1) / 2
+    assert recursive_fibonacci(n) == int((phi ** n - -phi ** -n) / 5 ** 0.5)
+```
+
 ## Best practice, collaboration and automation
 
 - Typing:
@@ -292,15 +301,16 @@ TODO
 
 - We've discussed tools and approaches for Python but analogues exist for other languages
 - We (the RCS) have had success with:
-  - C++:
-  - Fortran:
+  - C++: **TODO**
+  - Fortran: **TODO**
 - See the Software Sustainability Institute's [Build and Test Examples](https://github.com/softwaresaved/build_and_test_examples) for many more
 
 ### Further resources
 
 - [`ImperialCollegeLondon/pytest_template_application`](https://github.com/ImperialCollegeLondon/pytest_template_application)
 - [A tried-and-tested workflow for software quality assurance](https://doi.org/10.5281/zenodo.1409199) ([repo](https://gitlab.com/mwoodbri/rse18))
-- Our Graduate School git course; RCS courses and clinics
-- Research Software Community
+- [Using Git to Code, Collaborate and Share](https://www.imperial.ac.uk/study/pg/graduate-school/students/doctoral/professional-development/research-computing-data-science/courses/git-to-code-callobrate-share/)
+- RCS [courses](https://wiki.imperial.ac.uk/display/HPC/Courses) and [clinics](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/attend-a-clinic/)
+- [Research Software Community](https://www.imperial.ac.uk/computational-methods/rse/)
 
 {% include links.md %}
