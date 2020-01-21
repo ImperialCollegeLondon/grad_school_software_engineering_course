@@ -301,8 +301,9 @@ TODO
 
 - We've discussed tools and approaches for Python but analogues exist for other languages
 - We (the RCS) have had success with:
-  - C++: **TODO**
-  - Fortran: **TODO**
+  - C++: [Catch2](https://github.com/catchorg/Catch2)
+  - Fortran: [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)
+  - R: [testthat](https://github.com/r-lib/testthat)
 - See the Software Sustainability Institute's [Build and Test Examples](https://github.com/softwaresaved/build_and_test_examples) for many more
 
 ### Further resources
