@@ -20,8 +20,13 @@ keypoints:
 
 # What is a data-structure?
 
-- Data-structure represent information and how that information can be
-  accessed
+```yaml
+Data-structure: represent information and how that information can be accessed
+```
+
+Choosing the right representation for your data can vastly simplify your code.
+
+Choosing the wrong representation can melt your brain.
 
 ## Examples:
 
@@ -67,8 +72,14 @@ unexpected:
 
 With integers, `+` is an *addition*, for strings its a *concatenation*.
 
-** Using the wrong data-structures can make your code vastly more complicated.
-**
+## Health impact of choosing the wrong data-structure
+
+- we could use `"1", "2", "3"` to represent numbers, rather than `1`, `2`, `3`
+- we would have to reinvent how to add numbers, and multiply, and divide them
+- ** The wrong data-structures can make your code vastly more complicated **
+- also, the code would be quite slow
+
+Stay healthy. Stop and choose the right data-structure for you!
 
 
 # Basic data-structures
@@ -108,6 +119,20 @@ Beware! The following might indicate a list is the wrong data-structure:
    - apples and oranges
    - deeply nested list of lists of lists
 
+> ## Other languages
+> * C++:
+>   - [std::vector](https://en.cppreference.com/w/cpp/container/vector), fast
+>     read-write to element i and fast iteration operations. Slow insert
+>     operation.
+>   - [std::list](https://en.cppreference.com/w/cpp/container/list). No direct
+>     access to element i. Fast insert, append, splice operations.
+> * R: [list](http://www.r-tutor.com/r-introduction/list)
+> * Julia: [Array](https://docs.julialang.org/en/v1/manual/arrays/), also
+>     equivalent to numpy arrays.
+> * Fortran: [array](https://www.tutorialspoint.com/fortran/fortran_arrays.htm),
+>     closer to numpy arrays than python lists
+{: .callout}
+
 ## Tuples
 
 Tuples are **short** and **immutable** containers of other data.
@@ -128,19 +153,21 @@ replaced:
 TypeError: 'tuple' object does not support item assignment
 ```
 
-**Note**: in python, it can be that an element of a tuple can be modified:
+> ## Modifying a tuple vs modifying the element of a tuple
+> ```python
+> >>> something = ["a", "b"], 4
+> >>> something[0].append("c")
+> >>> something
+> (['a', 'b', 'c'], 4)
+> >>> something[0] = ["a", "b", "c"]
+> TypeError: 'tuple' object does not support item assignment
+> ```
+>
+> The tuple itself cannot be modified, but its elements can be if they
+> themselves are mutable. The container is immutable, but the contents might not
+> be.
+{: .callout}
 
-```python
->>> something = ["a", "b"], 4
->>> something[0].append("c")
->>> something
-(['a', 'b', 'c'], 4)
->>> something[0] = ["a", "b", "c"]
-TypeError: 'tuple' object does not support item assignment
-```
-
-The tuple itself cannot be modified, but its elements can be if they themselves
-are not immutable.
 
 Tuple make sense when:
 
@@ -154,6 +181,13 @@ Beware! The following might indicate a tuple is the wrong data-structure:
 - more than four or five elements
 - difficult to remember which element is what
   (is it `result[1]` I need or `result[2]?`)
+
+> ## Other languages
+> * C++: [std::tuple](https://en.cppreference.com/w/cpp/utility/tuple)
+> * R: cran package [tuple](https://cran.r-project.org/web/packages/tuple/index.html)
+> * Julia: tuples and [named tuples](https://docs.julialang.org/en/v1/base/base/#Core.NamedTuple)
+> * Fortran: Nope. Nothing.
+{: .callout}
 
 ## Sets
 
@@ -175,12 +209,22 @@ They make sense when:
     {'a', 'e'}
     ```
 
+> ## Other languages
+> * C++: [std::set](https://en.cppreference.com/w/cpp/container/set)
+> * R: [set functions](
+>      https://stat.ethz.ch/R-manual/R-devel/library/base/html/sets.html)
+>      that operate on a standard list.
+> * Julia: [Set](https://docs.julialang.org/en/v1/base/collections/#Base.Set)
+> * Fortran: Nope. Nothing.
+{: .callout}
+
+
 ## Dictionaries
 
 Dictionaries are mappings between a key and a value (e.g. a word and it's
 definition).
 
-```Python
+```python
 # mapping of animals to legs
 {"horse": 4, "kangaroo": 2, "millipede": 1000}
 ```
@@ -189,14 +233,15 @@ They make sense when:
 
 - you have pairs of data that go together:
 
-    ```python
-    # A list of pairs?? PROBABLY BAD!!
-    [("horse", "mammal"), ("kangaroo", "marsupial"), ("millipede", "alien")]
-    # Better?
-    {"horse": "mammal", "kangaroo": "marsupial", "millipede": "alien"}
-    # Or maybe?
-    {"mammal": {"horse", "cow"}, "alien": {"millipede", "Jadoo"}}
-    ```
+  ```python
+  # A list of pairs?? PROBABLY BAD!!
+  [("horse", "mammal"), ("kangaroo", "marsupial"), ("millipede", "alien")]
+  # Better?
+  {"horse": "mammal", "kangaroo": "marsupial", "millipede": "alien"}
+  # Or maybe?
+  {"mammal": {"horse", "cow"}, "alien": {"millipede", "Jadoo"}}
+  ```
+
 - given x you want to know its y: given the name of an animal you want to know
   the number of legs.
 
@@ -204,16 +249,23 @@ They make sense when:
 
 Beware! The following might indicate a dict is the wrong data-structure:
 
-   - keys are not related to each other, or values are not related to each other
+- keys are not related to each other, or values are not related to each other
 
-    ```python
-    {1: "apple", "orange": 2}
-    ```
+  ```python
+  {1: "apple", "orange": 2}
+  ```
 
-    `1` not related to `"orange"` and `2` not related to `"apple"`
+  `1` not related to `"orange"` and `2` not related to `"apple"`
 
-   - deeply nested dictionaries of dictionaries of lists of dictionaries
+- deeply nested dictionaries of dictionaries of lists of dictionaries
 
+
+> ## Other languages
+> * C++: [std::map](https://en.cppreference.com/w/cpp/container/map)
+> * R: cran package [hash](https://cran.r-project.org/web/packages/hash/)
+> * Julia: [Dict](https://docs.julialang.org/en/v1/base/collections/#Base.Dict)
+> * Fortran: Nope. Nothing.
+{: .callout}
 
 ## Advanced data-structures
 
@@ -263,37 +315,51 @@ Beware! The following might indicate a `dataclass` is the wrong data-structure:
   how to use your very special class.
 
 
-# Exercise:
+> ## Exploring data structures
+>
+> In your own time, find out all the thing datastructures can do for you:
+>
+> - [list](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists),
+> - [set](https://docs.python.org/3/tutorial/datastructures.html#sets)
+> - [dict](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
+>
+> As well as other standard data structures:
+>
+> - [deques](https://docs.python.org/3/library/collections.html#collections.deque)
+> - [named tuples](https://docs.python.org/3/library/collections.html#collections.namedtuple)
+> - [counters](https://docs.python.org/3/library/collections.html#collections.Counter)
+> - [dates](https://docs.python.org/2/library/datetime.html)
+>
+> All **modern** languages will have equivalents, outside of "Modern Fortran".
+>
+> Don't reinvent the square wheel.
+{: .challenge}
 
-1. In your own time, find out all the thing a
-   [list](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists),
-   a [set](https://docs.python.org/3/tutorial/datastructures.html#sets), or
-   [dict](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
-   can do. Don't reinvent the square wheel.
-
-1. Implement an oxford dictionary with two lists, one for words, one for
-definitions:
-
-    ```yaml
-    scarf: (noun) a garment worn around the head or neck or shoulders for warmth
-      or decoration
-    snarf: (verb) make off with belongings of others
-    barf: (verb) eject the contents of the stomach through the mouth
-    dwarf: |
-      (verb) make appear small by comparison
-      (noun) a legendary bearded creature
-    morph: (verb) change shape as via computer animation
-    surf: |
-      (verb) switch channels, on television
-      (noun) waves breaking on the shore
-    ```
-
-1. Given a word, find and modify it's definition
-1. Do the same with a dictionary
-1. Create a subset of words rhyming with "arf" using either the two-`list` or
-   the `dict` implementation
-1. If now we want to also encode "noun" and "verb", what data-structure could we
-use?
-1. What about when there are multiple meanings for a verb or a noun?
+> ## Digital oxford dictionary, the wrong way and the right way
+> 1. Implement an oxford dictionary with two lists, one for words, one for
+> definitions:
+>
+>     ```yaml
+>     barf: (verb) eject the contents of the stomach through the mouth
+>     morph: (verb) change shape as via computer animation
+>     scarf: (noun) a garment worn around the head or neck or shoulders for warmth
+>       or decoration
+>     snarf: (verb) make off with belongings of others
+>     sound: |
+>       (verb) emit or cause to emit sound.
+>       (noun) vibrations that travel through the air or another medium
+>     surf: |
+>       (verb) switch channels, on television
+>       (noun) waves breaking on the shore
+>     ```
+>
+> 1. Given a word, find and modify it's definition
+> 1. Do the same with a dictionary
+> 1. Create a subset of words rhyming with "arf" using either the two-`list` or
+>    the `dict` implementation
+> 1. If now we want to also encode "noun" and "verb", what data-structure could we
+> use?
+> 1. What about when there are multiple meanings for a verb or a noun?
+{: .challenge}
 
 {% include links.md %}
