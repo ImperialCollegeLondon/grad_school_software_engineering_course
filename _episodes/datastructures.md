@@ -130,7 +130,7 @@ TypeError: 'tuple' object does not support item assignment
 
 **Note**: in python, it can be that an element of a tuple can be modified:
 
-```Python
+```python
 >>> something = ["a", "b"], 4
 >>> something[0].append("c")
 >>> something
@@ -170,7 +170,7 @@ They make sense when:
 - you need to solve ownership issues, e.g. which elements are in common between
   two lists? Which elements are different?
 
-    ```Python
+    ```python
     >>> set(["a", "b", "c"]).symmetric_difference(["b", "c", "e"])
     {'a', 'e'}
     ```
@@ -202,7 +202,7 @@ They make sense when:
 
 - often used as bags of configuration options
 
-Beware! The following might indicate a list is the wrong data-structure:
+Beware! The following might indicate a dict is the wrong data-structure:
 
    - keys are not related to each other, or values are not related to each other
 
@@ -218,10 +218,10 @@ Beware! The following might indicate a list is the wrong data-structure:
 ## Advanced data-structures
 
 
-- [numpy arays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
+- [numpy arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
   are multidimensional array of numbers
-- [panda datframes](https://pandas.pydata.org/pandas-docs/stable/index.html")
-  are collections of named 1-d arrays, i.e. excell spread-sheets on steroids
+- [pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/index.html")
+  are collections of named 1-d arrays, i.e. excel spread-sheets on steroids
 - [xarray arrays](http://xarray.pydata.org/en/stable/) are multi-dimensional
   arrays that can be indexed with rich objects, e.g. an array indexed by
   dates or by longitude and lattitude, rather than by the numbers 0, 1, 2, 3.
