@@ -7,7 +7,7 @@ questions:
 - how can we transfer known solutions to our code?
 objectives:
 - recognize much-used patterns in existing code
-- re-purpose existing patterns for as solutions to new problems
+- re-purpose existing patterns as solutions to new problems
 keypoints:
 - Many coders have come before
 - Transferable solutions to common problems have been identified
@@ -25,10 +25,10 @@ software design pattern: typical solutions to common problems
 
 ### Pros
 
-1. It is easier to reuses known solutions than to invent them
+1. It is easier to reuse known solutions than to invent them
 1. Makes reading the code simpler to parse for collaborators
-1. Makes the code easier to maintain since pattern ought to be best-in-class
-  solution
+1. Makes the code easier to maintain since patterns ought to be best-in-class
+  solutions
 
 ### Cons
 
@@ -59,13 +59,13 @@ software design pattern: typical solutions to common problems
 - [more](https://en.wikipedia.org/wiki/Software_design_pattern) and
   [more](https://refactoring.guru/design-patterns) and
   [more](https://stackoverflow.com/) patterns
-- And lets not forget
+- And let's not forget
   [anti-patterns](https://en.wikipedia.org/wiki/Anti-pattern#Software_engineering),
   i.e. patterns that should **not** be used
 
 # Iterator Pattern
 
-Iterators separates generating items over which to loop from doing the body of
+Iterators separates _generating items over which to loop_ from _doing the body of the loop_.
 the loop.
 
 For instance, we want to loop over all items in `xs` and `ys`:
