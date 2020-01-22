@@ -227,10 +227,10 @@ The test provided (`test_heat`) compares the approximation with the exact soluti
 >
 > 1. In `diffusion.py` move the logic that updates `u` within the loop in the `heat()` function to a new top-level function `step(u, dx, dt, alpha)`. _Hint: the loop in `heat()` should now look like this:_
 >
-> ```python
-> for t in range(nt - 1):
->     u = step(u, dx, dt, alpha)
-> ```
+>    ```python
+>    for t in range(nt - 1):
+>        u = step(u, dx, dt, alpha)
+>    ```
 >
 > 2. Run the existing test to ensure that it still executes - albeit with a failure.
 > 3. Add a new (failing!) test called `test_step()` to `test_diffusion.py` in order to focus on our bug. It should call `step()` with some suitable arguments for `u`, `dx`, `dt` and `alpha` and compare the result with that suggested by equation (1) above. Use `approx` if necessary. _Hint: `step([0, 1, 0], 0.04, 0.02, 0.01)` is one suitable example_.
@@ -254,7 +254,7 @@ The test provided (`test_heat`) compares the approximation with the exact soluti
 
 ### More pytest plugins
 
-* [`pytest-benchmark`](https://pytest-benchmark.readthedocs.io/en/stable/) provides a fixture that can transparently measure _and track_ performance while running your tests:
+- [`pytest-benchmark`](https://pytest-benchmark.readthedocs.io/en/stable/) provides a fixture that can transparently measure _and track_ performance while running your tests:
 
 ```python
 def test_fibonacci(benchmark):
@@ -267,7 +267,7 @@ def test_fibonacci(benchmark):
 > Demonstration of performance regression via recursive and formulaic approaches to Fibonacci calculation
 {: .callout}
 
-* [`pytest-notebook`](https://pytest-notebook.readthedocs.io/en/latest/) can check for regressions in your Jupyter notebooks (see also [Jupyter CI](https://github.com/mwoodbri/jupyter-ci))
+- [`pytest-notebook`](https://pytest-notebook.readthedocs.io/en/latest/) can check for regressions in your Jupyter notebooks (see also [Jupyter CI](https://github.com/mwoodbri/jupyter-ci))
 
 ### Related tools
 
