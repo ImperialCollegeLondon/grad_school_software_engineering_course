@@ -36,7 +36,7 @@ This involves making some technical decisions...
 
 ### Test frameworks
 
-We'll use `pytest` as our test framework. It's powerful but also user friendly.
+We'll use [pytest](https://docs.pytest.org/en/latest/) as our test framework. It's powerful but also user friendly.
 
 For comparison: testing using `assert` statements:
 
