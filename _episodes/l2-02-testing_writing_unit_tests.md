@@ -209,7 +209,7 @@ You have been lucky enough to inherit some code from a previous member of your g
 
 The code implements a numerical solver for the heat equation:
 
-![\frac{\partial\phi}{\partial x}=\alpha\frac{\partial^2\phi}{\partial x^2},\;\;\;\;\;0\leq x\leq L,\;\;t\geq 0](https://latex.codecogs.com/png.latex?\frac{\partial\phi}{\partial&space;x}=\alpha\frac{\partial^2\phi}{\partial&space;x^2},\;\;\;\;\;0\leq&space;x\leq&space;L,\;\;t\geq&space;0)
+![\frac{\partial\phi}{\partial t}=\alpha\frac{\partial^2\phi}{\partial x^2},\;\;\;\;\;0\leq x\leq L,\;\;t\geq 0](https://latex.codecogs.com/png.latex?\frac{\partial\phi}{\partial&space;t}=\alpha\frac{\partial^2\phi}{\partial&space;x^2},\;\;\;\;\;0\leq&space;x\leq&space;L,\;\;t\geq&space;0)
 
 A finite-difference approximation can be calculated as follows:
 
