@@ -224,6 +224,8 @@ The test provided to you (`test_heat`) compares the approximation with the exact
 
 > ## Testing (and fixing!) the code
 >
+> Pair-programme with a partner on these test-driven development tasks. Don't hesitate to ask a demonstrator if you get stuck!
+>
 > ### Refactoring
 >
 > First we'll simplify the code by modularising it. We'll extract the code that performs a single time step into a new function that can be verified in isolation via a new unit test:
