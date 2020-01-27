@@ -23,7 +23,7 @@ keypoints:
   - "It is important to have a set-up you can use for every project - so that it becomes as routine in your workflow as version control itself"
   - "pytest has a myriad of extensions that are worthy of mention such as Jupyter, benchmark, Hypothesis, tox etc"
   - "Testing is not only standard practice in mainstream software engineering, it also provides distinct benefits for any non-trivial research software"
-  - "Adding unit tests can verify the correct of software, but also its improve its structure: isolating logical distinct code for testing often involves untangling complex structures"
+  - "Adding unit tests can verify the correctness of software and also improve its structure: isolating logical distinct code for testing often involves untangling complex structures"
 ---
 
 ## Introduction
@@ -161,11 +161,14 @@ def test_approximate_pi():
     assert 22/7 == approx(math.pi, abs=1e-2)
 ```
 
-_Hint: If your simulation or approximation technique depends on random numbers then consistently seeding your generator can help with testing. See [`random.seed()`](https://docs.python.org/3/library/random.html#random.seed) for an example._
+> ## Random numbers
+>
+> If your simulation or approximation technique depends on random numbers then consistently seeding your generator can help with testing. See [`random.seed()`](https://docs.python.org/3/library/random.html#random.seed) for an example or the [pytest-randomly](https://github.com/pytest-dev/pytest-randomly) plugin for a more comprehensive solution
+{: .callout}
 
 ### doctest
 
-pytest has automatic integration with the Python's standard [doctest](https://docs.python.org/3/library/doctest.html) module. This is a nice way to provide examples of how to use a library, via interactive examples in docstrings:
+pytest has automatic integration with the Python's standard [doctest](https://docs.python.org/3/library/doctest.html) module when invoked with the `--doctest-modules` argument. This is a nice way to provide examples of how to use a library, via interactive examples in [docstrings](https://realpython.com/documenting-python-code/#documenting-your-python-code-base-using-docstrings):
 
 ```python
 def recursive_fibonacci(n):
@@ -273,9 +276,6 @@ def test_fibonacci(benchmark):
 
 - [`pytest-notebook`](https://pytest-notebook.readthedocs.io/en/latest/) can check for regressions in your Jupyter notebooks (see also [Jupyter CI](https://github.com/mwoodbri/jupyter-ci))
 
-### Related tools
-
-- [tox](https://tox.readthedocs.io/en/latest/) provides a means of testing code using different versions of Python and/or libraries. It essentially acts as wrapper for pytest (and alternative test frameworks)
 - [Hypothesis](https://hypothesis.readthedocs.io/en/latest/) provides property-based testing, which is useful for verifying edge cases):
 
 ```python
