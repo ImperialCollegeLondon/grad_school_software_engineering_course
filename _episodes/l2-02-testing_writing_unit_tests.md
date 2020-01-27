@@ -187,20 +187,17 @@ def recursive_fibonacci(n):
 > ### Get our example code
 >
 > 1. Download and extract [this zip file](https://github.com/ImperialCollegeLondon/diffusion/archive/master.zip)
-> 1. Make the folder your working directory and run the following commands (it's easiest to do this in a terminal within VS Code):
+> 1. Make the folder your working directory and run the following:
 >
 > ```bash
-> python3 -m venv .venv
-> source .venv/bin/activate  # or `.venv\Scripts\activate.bat` if you're using Windows
-> python -m pip install -U pip
-> python -m pip install -U -r requirements-dev.txt
+> conda env create --file environment.yml
 > ```
 >
 > ### Set up our editor
 >
 > 1. Download, install and run [Visual Studio Code](https://code.visualstudio.com/download)
 > 1. Go to **File > Open Folder...** and find the files you just extracted
-> 1. If you see an alert **This workspace has extension recommendations.** then click "Install All"
+> 1. If you see an alert "This workspace has extension recommendations." click **Install All** and then switch back to the **Explorer** perspective by clicking the top icon on the left-hand toolbar
 > 1. Open `test_diffusion.py`
 > 1. You should now be able to click on **Run Test** above the `test_heat()` function and see a warning symbol appear, indicating that the test is currently failing
 > 1. Switch to the **Test** perspective by clicking on the flask icon on the left-hand toolbar. From here you can **Run All Tests**, and **Show Test Output** to view the coverage report
