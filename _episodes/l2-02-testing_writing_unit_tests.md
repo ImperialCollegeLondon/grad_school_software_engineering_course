@@ -104,7 +104,7 @@ def test_non_numeric_input():
 
 ### Parametrisation
 
-Similar test invocations can be grouped together to avoid repetition. Note how the parameters are named and "injected" into the test function:
+Similar test invocations can be grouped together to avoid repetition. Note how the parameters are named, and "injected" by pytest into the test function at runtime:
 
 ```python
 @pytest.mark.parametrize("number,expected", [(0, 0), (1, 1), (2, 1), (3, 2)])
@@ -112,7 +112,7 @@ def test_initial_numbers(number, expected):
     assert recursive_fibonacci(number) == expected
 ```
 
-This corresponds to running the _same_ test with _different_ parameters, and is our first example of a pytest decorator (`@pytest`).
+This corresponds to running the _same_ test with _different_ parameters, and is our first example of a pytest decorator (`@pytest`). [Decorators](https://realpython.com/primer-on-python-decorators/) are a special syntax used in Python to modify the behaviour of the function, without modifying the code of the function itself.
 
 ### Skipping tests and ignoring failures
 
@@ -161,6 +161,8 @@ def test_approximate_pi():
     assert 22/7 == approx(math.pi, abs=1e-2)
 ```
 
+_Hint: If your simulation or approximation technique depends on random numbers then consistently seeding your generator can help with testing. See [`random.seed()`](https://docs.python.org/3/library/random.html#random.seed) for an example._
+
 ### doctest
 
 pytest has automatic integration with the Python's standard [doctest](https://docs.python.org/3/library/doctest.html) module. This is a nice way to provide examples of how to use a library, via interactive examples in docstrings:
@@ -175,8 +177,6 @@ def recursive_fibonacci(n):
     return n if n <=1 else recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2)
 ```
 
-_Hint: If your simulation or approximation technique depends on random numbers then consistently seeding your generator can help with testing. See [`random.seed()`](https://docs.python.org/3/library/random.html#random.seed) for an example._
-
 ## Hands-on unit testing
 
 > ## Getting started
@@ -184,7 +184,7 @@ _Hint: If your simulation or approximation technique depends on random numbers t
 > ### Get our example code
 >
 > 1. Download and extract [this zip file](https://github.com/ImperialCollegeLondon/diffusion/archive/master.zip)
-> 1. Make the folder your working directory and run the following commands:
+> 1. Make the folder your working directory and run the following commands (it's easiest to do this in a terminal within VS Code):
 >
 > ```bash
 > python3 -m venv .venv
@@ -205,19 +205,23 @@ _Hint: If your simulation or approximation technique depends on random numbers t
 
 ### Introduction to your challenge
 
-You have been lucky enough to inherit some code from a previous member of your group. They went to the trouble of writing a test but didn't have time to debug their program. Your job is to refactor the code and write some extra tests in order to identify and fix the problem, and make it more robust.
+You have been lucky enough to inherit some code from a previous member of your group. They went to the trouble of writing a test but didn't have time to debug their program. Your job is to refactor the code and write some extra tests in order to identify and fix the problem, and make the code more robust.
 
-The code implements a numerical solver for the heat equation:
+The code implements a numerical solver for the Heat Equation (aka the ["Hello World" of Scientific Computing](https://github.com/betterscientificsoftware/hello-heat-equation)):
 
 ![\frac{\partial\phi}{\partial t}=\alpha\frac{\partial^2\phi}{\partial x^2},\;\;\;\;\;0\leq x\leq L,\;\;t\geq 0](https://latex.codecogs.com/png.latex?\frac{\partial\phi}{\partial&space;t}=\alpha\frac{\partial^2\phi}{\partial&space;x^2},\;\;\;\;\;0\leq&space;x\leq&space;L,\;\;t\geq&space;0)
 
-A finite-difference approximation can be calculated as follows:
+Don't worry if you're unfamiliar with this equation or the notation. Basically it models transient heat conduction in a metal rod i.e. it describes the temperature (`ϕ`) at a distance `x` from one end of the rod after time `t`, given some initial and boundary temperatures and the thermal diffusivity of the material (`α`):
+
+![Metal Rod](https://raw.githubusercontent.com/betterscientificsoftware/images/master/Blog_0719_HeatEqnBar.png)
+
+An iterative approximation derived using a [finite difference method](https://en.wikipedia.org/wiki/Finite_difference_method) and suitable for translation into Python is:
 
 ![\phi_{i}^{m+1}=r\phi_{i+1}^{m}+(1-2r)\phi_{i}^{m}+r\phi_{i-1}^{m}\;\;\;\;\;\;\;\;(1)](https://latex.codecogs.com/png.latex?\phi_{i}^{m&plus;1}=r\phi_{i&plus;1}^{m}&plus;(1-2r)\phi_{i}^{m}&plus;r\phi_{i-1}^{m}\;\;\;\;\;\;\;\;(1))
 
-where `m` designates the time step and `r` is defined as follows: ![r=\frac{\alpha \Delta t}{\Delta x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
+It relates the temperature at a specific location and time point to that at the previous time point and neighbouring locations. `m` designates the time step and `r` is defined as follows: ![r=\frac{\alpha \Delta t}{\Delta x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
 
-The test provided (`test_heat`) compares the approximation with the exact solution for the relevant initial/boundary conditions. This test is correct but is failing - suggesting that there is a bug in the code.
+The test provided to you (`test_heat`) compares the approximation with the exact solution for the relevant initial/boundary conditions. This test is correct but it is failing - suggesting that there is a bug in the code.
 
 > ## Testing (and fixing!) the code
 >
@@ -240,7 +244,7 @@ The test provided (`test_heat`) compares the approximation with the exact soluti
 >
 > Now we'll add some further tests to ensure the code is more suitable for publication:
 >
-> 1. We want the `step()` function to raise an `Exception` when the following stability condition _isn't_ met: ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2}) Add a new test `test_step_unstable`, similar to `test_stable` but that invokes `step` with an `alpha` equal to `0.1` and expects an `Exception` to be raised.
+> 1. We want the `step()` function to [raise](https://docs.python.org/3/tutorial/errors.html#raising-exceptions) an [Exception](https://docs.python.org/3/tutorial/errors.html#exceptions) when the following stability condition _isn't_ met: ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2}) Add a new test `test_step_unstable`, similar to `test_stable` but that invokes `step` with an `alpha` equal to `0.1` and expects an `Exception` to be raised.
 > 1. Parametrise `test_heat()` to ensure the approximation is valid for some other combinations of `L` and `tmax` (ensuring that the stability condition remains true).
 > 1. Review the Test Output and check the coverage of your tests. If you have completed the previous two steps it should be 100%.
 >
