@@ -264,7 +264,7 @@ The test provided to you (`test_heat`) compares the approximation with the exact
 >
 > ### Testing for instability
 >
-> We want the `step()` function to [raise](https://docs.python.org/3/tutorial/errors.html#raising-exceptions) an [Exception](https://docs.python.org/3/tutorial/errors.html#exceptions) when the following stability condition _isn't_ met: ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2}) Add a new test `test_step_unstable`, similar to `test_step` but that invokes `step` with an `alpha` equal to `0.1` and expects an `Exception` to be raised. Check that this test fails before modifying `diffusion.py` so that it passes.
+> We want the `step()` function to [raise](https://docs.python.org/3/tutorial/errors.html#raising-exceptions) an [Exception](https://docs.python.org/3/tutorial/errors.html#exceptions) when the following stability condition _isn't_ met: ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2}) Add a new test `test_step_unstable`, similar to `test_step` but that invokes `step` with an `alpha` equal to `0.1` and expects an `Exception` to be raised. Check that this test fails before making it pass by modifying `diffusion.py` to raise an `Exception` appropriately.
 >
 > > ## Solution 2
 > >
