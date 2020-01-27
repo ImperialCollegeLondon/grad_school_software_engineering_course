@@ -240,13 +240,71 @@ The test provided to you (`test_heat`) compares the approximation with the exact
 > 3. Add a new (failing!) test called `test_step()` to `test_diffusion.py` in order to focus on our bug. It should call `step()` with some suitable arguments for `u`, `dx`, `dt` and `alpha` and compare the result with that suggested by equation (1) above. Use `approx` if necessary. _Hint: `step([0, 1, 0], 0.04, 0.02, 0.01)` is one suitable example_.
 > 4. Assuming that this test fails, fix it by changing the code in the `step()` function to match the equation - correcting the original bug. Once you've done this all the tests should pass.
 >
-> ### More tests
+> > ## Solution 1
+> >
+> > ```python
+> > # diffusion.py
+> > def step(u, dx, dt, alpha):
+> >     r = alpha * dt / dx ** 2
+> >
+> >     return (
+> >         u[:1]
+> >         + [
+> >             r * u[i + 1] + (1 - 2 * r) * u[i] + r * u[i - 1]
+> >             for i in range(1, len(u) - 1)
+> >         ]
+> >         + u[-1:]
+> >     )
+> > ```
+> >
+> {: .solution}
 >
-> Now we'll add some further tests to ensure the code is more suitable for publication:
+> Now we'll add some further tests to ensure the code is more suitable for publication.
 >
-> 1. We want the `step()` function to [raise](https://docs.python.org/3/tutorial/errors.html#raising-exceptions) an [Exception](https://docs.python.org/3/tutorial/errors.html#exceptions) when the following stability condition _isn't_ met: ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2}) Add a new test `test_step_unstable`, similar to `test_stable` but that invokes `step` with an `alpha` equal to `0.1` and expects an `Exception` to be raised.
-> 1. Parametrise `test_heat()` to ensure the approximation is valid for some other combinations of `L` and `tmax` (ensuring that the stability condition remains true).
-> 1. Review the Test Output and check the coverage of your tests. If you have completed the previous two steps it should be 100%.
+> ### Testing for instability
+>
+> We want the `step()` function to [raise](https://docs.python.org/3/tutorial/errors.html#raising-exceptions) an [Exception](https://docs.python.org/3/tutorial/errors.html#exceptions) when the following stability condition _isn't_ met: ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2}) Add a new test `test_step_unstable`, similar to `test_step` but that invokes `step` with an `alpha` equal to `0.1` and expects an `Exception` to be raised. Check that this test fails before modifying `diffusion.py` so that it passes.
+>
+> > ## Solution 2
+> >
+> > ```python
+> > # test_diffusion.py
+> > def test_step_unstable():
+> >     with raises(Exception):
+> >         step([0, 1, 0], 0.04, 0.02, 0.1)
+> >
+> > # diffusion.py
+> > def step(u, dx, dt, alpha):
+> >     r = alpha * dt / dx ** 2
+> >
+> >     if r > 0.5:
+> >         raise Exception
+> >
+> >     ...
+> > ```
+> >
+> {: .solution}
+>
+> ### Adding parametrisation
+>
+> Parametrise `test_heat()` to ensure the approximation is valid for some other combinations of `L` and `tmax` (ensuring that the stability condition remains true).
+>
+> > ## Solution 3
+> >
+> > ```python
+> > # test_diffusion.py
+> > @mark.parametrize("L,tmax", [(1, 0.5), (2, 0.5), (1, 1)])
+> > def test_heat(L, tmax):
+> >     nt = 10
+> >     nx = 20
+> >     alpha = 0.01
+> >
+> >     ...
+> > ```
+> >
+> {: .solution}
+>
+> After completing these two steps check the coverage of your tests via the Test Output panel - it should be 100%.
 >
 > ### Bonus task(s)
 >
