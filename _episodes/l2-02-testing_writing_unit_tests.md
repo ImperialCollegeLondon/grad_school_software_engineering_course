@@ -17,13 +17,12 @@ objectives:
   - "Recognise analogous tools for other programming languages"
   - "Apply testing to Jupyter notebooks"
 keypoints:
-  - "Python has a built-in testing framework, but pytest is not only more extensible, it's also more concise even for the simplest case"
-  - "Testing with VS Code is fairly frictionless and encourages good habits (writing tests as you code, test-driven development)"
-  - "Seeding random number generators and adding tolerances can help to test non-deterministic code (though presents challenges)"
-  - "It is important to have a set-up you can use for every project - so that it becomes as routine in your workflow as version control itself"
-  - "pytest has a myriad of extensions that are worthy of mention such as Jupyter, benchmark, Hypothesis, tox etc"
   - "Testing is not only standard practice in mainstream software engineering, it also provides distinct benefits for any non-trivial research software"
-  - "Adding unit tests can verify the correctness of software and also improve its structure: isolating logical distinct code for testing often involves untangling complex structures"
+  - "pytest is a powerful testing framework, with more functionality than Python's built-in features while still catering for simple use cases"
+  - "Testing with VS Code is straightforward and encourages good habits (writing tests as you code, and simplifying test-driven development)"
+  - "It is important to have a set-up you can use for every project - so that it becomes as routine in your workflow as version control itself"
+  - "pytest has a myriad of extensions that are worthy of mention such as Jupyter, benchmark, Hypothesis etc"
+  - "Adding unit tests can verify the correctness of software and improve its structure: isolating logical distinct code for testing often involves untangling complex structures"
 ---
 
 ## Introduction
@@ -68,7 +67,7 @@ def test_answer():
 
 Why use a test framework?
 
-- Avoid reinventing the wheel - frameworks such as pytest provide lots of convenient features
+- Avoid reinventing the wheel - frameworks such as pytest provide lots of convenient features (some of which we'll see shortly)
 - Standardisation leads to better tooling, easier onboarding etc
 
 Projects that use pytest:
@@ -354,11 +353,7 @@ def test_recursive_fibonacci(n):
 - CI:
   - GitHub Actions (see [ImperialCollegeLondon/fibonacci](https://github.com/imperialcollegelondon/fibonacci))
 
-## Wrap-up
-
-### What we've learnt
-
-TODO
+## Taking testing further
 
 ### Testing in other languages
 
