@@ -309,8 +309,9 @@ The test provided to you (`test_heat`) compares the approximation with the exact
 >
 > ### Bonus task(s)
 >
-> - TODO: write a doctest compatible docstring for `step()` or `heat()`?
-> - TODO: use a mock to test `heat()` without testing `step()`?
+> - Write a doctest-compatible docstring for `step()` or `heat()`
+> - Write at least one test for our currently untested `linspace()` function
+>   - _Hint: you may find inspiration in [numpy's test cases](https://github.com/numpy/numpy/blob/021163b5e2293286b26d22bdae51305da634e74d/numpy/core/tests/test_function_base.py#L222), but bear in mind that its [version of linspace](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html) is more capable than ours._
 {: .challenge}
 
 ## Advanced topics
