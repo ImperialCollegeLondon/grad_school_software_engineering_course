@@ -142,3 +142,24 @@ systems.
 > `setup.py` file. It's well worth investing 10mn into transforming a python script into
 > a package just to make it a *shareable* development environment.
 {: .challenge}
+
+
+> ## Choosing the installation directory for R2T2
+>
+> It would be nice if we could choose the directory where the editable package goes,
+> i.e. rather than have `r2t2` install in `src/r2t2` we might want to install it
+> directly in an `r2t2` subfolder.
+>
+> Nominally, pip does allow us to do that with
+> [--src](https://pip.pypa.io/en/stable/reference/pip_install/#cmdoption-src).
+>
+> However, it is not (yet) possible to tell conda to tell to use a given option, as
+> highlighted in this [issue](https://github.com/conda/conda/issues/6805). But that's
+> where the fun begins, because conda is an open-source effort, *you* could pitch in and
+> try and add a feature or any [other](https://github.com/conda/conda/issues). There is
+> a lot to learn just from lurking around issues of open-source projects, whether it is
+> about the project itself, or even about
+> [language](https://github.com/JuliaLang/julia/pull/24990)
+> [design](https://github.com/JuliaLang/julia/issues/4774A). There is even more to learn
+> from participating.
+{: .callout}
