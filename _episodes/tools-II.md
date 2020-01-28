@@ -27,7 +27,7 @@ keypoints:
 1. Stick with it
 
 We chose [black](https://pypi.org/project/black/) because it has very few
-options with which to fidle.
+options with which to fiddle.
 
 >## Formatting example
 >
