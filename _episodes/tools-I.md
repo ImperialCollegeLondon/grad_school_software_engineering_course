@@ -76,12 +76,11 @@ systems.
 >    name: course
 >    dependencies:
 >      - python>=3.6
->      - numpy
 >      - flake8
 >      - pylint
 >      - black
 >      - mypy
->      - ipython
+>      - requests
 >      - pip
 >      - pip:
 >        - -e git+https://github.com/ImperialCollegeLondon/R2T2.git#egg=r2t2
@@ -110,7 +109,7 @@ systems.
 >    ```
 >
 >    We expect this to run and not fail.
-> 1. Finally, feel free to remove numpy and/or pandas, then run
+> 1. Finally, feel free to remove requests, then run
 >
 >    ```bash
 >    conda env update -f environment.yml
