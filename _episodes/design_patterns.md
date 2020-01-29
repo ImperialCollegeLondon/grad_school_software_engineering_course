@@ -3,11 +3,11 @@ title: "Design Patterns"
 teaching: 15
 exercises: 15
 questions:
-- how can we avoid re-inventing the wheel when designing code?
-- how can we transfer known solutions to our code?
+- How can we avoid re-inventing the wheel when designing code?
+- How can we transfer known solutions to our code?
 objectives:
-- recognize much-used patterns in existing code
-- re-purpose existing patterns as solutions to new problems
+- Recognize much-used patterns in existing code
+- Re-purpose existing patterns as solutions to new problems
 keypoints:
 - Many coders have come before
 - Transferable solutions to common problems have been identified
@@ -21,7 +21,7 @@ keypoints:
 # What is a design pattern?
 
 ```yaml
-software design pattern: typical solutions to common problems
+software design patterns: typical solutions to common problems
 ```
 
 ### Pros
@@ -33,8 +33,8 @@ software design pattern: typical solutions to common problems
 
 ### Cons
 
-1. shoehorning: not all patterns fit everywhere
-1. patterns paper-over inadequacies that exist in one language but not another
+1. Shoehorning: not all patterns fit everywhere
+1. Patterns paper-over inadequacies that exist in one language but not another
    - the [visitor](https://en.wikipedia.org/wiki/Visitor_pattern) pattern is
      popular in Java or C++, but useless in [Julia](https://www.julia.org),
      thanks to [multiple
@@ -46,19 +46,19 @@ software design pattern: typical solutions to common problems
 
 ### Examples:
 
-- [iterator](https://en.wikipedia.org/wiki/Iterator_pattern) pattern (see
+- [Iterator](https://en.wikipedia.org/wiki/Iterator_pattern) pattern (see
   below) separates how to loop from what to do in a loop
-- [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection)
+- [Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection)
   (see below) makes it easier to create modular algorithms
-- [resource allocation is
+- [Resource allocation is
   acquisition](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization)
   idiom promotes creating fully functional objects in one go
-- [factory](https://en.wikipedia.org/wiki/Factory_method_pattern) pattern
+- [Factory](https://en.wikipedia.org/wiki/Factory_method_pattern) pattern
     separates creating object from the class of the object. It is used to unify
     or simplify the creation of similar objects into a single function.
-- [adapter](https://en.wikipedia.org/wiki/Adapter_pattern) pattern interfaces
+- [Adapter](https://en.wikipedia.org/wiki/Adapter_pattern) pattern interfaces
   one class to be used in an another
-- [more](https://en.wikipedia.org/wiki/Software_design_pattern) and
+- [More](https://en.wikipedia.org/wiki/Software_design_pattern) and
   [more](https://refactoring.guru/design-patterns) and
   [more](https://stackoverflow.com/) patterns
 - And let's not forget
@@ -140,7 +140,7 @@ def my_generator(xs, ys):
           print(f"I am in my_generator {x}, {y}")
 ```
 
-And then loop with an iterator python creates auto-magically:
+And then loop with an iterator which python creates auto-magically:
 
 ```python
 >>> for x, y in my_generator([1, 2], ["a", "b"]):
@@ -155,18 +155,19 @@ some complicated calculation with 2 and b
 I am in my_generator 2, b
 ```
 
-In practice, python runs through the code in `my_generator` and returns a new
+In practice, Python runs through the code in `my_generator` and returns a new
 element each time it hits yield. The next time it is called, it restarts from
 the line _right after_ `yield`.
 
-# When to user generators?
+# When to use generators?
 
 1. To separate complex loops from complex calculations in the loop
 1. Complex loops that occur multiple times in the code (copy-paste is a
    foot gun).
-1. When running out of memory, create a [lazy iterator]
-1. Use iterators when the language does not allow for generators (.e.g.
-[c++](https://en.cppreference.com/w/cpp/iterator/iterator)).
+1. When running out of memory, generators allow you be
+   [lazy](https://en.wikipedia.org/wiki/Lazy_evaluation)
+1. Use iterators when the language does not allow for generators (e.g.
+   [c++](https://en.cppreference.com/w/cpp/iterator/iterator)).
 
 ## Exercise
 
@@ -182,16 +183,17 @@ the line _right after_ `yield`.
 > for x in power_of_two([2, 4, 3, 2]):
 >     print(x)
 > ```
+>
+> > ## Solution
+> > ```output
+> > 4
+> > 16
+> > 9
+> > 4
+> > ```
+> {: .solution}
 {: .challenge}
 
-> ## Power of two iterator
-> ```output
-> 4
-> 16
-> 9
-> 4
-> ```
-{: .solution}
 
 > ## Interleaved power of two and squares
 >
@@ -208,20 +210,20 @@ the line _right after_ `yield`.
 > for x in interleaved([2, 4, 3, 2]):
 >     print(x)
 > ```
+> 
+> > ## Solution
+> > ```output
+> > 4
+> > 4
+> > 16
+> > 16
+> > 8
+> > 9
+> > 4
+> > 4
+> > ```
+> {: .solution}
 {: .challenge}
-
-> ## Interleaved power of two and squares
-> ```output
-> 4
-> 4
-> 16
-> 16
-> 8
-> 9
-> 4
-> 4
-> ```
-{: .solution}
 
 > ## Sequential power of two and squares
 >
@@ -239,20 +241,20 @@ the line _right after_ `yield`.
 > for x in sequential([2, 4, 3, 2]):
 >     print(x)
 > ```
+> 
+> > ## Solution
+> > ```output
+> > 4
+> > 16
+> > 8
+> > 4
+> > 4
+> > 16
+> > 9
+> > 4
+> > ```
+> {: .solution}
 {: .challenge}
-
-> ## Interleaved power of two and squares
-> ```output
-> 4
-> 16
-> 8
-> 4
-> 4
-> 16
-> 9
-> 4
-> ```
-{: .solution}
 
 ## How to use the iterator pattern
 
@@ -265,8 +267,8 @@ What to look for:
 
 What to do:
 
-Lift the loop into a generator function and make any parameter an input argument
-of the generator function.
+- Lift the loop into a generator function and make any parameter an input
+  argument of the generator function.
 
 
 ## Other languages
@@ -291,7 +293,7 @@ of the generator function.
     }
     ```
     Then use in loop:
-    ```
+    ```cpp
     for(Iterator i(...), end(...); i != end; ++i)
         compute(*i);
     ```
@@ -369,7 +371,7 @@ def the_bees_knees_solution(some_input, generator: Optional[Callable] = None):
 ```
 
 Now the algorithm is independent of the exact generator (Yay! Separation of
-concepts!). It can be used without modification with any generator that takes
+concerns!). It can be used without modification with any generator that takes
 `obstrucated`-like objects.
 
 ## Other languages
@@ -382,8 +384,8 @@ concepts!). It can be used without modification with any generator that takes
     Or use a [template
     argument](https://en.cppreference.com/w/cpp/language/template_parameters)
     (slower compilation, no performance hit, often leads to complicated code).
-- R: just pass the function, like in python.
-- Julia: just pass the function, like in python.
+- R: just pass the function, like in Python.
+- Julia: just pass the function, like in Python.
 - Fortran: The Fortran 2003 standard introduced [procedure
   pointers](http://fortranwiki.org/fortran/show/Procedure+pointers). Since it
   has only been 17 years, Fortran 2003 compilers can be patchy, buggy, and
@@ -459,69 +461,70 @@ What to do:
 > - it is almost always better than creating and keeping in sync a second list
 >    holding only points in a ring (compute is cheap)
 > - it makes it possible to test/debug the loop alone, without worrying about
-    the compute inside the loop
+>   the compute inside the loop
+> 
+> > ## Ring generator
+> >
+> > ```python
+> > from math import sqrt
+> > from typing import Iterable
+> >
+> >
+> > def points_in_ring(points: Iterable, radius: float, width: float) -> Iterable:
+> >     inner = radius - 0.5 * width
+> >     outer = radius + 0.5 * width
+> >     for point in points:
+> >         distance = sqrt(point[0] * point[0] + point[1] * point[1])
+> >         if distance >= inner and distance <= outer:
+> >             yield point
+> >
+> >
+> > points = [[1, 2], [0, 0], [-2, 0], [-2, 3], [-3, -4], [4, 0], [5, 5]]
+> >
+> > for point in points_in_ring(points, radius=3.5, width=1.0):
+> >     print(f"Some complicated calculation at {point}")
+> > ```
+> {: .solution}
+>
+> > ## Ring generator with tweakable norm
+> >
+> > ```python
+> > from math import sqrt
+> > from typing import Iterable, List, Optional, Callable
+> >
+> >
+> > def euclidean(point: List[float]) -> float:
+> >     return sqrt(sum((x * x) for x in point))
+> >
+> >
+> > def manhattan(point: List[float]) -> float:
+> >     return sum(abs(x) for x in point)
+> >
+> >
+> > def points_in_ring(
+> >     points: Iterable,
+> >     radius: float,
+> >     width: float,
+> >     norm: Optional[Callable] = None,
+> > ) -> Iterable:
+> >     if norm is None:
+> >         norm = euclidean
+> >
+> >     inner = radius - 0.5 * width
+> >     outer = radius + 0.5 * width
+> >     for point in points:
+> >         distance = norm(point)
+> >         if distance >= inner and distance <= outer:
+> >             yield point
+> >
+> >
+> > points = [[1, 2], [0, 0], [-2, 0], [-2, 3], [-3, -4], [4, 0], [5, 5]]
+> >
+> > for point in points_in_ring(points, radius=3.5, width=1.0, norm=manhattan):
+> >     print(f"Some complicated calculation at {point}")
+> > ```
+> {: .solution}
 {: .challenge}
 
-> ## Ring generator
->
-> ```python
-> from math import sqrt
-> from typing import Iterable
->
->
-> def points_in_ring(points: Iterable, radius: float, width: float) -> Iterable:
->     inner = radius - 0.5 * width
->     outer = radius + 0.5 * width
->     for point in points:
->         distance = sqrt(point[0] * point[0] + point[1] * point[1])
->         if distance >= inner and distance <= outer:
->             yield point
->
->
-> points = [[1, 2], [0, 0], [-2, 0], [-2, 3], [-3, -4], [4, 0], [5, 5]]
->
-> for point in points_in_ring(points, radius=3.5, width=1.0):
->     print(f"Some complicated calculation at {point}")
-> ```
-{: .solution}
-
-> ## Ring generator with tweakable norm
->
-> ```python
-> from math import sqrt
-> from typing import Iterable, List, Optional, Callable
->
->
-> def euclidean(point: List[float]) -> float:
->     return sqrt(sum((x * x) for x in point))
->
->
-> def manhattan(point: List[float]) -> float:
->     return sum(abs(x) for x in point)
->
->
-> def points_in_ring(
->     points: Iterable,
->     radius: float,
->     width: float,
->     norm: Optional[Callable] = None,
-> ) -> Iterable:
->     if norm is None:
->         norm = euclidean
->
->     inner = radius - 0.5 * width
->     outer = radius + 0.5 * width
->     for point in points:
->         distance = norm(point)
->         if distance >= inner and distance <= outer:
->             yield point
->
->
-> points = [[1, 2], [0, 0], [-2, 0], [-2, 3], [-3, -4], [4, 0], [5, 5]]
->
-> for point in points_in_ring(points, radius=3.5, width=1.0, norm=manhattan):
->     print(f"Some complicated calculation at {point}")
-> ```
-{: .solution}
 
 {% include links.md %}
