@@ -5,9 +5,9 @@ exercises: 20
 questions:
 - How can we create simpler and more modular codes?
 objectives:
-- Understand the expression "separation of concerns"
-- Understand the expression "levels of abstractions"
-- Understand the expression "dataflow"
+- Explain the expression "separation of concerns"
+- Explain the expression "levels of abstractions"
+- Explain the expression "dataflow"
 - Analyze an algorithm for levels of abstractions, seperable concerns and
   dataflow
 - Create focussed, modular algorithms
