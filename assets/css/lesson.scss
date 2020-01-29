@@ -44,6 +44,7 @@ $color-testimonial: #fc8dc1 !default;
 .make, .language-make     { @include cdSetup($color-source); }
 .matlab, .language-matlab { @include cdSetup($color-source); }
 .python, .language-python { @include cdSetup($color-source); }
+.cpp, .language-cpp       { @include cdSetup($color-source); }
 .r, .language-r           { @include cdSetup($color-source); }
 .sql, .language-sql       { @include cdSetup($color-source); }
 
@@ -54,6 +55,7 @@ $color-testimonial: #fc8dc1 !default;
 .make::before, .language-make::before,
 .matlab::before, .language-matlab::before,
 .python::before, .language-python::before,
+.cpp::before, .language-cpp::before,
 .r::before, .language-r::before,
 .sql::before, .language-sql::before {
   background-color: #f2eff6;
@@ -69,6 +71,7 @@ $color-testimonial: #fc8dc1 !default;
 .make::before, .language-make::before { content: "Make"; }
 .matlab::before, .language-matlab::before { content: "Matlab"; }
 .python::before, .language-python::before { content: "Python"; }
+.cpp::before, .language-cpp::before { content: "C++"; }
 .r::before, .language-r::before { content: "R"; }
 .sql::before, .language-sql::before { content: "SQL"; }
 
