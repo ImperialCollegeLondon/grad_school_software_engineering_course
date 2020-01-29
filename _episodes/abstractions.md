@@ -3,14 +3,14 @@ title: "Structuring code"
 teaching: 10
 exercises: 20
 questions:
-- how can we create simpler and more modular codes?
+- How can we create simpler and more modular codes?
 objectives:
-- understand the expression "separation of concerns"
-- understand the expression "levels of abstractions"
-- understand the expression "dataflow"
-- analyze an algorithm for levels of abstractions, seperable concerns and
+- Understand the expression "separation of concerns"
+- Understand the expression "levels of abstractions"
+- Understand the expression "dataflow"
+- Analyze an algorithm for levels of abstractions, seperable concerns and
   dataflow
-- create focussed, modular algorithms
+- Create focussed, modular algorithms
 keypoints:
 - Code is read more often than written
 - The structure of the code should follow a well written explanation of its
