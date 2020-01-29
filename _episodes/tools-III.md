@@ -34,10 +34,10 @@ the linter is the final arbiter.
 
 # Why linting matters?
 
-* code is read more often than written
-* setting up a linter in your editor takes 5 minutes
-* those 5 minutes are redeemed across the lifetime of the project
-* linters shortcut the `edit-run-debug and repeat` workflow
+* Code is read more often than written
+* Setting up a linter in your editor takes 5 minutes
+* Those 5 minutes are redeemed across the lifetime of the project
+* Linters shortcut the `edit-run-debug and repeat` workflow
 
 # Rules to choose linters
 
