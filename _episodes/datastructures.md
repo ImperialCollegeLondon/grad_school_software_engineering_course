@@ -9,7 +9,7 @@ objectives:
 - Recall common data structures
 - Recognize where and when to use them
 keypoints:
-- data structures are the representation of information the same way algorithm
+- Data structures are the representation of information the same way algorithms
   represent logic and workflows
 - Using the right data structure can vastly simplify code
 - Basic data structures include numbers, strings, tuples, lists, dictionaries
@@ -305,7 +305,7 @@ MyData(a_list=[1, 2], b_string='something something')
 [1, 2]
 ```
 
-data classes make sense when:
+Data classes make sense when:
 
 - you have a collections of related data that does not fit a more primitive type
 - you already have a class and you don't want to write standard functions like
@@ -366,273 +366,273 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > 1. If now we want to also encode "noun" and "verb", what data structure could we
 >    use?
 > 1. What about when there are multiple meanings for a verb or a noun?
+> 
+> > ## Dictionary implemented with lists
+> >
+> > ```python
+> > from typing import List, Text, Tuple
+> >
+> >
+> > def modify_definition(
+> >     word: Text, newdef: Text, words: List[Text], definitions: List[Text]
+> > ) -> List[Text]:
+> >     from copy import copy
+> >
+> >     index = words.index(word)
+> >     definitions = copy(definitions)
+> >     definitions[index] = newdef
+> >     return definitions
+> >
+> >
+> > def find_rhymes(
+> >     rhyme: Text, words: List[Text], definitions: List[Text]
+> > ) -> Tuple[List[Text], List[Text]]:
+> >     result_words = []
+> >     result_definitions = []
+> >     for word, definition in zip(words, definitions):
+> >         if word.endswith(rhyme):
+> >             result_words.append(word)
+> >             result_definitions.append(definition)
+> >     return result_words, result_definitions
+> >
+> >
+> > def testme():
+> >
+> >     words = ["barf", "morph", "scarf", "snarf", "sound", "surf"]
+> >     definitions = [
+> >         "(verb) eject the contents of the stomach through the mouth",
+> >         "(verb) change shape as via computer animation",
+> >         (
+> >             "(noun) a garment worn around the head or neck or shoulders for"
+> >             "warmth or decoration"
+> >         ),
+> >         "(verb) make off with belongings of others",
+> >         (
+> >             "(verb) emit or cause to emit sound."
+> >             "(noun) vibrations that travel through the air or another medium"
+> >         ),
+> >         (
+> >             "(verb) switch channels, on television"
+> >             "(noun) waves breaking on the shore"
+> >         ),
+> >     ]
+> >
+> >     newdefs = modify_definition("morph", "aaa", words, definitions)
+> >     assert newdefs[1] == "aaa"
+> >
+> >     rhymers = find_rhymes("arf", words, definitions)
+> >     assert set(rhymers[0]) == {"barf", "scarf", "snarf"}
+> >     assert rhymers[1][0] == definitions[0]
+> >     assert rhymers[1][1] == definitions[2]
+> >     assert rhymers[1][2] == definitions[3]
+> >
+> >
+> > if __name__ == "__main__":
+> >
+> >     # this is one way to include tests.
+> >     # the second session will introduce a better way.
+> >     testme()
+> {: .solution}
+> 
+> > ## Dictionary implemented with a dictionary
+> >
+> > ```python
+> > from typing import List, Text, Tuple, Mapping
+> >
+> >
+> > def modify_definition(
+> >     word: Text, newdef: Text, dictionary: Mapping[Text, Text]
+> > ) -> List[Text]:
+> >     from copy import copy
+> >
+> >     result = copy(dictionary)
+> >     result[word] = newdef
+> >     return result
+> >
+> >
+> > def find_rhymes(
+> >     rhyme: Text, dictionary: Mapping[Text, Text]
+> > ) -> Tuple[List[Text], List[Text]]:
+> >     return {
+> >         word: definition
+> >         for word, definition in dictionary.items()
+> >         if word.endswith(rhyme)
+> >     }
+> >
+> >
+> > def testme():
+> >
+> >     dictionary = {
+> >         "barf": "(verb) eject the contents of the stomach through the mouth",
+> >         "morph": "(verb) change shape as via computer animation",
+> >         "scarf": (
+> >             "(noun) a garment worn around the head or neck or shoulders for"
+> >             "warmth or decoration"
+> >         ),
+> >         "snarf": "(verb) make off with belongings of others",
+> >         "sound": (
+> >             "(verb) emit or cause to emit sound."
+> >             "(noun) vibrations that travel through the air or another medium"
+> >         ),
+> >         "surf": (
+> >             "(verb) switch channels, on television"
+> >             "(noun) waves breaking on the shore"
+> >         ),
+> >     }
+> >
+> >     newdict = modify_definition("morph", "aaa", dictionary)
+> >     assert newdict["morph"] == "aaa"
+> >
+> >     rhymers = find_rhymes("arf", dictionary)
+> >     assert set(rhymers) == {"barf", "scarf", "snarf"}
+> >     for word in {"barf", "scarf", "snarf"}:
+> >         assert rhymers[word] == dictionary[word]
+> >
+> >
+> > if __name__ == "__main__":
+> >
+> >     testme()
+> ```
+> {: .solution}
+> 
+> > ## More complex data structures for more complex dictionary
+> >
+> > There can be more than one good answer. It will depend on how the dictionary
+> > is meant to be used later throughout the code.
+> >
+> > Below we show three possibilities. The first is more deeply nested. It groups
+> > all definitions together for a given word, whether that word is a noun or a
+> > verb. If more often than not, it does not matter so much what a word is, then
+> > it might be a good solution. The second example flatten the dictionary by
+> > making "surf" the noun different from "surf" the verb. As a result, it is
+> > easier to access a word with a specific semantic category, but more difficult
+> > to access all definitions irrespective of their semantic category.
+> >
+> > One pleasing aspect of the second example is that together things that are
+> > unlikely to change one one side (word and semantic category), and a less
+> > precise datum on the other (definitions are more likely to be refined).
+> >
+> > The third possibility is a
+> > [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html) `DataFrame`
+> > with three columns. It's best suited to big-data problems where individual
+> > words (rows) are seldom accessed one at a time. Instead, most operations are
+> > carried out over subsets of the dictionary.
+> >
+> > ```python
+> > from typing import Text
+> > from enum import Enum, auto
+> > from dataclasses import dataclass
+> > from pandas import DataFrame, Series
+> >
+> >
+> > class Category(Enum):
+> >     NOUN = auto
+> >     VERB = auto
+> >
+> >
+> > @dataclass
+> > class Definition:
+> >     category: Text
+> >     text: Text
+> >
+> >
+> > first_example = {
+> >     "barf": [
+> >         Definition(
+> >             Category.VERB, "eject the contents of the stomach through the mouth"
+> >         )
+> >     ],
+> >     "morph": [
+> >         Definition(
+> >             Category.VERB, "(verb) change shape as via computer animation"
+> >         )
+> >     ],
+> >     "scarf": [
+> >         Definition(
+> >             Category.NOUN,
+> >             "a garment worn around the head or neck or shoulders for"
+> >             "warmth or decoration",
+> >         )
+> >     ],
+> >     "snarf": Definition(Category.VERB, "make off with belongings of others"),
+> >     "sound": [
+> >         Definition(Category.VERB, "emit or cause to emit sound."),
+> >         Definition(
+> >             Category.NOUN,
+> >             "vibrations that travel through the air or another medium",
+> >         ),
+> >     ],
+> >     "surf": [
+> >         Definition(Category.VERB, "switch channels, on television"),
+> >         Definition(Category.NOUN, "waves breaking on the shore"),
+> >     ],
+> > }
+> >
+> >
+> > # frozen makes Word immutable (the same way a tuple is immutable)
+> > # One practical consequence is that dataclass will make Word work as a
+> > # dictionary key: Word is hashable
+> > @dataclass(frozen=True)
+> > class Word:
+> >     word: Text
+> >     category: Text
+> >
+> >
+> > second_example = {
+> >     Word(
+> >         "barf", Category.VERB
+> >     ): "eject the contents of the stomach through the mouth",
+> >     Word("morph", Category.VERB): "change shape as via computer animation",
+> >     Word("scarf", Category.NOUN): (
+> >         "a garment worn around the head or neck or shoulders for"
+> >         "warmth or decoration"
+> >     ),
+> >     Word("snarf", Category.VERB): "make off with belongings of others",
+> >     Word("sound", Category.VERB): "emit or cause to emit sound.",
+> >     Word(
+> >         "sound", Category.NOUN
+> >     ): "vibrations that travel through the air or another medium",
+> >     Word("surf", Category.VERB): "switch channels, on television",
+> >     Word("surf", Category.NOUN): "waves breaking on the shore",
+> > }
+> >
+> > # Do conda install pandas first!!!
+> > import pandas as pd
+> >
+> > third_example = pd.DataFrame(
+> >     {
+> >         "words": [
+> >             "barf",
+> >             "morph",
+> >             "scarf",
+> >             "snarf",
+> >             "sound",
+> >             "sound",
+> >             "surf",
+> >             "surf",
+> >         ],
+> >         "definitions": [
+> >             "eject the contents of the stomach through the mouth",
+> >             "change shape as via computer animation",
+> >             (
+> >                 "a garment worn around the head or neck or shoulders for"
+> >                 "warmth or decoration"
+> >             ),
+> >             "make off with belongings of others",
+> >             "emit or cause to emit sound.",
+> >             "vibrations that travel through the air or another medium",
+> >             "switch channels, on television",
+> >             "waves breaking on the shore",
+> >         ],
+> >         "category": pd.Series(
+> >             ["verb", "verb", "noun", "verb", "verb", "noun", "verb", "noun"],
+> >             dtype="category",
+> >         ),
+> >     }
+> > )
+> > ```
+> {: .solution}
 {: .challenge}
 
-
-> ## Dictionary implemented with lists
->
-> ```python
-> from typing import List, Text, Tuple
->
->
-> def modify_definition(
->     word: Text, newdef: Text, words: List[Text], definitions: List[Text]
-> ) -> List[Text]:
->     from copy import copy
->
->     index = words.index(word)
->     definitions = copy(definitions)
->     definitions[index] = newdef
->     return definitions
->
->
-> def find_rhymes(
->     rhyme: Text, words: List[Text], definitions: List[Text]
-> ) -> Tuple[List[Text], List[Text]]:
->     result_words = []
->     result_definitions = []
->     for word, definition in zip(words, definitions):
->         if word.endswith(rhyme):
->             result_words.append(word)
->             result_definitions.append(definition)
->     return result_words, result_definitions
->
->
-> def testme():
->
->     words = ["barf", "morph", "scarf", "snarf", "sound", "surf"]
->     definitions = [
->         "(verb) eject the contents of the stomach through the mouth",
->         "(verb) change shape as via computer animation",
->         (
->             "(noun) a garment worn around the head or neck or shoulders for"
->             "warmth or decoration"
->         ),
->         "(verb) make off with belongings of others",
->         (
->             "(verb) emit or cause to emit sound."
->             "(noun) vibrations that travel through the air or another medium"
->         ),
->         (
->             "(verb) switch channels, on television"
->             "(noun) waves breaking on the shore"
->         ),
->     ]
->
->     newdefs = modify_definition("morph", "aaa", words, definitions)
->     assert newdefs[1] == "aaa"
->
->     rhymers = find_rhymes("arf", words, definitions)
->     assert set(rhymers[0]) == {"barf", "scarf", "snarf"}
->     assert rhymers[1][0] == definitions[0]
->     assert rhymers[1][1] == definitions[2]
->     assert rhymers[1][2] == definitions[3]
->
->
-> if __name__ == "__main__":
->
->     # this is one way to include tests.
->     # the second session will introduce a better way.
->     testme()
-{: .solution}
-
-> ## Dictionary implemented with a dictionary
->
-> ```python
-> from typing import List, Text, Tuple, Mapping
->
->
-> def modify_definition(
->     word: Text, newdef: Text, dictionary: Mapping[Text, Text]
-> ) -> List[Text]:
->     from copy import copy
->
->     result = copy(dictionary)
->     result[word] = newdef
->     return result
->
->
-> def find_rhymes(
->     rhyme: Text, dictionary: Mapping[Text, Text]
-> ) -> Tuple[List[Text], List[Text]]:
->     return {
->         word: definition
->         for word, definition in dictionary.items()
->         if word.endswith(rhyme)
->     }
->
->
-> def testme():
->
->     dictionary = {
->         "barf": "(verb) eject the contents of the stomach through the mouth",
->         "morph": "(verb) change shape as via computer animation",
->         "scarf": (
->             "(noun) a garment worn around the head or neck or shoulders for"
->             "warmth or decoration"
->         ),
->         "snarf": "(verb) make off with belongings of others",
->         "sound": (
->             "(verb) emit or cause to emit sound."
->             "(noun) vibrations that travel through the air or another medium"
->         ),
->         "surf": (
->             "(verb) switch channels, on television"
->             "(noun) waves breaking on the shore"
->         ),
->     }
->
->     newdict = modify_definition("morph", "aaa", dictionary)
->     assert newdict["morph"] == "aaa"
->
->     rhymers = find_rhymes("arf", dictionary)
->     assert set(rhymers) == {"barf", "scarf", "snarf"}
->     for word in {"barf", "scarf", "snarf"}:
->         assert rhymers[word] == dictionary[word]
->
->
-> if __name__ == "__main__":
->
->     testme()
-```
-{: .solution}
-
-> ## More complex data structures for more complex dictionary
->
-> There can be more than one good answer. It will depend on how the dictionary
-> is meant to be used later throughout the code.
->
-> Below we show three possibilities. The first is more deeply nested. It groups
-> all definitions together for a given word, whether that word is a noun or a
-> verb. If more often than not, it does not matter so much what a word is, then
-> it might be a good solution. The second example flatten the dictionary by
-> making "surf" the noun different from "surf" the verb. As a result, it is
-> easier to access a word with a specific semantic category, but more difficult
-> to access all definitions irrespective of their semantic category.
->
-> One pleasing aspect of the second example is that together things that are
-> unlikely to change one one side (word and semantic category), and a less
-> precise datum on the other (definitions are more likely to be refined).
->
-> The third possibility is a
-> [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html) `DataFrame`
-> with three columns. It's best suited to big-data problems where individual
-> words (rows) are seldom accessed one at a time. Instead, most operations are
-> carried out over subsets of the dictionary.
->
-> ```python
-> from typing import Text
-> from enum import Enum, auto
-> from dataclasses import dataclass
-> from pandas import DataFrame, Series
->
->
-> class Category(Enum):
->     NOUN = auto
->     VERB = auto
->
->
-> @dataclass
-> class Definition:
->     category: Text
->     text: Text
->
->
-> first_example = {
->     "barf": [
->         Definition(
->             Category.VERB, "eject the contents of the stomach through the mouth"
->         )
->     ],
->     "morph": [
->         Definition(
->             Category.VERB, "(verb) change shape as via computer animation"
->         )
->     ],
->     "scarf": [
->         Definition(
->             Category.NOUN,
->             "a garment worn around the head or neck or shoulders for"
->             "warmth or decoration",
->         )
->     ],
->     "snarf": Definition(Category.VERB, "make off with belongings of others"),
->     "sound": [
->         Definition(Category.VERB, "emit or cause to emit sound."),
->         Definition(
->             Category.NOUN,
->             "vibrations that travel through the air or another medium",
->         ),
->     ],
->     "surf": [
->         Definition(Category.VERB, "switch channels, on television"),
->         Definition(Category.NOUN, "waves breaking on the shore"),
->     ],
-> }
->
->
-> # frozen makes Word immutable (the same way a tuple is immutable)
-> # One practical consequence is that dataclass will make Word work as a
-> # dictionary key: Word is hashable
-> @dataclass(frozen=True)
-> class Word:
->     word: Text
->     category: Text
->
->
-> second_example = {
->     Word(
->         "barf", Category.VERB
->     ): "eject the contents of the stomach through the mouth",
->     Word("morph", Category.VERB): "change shape as via computer animation",
->     Word("scarf", Category.NOUN): (
->         "a garment worn around the head or neck or shoulders for"
->         "warmth or decoration"
->     ),
->     Word("snarf", Category.VERB): "make off with belongings of others",
->     Word("sound", Category.VERB): "emit or cause to emit sound.",
->     Word(
->         "sound", Category.NOUN
->     ): "vibrations that travel through the air or another medium",
->     Word("surf", Category.VERB): "switch channels, on television",
->     Word("surf", Category.NOUN): "waves breaking on the shore",
-> }
->
-> # Do conda install pandas first!!!
-> import pandas as pd
->
-> third_example = pd.DataFrame(
->     {
->         "words": [
->             "barf",
->             "morph",
->             "scarf",
->             "snarf",
->             "sound",
->             "sound",
->             "surf",
->             "surf",
->         ],
->         "definitions": [
->             "eject the contents of the stomach through the mouth",
->             "change shape as via computer animation",
->             (
->                 "a garment worn around the head or neck or shoulders for"
->                 "warmth or decoration"
->             ),
->             "make off with belongings of others",
->             "emit or cause to emit sound.",
->             "vibrations that travel through the air or another medium",
->             "switch channels, on television",
->             "waves breaking on the shore",
->         ],
->         "category": pd.Series(
->             ["verb", "verb", "noun", "verb", "verb", "noun", "verb", "noun"],
->             dtype="category",
->         ),
->     }
-> )
-> ```
-{: .solution}
 
 {% include links.md %}
