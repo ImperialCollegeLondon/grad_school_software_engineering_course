@@ -377,8 +377,8 @@ concerns!). It can be used without modification with any generator that takes
 ## Other languages
 
 - c++: The tweakable element is any [function
-    objects](https://en.cppreference.com/w/cpp/utility/functional) object or
-    function. The algorithm takes
+    object](https://en.cppreference.com/w/cpp/utility/functional) or function.
+    The algorithm takes
     [std::function](https://en.cppreference.com/w/cpp/utility/functional/function)
     as argument (simpler code, faster compilation, possibly slower performance).
     Or use a [template
