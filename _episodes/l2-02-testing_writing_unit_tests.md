@@ -227,8 +227,8 @@ def recursive_fibonacci(n):
 >
 > ### Set up our editor
 >
-> 1. Download, install and run [Visual Studio
->    Code](https://code.visualstudio.com/download)
+> 1. If you haven't already, see the [setup guide](../setup) for instructions on
+>    how to install Visual Studio Code.
 > 1. Go to **File > Open Folder...** and find the files you just extracted
 > 1. If you see an alert "This workspace has extension recommendations." click
 >    **Install All** and then switch back to the **Explorer** perspective by

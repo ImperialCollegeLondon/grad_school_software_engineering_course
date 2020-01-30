@@ -61,9 +61,12 @@ It is the de-factor package manager on Imperial's [HPC
 cluster](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/applications/conda/)
 systems.
 
-# Selecting an environment in vscode
+# Selecting an environment in Visual Studio Code
 
-On Linux and Mac, one option is to first activate conda, and then start vscode:
+If you haven't already, see the [setup guide](../setup) for instructions on how
+to install Visual Studio (VS) Code.
+
+On Linux and Mac, one option is to first activate conda, and then start VS Code:
 
 ```bash
 > conda activate name_of_environment
@@ -75,8 +78,8 @@ with:
 
 - Cmd + Shift + P, and start typing "Python: Select interpreter"
 
-On all platforms, it is possible to set the python interpreter by editing vscode
-settings. To open settings, choose one of the following:
+On all platforms, it is possible to set the python interpreter by editing VS
+Code settings. To open settings, choose one of the following:
 
 - mac menu: Code > Preferences > Settings
 - windows/linux menu: File > Preferences > Settings
@@ -97,10 +100,8 @@ Then add the setting
 
 > ## Installing and using an environment
 >
-> 1. Install the complete [anaconda](https://docs.anaconda.com/anaconda/install/)
->   distribution (install lots of default packages) or the smaller
->   [miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)
->   (installs only conda itself).
+> 1. If you haven't already, see the [setup guide](../setup) for instructions
+>    on how to install conda.
 >
 > 1. Create a file `environment.yml`
 >

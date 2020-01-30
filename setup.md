@@ -65,7 +65,7 @@ replicate the setup as you choose.
 To install VS Code follow the instructions
 [here](https://code.visualstudio.com).
 
-You should then be able to launch VS code and see something like:
+You should then be able to launch VS Code and see something like:
 ![Screenshot of VS code](fig/vs-code.png)
 
 {% include links.md %}
