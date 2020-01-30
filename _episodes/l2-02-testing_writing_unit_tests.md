@@ -186,11 +186,12 @@ def test_approximate_pi():
 >
 > If your simulation or approximation technique depends on random numbers then
 > consistently seeding your generator can help with testing. See
-> [`random.seed()`](https://docs.python.org/3/library/random.html#random.seed)
-> for an example or the
-> [pytest-randomly](https://github.com/pytest-dev/pytest-randomly) plugin for a
-> more comprehensive solution
+> [`random.seed()`][random-seed] for an example or the [pytest-randomly][]
+> plugin for a more comprehensive solution.
 {: .callout}
+
+[random-seed]: https://docs.python.org/3/library/random.html#random.seed
+[pytest-randomly]: https://github.com/pytest-dev/pytest-randomly
 
 ### doctest
 
@@ -249,8 +250,9 @@ their program. Your job is to refactor the code and write some extra tests in
 order to identify and fix the problem, and make the code more robust.
 
 The code implements a numerical solver for the Heat Equation (aka the ["Hello
-World" of Scientific
-Computing](https://github.com/betterscientificsoftware/hello-heat-equation)):
+World" of Scientific Computing][heat-equation]):
+
+[heat-equation]: https://github.com/betterscientificsoftware/hello-heat-equation
 
 ![\frac{\partial\phi}{\partial t}=\alpha\frac{\partial^2\phi}{\partial x^2},\;\;\;\;\;0\leq x\leq L,\;\;t\geq 0](https://latex.codecogs.com/png.latex?\frac{\partial\phi}{\partial&space;t}=\alpha\frac{\partial^2\phi}{\partial&space;x^2},\;\;\;\;\;0\leq&space;x\leq&space;L,\;\;t\geq&space;0)
 
@@ -390,12 +392,13 @@ it is failing - suggesting that there is a bug in the code.
 >
 > - Write a doctest-compatible docstring for `step()` or `heat()`
 > - Write at least one test for our currently untested `linspace()` function
->   - _Hint: you may find inspiration in [numpy's test
->     cases](https://github.com/numpy/numpy/blob/021163b5e2293286b26d22bdae51305da634e74d/numpy/core/tests/test_function_base.py#L222),
->     but bear in mind that its [version of
->     linspace](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html)
->     is  more capable than ours._
+>   - _Hint: you may find inspiration in [numpy's test cases][numpy-test-cases],
+>     but bear in mind that its [version of linspace][linspace] is more capable
+>     than ours._
 {: .challenge}
+
+[numpy-test-cases]: https://github.com/numpy/numpy/blob/021163b5e2293286b26d22bdae51305da634e74d/numpy/core/tests/test_function_base.py#L222
+[linspace]: https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html
 
 ## Advanced topics
 
@@ -418,9 +421,11 @@ def test_fibonacci(benchmark):
 > ([output](https://imperialcollegelondon.box.com/shared/static/fpn5metew2ohns6amb24krtzmb31907b.png))
 {: .callout}
 
-- [`pytest-notebook`](https://pytest-notebook.readthedocs.io/en/latest/) can
-  check for regressions in your Jupyter notebooks (see also [Jupyter
-  CI](https://github.com/mwoodbri/jupyter-ci))
+- [`pytest-notebook`][pytest-notebook] can check for regressions in your Jupyter
+  notebooks (see also [Jupyter CI][jupyter-ci])
+
+[pytest-notebook]: https://pytest-notebook.readthedocs.io/en/latest/
+[jupyter-ci]: https://github.com/mwoodbri/jupyter-ci
 
 - [Hypothesis](https://hypothesis.readthedocs.io/en/latest/) provides
   property-based testing, which is useful for verifying edge cases):
@@ -457,20 +462,24 @@ def test_recursive_fibonacci(n):
   - Fortran: [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)
   - R: [testthat](https://github.com/r-lib/testthat)
 - See the Software Sustainability Institute's [Build and Test
-  Examples](https://github.com/softwaresaved/build_and_test_examples) for many
-  more
+  Examples][build-examples] for many more
+
+[build-examples]: https://github.com/softwaresaved/build_and_test_examples
 
 ### Further resources
 
-- [`ImperialCollegeLondon/pytest_template_application`](https://github.com/ImperialCollegeLondon/pytest_template_application)
-- [A tried-and-tested workflow for software quality
-  assurance](https://doi.org/10.5281/zenodo.1409199)
+- [`ImperialCollegeLondon/pytest_template_application`][pytest-template]
+- [A tried-and-tested workflow for software quality assurance][workflow]
   ([repo](https://gitlab.com/mwoodbri/rse18))
-- [Using Git to Code, Collaborate and
-  Share](https://www.imperial.ac.uk/study/pg/graduate-school/students/doctoral/professional-development/research-computing-data-science/courses/git-to-code-callobrate-share/)
-- RCS [courses](https://wiki.imperial.ac.uk/display/HPC/Courses) and
-  [clinics](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/attend-a-clinic/)
-- [Research Software
-  Community](https://www.imperial.ac.uk/computational-methods/rse/)
+- [Using Git to Code, Collaborate and Share][git-course]
+- RCS [courses][rcs-courses] and [clinics][]
+- [Research Software Community][community]
+
+[pytest-template]: https://github.com/ImperialCollegeLondon/pytest_template_application
+[workflow]: https://doi.org/10.5281/zenodo.1409199
+[git-course]: https://www.imperial.ac.uk/study/pg/graduate-school/students/doctoral/professional-development/research-computing-data-science/courses/git-to-code-callobrate-share/
+[rcs-courses]: https://wiki.imperial.ac.uk/display/HPC/Courses
+[clinics]: https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/attend-a-clinic/
+[community]: https://www.imperial.ac.uk/computational-methods/rse/
 
 {% include links.md %}
