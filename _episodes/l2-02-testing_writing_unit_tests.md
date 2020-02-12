@@ -215,28 +215,39 @@ def recursive_fibonacci(n):
 
 > ## Getting started
 >
-> ### Get our example code
->
-> 1. Download and extract [this zip
->    file](https://github.com/ImperialCollegeLondon/diffusion/archive/master.zip)
-> 1. Make the folder your working directory and run the following:
->
-> ```bash
-> conda env create --file environment.yml
-> ```
->
-> ### Set up our editor
->
+> ### Setting up our editor
 > 1. If you haven't already, see the [setup guide](../setup) for instructions on
->    how to install Visual Studio Code.
-> 1. Go to **File > Open Folder...** and find the files you just extracted
+>    how to install Visual Studio Code and conda.
+> 1. Download and extract [this zip
+>    file](https://github.com/ImperialCollegeLondon/diffusion/archive/master.zip). If
+>    using an ICT managed PC please be sure to do this in your user area on the
+>    C: drive. (**Note that files placed here are not persistent so you must
+>    remember to take a copy before logging out**).
+> 1. In Visual Studio Code Go to **File > Open Folder...** and find the files
+>    you just extracted.
 > 1. If you see an alert "This workspace has extension recommendations." click
 >    **Install All** and then switch back to the **Explorer** perspective by
 >    clicking the top icon on the left-hand toolbar
+> 1. Open Anaconda Prompt (Windows), or a terminal (Mac or Linux) and run:
+>
+>    ```bash
+>    conda env create --file [path to environment.yml]
+>    ```
+>
+>    The `[path to environment.yml]` can be obtained by right-clicking the file
+>    name in the left pane of Visual Studio Code and choosing "Copy Path". Right
+>    click on the command line interface to paste.
+> 1. Once the environment has been created, in Visual Studio Code go to **View
+>    \> Command Palette**, start typing "Python: Select interpreter" and hit
+>    enter. From the list select your newly created environment called
+>    "diffusion."
+>
+> ### Running the tests
 > 1. Open `test_diffusion.py`
 > 1. You should now be able to click on **Run Test** above the `test_heat()`
 >    function and see a warning symbol appear, indicating that the test is
->    currently failing
+>    currently failing. You may have to wait a moment for **Run Test** to
+>    appear.
 > 1. Switch to the **Test** perspective by clicking on the flask icon on the
 >    left-hand toolbar. From here you can **Run All Tests**, and **Show Test
 >    Output** to view the coverage report
