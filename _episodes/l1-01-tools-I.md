@@ -55,11 +55,99 @@ as well. Better known python package managers include
 We chose [conda](https://docs.conda.io/en/latest/) because it is the de-facto
 standard in science, and because it natively allows to install libraries such as
 [fftw](https://anaconda.org/conda-forge/fftw),
-[vtk](https://anaconda.org/conda-forge/vtk), or even, Python, R, and Julia themselves.
+[vtk](https://anaconda.org/conda-forge/vtk), or even, Python, R, and Julia
+themselves.
 
 It is the de-factor package manager on Imperial's [HPC
 cluster](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/applications/conda/)
 systems.
+
+# Example:
+
+> ## Installing and using an environment
+>
+> 1. If you haven't already, see the [setup guide](../setup) for instructions
+>    on how to install conda, Visual Studio Code and Git.
+>
+> 1. Create a new folder to use for this course, if you're using an ICT managed
+>    PC this must be located in your user area on the C: drive (**Note that
+>    files placed here are not persistent so you must remember to take a copy
+>    before logging out**). Start Visual Studio Code and select "Open folder..."
+>    from the welcome screen. Navigate to the folder you just created and press
+>    "Select Folder".
+>
+> 1. Press "New file" and copy the below text. Save the file as
+>    `environment.yml`, the location should default to your newly created
+>    folder.
+>
+>    ```yaml
+>    name: course
+>    dependencies:
+>      - python>=3.6
+>      - flake8
+>      - pylint
+>      - black
+>      - mypy
+>      - requests
+>      - pip
+>      - pip:
+>        - -e git+https://github.com/ImperialCollegeLondon/R2T2.git#egg=r2t2
+>    ```
+>
+> 1. Create a new virtual environment using conda:
+>
+>    ```bash
+>    conda env create -f [path to environment.yml]
+>    ```
+>
+>    Windows users will want to start the app `Anaconda Prompt`.
+>
+>    Linux and Mac users should use a terminal app of their choice. You may see
+>    a warning with instructions. Please follow the instructions.
+>
+>    You can obtain `[path to environment.yml]` by right clicking the file tab
+>    near the top of Visual Studio Code and selecting "Copy Path" from the
+>    drop-down menu. Right click on the window for your command line interface
+>    to paste the path.
+>
+> 1. We can now activate the environment:
+>
+>    ```bash
+>    conda activate course
+>    ```
+> 1. And check python knows about the installed packages. Start a Python
+>    interpreter with the command `python` then:
+>
+>    ```python
+>    import requests
+>    ```
+>
+>    We expect this to run and not fail. You can see the location of the
+>    installed package with:
+>
+>    ```python
+>    requests.__file__
+>    ```
+>    ~~~
+>    'C:\\ProgramData\\Anaconda3\\envs\\course\\lib\\site-packages\\requests\\__init__.py'
+>     ~~~
+>    {: .output}
+>    The file path you see will vary but note that it is within a directory
+>    called `course` that contains the files for the virtual environment you
+>    have created. Exit the Python interpreter:
+>
+>    ```python
+>    exit()
+>    ```
+> 1. Finally, feel free to remove requests from `environment.yml`, then run
+>
+>    ```bash
+>    conda env update -f [path to environment.yml]
+>    ```
+>
+>     and see whether the package has been updated or removed.
+{: .challenge}
+
 
 # Selecting an environment in Visual Studio Code
 
@@ -94,72 +182,15 @@ Then add the setting
 }
 ```
 
-
-
-# Example:
-
-> ## Installing and using an environment
->
-> 1. If you haven't already, see the [setup guide](../setup) for instructions
->    on how to install conda.
->
-> 1. Create a file `environment.yml`
->
->    ```yaml
->    name: course
->    dependencies:
->      - python>=3.6
->      - flake8
->      - pylint
->      - black
->      - mypy
->      - requests
->      - pip
->      - pip:
->        - -e git+https://github.com/ImperialCollegeLondon/R2T2.git#egg=r2t2
->    ```
->
-> 1. Create the conda environment with
->
->    ```bash
->    conda env create -f environment.yml
->    ```
->
->    Windows users will want to start the app `Anaconda Prompt`.
->
->    Linux and Mac users should use a terminal app of their choice. They may see a
->    warning with instructions. Please follow the instructions.
->
-> 1. We can now activate the environment:
->
->    ```bash
->    conda activate course
->    ```
-> 1. And check python knows about the installed packages:
->
->    ```python
->    import numpy
->    ```
->
->    We expect this to run and not fail.
-> 1. Finally, feel free to remove requests, then run
->
->    ```bash
->    conda env update -f environment.yml
->    ```
->
->     and see whether the package has been updated or removed.
-{: .challenge}
-
-
 > ## Installing an editable package
 >
-> Editable packages are packages that you can modify for development and have python
-> immediately recognize your changes.
+> Editable packages are packages that you can modify for development and have
+> python immediately recognize your changes.
 >
 > Look at the last few lines of `environment.yml`. It installs
-> [r2t2](https://github.com/ImperialCollegeLondon/R2T2) in *editable* mode. The package
-> is automatically downloaded from the web and installed in the subfolder `src/r2t2`.
+> [r2t2](https://github.com/ImperialCollegeLondon/R2T2) in *editable* mode. The
+> package is automatically downloaded from the web and installed next to
+> `environment.yml` in the subfolder `src/r2t2`.
 >
 > Try and add `print("Hello!")` to `src/r2t2/r2t2/__init__.py`.
 >
@@ -169,30 +200,33 @@ Then add the setting
 > import r2t2
 > ```
 >
-> Your greeting should appear: python did indeed take the modified file into account.
+> Your greeting should appear: python did indeed take the modified file into
+> account.
 >
-> Note that r2t2 was setup as a python package with a standard directory structure and a
-> `setup.py` file. It's well worth investing 10mn into transforming a python script into
-> a package just to make it a *shareable* development environment.
+> Note that r2t2 was setup as a python package with a standard directory
+> structure and a `setup.py` file. It's well worth investing 10mn into
+> transforming a python script into a package just to make it a *shareable*
+> development environment.
 {: .challenge}
 
 
 > ## Choosing the installation directory for R2T2
 >
-> It would be nice if we could choose the directory where the editable package goes,
-> i.e. rather than have `r2t2` install in `src/r2t2` we might want to install it
-> directly in an `r2t2` subfolder.
+> It would be nice if we could choose the directory where the editable package
+> goes, i.e. rather than have `r2t2` install in `src/r2t2` we might want to
+> install it directly in an `r2t2` subfolder.
 >
 > Nominally, pip does allow us to do that with
 > [--src](https://pip.pypa.io/en/stable/reference/pip_install/#cmdoption-src).
 >
-> However, it is not (yet) possible to tell conda to tell to use a given option, as
-> highlighted in this [issue](https://github.com/conda/conda/issues/6805). But that's
-> where the fun begins, because conda is an open-source effort, *you* could pitch in and
-> try and add a feature or any [other](https://github.com/conda/conda/issues). There is
-> a lot to learn just from lurking around issues of open-source projects, whether it is
-> about the project itself, or even about
+> However, it is not (yet) possible to tell conda to tell to use a given option,
+> as highlighted in this
+> [issue](https://github.com/conda/conda/issues/6805). But that's where the fun
+> begins, because conda is an open-source effort, *you* could pitch in and try
+> and add a feature or any [other](https://github.com/conda/conda/issues). There
+> is a lot to learn just from lurking around issues of open-source projects,
+> whether it is about the project itself, or even about
 > [language](https://github.com/JuliaLang/julia/pull/24990)
-> [design](https://github.com/JuliaLang/julia/issues/4774A). There is even more to learn
-> from participating.
+> [design](https://github.com/JuliaLang/julia/issues/4774A). There is even more
+> to learn from participating.
 {: .callout}
