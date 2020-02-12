@@ -164,7 +164,9 @@ On Linux and Mac, one option is to first activate conda, and then start VS Code:
 The simplest option for all platforms is to set the interpreter is via the panel
 with:
 
-- Cmd + Shift + P, and start typing "Python: Select interpreter"
+- For Windows/Linux: Ctrl + Shift + P, and start typing "Python: Select
+  interpreter"
+- For Mac: Cmd + Shift + P, and start typing "Python: Select interpreter"
 
 On all platforms, it is possible to set the python interpreter by editing VS
 Code settings. To open settings, choose one of the following:
