@@ -316,7 +316,7 @@ it is failing - suggesting that there is a bug in the code.
 >    order  to focus on our bug. It should call `step()` with some suitable
 >    arguments for `u`, `dx`, `dt` and `alpha` and compare the result with that
 >    suggested by equation (1) above. Use `approx` if necessary. _Hint:
->    `step([0, 1, 0], 0.04, 0.02, 0.01)` is one suitable example_.
+>    `step([0, 1, 1, 0], 0.04, 0.02, 0.01)` is one suitable example_.
 > 4. Assuming that this test fails, fix it by changing the code in the `step()`
 >    function to match the equation - correcting the original bug. Once you've
 >    done this all the tests should pass.
