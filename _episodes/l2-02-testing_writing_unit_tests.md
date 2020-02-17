@@ -216,6 +216,7 @@ def recursive_fibonacci(n):
 > ## Getting started
 >
 > ### Setting up our editor
+>
 > 1. If you haven't already, see the [setup guide](../setup) for instructions on
 >    how to install Visual Studio Code and conda.
 > 1. Download and extract [this zip
@@ -243,6 +244,7 @@ def recursive_fibonacci(n):
 >    "diffusion."
 >
 > ### Running the tests
+>
 > 1. Open `test_diffusion.py`
 > 1. You should now be able to click on **Run Test** above the `test_heat()`
 >    function and see a warning symbol appear, indicating that the test is
