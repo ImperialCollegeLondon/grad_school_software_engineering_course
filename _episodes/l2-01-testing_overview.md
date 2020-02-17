@@ -10,26 +10,26 @@ objectives:
 - "Appreciate the benefits of testing research software"
 - "Understand what testing can and can't achieve"
 - "Describe various approaches to testing, and relevant trade-offs"
-- "Understand the concept of test coverage, and how it relates to sofware quality and sustainability"
+- "Understand the concept of test coverage, and how it relates to software quality and sustainability"
 - "Appreciate the benefits of test automation"
 keypoints:
 - "Testing is the standard approach to software quality assurance"
-- "Testing ensures that code performs its intended function"
-- "Code without any tests should arouse suspicion, but it is entirely possible to write a comprehensive but practically worthless test suite"
+- "Testing helps to ensure that code performs its intended function: well-tested code is likely to be more reliable, correct and malleable"
 - "Good tests thoroughly exercise critical code"
-- "Well-tested code is likely to be more reliable, correct and malleable."
-- "Testing can also contribute to performance, security and long-term stability as the size of the codebase and its network of contributors grows"
-- "It can also be use to ensure that software has been installed correctly, is portable to new platforms, is compatible with new versions of its dependencies..."
-- "In the context of research software, testing can be used to validate code i.e. ensure that it faithfully implements scientific theory - with some caveats"
-- "Types of testing and the kinds of bugs they can help to avoid: Unit, e.g. a function; Functional, e.g. a library; Regression, e.g. a bug"
-- "Test coverage can provide a coarse- or fine-grained metric of comprehensiveness, if not quality. But typically does provide another signal of code quality."
-- "Automated tests (and coverage calculation) is another such signal: Lowers friction; Ensures that breakage is identified sooner, and isn't released; Implies that machine-readable instructions exist for building and code and running the tests"
-- "Ultimately contributes to sustainability i.e. that software is, and remains, fit for purpose as its functionality and/or contributor-base grows, and its dependencies and/or runtime environments change"
+- "Code without any tests should arouse suspicion, but it is entirely possible to write a comprehensive but practically worthless test suite"
+- "Testing can contribute to performance, security and long-term stability as the size of the codebase and its network of contributors grows"
+- "Testing can ensure that software has been installed correctly, is portable to new platforms, and is compatible with new versions of its dependencies"
+- "In the context of research software, testing can be used to validate code i.e. ensure that it faithfully implements scientific theory"
+- "Unit (e.g. a function); Functional (e.g. a library); and Regression, (e.g. a bug) are three commonly used types of tests"
+- "Test coverage can provide a coarse- or fine-grained metric of comprehensiveness, which often provides a signal of code quality"
+- "Automated testing is another such signal: it lowers friction; ensures that breakage is identified sooner and isn't released; and implies that machine-readable instructions exist for building and code and running the tests"
+- "Testing ultimately contributes to sustainability i.e. that software is (and remains) fit for purpose as its functionality and/or contributor-base grows, and its dependencies and/or runtime environments change"
 ---
 
 ### Why Test?
 
 There are a number of compelling reasons to properly test a research code:
+
 * Show that physical laws or mathematical relationships are correctly encoded
 * Check that code works when running on a new system
 * Make sure new code changes do not break existing functionality
@@ -48,6 +48,7 @@ until those work as well. When developers talk about testing all this means is
 formalising the above process and making it automatically repeatable on demand.
 
 This has numerous advantages over a more ad hoc approach:
+
 * Provides a record of the tests that have been carried out
 * Faster development times - get feedback on changes quickly
 * Encourages writing more modular code
@@ -103,7 +104,7 @@ components that can be easily unit tested.
 Unlike unit testing that focuses on independent parts of the system, functional
 testing checks the compliance of the system overall against a defined set of
 criteria. In other words does the software as a whole do what it's supposed to
-do? 
+do?
 
 #### Regression Testing
 
@@ -135,10 +136,11 @@ are being exercised by its tests. This can be useful to ensure, for instance,
 that all logical branching points within the code are being used by the test
 inputs.
 
-
 > ## Testing and Coverage
+>
 > Consider the following Python function:
-> ~~~
+>
+> ~~~python
 > def recursive_fibonacci(n):
 >     """Return the n'th number of the fibonacci sequence"""
 >     if n <= 1:
@@ -146,8 +148,9 @@ inputs.
 >     else:
 >         return(recursive_fibonacci(n-1) + recursive_fibonacci(n-2))
 > ~~~
+>
 > {: .language-python}
-> 
+>
 > Try to think up some test cases of increasing complexity, there are four
 > distinct cases worth considering. What input value would you use for each case
 > and what output value would you expect? Which lines of code will be exercised
@@ -156,15 +159,19 @@ inputs.
 > For convenience, some initial terms from the Fibonacci sequence are given
 > below:  
 > 0, 1, 1, 2, 3, 5, 8, 13, 21
+>
 > > ## Solution
-> > #### Case 1 - Use either 0 or 1 as input
+> >
+> > ### Case 1 - Use either 0 or 1 as input
+> >
 > > **Correct output:** Same as input  
 > > **Coverage:** First section of if-block  
 > > **Reason:** This represents the simplest possible test for the function. The
 > > value of this test is that it exercises only the special case tested for by
 > > the if-block.
 > >
-> > #### Case 2 - Use a value > 1 as input
+> > ### Case 2 - Use a value > 1 as input
+> >
 > > **Correct output:** Appropriate value from the Fibonacci sequence  
 > > **Coverage:** All of the code  
 > > **Reason:** This is a more fully fledged case that is representative of the
@@ -172,11 +179,12 @@ inputs.
 > > not only the special case represented by the first if-block but the general
 > > case where recursion is invoked.
 > >
-> > #### Case 3 - Use a negative value as input
+> > ### Case 3 - Use a negative value as input
+> >
 > > **Correct output:** Depends...  
 > > **Coverage:** First section of if-block  
 > > **Reason:** This represents the case of a possible input to the function
-> > that is outside of it's intended usage. At the moment the function will just
+> > that is outside of its intended usage. At the moment the function will just
 > > return the input value, but whether this is the correct behaviour depends on
 > > the wider context on which it will be used. It might be better for this type
 > > of input value to cause an error to be raised however. The value of this
@@ -184,7 +192,8 @@ inputs.
 > > the behaviour should be. It also demonstrates to others that you've
 > > considered this scenario and the function behaviour is as intended.
 > >
-> > #### Case 4 - Use a non-integer input e.g. 3.5
+> > ### Case 4 - Use a non-integer input e.g. 3.5
+> >
 > > **Correct output:** Depends...  
 > > **Coverage:** Whole function  
 > > **Reason:** This is similar to case 3, but may not arise in more strongly
