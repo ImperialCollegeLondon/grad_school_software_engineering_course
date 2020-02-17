@@ -83,6 +83,12 @@ Projects that use pytest:
 - [Devito](https://github.com/devitocodes/devito/blob/master/README.md)
   ([tests](https://github.com/devitocodes/devito/tree/master/tests))
 
+> ## Learning by example
+>
+> Reading the test suites of mature projects is a good way to learn about
+> testing methodologies and frameworks
+{: .callout}
+
 ### Code editors
 
 We've chosen [Visual Studio Code](https://code.visualstudio.com/) as our
@@ -93,11 +99,11 @@ formats).
 
 > ## Demonstration of pytest + VS Code + coverage
 >
-> - Test annotations, status indicators and ability to run tests inline
-> - Test perspective and Test Output
-> - Increasing coverage (`assert recursive_fibonacci(7) == 13`)
-> - Test-driven development: adding a new test (`test_negative_number_`) and
->   fixing it (`test_negative_number`)
+> - Test discovery, status indicators and ability to run tests inline
+> - Code navigation ("Go to Definition")
+> - The Test perspective and Test Output
+> - Maximising coverage (`assert recursive_fibonacci(7) == 13`)
+> - Test-driven development: adding and fixing a new test (`test_negative_number`)
 {: .callout}
 
 ## A tour of pytest
@@ -224,7 +230,7 @@ def recursive_fibonacci(n):
 >    using an ICT managed PC please be sure to do this in your user area on the
 >    C: drive. (**Note that files placed here are not persistent so you must
 >    remember to take a copy before logging out**).
-> 1. In Visual Studio Code Go to **File > Open Folder...** and find the files
+> 1. In Visual Studio Code go to **File > Open Folder...** and find the files
 >    you just extracted.
 > 1. If you see an alert "This workspace has extension recommendations." click
 >    **Install All** and then switch back to the **Explorer** perspective by
@@ -257,33 +263,32 @@ def recursive_fibonacci(n):
 
 ### Introduction to your challenge
 
-You have been lucky enough to inherit some code from a previous member of your
-group. They went to the trouble of writing a test but didn't have time to debug
-their program. Your job is to refactor the code and write some extra tests in
-order to identify and fix the problem, and make the code more robust.
+Your supervisor has asked you to solve an equation using Python. You have been
+lucky enough to inherit some code from a previous member of your group. They
+went to the trouble of writing a test but didn't have time to debug their
+program. Your job is to refactor the code and write some extra tests in order
+to identify and fix the problem, and make the code more robust.
 
-The code implements a numerical solver for the Heat Equation (aka the ["Hello
+The code uses a numerical method to solve the Heat Equation (aka the ["Hello
 World" of Scientific Computing][heat-equation]):
 
 [heat-equation]: https://github.com/betterscientificsoftware/hello-heat-equation
 
 ![\frac{\partial\phi}{\partial t}=\alpha\frac{\partial^2\phi}{\partial x^2},\;\;\;\;\;0\leq x\leq L,\;\;t\geq 0](https://latex.codecogs.com/png.latex?\frac{\partial\phi}{\partial&space;t}=\alpha\frac{\partial^2\phi}{\partial&space;x^2},\;\;\;\;\;0\leq&space;x\leq&space;L,\;\;t\geq&space;0)
 
-Don't worry if you're unfamiliar with this equation or the notation. Basically
-it models transient heat conduction in a metal rod i.e. it describes the
-temperature (`ϕ`) at a distance `x` from one end of the rod after time `t`,
-given some initial and boundary temperatures and the thermal diffusivity of the
-material (`α`):
+Don't worry if you're unfamiliar with this equation or the notation. It models
+transient heat conduction in a metal rod i.e. it describes the temperature `ϕ`
+at a distance `x` from one end of the rod after time `t`, given some initial
+and boundary temperatures and the thermal diffusivity of the material (`α`):
 
 ![Metal Rod](https://raw.githubusercontent.com/betterscientificsoftware/images/master/Blog_0719_HeatEqnBar.png)
 
-An iterative approximation derived using a [finite difference
-method](https://en.wikipedia.org/wiki/Finite_difference_method) and suitable for
-translation into Python is:
+The code calculates an iterative approximation derived using a [finite
+difference method](https://en.wikipedia.org/wiki/Finite_difference_method):
 
 ![\phi_{i}^{m+1}=r\phi_{i+1}^{m}+(1-2r)\phi_{i}^{m}+r\phi_{i-1}^{m}\;\;\;\;\;\;\;\;(1)](https://latex.codecogs.com/png.latex?\phi_{i}^{m&plus;1}=r\phi_{i&plus;1}^{m}&plus;(1-2r)\phi_{i}^{m}&plus;r\phi_{i-1}^{m}\;\;\;\;\;\;\;\;(1))
 
-It relates the temperature at a specific location and time point to that at the
+This relates the temperature at a specific location and time point to that at the
 previous time point and neighbouring locations. `m` designates the time step and
 `r` is defined as follows: ![r=\frac{\alpha \Delta t}{\Delta
 x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
@@ -294,7 +299,7 @@ it is failing - suggesting that there is a bug in the code.
 
 > ## Testing (and fixing!) the code
 >
-> Pair-programme with a partner on these test-driven development tasks. Don't
+> Work with a partner on these test-driven development tasks. Don't
 > hesitate to ask a demonstrator if you get stuck!
 >
 > ### Refactoring
