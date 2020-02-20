@@ -99,7 +99,7 @@ We chose:
 >
 >    ActionatePrinters([1, 2, 2])
 >    ```
-> 1. Check the current errors (click on errors in status bar)
+> 1. Check the current errors (click on errors in status bar at the bottom)
 > 1. Try and correct them
 > 1. Alternatively, try and disable them (but remember: _with great power..._).
 >    We've already disabled-one at the function scope level. Check what happens

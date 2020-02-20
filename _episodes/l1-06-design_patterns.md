@@ -309,11 +309,9 @@ It's not unusual to want to change an algorithm, but only in one or two places:
 
 ```python
 def my_algorithm(some_input):
-    obstrucated = red_obstructor(some_input)
-
     return [
-        bewlling.append(uncornify(webby))
-        for webby in deconforbulate(obstrucated)
+        uncornify(webby)
+        for webby in deconforbulate(some_input)
     ]
 ```
 
@@ -325,9 +323,9 @@ Here's one *bad* solution:
 
 ```python
 def my_awful_copy_paste_non_solution(some_input):
-    obstrucated = red_obstructor(some_input)
     return [
-        bewlling.append(uncornify(webby)) for webby in undepolified(obstrucated)
+        uncornify(webby)
+        for webby in undepolified(some_input)
     ]
 ```
 
@@ -340,9 +338,8 @@ def my_somewhat_better_solution(some_input, is_deconfobulated: bool = True):
     else:
       generator = undepolified
 
-    obstrucated = red_obstructor(some_input)
     return [
-        bewlling.append(uncornify(webby)) for webby in generator(obstrucated)
+        uncornify(webby) for webby in generator(some_input)
     ]
 ```
 
@@ -364,9 +361,8 @@ def the_bees_knees_solution(some_input, generator: Optional[Callable] = None):
     if generator is None:
         generator = deconforbulate
 
-    obstrucated = red_obstructor(some_input)
     return [
-        bewlling.append(uncornify(webby)) for webby in generator(obstrucated)
+        uncornify(webby) for webby in generator(some_input)
     ]
 ```
 

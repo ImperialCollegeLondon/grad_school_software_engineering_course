@@ -56,17 +56,17 @@ Similarly, code should be written with a structure separating different
 levels of details:
 
 ```python
-def abstract(config):
-  result_I = section_I(config['section I'])
-  result_II = section_II(result_I, config['section II'])
-  # BAD!! do not mix levels of details
-  result_IIa = appendix_IIa(result_II)
-  return conclusion(result_IIa, config['conclusion'])
+def abstract():
+  result_I = body_section_I()
+  result_II = body_section_II(result_I)
 
-def section_I(config):
-  low_level_thing_with_a_name = appendix_Ia(config['something'])
-  # BAD!! do not mix levels of details
-  other_thing = section_III(low_level_thing_with_a_name)
+  result_IIa = appendix_IIa(result_II)  # BAD!! do not mix levels of details
+  return conclusion(result_IIa)
+
+def body_section_I():
+  low_level_thing = appendix_Ia()
+
+  other_thing = body_section_III(low_level_thing)  # BAD!! do not mix levels of details
 ```
 
 - `abstract` should **not** have to know about some sub-clause of the appendix
@@ -128,7 +128,7 @@ In the code above we have made some choices:
 - saving output files is separate from running computations
 - objects are created in one go
 
-A few examples examples of what **not** to do.
+A few examples of what **not** to do.
 
 ### Mixing reading files and creating objects
 
@@ -204,7 +204,7 @@ The code should reflect that structure:
 ```python
 def read_experiment(filename: Text) -> Dict:
     ...
-    return config
+    return measurements
 
 
 def compute_a(measurements) -> np.ndarray:
