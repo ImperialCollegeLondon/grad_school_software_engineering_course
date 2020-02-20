@@ -71,7 +71,7 @@ unexpected:
 "12"
 ```
 
-With integers, `+` is an *addition*, for strings its a *concatenation*.
+With integers, `+` is an *addition*, for strings it's a *concatenation*.
 
 ## Health impact of choosing the wrong data structure
 
