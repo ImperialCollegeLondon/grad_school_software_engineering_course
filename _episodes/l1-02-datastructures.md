@@ -240,7 +240,7 @@ They make sense when:
   # Better?
   {"horse": "mammal", "kangaroo": "marsupial", "millipede": "alien"}
   # Or maybe?
-  {"mammal": ["horse", "cow"], "alien": ["millipede", "Jadoo"]}
+  {"mammal": {"horse", "cow"}, "alien": {"millipede", "Jadoo"}}
   ```
 
 - given x you want to know its y: given the name of an animal you want to know
