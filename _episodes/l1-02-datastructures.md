@@ -222,7 +222,7 @@ They make sense when:
 
 ## Dictionaries
 
-Dictionaries are mappings between a key and a value (e.g. a word and it's
+Dictionaries are mappings between a key and a value (e.g. a word and its
 definition).
 
 ```python
@@ -359,7 +359,7 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 >       (noun) waves breaking on the shore
 >     ```
 >
-> 1. Given a word, find and modify it's definition
+> 1. Given a word, find and modify its definition
 > 1. Do the same with a dictionary
 > 1. Create a subset dictionary (including definitions) of words rhyming with
 >    "arf" using either the two-`list` or the `dict` implementation
