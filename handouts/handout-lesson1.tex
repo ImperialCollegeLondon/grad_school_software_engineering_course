@@ -1,0 +1,79 @@
+\documentclass[8pt]{extarticle}
+\input{common.tex}
+
+\def\boxpad{4pt}
+\tcbsetforeverylayer{left=\boxpad,right=\boxpad,top=\boxpad,bottom=\boxpad}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+  {\LARGE
+  Essential Software Engineering for Researchers - Lesson 1 - URL: v.gd/softeng}
+\end{center}
+
+\subsection*{Tools}
+
+\begin{navybox}[title=Virtual Environments]
+  Self contained environments where you can install dependencies for an
+  individual project. Make your work more portable and reproducible. We
+  recommend \textbf{conda}, a package manager that supports virtual environments
+  and multiple languages. Record the packages you want in an environment.yml
+  file.\par
+  \vspace{5pt minus 3pt}
+
+  \boxed{2}{Create a new environment}{
+    conda env create -f environment.yml
+  }
+  \quad
+  \boxed{2}{Update an existing environment}{
+    conda env update -f environment.yml
+  }
+  \vspace{5pt minus 3pt}
+
+  Remember to \textbf{activate} your environment or configure your IDE in order
+  to use it.
+\end{navybox}
+
+\begin{bluebox}[title=Code Formatters]
+  A tool, such as \textbf{black}, to format your code for consistency and
+  convenience. Configure your IDE to automatically apply formatting when you
+  save a file.  See https://github.com/rishirdua/awesome-code-formatters for
+  many different languages.
+\end{bluebox}
+
+\begin{navybox}[title=Linters]
+  Use a linter to enforce a consistent style, catch simple errors quickly and
+  keep your code tidy. Integrate with your IDE to get instant feedback as you
+  type. See https://github.com/caramelomartins/awesome-linters for many
+  different languages.
+\end{navybox}
+
+\subsection*{Techniques}
+
+\begin{bluebox}[title=Data Structures]
+  The same data can be stored and manipulated in different ways by different
+  data structures. Think carefully about which data structure is best suited to
+  your problem. To simplify your code you can create new data structures.
+\end{bluebox}
+
+\begin{navybox}[title=Structuring Code]
+  \boxed[equal height group=A]{3}{Levels of abstraction}{Different parts of
+    your code should deal with different levels of detail. Don't mix different
+    levels!}
+  \boxed[equal height group=A]{3}{Separation of Concerns}{The discrete tasks
+    carried out by your code should be separated as much as is possible.}
+  \boxed[equal height group=A]{3}{Dataflow}{The movement and transformation of
+    data within your code should be reflected in its structure.}
+\end{navybox}
+
+\begin{bluebox}[title=Design Patterns]
+  A transferable solution to a commonly encountered problem. There are very many
+  patters and the trick is finding the right one. Iterators are a pattern used
+  to separate loops from compute. Dependency injection is a pattern to create
+  modular algorithms.
+\end{bluebox}
+
+\furtherhelp
+
+\end{document}

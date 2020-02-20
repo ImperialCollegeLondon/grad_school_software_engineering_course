@@ -1,0 +1,83 @@
+\documentclass[8pt]{extarticle}
+\usepackage{multicol}
+\usepackage{listings}
+\input{common.tex}
+%% \setlength{\itemsep}{-3pt}
+
+\def\boxpad{2pt}
+\tcbsetforeverylayer{left=\boxpad,right=\boxpad,top=\boxpad,bottom=\boxpad}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+  {\LARGE
+  Essential Software Engineering for Researchers - Lesson 2 - URL: v.gd/softeng}
+\end{center}
+
+\begin{navybox}[title=Why test?]
+  \begin{multicols}{2}
+    \begin{itemize}
+    \itemsep-3pt
+    \item Show that physical laws or mathematical relationships are correctly encoded
+    \item Check that code works when running on a new system
+    \item Make sure new code changes do not break existing functionality
+    \item Ensure code correctly handles edge or corner cases
+    \item Persuade others your code is reliable
+    \item Check that code works with new or updated dependencies
+    \end{itemize}
+  \end{multicols}
+\end{navybox}
+
+
+\begin{bluebox}[title=Useful terms]
+  \begin{itemize}
+    \itemsep-3pt
+  \item Unit testing - Validation of functionally independent components, in
+    isolation
+  \item Functional testing - Validation of a system of compontents
+  \item Regression testing - Ensuring that new changes don't break existing
+    tests, and that previously resolved issues stay fixed
+  \item Test coverage - How comprehensive or ``complete is a suite of tests?
+  \end{itemize}
+\end{bluebox}
+
+
+\begin{navybox}[title=Using pytest]
+  A framework such as \textbf{pytest} simplifies the writing of tests and
+  provides many powerful and convenient supporting functions.
+  \begin{bluebox}[title=A simple example]
+    \begin{lstlisting}[language=Python]
+from temperature import to_fahrenheit
+
+def test_answer():
+    assert to_fahrenheit(30) == 86
+    \end{lstlisting}
+  \end{bluebox}
+
+  \begin{bluebox}[title=Parameterisation]
+    Run the same test multiple times using different input arguments. Use
+    \lstinline{@pytest.mark.parametrize} to provide pairs of example inputs and
+    expected outputs.
+  \end{bluebox}
+  \begin{bluebox}[title=Fixtures]
+    Run different tests using the same input parameters. Useful if the input is
+    slow to build or often reused. Use \lstinline{@pytest.fixture} with a
+    function that returns the value to use as input.
+  \end{bluebox}
+  \begin{bluebox}[title=Tolerances]
+    When comparing floating point numbers or a computed approximation it useful
+    to be able to specify that values matching within a specified tolerance. Use
+    \lstinline{pytest.approx} with a specified tolerance value.
+  \end{bluebox}
+  \begin{bluebox}[title=Turn your documentation into tests]
+    Use the \textbf{doctest} module automatically turn your doc-strings into
+    tests. Helps to test your code and keep your documentation up to date at the
+    same time.
+  \end{bluebox}
+\end{navybox}
+
+
+\furtherhelp
+
+\end{document}
