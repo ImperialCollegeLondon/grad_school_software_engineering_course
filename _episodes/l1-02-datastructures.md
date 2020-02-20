@@ -432,6 +432,7 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > >     # this is one way to include tests.
 > >     # the second session will introduce a better way.
 > >     testme()
+> > ```
 > {: .solution}
 > 
 > > ## Dictionary implemented with a dictionary
@@ -492,7 +493,7 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > > if __name__ == "__main__":
 > >
 > >     testme()
-> ```
+> > ```
 > {: .solution}
 > 
 > > ## More complex data structures for more complex dictionary
