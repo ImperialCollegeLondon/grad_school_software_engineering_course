@@ -52,13 +52,13 @@ as well. Better known python package managers include
 1. Choose one
 1. Stick with it
 
-We chose [conda](https://docs.conda.io/en/latest/) because it is the de-facto
-standard in science, and because it natively allows to install libraries such as
+We chose [conda](https://docs.conda.io/en/latest/) because it is the de facto
+standard in science, and because it can natively install libraries such as
 [fftw](https://anaconda.org/conda-forge/fftw),
-[vtk](https://anaconda.org/conda-forge/vtk), or even, Python, R, and Julia
+[vtk](https://anaconda.org/conda-forge/vtk), or even Python, R, and Julia
 themselves.
 
-It is the de-factor package manager on Imperial's [HPC
+It is also the de facto package manager on Imperial's [HPC
 cluster](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/applications/conda/)
 systems.
 
@@ -206,7 +206,7 @@ Then add the setting
 > account.
 >
 > Note that r2t2 was setup as a python package with a standard directory
-> structure and a `setup.py` file. It's well worth investing 10mn into
+> structure and a `setup.py` file. It's well worth investing 10 minutes into
 > transforming a python script into a package just to make it a *shareable*
 > development environment.
 {: .challenge}
@@ -225,7 +225,7 @@ Then add the setting
 > as highlighted in this
 > [issue](https://github.com/conda/conda/issues/6805). But that's where the fun
 > begins, because conda is an open-source effort, *you* could pitch in and try
-> and add a feature or any [other](https://github.com/conda/conda/issues). There
+> and add a feature or a [fix](https://github.com/conda/conda/issues). There
 > is a lot to learn just from lurking around issues of open-source projects,
 > whether it is about the project itself, or even about
 > [language](https://github.com/JuliaLang/julia/pull/24990)
