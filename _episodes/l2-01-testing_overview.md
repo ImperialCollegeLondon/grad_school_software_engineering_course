@@ -140,7 +140,7 @@ inputs.
 >
 > Consider the following Python function:
 >
-> ~~~python
+> ~~~
 > def recursive_fibonacci(n):
 >     """Return the n'th number of the fibonacci sequence"""
 >     if n <= 1:
@@ -148,7 +148,6 @@ inputs.
 >     else:
 >         return(recursive_fibonacci(n-1) + recursive_fibonacci(n-2))
 > ~~~
->
 > {: .language-python}
 >
 > Try to think up some test cases of increasing complexity, there are four
