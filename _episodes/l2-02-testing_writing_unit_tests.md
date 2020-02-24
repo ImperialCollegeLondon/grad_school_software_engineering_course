@@ -319,11 +319,14 @@ it is failing - suggesting that there is a bug in the code.
 >
 > 2. Run the existing test to ensure that it still executes - albeit with a
 >    failure.
-> 3. Add a new (failing!) test called `test_step()` to `test_diffusion.py` in
->    order  to focus on our bug. It should call `step()` with some suitable
->    arguments for `u`, `dx`, `dt` and `alpha` and compare the result with that
->    suggested by equation (1) above. Use `approx` if necessary. _Hint:
->    `step([0, 1, 1, 0], 0.04, 0.02, 0.01)` is one suitable example_.
+> 3. Add a test for our new `step()` function. It should provide some suitable
+>    values for `u` (the temperatures at time `t`), `dx`, `dt` and `alpha`. It
+>    should then `assert` that the resulting temperatures (i.e. at time `t+1`)
+>    match those suggested by the equation above. Use `approx` if necessary.
+>    _Hint: `step([0, 1, 1, 0], 0.04, 0.02, 0.01)` is a suitable invocation. It
+>    will return an array of the form `[0, ?, ?, 0]`. You'll need to calculate
+>    the missing values manually using the equation (1) in order to compare the
+>    expected and actual values.
 > 4. Assuming that this test fails, fix it by changing the code in the `step()`
 >    function to match the equation - correcting the original bug. Once you've
 >    done this all the tests should pass.
