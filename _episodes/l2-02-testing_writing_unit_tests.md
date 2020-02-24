@@ -461,18 +461,6 @@ def test_recursive_fibonacci(n):
     assert recursive_fibonacci(n) == int((phi ** n - -phi ** -n) / 5 ** 0.5)
 ```
 
-## Best practice, collaboration and automation
-
-- Typing:
-  - [Type hints](https://docs.python.org/3/library/typing.html)
-  - Validation ([mypy](http://mypy-lang.org/))
-- Version control and testing:
-  - [`git bisect`](https://git-scm.com/docs/git-bisect)
-  - [`pre-commit`](https://pre-commit.com/)
-- CI:
-  - GitHub Actions (see
-    [ImperialCollegeLondon/fibonacci](https://github.com/imperialcollegelondon/fibonacci))
-
 ## Taking testing further
 
 ### Testing in other languages
