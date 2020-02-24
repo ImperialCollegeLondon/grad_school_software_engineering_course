@@ -439,7 +439,7 @@ def test_fibonacci(benchmark):
 >
 > Demonstration of performance regression via recursive and formulaic approaches
 > to Fibonacci calculation
-> ([output](https://imperialcollegelondon.box.com/shared/static/fpn5metew2ohns6amb24krtzmb31907b.png))
+> ([output](https://imperiallondon.sharepoint.com/sites/RSE/Shared%20Documents/Graduate%20School%20RSE%20course/Supplementary%20teaching%20material/Essential%20Software%20Engineering%20for%20Researchers/2020-02%20pytest-benchmark%20output.png))
 {: .callout}
 
 - [`pytest-notebook`][pytest-notebook] can check for regressions in your Jupyter
