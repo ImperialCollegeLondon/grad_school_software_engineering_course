@@ -83,7 +83,8 @@ base                  *  /home/ccaveayl/anaconda3
 This course will use Visual Studio (VS) Code as an integrated development
 environment (IDE). You may already have a preferred IDE that you use regularly,
 however we strongly suggest that you use VS Code for this course and afterwards
-replicate the setup as you choose.
+replicate the setup as you choose. *If you already have VS Code installed please
+make sure it is updated to the latest version.*
 
 To install VS Code follow the instructions
 [here](https://code.visualstudio.com).
