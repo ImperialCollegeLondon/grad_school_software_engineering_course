@@ -5,15 +5,15 @@ exercises: 6
 questions:
 - How to use a package manager to install third party tools and libraries
 objectives:
-- Use conda to install a reproducible envionment
+- Use conda to install a reproducible environment
 keypoints:
-- There are tens of thousands of python packages
+- There are tens of thousands of Python packages
 - The choice is between reinventing the square wheel or reusing existing work
-- The state of an environment can be stored on a file
+- The state of an environment can be stored in a file
 - This stored environment is then easy to audit and recreate
 ---
 
-# Python packages
+## Python packages
 
 - There are tens of thousands of python packages
 - No need to reinvent the square wheel, it's  already out there
@@ -21,20 +21,21 @@ keypoints:
   reused
 - Contributing to open-source packages is the best way to learn how to code
 
-# Python virtual environments
+## Python virtual environments
 
-* Virtual environments isolate your setup from the rest of the system
-* It ensures different project do not interfere with each other
-* For instance:
-  * a production environment with tried and true version of your software and
+- Virtual environments isolate your setup from the rest of the system
+- It ensures different project do not interfere with each other
+- For instance:
+  - a production environment with tried and true version of your software and
     tensorflow 1.15
-  * a development environment with shiny stuff and a migration to tensorflow 2.1
+  - a development environment with shiny stuff and a migration to tensorflow 2.1
 
-# Package managers
+## Package managers
 
 Package managers help you install packages. Some help you install virtual environments
 as well. Better known python package managers include
-[conda](https://docs.conda.io/en/latest/), [pip](www.pip.org), [poetry]()
+[conda](https://docs.conda.io/en/latest/), [pip](https://pip.pypa.io/en/stable/),
+[poetry](https://python-poetry.org/)
 
 |                           | conda    | pip | poetry     |
 |---------------------------|----------|-----|------------|
@@ -46,8 +47,7 @@ as well. Better known python package managers include
 |easy interface             | ❌       | ✅  | ❌         |
 |fast                       | ❌       | ✅  | ✅         |
 
-
-# Rules to choose a package manager
+## Rules for choosing a package manager
 
 1. Choose one
 1. Stick with it
@@ -62,19 +62,20 @@ It is also the de facto package manager on Imperial's [HPC
 cluster](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/applications/conda/)
 systems.
 
-# Example:
+## Example
 
 > ## Installing and using an environment
 >
 > 1. If you haven't already, see the [setup guide](../setup) for instructions
 >    on how to install conda, Visual Studio Code and Git.
 >
-> 1. Create a new folder to use for this course, if you're using an ICT managed
->    PC this must be located in your user area on the C: drive (**Note that
->    files placed here are not persistent so you must remember to take a copy
->    before logging out**). Start Visual Studio Code and select "Open folder..."
->    from the welcome screen. Navigate to the folder you just created and press
->    "Select Folder".
+> 1. Create a new folder to use for this course. Avoid giving it a name that
+>    includes spaces. If you're using an ICT managed PC the folder must be
+>    located in your user area on the C: drive i.e. `C:\Users\UserName`
+>    (**Note that files placed here are not persistent so you must remember to
+>    take a copy before logging out**). Start Visual Studio Code and select
+>    "Open folder..." from the welcome screen. Navigate to the folder you just
+>    created and press "Select Folder".
 >
 > 1. Press "New file" and copy the below text. Save the file as
 >    `environment.yml`, the location should default to your newly created
@@ -96,14 +97,15 @@ systems.
 >
 > 1. Create a new virtual environment using conda:
 >
+>    **Windows users will want to start the app `Anaconda Prompt` from the Start
+>    Menu.**
+>
+>    **Linux and Mac users should use a terminal app of their choice. You may
+>    see a warning with instructions. Please follow the instructions.**
+>
 >    ```bash
 >    conda env create -f [path to environment.yml]
 >    ```
->
->    Windows users will want to start the app `Anaconda Prompt`.
->
->    Linux and Mac users should use a terminal app of their choice. You may see
->    a warning with instructions. Please follow the instructions.
 >
 >    You can obtain `[path to environment.yml]` by right clicking the file tab
 >    near the top of Visual Studio Code and selecting "Copy Path" from the
@@ -115,6 +117,7 @@ systems.
 >    ```bash
 >    conda activate course
 >    ```
+>
 > 1. And check python knows about the installed packages. Start a Python
 >    interpreter with the command `python` then:
 >
@@ -128,10 +131,12 @@ systems.
 >    ```python
 >    requests.__file__
 >    ```
->    ~~~
+>
+>    ```
 >    'C:\\ProgramData\\Anaconda3\\envs\\course\\lib\\site-packages\\requests\\__init__.py'
->     ~~~
+>    ```
 >    {: .output}
+>
 >    The file path you see will vary but note that it is within a directory
 >    called `course` that contains the files for the virtual environment you
 >    have created. Exit the Python interpreter:
@@ -139,6 +144,7 @@ systems.
 >    ```python
 >    exit()
 >    ```
+>
 > 1. Finally, feel free to remove requests from `environment.yml`, then run
 >
 >    ```bash
@@ -148,8 +154,7 @@ systems.
 >     and see whether the package has been updated or removed.
 {: .challenge}
 
-
-# Selecting an environment in Visual Studio Code
+## Selecting an environment in Visual Studio Code
 
 If you haven't already, see the [setup guide](../setup) for instructions on how
 to install Visual Studio (VS) Code.
@@ -161,28 +166,15 @@ On Linux and Mac, one option is to first activate conda, and then start VS Code:
 > code .
 ```
 
-The simplest option for all platforms is to set the interpreter is via the panel
-with:
+The simplest option for all platforms is to set the interpreter is via the
+Command Palette:
 
 - For Windows/Linux: Ctrl + Shift + P, and start typing "Python: Select
   interpreter"
-- For Mac: Cmd + Shift + P, and start typing "Python: Select interpreter"
+- For macOS: Cmd + Shift + P, and start typing "Python: Select interpreter"
 
-On all platforms, it is possible to set the python interpreter by editing VS
-Code settings. To open settings, choose one of the following:
-
-- mac menu: Code > Preferences > Settings
-- windows/linux menu: File > Preferences > Settings
-- keyboard shortcut: Cmd + ,
-- manually: open .vscode/settings.json
-
-Then add the setting
-
-```json
-{
-  "python.pythonPath": "Path/to/the/python/executable"
-}
-```
+If you already have a Python file open then it's also possible to set the
+interpreter using the toolbar at the bottom of the window.
 
 > ## Installing an editable package
 >
@@ -210,8 +202,7 @@ Then add the setting
 > transforming a python script into a package just to make it a *shareable*
 > development environment.
 {: .challenge}
-
-
+>
 > ## Choosing the installation directory for R2T2
 >
 > It would be nice if we could choose the directory where the editable package

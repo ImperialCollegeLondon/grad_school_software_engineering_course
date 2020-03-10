@@ -8,7 +8,7 @@ objectives:
 - Explain the expression "separation of concerns"
 - Explain the expression "levels of abstractions"
 - Explain the expression "dataflow"
-- Analyze an algorithm for levels of abstractions, seperable concerns and
+- Analyze an algorithm for levels of abstractions, separable concerns and
   dataflow
 - Create focussed, modular algorithms
 keypoints:
@@ -22,7 +22,7 @@ keypoints:
   structure of the code
 ---
 
-# Intelligible code?
+## Intelligible code?
 
 ```yaml
 Intelligible: Able to be understood; comprehensible
@@ -44,7 +44,7 @@ Intelligible code aims to:
 function `nothing_to_do_with_c` because of historical implementation detail
 `z`).
 
-# Levels of abstraction
+## Levels of abstraction
 
 Scientific papers come with separate levels of details:
 
@@ -74,7 +74,7 @@ def body_section_I():
 - `section_III` should **not** expect as arguments low-level stuff: levels of
   abstractions is a data thing as well as a logic thing.
 
-# Separable concerns
+## Separable concerns
 
 Scientific papers come with separate sections dealing with separate concerns,
 e.g.:
@@ -107,7 +107,7 @@ def read_input(filename: Text) -> Dict:
   pass
 
 
-def save(data: tf.Tensor, filename: Text = "savme.h5") -> None:
+def save(data: tf.Tensor, filename: Text = "saveme.h5") -> None:
   """ Saves output data to file. """
   pass
 
@@ -190,8 +190,7 @@ results = sectionI.run(...)
 > other people, including your future self.
 {: .callout}
 
-
-# Dataflow
+## Dataflow
 
 A code is a sequence of transformations on data, e.g.:
 
@@ -249,11 +248,11 @@ def compute_result(a, b, experiment) -> np.ndarray:
 It's often a **bad** idea for functions to modify their arguments.
 
 ```python
-def compute_a(measurements) -> np.ndarray
+def compute_a(measurements) -> np.ndarray:
     measurements[1] *= 2
     ...
 
-def compute_b(measurements) -> np.ndarray
+def compute_b(measurements) -> np.ndarray:
     measurements[1] *= 0.5
     ...
 ```
@@ -286,9 +285,7 @@ result.
 > Module variables are global. They can be modified anywhere, anytime. It's
 > best not to use them.
 {: .callout}
-
-
-
+>
 > ## Disentangling a recipe
 >
 > Disentangle the recipe below into separable concerns and level of details.
@@ -339,7 +336,7 @@ result.
 >
 > Enjoy! It's now ready to serve!
 > ```
+>
 {: .challenge}
-
 
 {% include links.md %}
