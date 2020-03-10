@@ -8,16 +8,16 @@ objectives:
 - Remember how to install and use a linter in vscode without sweat
 keypoints:
 - Linting is about discovering errors and code-smells before running the code
-- It shortcuts the `edit-run-debug and repeat` workflow
-- Almost all editors and IDE's have some means to setup an automatic linters
-- 5 minutes to setup a linter is redeemed across the time of the project
-- I.e. the cost is close to nothing
+- It shortcuts the "edit-run-debug and repeat" workflow
+- Almost all editors and IDEs have some means to setup automatic linting
+- 5 minutes to setup a linter is redeemed across the time of the project i.e. the cost is close to nothing
 ---
 
-# What is linting?
+## What is linting?
 
-Linters enforce [style rules](https://lintlyci.github.io/Flake8Rules/) on the
-code, e.g.:
+Linters enforce [style rules](https://lintlyci.github.io/Flake8Rules/) on your
+code such as:
+
 - disallow one letter variables outside of loops
 - use `lower_snake_case` for variables
 - use `CamelCase` for classes
@@ -31,31 +31,29 @@ Consistent styles make a code more consistent an easier to read, whether or not
 you agree with the style. Using an automated linter avoids bike-shedding since
 the linter is the final arbiter.
 
+## Why does linting matter?
 
-# Why linting matters?
+- Code is read more often than written
+- Setting up a linter in your editor takes 5 minutes
+- Those 5 minutes are redeemed across the lifetime of the project
+- Linters shortcut the `edit-run-debug and repeat` workflow
 
-* Code is read more often than written
-* Setting up a linter in your editor takes 5 minutes
-* Those 5 minutes are redeemed across the lifetime of the project
-* Linters shortcut the `edit-run-debug and repeat` workflow
-
-# Rules to choose linters
+## Rules for choosing linters
 
 1. Choose a few
 1. Stick with them
 
 We chose:
-  - [flake8](https://pypi.org/project/black/) because it simple
-  - [pylint](https://www.pylint.org/) because it is (too?) extensive
-  - [mypy](http://mypy-lang.org/) because it helps keep track of object types
 
+- [flake8](https://pypi.org/project/black/) because it simple
+- [pylint](https://www.pylint.org/) because it is (too?) extensive
+- [mypy](http://mypy-lang.org/) because it helps keep track of object types
 
-> ## Exercise:
+> ## Exercise
 >
-> Setup vs-code:
+> Setup VS Code:
 >
-> 1. Open options or the file ".vscode/settings.json"
-> 1. Modify the following properties:
+> 1. *Either* open the file `.vscode/settings.json` and add the following properties:
 >
 >     ```json
 >     {
@@ -66,6 +64,8 @@ We chose:
 >         "python.linting.mypyEnabled": true
 >     }
 >     ```
+>
+> 1. *Or* open Settings and search for and set the equivalent options
 >
 > 1. Create a file `unlinted.py` with the following code and save it:
 >
@@ -99,6 +99,7 @@ We chose:
 >
 >    ActionatePrinters([1, 2, 2])
 >    ```
+>
 > 1. Check the current errors (click on errors in status bar at the bottom)
 > 1. Try and correct them
 > 1. Alternatively, try and disable them (but remember: _with great power..._).
