@@ -45,7 +45,7 @@ the linter is the final arbiter.
 
 We chose:
 
-- [flake8](https://pypi.org/project/black/) because it simple
+- [flake8](https://pypi.org/project/black/) because it is simple
 - [pylint](https://www.pylint.org/) because it is (too?) extensive
 - [mypy](http://mypy-lang.org/) because it helps keep track of object types
 

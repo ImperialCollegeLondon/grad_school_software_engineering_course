@@ -131,11 +131,11 @@ systems.
 >    requests.__file__
 >    ```
 >
->    ```bash
+>    ```
 >    'C:\\ProgramData\\Anaconda3\\envs\\course\\lib\\site-packages\\requests\\__init__.py'
 >    ```
->
 >    {: .output}
+>
 >    The file path you see will vary but note that it is within a directory
 >    called `course` that contains the files for the virtual environment you
 >    have created. Exit the Python interpreter:
