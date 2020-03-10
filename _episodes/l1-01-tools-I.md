@@ -97,14 +97,15 @@ systems.
 >
 > 1. Create a new virtual environment using conda:
 >
->    ```bash
->    conda env create -f [path to environment.yml]
->    ```
->
->    **Windows users will want to start the app `Anaconda Prompt`.**
+>    **Windows users will want to start the app `Anaconda Prompt` from the Start
+>    Menu.**
 >
 >    **Linux and Mac users should use a terminal app of their choice. You may
 >    see a warning with instructions. Please follow the instructions.**
+>
+>    ```bash
+>    conda env create -f [path to environment.yml]
+>    ```
 >
 >    You can obtain `[path to environment.yml]` by right clicking the file tab
 >    near the top of Visual Studio Code and selecting "Copy Path" from the

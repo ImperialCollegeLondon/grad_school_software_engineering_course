@@ -33,8 +33,11 @@ options with which to fiddle.
 > Using Visual Studio Code:
 >
 > 1. Open Settings
+>   - Mac via menus: Code > Preferences > Settings
+>   - Windows/Linux via menus: File > Preferences > Settings
+>   - keyboard shortcut: Cmd + ,
 > 1. Search for "python formatting provider" and choose "black"
-> 1. Search for "format on save" and enable
+> 1. Search for "format on save" and check the box to enable
 > 1. Put the following into a file `myscript.py` and save it
 >
 >    ```python

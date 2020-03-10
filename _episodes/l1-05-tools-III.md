@@ -53,19 +53,19 @@ We chose:
 >
 > Setup VS Code:
 >
-> 1. *Either* open the file `.vscode/settings.json` and add the following properties:
->
->     ```json
->     {
->         "python.linting.enabled": true,
->         "python.linting.pylintUseMinimalCheckers": false,
->         "python.linting.flake8Enabled": true,
->         "python.linting.pylintEnabled": true,
->         "python.linting.mypyEnabled": true
->     }
->     ```
->
-> 1. *Or* open Settings and search for and set the equivalent options
+> 1. Open Settings (see [previous
+>     exercise](../l1-03-tools-II#rules-to-choose-a-code-formatter) if you're
+>     not sure how):
+>   * Search for "linting enable" and check the box for "Python > Linting:
+>     Enabled".
+>   * Search for "pylint enabled" and check the box for "Python > Linting: Pylint
+>     Enabled" (you may need to scroll down for this one).
+>   * Search for "pylintuse" and check the box for "Python > Linting: Pylint Use
+>     Minimal Checkers".
+>   * Search for "flake8 enabled" and check the box for "Python > Linting: Flake8
+>     Enabled".
+>   * Search for "mypy enable" and check the box for "Python > Linting: Mypy
+>     Enabled".
 >
 > 1. Create a file `unlinted.py` with the following code and save it:
 >
