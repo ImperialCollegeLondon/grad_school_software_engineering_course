@@ -56,17 +56,16 @@ We chose:
 > 1. Open Settings (see [previous
 >     exercise](../l1-03-tools-II#rules-to-choose-a-code-formatter) if you're
 >     not sure how):
->   * Search for "linting enable" and check the box for "Python > Linting:
->     Enabled".
->   * Search for "pylint enabled" and check the box for "Python > Linting: Pylint
->     Enabled" (you may need to scroll down for this one).
->   * Search for "pylintuse" and check the box for "Python > Linting: Pylint Use
->     Minimal Checkers".
->   * Search for "flake8 enabled" and check the box for "Python > Linting: Flake8
->     Enabled".
->   * Search for "mypy enable" and check the box for "Python > Linting: Mypy
->     Enabled".
->
+>   - Search for "linting enable" and check the box for "Python > Linting:
+>   Enabled".
+>   - Search for "pylint enabled" and check the box for "Python > Linting:
+>   Pylint Enabled" (you may need to scroll down for this one).
+>   - Search for "pylint use" and **un**check the box for "Python > Linting:
+>   Pylint Use Minimal Checkers".
+>   - Search for "flake8 enabled" and check the box for "Python > Linting: Flake8
+>   Enabled".
+>   - Search for "mypy enable" and check the box for "Python > Linting: Mypy
+>   Enabled".
 > 1. Create a file `unlinted.py` with the following code and save it:
 >
 >    ```python
