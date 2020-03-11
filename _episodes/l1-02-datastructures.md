@@ -341,8 +341,8 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > Don't reinvent the square wheel.
 {: .challenge}
 
-> ## Digital oxford dictionary, the wrong way and the right way
-> 1. Implement an oxford dictionary with two lists, one for words, one for
+> ## Digital Oxford Dictionary, the wrong way and the right way
+> 1. Implement an oxford dictionary with two `list`s, one for words, one for
 > definitions:
 >
 >     ```yaml
@@ -360,7 +360,7 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 >     ```
 >
 > 1. Given a word, find and modify its definition
-> 1. Do the same with a dictionary
+> 1. Do the same with a `dict`
 > 1. Create a subset dictionary (including definitions) of words rhyming with
 >    "arf" using either the two-`list` or the `dict` implementation
 > 1. If now we want to also encode "noun" and "verb", what data structure could we
