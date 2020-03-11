@@ -32,12 +32,8 @@ options with which to fiddle.
 >
 > Using Visual Studio Code:
 >
-> 1. Open Settings
->   - macOS via `⌘ + ,` or menus: **Code > Preferences > Settings**
->   - Windows/Linux via `Ctrl + ,` or menus: **File > Preferences > Settings**
-> 1. Search for "python formatting provider" and choose "black"
-> 1. Search for "format on save" and check the box to enable
-> 1. Put the following into a file `myscript.py` and save it
+> 1. Put the following into a file `myscript.py` and save it. If you are
+> prompted to install the Python extension then be sure to do so.
 >
 >    ```python
 >    x = {  'a':37,'b':42,
@@ -54,6 +50,14 @@ options with which to fiddle.
 >       return      37+-a[42-a :  y*3]
 >    ```
 >
+> 1. Ensure that you have activated your "course" conda environment using the
+> selector in the bottom panel of VS Code
+> 1. Open Settings
+>   - macOS via `⌘ + ,` or menus: **Code > Preferences > Settings**
+>   - Windows/Linux via `Ctrl + ,` or menus: **File > Preferences > Settings**
+> 1. Search for "python formatting provider" and choose "black"
+> 1. Search for "format on save" and check the box to enable
+> 1. Save the file again: it should be reformatted automagically
 > 1. Now paste the code again but before saving delete a ':' somewhere. When
 >    saving, the code will likely not format. It is syntactically invalid.
 >    The formatter cannot make sense of the code and thus can't format it.
