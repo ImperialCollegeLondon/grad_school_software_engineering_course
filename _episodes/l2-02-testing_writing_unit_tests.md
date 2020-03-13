@@ -182,10 +182,8 @@ It's common for scientific codes to perform estimation by simulation or other
 means. pytest can check for approximate equality:
 
 ```python
-from pytest import approx
-
 def test_approximate_pi():
-    assert 22/7 == approx(math.pi, abs=1e-2)
+    assert 22/7 == pytest.approx(math.pi, abs=1e-2)
 ```
 
 > ## Random numbers
@@ -225,11 +223,11 @@ def recursive_fibonacci(n):
 >
 > 1. If you haven't already, see the [setup guide](../setup) for instructions on
 >    how to install Visual Studio Code and conda.
-> 1. Download and extract [this zip
->    file](https://github.com/ImperialCollegeLondon/diffusion/archive/master.zip). If
->    using an ICT managed PC please be sure to do this in your user area on the
->    C: drive. (**Note that files placed here are not persistent so you must
->    remember to take a copy before logging out**).
+> 1. Download and extract [this zip file](https://github.com/ImperialCollegeLondon/diffusion/archive/master.zip).
+>    If using an ICT managed PC please be sure to do this in your user area on the
+>    C: drive i.e. `C:\Users\your_username`
+>    - _Note that files placed here are not persistent so you must remember to take
+>      a copy before logging out_
 > 1. In Visual Studio Code go to **File > Open Folder...** and find the files
 >    you just extracted.
 > 1. If you see an alert "This workspace has extension recommendations." click
@@ -244,10 +242,10 @@ def recursive_fibonacci(n):
 >    The `[path to environment.yml]` can be obtained by right-clicking the file
 >    name in the left pane of Visual Studio Code and choosing "Copy Path". Right
 >    click on the command line interface to paste.
-> 1. Once the environment has been created, in Visual Studio Code go to **View
->    \> Command Palette**, start typing "Python: Select interpreter" and hit
->    enter. From the list select your newly created environment called
->    "diffusion."
+>
+> 1. **Important**: After the environment has been created go to **View
+>    \> Command Palette** in VS Code, start typing "Python: Select interpreter"
+>    and hit enter. From the list select your newly created environment "diffusion"
 >
 > ### Running the tests
 >
@@ -259,47 +257,45 @@ def recursive_fibonacci(n):
 > 1. Switch to the **Test** perspective by clicking on the flask icon on the
 >    left-hand toolbar. From here you can **Run All Tests**, and **Show Test
 >    Output** to view the coverage report
+> 1. **Important**: If you aren't able to run the test then please ask a
+>    demonstrator for help. It is essential for the next exercise.
 {: .challenge}
 
 ### Introduction to your challenge
 
-Your supervisor has asked you to solve an equation using Python. You have been
-lucky enough to inherit some code from a previous member of your group. They
-went to the trouble of writing a test but didn't have time to debug their
-program. Your job is to refactor the code and write some extra tests in order
-to identify and fix the problem, and make the code more robust.
+You have inherited some buggy code from a previous member of your research group:
+it has a unit test but it is currently failing. Your job is to refactor the code
+and write some extra tests in order to identify the problem, fix the code and
+make it more robust.
 
-The code uses a numerical method to solve the Heat Equation (aka the ["Hello
-World" of Scientific Computing][heat-equation]):
-
-[heat-equation]: https://github.com/betterscientificsoftware/hello-heat-equation
-
-![\frac{\partial\phi}{\partial t}=\alpha\frac{\partial^2\phi}{\partial x^2},\;\;\;\;\;0\leq x\leq L,\;\;t\geq 0](https://latex.codecogs.com/png.latex?\frac{\partial\phi}{\partial&space;t}=\alpha\frac{\partial^2\phi}{\partial&space;x^2},\;\;\;\;\;0\leq&space;x\leq&space;L,\;\;t\geq&space;0)
-
-Don't worry if you're unfamiliar with this equation or the notation. It models
-transient heat conduction in a metal rod i.e. it describes the temperature `ϕ`
-at a distance `x` from one end of the rod after time `t`, given some initial
-and boundary temperatures and the thermal diffusivity of the material (`α`):
+The code solves the heat equation, also known as the
+["Hello World" of Scientific Computing][heat-equation]. It models transient heat
+conduction in a metal rod i.e. it describes the temperature at a distance from
+one end of the rod at a given time, according to some initial and boundary
+temperatures and the thermal diffusivity of the material:
 
 ![Metal Rod](https://raw.githubusercontent.com/betterscientificsoftware/images/master/Blog_0719_HeatEqnBar.png)
 
-The code calculates an iterative approximation derived using a [finite
+[heat-equation]: https://github.com/betterscientificsoftware/hello-heat-equation
+
+The function `heat()` in `heat.py` is intended to implement a **step-wise numerical
+approximation** via a [finite
 difference method](https://en.wikipedia.org/wiki/Finite_difference_method):
 
 ![\phi_{i}^{m+1}=r\phi_{i+1}^{m}+(1-2r)\phi_{i}^{m}+r\phi_{i-1}^{m}\;\;\;\;\;\;\;\;(1)](https://latex.codecogs.com/png.latex?\phi_{i}^{m&plus;1}=r\phi_{i&plus;1}^{m}&plus;(1-2r)\phi_{i}^{m}&plus;r\phi_{i-1}^{m}\;\;\;\;\;\;\;\;(1))
 
-This relates the temperature at a specific location and time point to that at the
-previous time point and neighbouring locations. `m` designates the time step and
-`r` is defined as follows: ![r=\frac{\alpha \Delta t}{\Delta
-x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
+This relates the temperature `φ` at a specific location `i` and time point `m`
+to the temperature at the previous time point and neighbouring locations. `r` is
+defined as follows, where `α` is the thermal diffusivity: ![r=\frac{\alpha
+\Delta t}{\Delta x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
 
-The test provided to you (`test_heat`) compares the approximation with the exact
-solution for the relevant initial/boundary conditions. This test is correct but
-it is failing - suggesting that there is a bug in the code.
+The `test_heat()` function in `test_diffusion.py` compares this _approximation_ with
+the _exact_ (analytical) solution for the boundary conditions. The test is correct
+but failing - indicating that there is a bug in the code.
 
 > ## Testing (and fixing!) the code
 >
-> Work with a partner on these test-driven development tasks. Don't
+> Work by yourself or with a partner on these test-driven development tasks. Don't
 > hesitate to ask a demonstrator if you get stuck!
 >
 > ### Refactoring
@@ -309,29 +305,54 @@ it is failing - suggesting that there is a bug in the code.
 > isolation via a new unit test:
 >
 > 1. In `diffusion.py` move the logic that updates `u` within the loop in the
->    `heat()` function to a new top-level function `step(u, dx, dt,
->    alpha)`. _Hint: the loop in `heat()` should now look like this:_
+>    `heat()` function to a new top-level function:
+>
+>    ```python
+>    def step(u, dx, dt, alpha):
+>        …
+>    ```
+>
+>    _Hint: the loop in `heat()` should now look like this:_
 >
 >    ```python
 >    for t in range(nt - 1):
 >        u = step(u, dx, dt, alpha)
 >    ```
 >
-> 2. Run the existing test to ensure that it still executes - albeit with a
->    failure.
-> 3. Add a test for our new `step()` function. It should provide some suitable
+> 2. Run the existing test to ensure that it executes without any Python errors.
+>    It should still fail.
+> 3. Add a test for our new `step()` function:
+>
+>    ```python
+>    def test_step():
+>        assert step(…) == …
+>    ```
+>
+>    It should call `step()` with suitable
 >    values for `u` (the temperatures at time `t`), `dx`, `dt` and `alpha`. It
->    should then `assert` that the resulting temperatures (i.e. at time `t+1`)
+>    should `assert` that the resulting temperatures (i.e. at time `t+1`)
 >    match those suggested by the equation above. Use `approx` if necessary.
->    _Hint: `step([0, 1, 1, 0], 0.04, 0.02, 0.01)` is a suitable invocation. It
+>    \_Hint: `step([0, 1, 1, 0], 0.04, 0.02, 0.01)` is a suitable invocation. It
 >    will return an array of the form `[0, ?, ?, 0]`. You'll need to calculate
->    the missing values manually using the equation (1) in order to compare the
+>    the missing values manually using the equation above in order to compare the
 >    expected and actual values.
+>
 > 4. Assuming that this test fails, fix it by changing the code in the `step()`
 >    function to match the equation - correcting the original bug. Once you've
 >    done this all the tests should pass.
 >
 > > ## Solution 1
+> >
+> > Your test should look something like this:
+> >
+> > ```python
+> > # test_diffusion.py
+> > def test_step():
+> >     assert step([0, 1, 1, 0], 0.04, 0.02, 0.01) == [0, 0.875, 0.875, 0]
+> > ```
+> >
+> > Your final (fixed!) `step()` function should look like this. The original
+> > error was a result of some over-zealous copy-and-pasting.
 > >
 > > ```python
 > > # diffusion.py
@@ -353,14 +374,14 @@ it is failing - suggesting that there is a bug in the code.
 > Now we'll add some further tests to ensure the code is more suitable for
 > publication.
 >
-> ### Testing for instability
+> ### Testing for exceptions
 >
 > We want the `step()` function to
 > [raise](https://docs.python.org/3/tutorial/errors.html#raising-exceptions) an
 > [Exception](https://docs.python.org/3/tutorial/errors.html#exceptions) when
-> the following stability condition _isn't_ met:
-> ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2}) Add
-> a new test `test_step_unstable`, similar to `test_step` but that invokes
+> the following [stability condition](https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis)
+> _isn't_ met: ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2})
+> Add a new test `test_step_unstable`, similar to `test_step` but that invokes
 > `step` with an `alpha` equal to `0.1` and expects an `Exception` to be
 > raised. Check that this test fails before making it pass by modifying
 > `diffusion.py` to raise an `Exception` appropriately.
@@ -370,7 +391,7 @@ it is failing - suggesting that there is a bug in the code.
 > > ```python
 > > # test_diffusion.py
 > > def test_step_unstable():
-> >     with raises(Exception):
+> >     with pytest.raises(Exception):
 > >         step([0, 1, 0], 0.04, 0.02, 0.1)
 > >
 > > # diffusion.py
@@ -380,7 +401,7 @@ it is failing - suggesting that there is a bug in the code.
 > >     if r > 0.5:
 > >         raise Exception
 > >
-> >     ...
+> >     …
 > > ```
 > >
 > {: .solution}
@@ -395,19 +416,23 @@ it is failing - suggesting that there is a bug in the code.
 > >
 > > ```python
 > > # test_diffusion.py
-> > @mark.parametrize("L,tmax", [(1, 0.5), (2, 0.5), (1, 1)])
+> > @pytest.mark.parametrize("L,tmax", [(1, 0.5), (2, 0.5), (1, 1)])
 > > def test_heat(L, tmax):
 > >     nt = 10
 > >     nx = 20
 > >     alpha = 0.01
 > >
-> >     ...
+> >     …
 > > ```
 > >
 > {: .solution}
 >
 > After completing these two steps check the coverage of your tests via the Test
 > Output panel - it should be 100%.
+>
+> The full, final versions of [diffusion.py](https://github.com/ImperialCollegeLondon/diffusion/blob/develop/diffusion.py)
+> and [test_diffusion.py](https://github.com/ImperialCollegeLondon/diffusion/blob/develop/test_diffusion.py)
+> are available on GitHub.
 >
 > ### Bonus task(s)
 >
