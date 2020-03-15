@@ -117,43 +117,41 @@ complexity and capability.
 ### Testing Done Right
 
 It's important to be clear about what software tests are able to provide and
-what they are not. Unfortunately it isn't possible to write tests that
-completely guarantee that your code is bug free or provides a one hundred
-percent faithful implementation of a particular model. In fact it's perfectly
-possible to write an impressive looking collection of tests that have very
-little value at all. What should be the aim therefore when developing software
-tests?
+what they can't. Unfortunately it isn't possible to write tests that completely
+guarantee that your code is bug free or provides a one hundred percent faithful
+implementation of a particular model. In fact it's perfectly possible to write
+an impressive looking collection of tests that have very little value at all.
+What should be the aim therefore when developing software tests?
 
 In practice this is difficult to define universally but one useful mantra is
-that good tests ***thoroughly exercise critical code***. One way to achieve this is
-to design test examples of increasing complexity that cover the most general
+that good tests ***thoroughly exercise critical code***. One way to achieve this
+is to design test examples of increasing complexity that cover the most general
 case the unit should encounter. Also try to consider examples of special or edge
 cases that your function needs to handle especially?
 
-A useful quantitative metric to consider is also test coverage. Using additional
-tools it is possible to determine, on a line-by-line basis, which parts a code
-are being exercised by its tests. This can be useful to ensure, for instance,
-that all logical branching points within the code are being used by the test
-inputs.
+A useful quantitative metric to consider is **test coverage**. Using additional
+tools it is possible to determine, on a line-by-line basis, the proportion of a
+codebase that is being exercised by its tests. This can be useful to ensure, for
+instance, that all logical branching points within the code are being used by
+the test inputs.
 
 > ## Testing and Coverage
 >
 > Consider the following Python function:
 >
-> ~~~
+> ```python
 > def recursive_fibonacci(n):
 >     """Return the n'th number of the fibonacci sequence"""
 >     if n <= 1:
 >         return n
 >     else:
->         return(recursive_fibonacci(n-1) + recursive_fibonacci(n-2))
-> ~~~
-> {: .language-python}
+>         return recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2)
+> ```
 >
 > Try to think up some test cases of increasing complexity, there are four
 > distinct cases worth considering. What input value would you use for each case
 > and what output value would you expect? Which lines of code will be exercised
-> by each test case?
+> by each test case? How many cases would be required to reach 100% coverage?
 >
 > For convenience, some initial terms from the Fibonacci sequence are given
 > below:  

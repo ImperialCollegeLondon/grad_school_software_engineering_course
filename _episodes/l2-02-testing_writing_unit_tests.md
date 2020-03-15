@@ -154,6 +154,13 @@ def test_unimplemented_code():
     ...
 ```
 
+> ## Refactoring
+>
+>[Code refactoring](https://en.wikipedia.org/wiki/Code_refactoring) is "the process
+>of restructuring existing computer code without changing its external behavior"
+>and is often required to make code more amenable to testing.
+{: .callout}
+
 ### Fixtures
 
 If multiple tests require access to the same data, or a resource that is
@@ -256,7 +263,8 @@ def recursive_fibonacci(n):
 >    appear.
 > 1. Switch to the **Test** perspective by clicking on the flask icon on the
 >    left-hand toolbar. From here you can **Run All Tests**, and **Show Test
->    Output** to view the coverage report
+>    Output** to view the coverage report (see [Lesson
+>    1](../l2-01-testing_overview/) for more on coverage)
 > 1. **Important**: If you aren't able to run the test then please ask a
 >    demonstrator for help. It is essential for the next exercise.
 {: .challenge}
@@ -278,31 +286,33 @@ temperatures and the thermal diffusivity of the material:
 
 [heat-equation]: https://github.com/betterscientificsoftware/hello-heat-equation
 
-The function `heat()` in `heat.py` is intended to implement a **step-wise numerical
-approximation** via a [finite
-difference method](https://en.wikipedia.org/wiki/Finite_difference_method):
+The function `heat()` in `diffusion.py` attempts to implement a **step-wise
+numerical approximation** via a [finite difference
+method](https://en.wikipedia.org/wiki/Finite_difference_method):
 
-![\phi_{i}^{m+1}=r\phi_{i+1}^{m}+(1-2r)\phi_{i}^{m}+r\phi_{i-1}^{m}\;\;\;\;\;\;\;\;(1)](https://latex.codecogs.com/png.latex?\phi_{i}^{m&plus;1}=r\phi_{i&plus;1}^{m}&plus;(1-2r)\phi_{i}^{m}&plus;r\phi_{i-1}^{m}\;\;\;\;\;\;\;\;(1))
+![u_{i}^{t+1}=ru_{i+1}^{t}+(1-2r)u_{i}^{t}+ru_{i-1}^{t}](https://latex.codecogs.com/png.latex?u_{i}^{t&plus;1}=ru_{i&plus;1}^{t}&plus;(1-2r)u_{i}^{t}&plus;ru_{i-1}^{t})
 
-This relates the temperature `φ` at a specific location `i` and time point `m`
+This relates the temperature `u` at a specific location `i` and time point `t`
 to the temperature at the previous time point and neighbouring locations. `r` is
 defined as follows, where `α` is the thermal diffusivity: ![r=\frac{\alpha
-\Delta t}{\Delta x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
+\Delta t}{\Delta
+x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
 
-The `test_heat()` function in `test_diffusion.py` compares this _approximation_ with
-the _exact_ (analytical) solution for the boundary conditions. The test is correct
-but failing - indicating that there is a bug in the code.
+The `test_heat()` function in `test_diffusion.py` compares this _approximation_
+with the _exact_ (analytical) solution for the boundary conditions (i.e. the
+temperature at ends of the end being fixed at zero). The test is correct but
+failing - indicating that there is a bug in the code.
 
 > ## Testing (and fixing!) the code
 >
 > Work by yourself or with a partner on these test-driven development tasks. Don't
 > hesitate to ask a demonstrator if you get stuck!
 >
-> ### Refactoring
+> ### Separation of concerns
 >
-> First we'll simplify the code by modularising it. We'll extract the code that
-> performs a single time step into a new function that can be verified in
-> isolation via a new unit test:
+> First we'll refactor the code, increasing its modularity. We'll extract the
+> code that performs a single time step into a new function that can be verified
+> in isolation via a new unit test:
 >
 > 1. In `diffusion.py` move the logic that updates `u` within the loop in the
 >    `heat()` function to a new top-level function:
@@ -315,7 +325,7 @@ but failing - indicating that there is a bug in the code.
 >    _Hint: the loop in `heat()` should now look like this:_
 >
 >    ```python
->    for t in range(nt - 1):
+>    for _ in range(nt - 1):
 >        u = step(u, dx, dt, alpha)
 >    ```
 >
@@ -334,7 +344,7 @@ but failing - indicating that there is a bug in the code.
 >    match those suggested by the equation above. Use `approx` if necessary.
 >    \_Hint: `step([0, 1, 1, 0], 0.04, 0.02, 0.01)` is a suitable invocation. It
 >    will return an array of the form `[0, ?, ?, 0]`. You'll need to calculate
->    the missing values manually using the equation above in order to compare the
+>    the missing values manually using the equation in order to compare the
 >    expected and actual values.
 >
 > 4. Assuming that this test fails, fix it by changing the code in the `step()`
@@ -392,7 +402,7 @@ but failing - indicating that there is a bug in the code.
 > > # test_diffusion.py
 > > def test_step_unstable():
 > >     with pytest.raises(Exception):
-> >         step([0, 1, 0], 0.04, 0.02, 0.1)
+> >         step([0, 1, 1, 0], 0.04, 0.02, 0.1)
 > >
 > > # diffusion.py
 > > def step(u, dx, dt, alpha):
