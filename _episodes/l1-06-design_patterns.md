@@ -180,7 +180,7 @@ the line _right after_ `yield`.
 >     for x in xs:
 >         yield 2**x
 >
-> for x in power_of_two([2, 4, 3, 2]):
+> for x in powers_of_two([2, 4, 3, 2]):
 >     print(x)
 > ```
 >
@@ -425,7 +425,7 @@ What to do:
 >         print(f"Some complicated calculation at {point}")
 > ```
 >
-> and create a generator function `point_in_ring`:
+> and create a generator function `points_in_ring`:
 >
 > ```python
 > for point in points_in_ring(points, radius, width):
