@@ -101,7 +101,7 @@ Lists are containers of other data:
 Lists make sense when:
 
 - you have more than one item of data
-- the items are somehow related: Lists of apples and oranges are a code-smell
+- the items are somehow related: Lists of apples and oranges are a [code-smell](https://en.wikipedia.org/wiki/Code_smell)
 
    ```python
    [1, 2, 3]  # might be the right representation
