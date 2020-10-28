@@ -533,7 +533,7 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > >
 > > @dataclass
 > > class Definition:
-> >     category: Text
+> >     category: Category
 > >     text: Text
 > >
 > >
