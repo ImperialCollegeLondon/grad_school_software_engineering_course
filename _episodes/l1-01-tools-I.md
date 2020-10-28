@@ -92,7 +92,7 @@ systems.
 >      - requests
 >      - pip
 >      - pip:
->        - -e git+https://github.com/ImperialCollegeLondon/R2T2.git#egg=r2t2
+>        - -e git+https://github.com/ImperialCollegeLondon/R2T2.git@main#egg=r2t2
 >    ```
 >
 > 1. Create a new virtual environment using conda:
