@@ -130,5 +130,4 @@ output similar to the below:
 git version 2.25.0
 ```
 
-
 {% include links.md %}

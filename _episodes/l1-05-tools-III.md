@@ -53,54 +53,13 @@ We chose:
 >
 > Setup VS Code:
 >
-> 1. Open Settings (see [previous
->     exercise](../l1-03-tools-II#rules-to-choose-a-code-formatter) if you're
->     not sure how):
->   - Search for "linting enable" and check the box for "Python > Linting:
->   Enabled".
->   - Search for "pylint enabled" and check the box for "Python > Linting:
->   Pylint Enabled" (you may need to scroll down for this one).
->   - Search for "pylint use" and **un**check the box for "Python > Linting:
->   Pylint Use Minimal Checkers".
->   - Search for "flake8 enabled" and check the box for "Python > Linting: Flake8
->   Enabled".
->   - Search for "mypy enable" and check the box for "Python > Linting: Mypy
->   Enabled".
-> 1. Create a file `unlinted.py` with the following code and save it:
->
->    ```python
->    from typing import List
->
->
->    class printer:
->        pass
->
->
->    def ActionatePrinters(printers: List[printer]):
->        # pylint: disable=missing-docstring
->        printing_actions = []
->        for p in printers:
->
->            if p == None:
->                continue
->
->            def action():
->                print(p)
->
->            printing_actions.append(action)
->
->            p = "something"
->            print(p)
->
->        for action in printing_actions:
->            action()
->
->
->    ActionatePrinters([1, 2, 2])
->    ```
->
-> 1. Check the current errors (click on errors in status bar at the bottom)
-> 1. Try and correct them
+> 1. Return to `messy.py` (now nicely formatted) in VS Code.
+> 1. The output of the configured linters is shown displayed by coloured
+>    underlining in the editor, coloured vertical sections of the scroll bar and
+>    in bottom the status bar. Mouse over the underlined sections of the editor
+>    to see the reason for each.
+> 1. Check the current errors (click on errors in status bar at the bottom).
+> 1. Understand why each error is present and try to correct them.
 > 1. Alternatively, try and disable them (but remember: _with great power..._).
 >    We've already disabled-one at the function scope level. Check what happens
 >    if you move it to the top of the file at the module level.
