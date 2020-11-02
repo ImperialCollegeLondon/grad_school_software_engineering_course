@@ -69,9 +69,9 @@ systems.
 > 1. If you haven't already, see the [setup guide](../setup) for instructions
 >    on how to install conda, Visual Studio Code and Git.
 >
-> 1. Download this zip archive and extract it. Start Visual Studio Code and
->    select "Open folder..." from the welcome screen. Navigate to the folder
->    created from the archive and press "Select Folder".
+> 1. Download this [zip archive](../code/course.zip) and extract it. Start Visual
+>    Studio Code and select "Open folder..." from the welcome screen. Navigate
+>    to the folder created from the archive and press "Select Folder".
 >
 > 1. From the side-bar select the file `environment.yml`. If you are prompted to
 >    install the Visual Studio Code Python extension then do so. The contents of
