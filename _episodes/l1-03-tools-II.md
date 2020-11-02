@@ -32,8 +32,7 @@ options with which to fiddle.
 >
 > Using Visual Studio Code:
 >
-> 1. Put the following into a file `myscript.py` and save it. If you are
-> prompted to install the Python extension then be sure to do so.
+> 1. Open the file `messy.py`. Its contents should match:
 >
 >    ```python
 >    x = {  'a':37,'b':42,
@@ -51,16 +50,13 @@ options with which to fiddle.
 >    ```
 >
 > 1. Ensure that you have activated your "course" conda environment using the
-> selector in the bottom panel of VS Code
-> 1. Open Settings
->   - macOS via `⌘ + ,` or menus: **Code > Preferences > Settings**
->   - Windows/Linux via `Ctrl + ,` or menus: **File > Preferences > Settings**
-> 1. Search for "python formatting provider" and choose "black"
-> 1. Search for "format on save" and check the box to enable
-> 1. Save the file again: it should be reformatted automagically
-> 1. Now paste the code again but before saving delete a ':' somewhere. When
->    saving, the code will likely not format. It is syntactically invalid.
->    The formatter cannot make sense of the code and thus can't format it.
+>    selector in the bottom panel of VS Code
+> 1. Make a trivial change to the file and save it: it should be reformatted
+>    automagically.
+> 1. Use the `undo` function of VS Code to return the code to its unformatted
+>    state. Before saving again delete a ':' somewhere. When saving, the code
+>    will likely not format. It is syntactically invalid. The formatter cannot
+>    make sense of the code and thus can't format it.
 >
 > >## Solution
 > >
@@ -69,13 +65,21 @@ options with which to fiddle.
 > > ```python
 > > x = {"a": 37, "b": 42, "c": 927}
 > > y = "hello " + "world"
-> >
+> > 
+> > 
 > > class foo(object):
 > >     def f(self):
+> >         z = 3
 > >         return y ** 2
-> >
+> > 
 > >     def g(self, x: int, y: int = 42) -> int:
+> >         # pylint: disable=missing-docstring
 > >         return x - -y
+> > 
+> > 
+> > def f(a):
+> >     return 37 + -a[42 - a : y * 3]  # noqa: E203
+> > 
 > > ```
 > >
 > > Ah! much better!

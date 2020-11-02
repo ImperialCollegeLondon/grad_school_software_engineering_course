@@ -69,22 +69,18 @@ systems.
 > 1. If you haven't already, see the [setup guide](../setup) for instructions
 >    on how to install conda, Visual Studio Code and Git.
 >
-> 1. Create a new folder to use for this course. Avoid giving it a name that
->    includes spaces. If you're using an ICT managed PC the folder must be
->    located in your user area on the C: drive i.e. `C:\Users\UserName`
->    (**Note that files placed here are not persistent so you must remember to
->    take a copy before logging out**). Start Visual Studio Code and select
->    "Open folder..." from the welcome screen. Navigate to the folder you just
->    created and press "Select Folder".
+> 1. Download this [zip archive](../code/course.zip) and extract it. Start Visual
+>    Studio Code and select "Open folder..." from the welcome screen. Navigate
+>    to the folder created from the archive and press "Select Folder".
 >
-> 1. Press "New file" and copy the below text. Save the file as
->    `environment.yml`, the location should default to your newly created
->    folder.
+> 1. From the side-bar select the file `environment.yml`. If you are prompted to
+>    install the Visual Studio Code Python extension then do so. The contents of
+>    `environment.yml` should match:
 >
 >    ```yaml
 >    name: course
 >    dependencies:
->      - python>=3.6
+>      - python>=3.8
 >      - flake8
 >      - pylint
 >      - black
@@ -92,12 +88,12 @@ systems.
 >      - requests
 >      - pip
 >      - pip:
->        - -e git+https://github.com/ImperialCollegeLondon/R2T2.git#egg=r2t2
+>        - -e git+https://github.com/ImperialCollegeLondon/R2T2.git@main#egg=r2t2
 >    ```
 >
 > 1. Create a new virtual environment using conda:
 >
->    **Windows users will want to start the app `Anaconda Prompt` from the Start
+>    **Windows users will want to open the app `Anaconda Prompt` from the Start
 >    Menu.**
 >
 >    **Linux and Mac users should use a terminal app of their choice. You may
@@ -171,7 +167,10 @@ Command Palette:
 
 - For Windows/Linux: Ctrl + Shift + P, and start typing "Python: Select
   interpreter"
-- For macOS: Cmd + Shift + P, and start typing "Python: Select interpreter"
+- For macOS: Cmd + Shift + P, and start typing "Python: Select interpreter**
+
+**An entry should be present with the name `course`. It may take a few minutes
+to appear however.**
 
 If you already have a Python file open then it's also possible to set the
 interpreter using the toolbar at the bottom of the window.
