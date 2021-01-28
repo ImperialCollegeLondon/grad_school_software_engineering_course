@@ -77,6 +77,12 @@ With integers, `+` is an *addition*, for strings it's a *concatenation*.
 
 - we could use `"1", "2", "3"` to represent numbers, rather than `1`, `2`, `3`
 - we would have to reinvent how to add numbers, and multiply, and divide them
+  e.g.
+
+  ```
+  str(int("1") + int("2"))
+  ```
+
 - the wrong data structures can make your code vastly more complicated
 - also, the code would be quite slow
 
@@ -154,22 +160,6 @@ replaced:
 TypeError: 'tuple' object does not support item assignment
 ```
 
-> ## Modifying a tuple vs modifying the element of a tuple
-> ```python
-> >>> something = ["a", "b"], 4
-> >>> something[0].append("c")
-> >>> something
-> (['a', 'b', 'c'], 4)
-> >>> something[0] = ["a", "b", "c"]
-> TypeError: 'tuple' object does not support item assignment
-> ```
->
-> The tuple itself cannot be modified, but its elements can be if they
-> themselves are mutable. The container is immutable, but the contents might not
-> be.
-{: .callout}
-
-
 Tuple make sense when:
 
 - you need a short container with only a few elements
@@ -192,7 +182,7 @@ Beware! The following might indicate a tuple is the wrong data structure:
 
 ## Sets
 
-Sets are containers where each element is *unique*:
+Sets are unordered containers where each element is *unique*:
 
 ```python
 >>> set([1, 2, 2, 3, 3])
@@ -202,6 +192,7 @@ Sets are containers where each element is *unique*:
 They make sense when:
 
 - each element in a container must be unique
+- order does not matter
 - you need to solve ownership issues, e.g. which elements are in common between
   two lists? Which elements are different?
 
@@ -219,7 +210,6 @@ They make sense when:
 > * Fortran: Nope. Nothing.
 {: .callout}
 
-
 ## Dictionaries
 
 Dictionaries are mappings between a key and a value (e.g. a word and its
@@ -235,12 +225,18 @@ They make sense when:
 - you have pairs of data that go together:
 
   ```python
-  # A list of pairs?? PROBABLY BAD!!
-  [("horse", "mammal"), ("kangaroo", "marsupial"), ("millipede", "alien")]
+  # A list of tuples?? PROBABLY BAD!!
+  [
+    ("horse", "mammal"),
+    ("kangaroo", "marsupial"),
+    ("millipede", "alien")
+  ]
   # Better?
-  {"horse": "mammal", "kangaroo": "marsupial", "millipede": "alien"}
-  # Or maybe?
-  {"mammal": {"horse", "cow"}, "alien": {"millipede", "Jadoo"}}
+  {
+    "horse": "mammal",
+    "kangaroo": "marsupial",
+    "millipede": "alien"
+  }
   ```
 
 - given x you want to know its y: given the name of an animal you want to know

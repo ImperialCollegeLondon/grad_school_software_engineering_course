@@ -56,23 +56,20 @@ Similarly, code should be written with a structure separating different
 levels of details:
 
 ```python
-def abstract():
-  result_I = body_section_I()
-  result_II = body_section_II(result_I)
+def analyse(input_path):
+    data = load_data(input_path)
 
-  result_IIa = appendix_IIa(result_II)  # BAD!! do not mix levels of details
-  return conclusion(result_IIa)
+    # special fix for bad data point
+    data[0].x["january"] = 0
 
-def body_section_I():
-  low_level_thing = appendix_Ia()
-
-  other_thing = body_section_III(low_level_thing)  # BAD!! do not mix levels of details
+    results = process_data(data)
+    return results
 ```
 
-- `abstract` should **not** have to know about some sub-clause of the appendix
-- `section_I` should **not** have to know about `section_III`
-- `section_III` should **not** expect as arguments low-level stuff: levels of
-  abstractions is a data thing as well as a logic thing.
+The "special fix" mixes levels of abstraction. Our top level function now
+depends on the structure of `data`. If the way data is stored changes (a low
+level detail) we now also need to change `analyse` which is a high level
+function directing the flow of the program.
 
 ## Separable concerns
 
@@ -88,36 +85,36 @@ Similarly, code should be written with a structure separating separable
 concerns:
 
 ```python
-def main() -> None:
+def main():
   # reading input files is one thing
-  config = read_input(filename)
+  data = read_input(filename)
 
   # creating complex objects is another
-  section_I = SectionI(config['some_array'])
+  section_I = SectionI(data)
 
   # compute is still something else
-  result_I = section_I.run(some_value)
+  result_I = section_I.compute(some_value)
 
   # Saving data is another
-  save(result_I, config['section_I save path'])
+  save(result_I)
 
 
-def read_input(filename: Text) -> Dict:
+def read_input(filename):
   """ Reads input data from file. """
   pass
 
 
-def save(data: tf.Tensor, filename: Text = "saveme.h5") -> None:
+def save(data, filename = "saveme.h5"):
   """ Saves output data to file. """
   pass
 
 
 class SectionI
   """ Runs experiment """
-  def __init__(self, some_array: tf.Tensor):
+  def __init__(self, some_array):
       self.some_array = some_array
 
-  def run(self, y: tf.Tensor) -> tf.Tensor:
+  def compute(self, y):
       """ Just does compute, nothing more, nothing less. """
       pass
 ```
@@ -137,7 +134,7 @@ especially during testing.
 
 ```python
 class SectionI
-    def __init__(self, some_array: tf.Tensor):
+    def __init__(self, some_array):
         self.some_array = array
         # BAD!! Now you need to carry this file around every time you want to
         # instantiate SectionI
@@ -155,7 +152,7 @@ It creates file artifacts. Littering is a crime and hidden files are litter.
 
 ```python
 class SectionI
-    def run(self, b: tf.Tensor, filename: Text = "somefile.aaa") -> tf.Tensor:
+    def run(self, b, filename = "somefile.aaa"):
         # BAD!! hidden dependency on the content of the file
         aaa = read_aaa(filename)
         ...
@@ -201,22 +198,22 @@ A code is a sequence of transformations on data, e.g.:
 The code should reflect that structure:
 
 ```python
-def read_experiment(filename: Text) -> Dict:
+def read_experiment(filename):
     ...
     return measurements
 
 
-def compute_a(measurements) -> np.ndarray:
+def compute_a(measurements):
     ...
     return a
 
 
-def compute_b(measurements) -> np.ndarray:
+def compute_b(measurements):
     ...
     return b
 
 
-def compute_result(a, b) -> np.ndarray:
+def compute_result(a, b):
     ...
     return result
 ```
@@ -231,7 +228,7 @@ def compute_result(a, b) -> np.ndarray:
 
 Here are things that should **not** happen:
 
-### Unnecessary arguments and tangled dependencies.
+### Unnecessary arguments and tangled dependencies
 
 Did we not say the result depends on `a` and `b` alone? The next programmer to
 look at the code (e.g. future you) won't know that. Computing `result` is no
@@ -239,7 +236,7 @@ longer separate from `measurements`.
 
 ```python
 # BAD! Unnecessary arguments. Now result depends on a, b, experiment
-def compute_result(a, b, experiment) -> np.ndarray:
+def compute_result(a, b, experiment):
     pass
 ```
 
@@ -248,11 +245,11 @@ def compute_result(a, b, experiment) -> np.ndarray:
 It's often a **bad** idea for functions to modify their arguments.
 
 ```python
-def compute_a(measurements) -> np.ndarray:
+def compute_a(measurements):
     measurements[1] *= 2
     ...
 
-def compute_b(measurements) -> np.ndarray:
+def compute_b(measurements):
     measurements[1] *= 0.5
     ...
 ```
@@ -280,6 +277,11 @@ Now the result of `compute_a` has a hidden dependency. It's never clear whether
 calling it twice with the same input (`measurements`) will yield the same
 result.
 
+In general make sure that all variables have the most limited scope possible. If
+they're only needed within a single function define them there. Wherever
+possible make variables into constants so you know they're not being modified
+anywhere.
+
 > ## Dear Fortran 90 users
 >
 > Module variables are global. They can be modified anywhere, anytime. It's
@@ -293,8 +295,8 @@ result.
 > clear.
 >
 > 1. Write the solution as a recipe. Be sure to delete steps and information
->   irrelevant to the recipe. Deleting code is GOOD! (if it's under version
->   control)
+>    irrelevant to the recipe. Deleting code is GOOD! (if it's under version
+>    control)
 > 1. Can you identify different levels of abstractions?
 > 1. Can you identify different concerns?
 > 1. Can you identify what is data and what are transformations of the data?
@@ -304,8 +306,8 @@ result.
 >    [UML](https://en.wikipedia.org/wiki/Unified_Modeling_Language), [Sequence
 >    diagram](https://en.wikipedia.org/wiki/Sequence_diagram)).
 > 1. Can you spot inconsistencies in the original recipe? That's what happens
-> when code is copy-pasted. Invariably, versions diverge until each has set of
-> unique bugs, as well as bugs in common.
+>    when code is copy-pasted. Invariably, versions diverge until each has set of
+>    unique bugs, as well as bugs in common.
 >
 >
 > ```md

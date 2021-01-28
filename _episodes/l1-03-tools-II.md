@@ -41,16 +41,17 @@ options with which to fiddle.
 >    class foo  (     object  ):
 >       def f    (self   ):
 >           return       y **2
->       def g(self, x :int,
->           y : int=42
->           ) -> int:
+>       def g(self, x,
+>           # pylint: disable=missing-docstring
+>           y=42
+>           ):
 >           return x--y
 >    def f  (   a ) :
->       return      37+-a[42-a :  y*3]
+>       return      37+-a[42-a :  y*3]  noqa: E203
 >    ```
 >
-> 1. Ensure that you have activated your "course" conda environment using the
->    selector in the bottom panel of VS Code
+> 1. Ensure that you have activated your "course" conda environment (see
+>    [previous episode])
 > 1. Make a trivial change to the file and save it: it should be reformatted
 >    automagically.
 > 1. Use the `undo` function of VS Code to return the code to its unformatted
@@ -65,21 +66,21 @@ options with which to fiddle.
 > > ```python
 > > x = {"a": 37, "b": 42, "c": 927}
 > > y = "hello " + "world"
-> > 
-> > 
+> >
+> >
 > > class foo(object):
 > >     def f(self):
 > >         z = 3
 > >         return y ** 2
-> > 
-> >     def g(self, x: int, y: int = 42) -> int:
+> >
+> >     def g(self, x, y = 42):
 > >         # pylint: disable=missing-docstring
 > >         return x - -y
-> > 
-> > 
+> >
+> >
 > > def f(a):
 > >     return 37 + -a[42 - a : y * 3]  # noqa: E203
-> > 
+> >
 > > ```
 > >
 > > Ah! much better!
@@ -88,5 +89,7 @@ options with which to fiddle.
 > > *Formatting code does not make it less buggy!*
 > {: .solution}
 {: .challenge}
+
+[previous episode]: http://localhost:4000/l1-01-tools-I/index.html#selecting-an-environment-in-visual-studio-code
 
 {% include links.md %}
