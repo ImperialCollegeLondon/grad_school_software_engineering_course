@@ -47,7 +47,10 @@ We chose:
 
 - [flake8](https://pypi.org/project/black/) because it is simple
 - [pylint](https://www.pylint.org/) because it is (too?) extensive
-- [mypy](http://mypy-lang.org/) because it helps keep track of object types
+- [mypy](http://mypy-lang.org/) because it helps keep track of object types -
+  check out the use of [type hints] in Python
+
+[type hints]: https://www.python.org/dev/peps/pep-0484/
 
 > ## Exercise
 >

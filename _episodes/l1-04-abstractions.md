@@ -104,7 +104,7 @@ def read_input(filename):
   pass
 
 
-def save(data, filename = "saveme.h5"):
+def save(data, filename="saveme.h5"):
   """ Saves output data to file. """
   pass
 
@@ -152,7 +152,7 @@ It creates file artifacts. Littering is a crime and hidden files are litter.
 
 ```python
 class SectionI
-    def run(self, b, filename = "somefile.aaa"):
+    def run(self, b, filename="somefile.aaa"):
         # BAD!! hidden dependency on the content of the file
         aaa = read_aaa(filename)
         ...
@@ -242,7 +242,7 @@ def compute_result(a, b, experiment):
 
 ### Modifying an input argument
 
-It's often a **bad** idea for functions to modify their arguments.
+If possible avoid doing this.
 
 ```python
 def compute_a(measurements):
@@ -257,6 +257,9 @@ def compute_b(measurements):
 Now `compute_a` has to take place before `compute_b` because `compute_a` chose
 to modify it's argument, and thus `compute_b` was hacked to undo the damage. To
 get `b` the data is now forced to flow first through `compute_a`.
+
+Some languages unfortunately are designed so sometimes you don't have any choice
+but to modify an input argument. Still, wherever possible avoid doing it.
 
 ### Global variables
 
@@ -279,7 +282,8 @@ result.
 
 In general make sure that all variables have the most limited scope possible. If
 they're only needed within a single function define them there. Wherever
-possible make variables into constants so you know they're not being modified
+possible treat variables with wide scope as constants (or make them actual
+constants if your language supports it) so you know they're not being modified
 anywhere.
 
 > ## Dear Fortran 90 users

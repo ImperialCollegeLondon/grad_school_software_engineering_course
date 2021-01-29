@@ -182,7 +182,7 @@ Beware! The following might indicate a tuple is the wrong data structure:
 
 ## Sets
 
-Sets are unordered containers where each element is *unique*:
+Sets are containers where each element is *unique*:
 
 ```python
 >>> set([1, 2, 2, 3, 3])
@@ -192,7 +192,6 @@ Sets are unordered containers where each element is *unique*:
 They make sense when:
 
 - each element in a container must be unique
-- order does not matter
 - you need to solve ownership issues, e.g. which elements are in common between
   two lists? Which elements are different?
 
@@ -200,6 +199,10 @@ They make sense when:
     >>> set(["a", "b", "c"]).symmetric_difference(["b", "c", "e"])
     {'a', 'e'}
     ```
+
+Something to bear in mind with sets is that, depending on your language, they
+may or may not be *ordered*. In Python sets are unordered i.e. the elements of a
+set cannot be accessed via an index, but sets in other languages may allow this.
 
 > ## Other languages
 > * C++: [std::set](https://en.cppreference.com/w/cpp/container/set)
