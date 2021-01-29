@@ -298,10 +298,18 @@ defined as follows, where `α` is the thermal diffusivity: ![r=\frac{\alpha
 \Delta t}{\Delta
 x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
 
+We approach this problem by representing `u` as a Python list. Elements within
+the list correspond to positions along the rod, `i=0` is the first element,
+`i=1` is the second and so on. In order to increment `t` we update `u` in a
+loop. Each iteration, according to the finite difference equation above, we
+calculate values for the new elements of `u`.
+
+![](../fig/heat_equation_implementation.png)
+
 The `test_heat()` function in `test_diffusion.py` compares this _approximation_
 with the _exact_ (analytical) solution for the boundary conditions (i.e. the
-temperature at ends of the end being fixed at zero). The test is correct but
-failing - indicating that there is a bug in the code.
+temperature of the end being fixed at zero). The test is correct but failing -
+indicating that there is a bug in the code.
 
 > ## Testing (and fixing!) the code
 >
@@ -338,14 +346,14 @@ failing - indicating that there is a bug in the code.
 >        assert step(…) == …
 >    ```
 >
->    It should call `step()` with suitable
->    values for `u` (the temperatures at time `t`), `dx`, `dt` and `alpha`. It
->    should `assert` that the resulting temperatures (i.e. at time `t+1`)
->    match those suggested by the equation above. Use `approx` if necessary.
->    \_Hint: `step([0, 1, 1, 0], 0.04, 0.02, 0.01)` is a suitable invocation. It
->    will return an array of the form `[0, ?, ?, 0]`. You'll need to calculate
->    the missing values manually using the equation in order to compare the
->    expected and actual values.
+>    It should call `step()` with suitable values for `u` (the temperatures at
+>    time `t`), `dx`, `dt` and `alpha`. It should `assert` that the resulting
+>    temperatures (i.e. at time `t+1`) match those suggested by the equation
+>    above. Use `approx` if necessary.  \_Hint: `step([0, 1, 1, 0], 0.04, 0.02,
+>    0.01)` is a suitable invocation. These values will give `r=0.125`. It will
+>    return a list of the form `[0, ?, ?, 0]`. You'll need to calculate the
+>    missing values manually using the equation in order to compare the expected
+>    and actual values.
 >
 > 4. Assuming that this test fails, fix it by changing the code in the `step()`
 >    function to match the equation - correcting the original bug. Once you've

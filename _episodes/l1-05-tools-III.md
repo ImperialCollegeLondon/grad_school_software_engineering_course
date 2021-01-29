@@ -27,7 +27,7 @@ code such as:
 - static type detection ([mypy](http://mypy-lang.org/)) where we tell the editor
   what kind of objects (`dict`, `list`, `int`, etc) a function expects
 
-Consistent styles make a code more consistent an easier to read, whether or not
+Consistent styles make a code more consistent and easier to read, whether or not
 you agree with the style. Using an automated linter avoids bike-shedding since
 the linter is the final arbiter.
 
@@ -47,7 +47,10 @@ We chose:
 
 - [flake8](https://pypi.org/project/black/) because it is simple
 - [pylint](https://www.pylint.org/) because it is (too?) extensive
-- [mypy](http://mypy-lang.org/) because it helps keep track of object types
+- [mypy](http://mypy-lang.org/) because it helps keep track of object types -
+  check out the use of [type hints] in Python
+
+[type hints]: https://www.python.org/dev/peps/pep-0484/
 
 > ## Exercise
 >
@@ -56,7 +59,7 @@ We chose:
 > 1. Return to `messy.py` (now nicely formatted) in VS Code.
 > 1. The output of the configured linters is shown displayed by coloured
 >    underlining in the editor, coloured vertical sections of the scroll bar and
->    in bottom the status bar. Mouse over the underlined sections of the editor
+>    in the bottom status bar. Mouse over the underlined sections of the editor
 >    to see the reason for each.
 > 1. Check the current errors (click on errors in status bar at the bottom).
 > 1. Understand why each error is present and try to correct them.
