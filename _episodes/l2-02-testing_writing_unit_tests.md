@@ -243,12 +243,13 @@ def recursive_fibonacci(n):
 > 1. Open Anaconda Prompt (Windows), or a terminal (Mac or Linux) and run:
 >
 >    ```bash
->    conda env create --file [path to environment.yml]
+>    conda env create --file "path_to_environment.yml"
 >    ```
 >
->    The `[path to environment.yml]` can be obtained by right-clicking the file
->    name in the left pane of Visual Studio Code and choosing "Copy Path". Right
->    click on the command line interface to paste.
+>    The `path_to_environment.yml` can be obtained by right-clicking the file
+>    name in the left pane of Visual Studio Code and choosing "Copy Path". Be
+>    sure to include the quotation marks. Right click on the command line
+>    interface to paste.
 >
 > 1. **Important**: After the environment has been created go to **View
 >    \> Command Palette** in VS Code, start typing "Python: Select interpreter"
