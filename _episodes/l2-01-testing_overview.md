@@ -66,8 +66,8 @@ to formalise your tests and take advantage of the above.
 > already implemented and published the code.
 >
 > You move to hit the download button, but a worrying thought occurs. How do you
-> know this code is right? You don't know the author or his level of programming
-> skill. Why should you trust the code?
+> know this code is right? You don't know the author or their level of
+> programming skill. Why should you trust the code?
 >
 > Now turn this question on its head. Why should your colleagues or supervisor
 > trust any implementation of the method that you write? Why should you trust
