@@ -67,7 +67,7 @@ systems.
 > ## Installing and using an environment
 >
 > 1. If you haven't already, see the [setup guide](../setup) for instructions
->    on how to install conda, Visual Studio Code and Git.
+>    on how to install Conda and Visual Studio Code.
 >
 > 1. Download this [zip archive](../code/course.zip) and extract it. Start Visual
 >    Studio Code and select "Open folder..." from the welcome screen. Navigate
