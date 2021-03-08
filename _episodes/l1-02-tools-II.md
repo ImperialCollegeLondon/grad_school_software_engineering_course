@@ -17,6 +17,9 @@ keypoints:
 ## Why does formatting matter?
 
 * Code is read more often than written
+* It's a menial task that adds cognitive load
+* Ensures all code in a project is consistent, even if contributed by multiple
+  authors
 * Setting up a formatter in your editor takes 5 minutes
 * Those 5 minutes are redeemed across the lifetime of the project
 
