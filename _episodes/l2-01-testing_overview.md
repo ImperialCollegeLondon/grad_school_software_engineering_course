@@ -40,7 +40,7 @@ There are a number of compelling reasons to properly test a research code:
 Whilst testing might seem like an intimidating topic the chances are you're
 already doing testing in some form. No matter the level of experience, no
 programmer ever just sits down and writes some code, is perfectly confident that
-sit works and proceeds to use it straight away in research. Instead development
+it works and proceeds to use it straight away in research. Instead development
 is in practice more piecemeal - you generally think about a simple input and the
 expected output then write some simple code that works. Then, iteratively, you
 think about more complicated example inputs and outputs and flesh out the code
@@ -127,7 +127,7 @@ In practice this is difficult to define universally but one useful mantra is
 that good tests ***thoroughly exercise critical code***. One way to achieve this
 is to design test examples of increasing complexity that cover the most general
 case the unit should encounter. Also try to consider examples of special or edge
-cases that your function needs to handle especially?
+cases that your function needs to handle especially.
 
 A useful quantitative metric to consider is **test coverage**. Using additional
 tools it is possible to determine, on a line-by-line basis, the proportion of a
@@ -183,7 +183,7 @@ the test inputs.
 > > **Reason:** This represents the case of a possible input to the function
 > > that is outside of its intended usage. At the moment the function will just
 > > return the input value, but whether this is the correct behaviour depends on
-> > the wider context on which it will be used. It might be better for this type
+> > the wider context in which it will be used. It might be better for this type
 > > of input value to cause an error to be raised however. The value of this
 > > test case is that it encourages you to think about this scenario and what
 > > the behaviour should be. It also demonstrates to others that you've
