@@ -97,13 +97,14 @@ systems.
 >    see a warning with instructions. Please follow the instructions.**
 >
 >    ```bash
->    conda env create -f path_to_environment.yml
+>    conda env create -f "path_to_environment.yml"
 >    ```
 >
 >    You can obtain `path_to_environment.yml` by right clicking the file tab
 >    near the top of Visual Studio Code and selecting "Copy Path" from the
->    drop-down menu. Right click on the window for your command line interface
->    to paste the path.
+>    drop-down menu. Make sure to include the quotation marks in the
+>    command. Right click on the window for your command line interface to paste
+>    the path.
 >
 > 1. We can now activate the environment:
 >
@@ -141,7 +142,7 @@ systems.
 > 1. Finally, feel free to remove requests from `environment.yml`, then run
 >
 >    ```bash
->    conda env update -f path_to_environment.yml
+>    conda env update -f "path_to_environment.yml"
 >    ```
 >
 >     and see whether the package has been updated or removed.
