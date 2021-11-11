@@ -1,7 +1,7 @@
 ---
 title: "Data Structures"
-teaching: 15
-exercises: 15
+teaching: 30
+exercises: 20
 questions:
 - How can data structures simplify codes?
 objectives:
@@ -84,12 +84,29 @@ With integers, `+` is an *addition*, for strings it's a *concatenation*.
   ```
 
 - the wrong data structures can make your code vastly more complicated
-- also, the code would be quite slow
+- also, the code would be much slower
 
 Stay healthy. Stop and choose the right data structure for you!
 
+> ## Priorities for Choosing Data Structures
+>
+> We've discussed how the incorrect data structure can make your code more
+> complicated and also give worse performance. Quite often these two factors are
+> aligned - the right data structure will combine simple code with the best
+> performance. This isn't always true however. In some cases simplicity and
+> performance will be in tension with one another. A good maxim to apply here is
+> **"Premature optimization is the root of all evil"**. This philosophy states
+> that keeping your code simple and elegant should be your primary
+> goal. Choosing a data structure based on performance or other considerations
+> should only be considered where absolutely necessary.
+{: .callout}
 
 # Basic data structures
+
+Different languages provide different basic structures depending on the purpose
+for which they were designed. We will consider here some of the basic data
+structures available in Python for which equivalents can be found in most other
+languages.
 
 ## Lists
 
@@ -267,24 +284,205 @@ Beware! The following might indicate a dict is the wrong data structure:
 > * Fortran: Nope. Nothing.
 {: .callout}
 
+> ## Basic Data Structure Practice
+>
+> You're writing a piece of code to track the achievements of players of a
+> computer game. You've been asked to design the data structures the code will
+> use. The software will need the following data structures as either a list, a
+> dictionary or a set:
+>
+> - A collection containing all possible achievements
+> - A collection for each player containing their achievements in the *order
+>   they were obtained* (assume no duplicates)
+> - A collection relating player names to their achievements
+>
+> Implement the data structures as seems most appropriate and populate them with
+> some example data. Now have a go at writing code for the following actions:
+> - get a player's achievements
+> - get a player's first achievement
+> - add a new achievement for a player
+> - get the number of achievements a player doesn't have yet
+> - get a collection of the achievements a player doesn't have yet
+> - find the achievements "player1" has that "player2" doesn't
+>
+> If you picked the right structures, each action should be able to be
+> implemented as a single line of code.
+>
+> > ## Solution
+> > ```python
+> > all_achievements = {"foo", "bar", "baz"}
+> >
+> > player_achievements = {
+> >     "player1": ["foo", "baz"],
+> >     "player2": [],
+> >     "player3": ["baz"],
+> > }
+> >
+> > # get a player's achievements
+> > player_achievements["player2"]
+> >
+> > # get a player's first achievement
+> > player_achievements["player1"][0]
+> >
+> > # add a new achievement to a player's collection
+> > player_achievements["player2"].append("foo")
+> >
+> > # get the number of achievements a player doesn't have yet
+> > len(all_achievements) - len(player_achievements["player2"])
+> >
+> > # get a collection of the achievements a player doesn't have yet
+> > all_achievements.difference(player_achievements["player1"])
+> >
+> > # find the achievements player1 has that player2 doesn't
+> > set(player_achievements["player1"]).difference(player_achievements["player2"])
+> > ```
+> > Notice that for the last action we had to turn a list into a set. This isn't
+> > a bad thing but if we were having to do it a lot that might be a sign we'd
+> > chosen an incorrect data structure.
+> {: .solution}
+{: .challenge}
+
 ## Advanced data structures
 
+Whilst basic data structures provide the fundamental building blocks of a piece
+of software, there are many more sophisticated structures suited to specialised
+tasks. In this section we'll take a brief look at a variety of different data
+structures that provide powerful interfaces to write simple code.
 
-- [numpy arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
-  are multidimensional array of numbers
-- [pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/index.html")
-  are collections of named 1-d arrays, i.e. excel spread-sheets on steroids
-- [xarray arrays](http://xarray.pydata.org/en/stable/) are multi-dimensional
-  arrays that can be indexed with rich objects, e.g. an array indexed by
-  dates or by longitude and latitude, rather than by the numbers 0, 1, 2, 3.
-- [xarray datasets](http://xarray.pydata.org/en/stable/) are collections of
-  named [xarray arrays](http://xarray.pydata.org/en/stable/) that share some
-  dimensions.
-- [enum](https://docs.python.org/3/library/enum.html) represent objects that can
-  only take a few *values*, e.g. colors. Often useful for configuration options.
-- [networkx](https://networkx.github.io/) and
-  [graph-tools](https://graph-tool.skewed.de/) implement a number of graph
-  structures and graph algorithms.
+Getting access to advanced data structures often involves installing additional
+libraries. As a rule of thumb, for any data structure you can think of somebody
+will already have published an implementation of it and its strongly recommended
+to use an available version rather than try to write one from scratch. We've
+discussed the best approach to managing dependencies for a project already.
+
+### Pandas Data Frames
+
+The excellent and very powerful Panda's package is the go to resource for
+dealing with tabular data. Anything you might think of using Excel for Panda's
+can do better. It leans heavily on NumPy for efficient numerical operations
+whilst providing a high level interface for dealing with rows and columns of
+data via [pandas.DataFrame][pandas].
+
+[pandas]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html
+
+```python
+# working with tabular data in nested lists
+
+data = [
+    ["col1", "col2", "col3"],
+    [0, 1, 2],
+    [6, 7, 8],
+    [0, 7, 8],
+]
+
+# get a single row or column
+row = data[0]
+col = [row[data[0].index("col1")] for row in data]
+
+# filter out rows where col1 != 0
+[data[0]] + [row for row in data[1:] if row[0] == 0]
+
+# operate on groups of rows based on the value of col1
+for val in set([row[0] for row in data[1:]]):
+    rows = [row for row in data[1:] if row[0] == val]
+
+# vs
+
+import pandas as pd
+
+# many flexible ways to create a dataframe e.g. import from csv, but here we
+# use the use the existing data.
+dataframe = pd.DataFrame(data[1:], columns=data[0])
+
+# get a single row or column
+row = dataframe.iloc[0]
+col = dataframe["col1"]
+
+# filter out rows where col1 != 0
+dataframe[dataframe["col1"] == 0]
+
+# operate on groups of rows based on the value of col1
+dataframe.groupby("col1")
+```
+
+### Balltrees
+
+A common requirement across many fields is working with data points within a 2d,
+3d or higher dimensioned space where you often need to work with distances
+between points. It is tempting in this case to reach for lists or arrays but
+balltrees provide an interesting and very performant alternative in some
+cases. An implementation is provided in Python by the [scikit-learn][] library.
+
+[scikit-learn]: https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html
+
+```python
+# Which point is closest to the centre of a 2-d space?
+
+points = [
+    [0.1, 0.1],
+    [1.0, 0.1],
+    [0.2, 0.2],
+    [0.1, 0.3],
+    [0.9, 0.2],
+    [0.2, 0.3],
+]
+centre = [0.5, 0.5] # centre of our space
+
+# Using lists
+
+distances = []
+for i, point in enumerate(points):
+    dist = ((centre[0] - point[0])**2 + (centre[1] - point[1])**2)**0.5
+    distances.append(dist)
+
+smallest_dist = sorted(distances)[0]
+nearest_index = distances.index(smallest_dist)
+
+# vs
+
+from sklearn.neighbors import BallTree
+
+balltree = BallTree(points)
+smallest_dist, nearest_index = balltree.query([centre], k=1)
+```
+
+# Graphs and Networks
+
+Another type of data structure that spans many different research domains are
+graphs/networks. There are many complex algorithms that can be applied to graphs
+so checkout the NetworkX library for its [data structures][networkx].
+
+[networkx]: https://networkx.org/documentation/stable/tutorial.html
+
+```python
+edges = [
+    [0, 1],
+    [1, 2],
+    [2, 4],
+    [3, 1]
+]
+
+# Using lists
+
+# get the degree (number of connected edges) of node 1
+
+degree_of_1 = 0
+for edge in edges:
+    if 1 in edge:
+        degree_of_1 += 1
+
+# vs
+
+import networkx as nx
+
+graph = nx.Graph(edges)
+
+# get the degree (number of connected edges) of node 1
+graph.degree[1]
+
+# easy to perform more advanced graph operations e.g.
+graph.subgraph([1,2,4])
+```
 
 ## Custom data structures: Data classes
 
@@ -319,24 +517,26 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
   `numpy` array is and how to use it. But even your future self might not know
   how to use your very special class.
 
-
 > ## Exploring data structures
 >
-> In your own time, find out all the thing data structures can do for you:
->
-> - [list](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists),
-> - [set](https://docs.python.org/3/tutorial/datastructures.html#sets)
-> - [dict](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
->
-> As well as other standard data structures:
+> Take some time to read in more detail about any of the data structures covered
+> above or those below:
 >
 > - [deques](https://docs.python.org/3/library/collections.html#collections.deque)
 > - [named tuples](https://docs.python.org/3/library/collections.html#collections.namedtuple)
 > - [counters](https://docs.python.org/3/library/collections.html#collections.Counter)
-> - [dates](https://docs.python.org/2/library/datetime.html)
->
-> All **modern** languages will have equivalents, outside of "Modern Fortran".
->
+> - [dates](https://docs.python.org/3/library/datetime.html)
+> - [enum](https://docs.python.org/3/library/enum.html) represent objects that can
+>   only take a few *values*, e.g. colors. Often useful for configuration options.
+> - [numpy arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
+>   (multidimensional array of numbers)
+> - [xarray arrays](http://xarray.pydata.org/en/stable/) (multi-dimensional
+>   arrays that can be indexed with rich objects, e.g. an array indexed by
+>   dates or by longitude and latitude, rather than by the numbers 0, 1, 2, 3)
+> - [xarray datasets](http://xarray.pydata.org/en/stable/) (collections of
+>   named [xarray arrays](http://xarray.pydata.org/en/stable/) that share some
+>   dimensions.)
+> 
 > Don't reinvent the square wheel.
 {: .challenge}
 

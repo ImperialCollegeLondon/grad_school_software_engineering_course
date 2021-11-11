@@ -112,7 +112,7 @@ systems.
 >    conda activate course
 >    ```
 >
-> 1. And check python knows about the installed packages. Start a Python
+> 1. And check Python knows about the installed packages. Start a Python
 >    interpreter with the command `python` then:
 >
 >    ```python
