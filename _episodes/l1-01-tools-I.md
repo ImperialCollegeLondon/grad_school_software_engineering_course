@@ -80,7 +80,7 @@ systems.
 >    ```yaml
 >    name: course
 >    dependencies:
->      - python>=3.8
+>      - python==3.9
 >      - flake8
 >      - pylint
 >      - black
