@@ -1,7 +1,7 @@
 ---
-title: "Design Patterns"
-teaching: 15
-exercises: 15
+title: "Advanced Topic: Design Patterns"
+teaching: 30
+exercises: 30
 questions:
 - How can we avoid re-inventing the wheel when designing code?
 - How can we transfer known solutions to our code?
