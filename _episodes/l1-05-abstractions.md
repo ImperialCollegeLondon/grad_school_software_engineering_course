@@ -1,7 +1,7 @@
 ---
 title: "Structuring code"
-teaching: 10
-exercises: 20
+teaching: 15
+exercises: 10
 questions:
 - How can we create simpler and more modular codes?
 objectives:
