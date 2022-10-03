@@ -1,7 +1,7 @@
 ---
 title: "Tools I: Packaging and virtual-environments"
-teaching: 4
-exercises: 6
+teaching: 5
+exercises: 10
 questions:
 - How to use a package manager to install third party tools and libraries
 objectives:

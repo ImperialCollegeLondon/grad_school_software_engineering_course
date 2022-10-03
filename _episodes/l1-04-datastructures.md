@@ -1,7 +1,7 @@
 ---
 title: "Data Structures"
 teaching: 30
-exercises: 20
+exercises: 25
 questions:
 - How can data structures simplify codes?
 objectives:

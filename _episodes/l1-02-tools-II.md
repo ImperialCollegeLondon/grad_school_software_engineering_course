@@ -1,7 +1,7 @@
 ---
 title: "Tools II: Code Formatters"
-teaching: 3
-exercises: 2
+teaching: 5
+exercises: 5
 questions:
 - How to format code with no effort on the part of the coder?
 objectives:
