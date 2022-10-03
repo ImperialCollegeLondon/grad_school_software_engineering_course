@@ -8,6 +8,12 @@ remotely so please make sure you have access to a suitable computer. All
 attendees should download install the applications Conda, Visual Studio Code and
 Git.
 
+> ## Important!
+>
+> Make sure that you have the most recent versions of Conda and VSCode. Some
+> features used in this lesson will not work with older versions.
+{: .callout}
+
 ## Conda
 
 Conda is a Python distribution and package manager. We use both features to
