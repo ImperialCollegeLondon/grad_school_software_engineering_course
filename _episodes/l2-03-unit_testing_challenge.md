@@ -56,12 +56,12 @@ with the _exact_ (analytical) solution for the boundary conditions (i.e. the
 temperature of the end being fixed at zero). The test is correct but failing -
 indicating that there is a bug in the code.
 
-> ## Testing (and fixing!) the code
->
-> Work by yourself or with a partner on these test-driven development tasks. Don't
-> hesitate to ask a demonstrator if you get stuck!
->
-> ### Separation of concerns
+## Testing (and fixing!) the code
+
+Work by yourself or with a partner on these test-driven development tasks. Don't
+hesitate to ask a demonstrator if you get stuck!
+
+> ## Separation of concerns
 >
 > First we'll refactor the code, increasing its modularity. We'll extract the
 > code that performs a single time step into a new function that can be verified
@@ -133,11 +133,12 @@ indicating that there is a bug in the code.
 > > ```
 > >
 > {: .solution}
->
-> Now we'll add some further tests to ensure the code is more suitable for
-> publication.
->
-> ### Testing for exceptions
+{: .challenge}
+
+Now we'll add some further tests to ensure the code is more suitable for
+publication.
+
+> ## Testing for exceptions
 >
 > We want the `step()` function to
 > [raise](https://docs.python.org/3/tutorial/errors.html#raising-exceptions) an
@@ -168,8 +169,9 @@ indicating that there is a bug in the code.
 > > ```
 > >
 > {: .solution}
->
-> ### Adding parametrisation
+{: .challenge}
+
+> ## Adding parametrisation
 >
 > Parametrise `test_heat()` to ensure the approximation is valid for some other
 > combinations of `L` and `tmax` (ensuring that the stability condition remains
@@ -192,12 +194,13 @@ indicating that there is a bug in the code.
 >
 > After completing these two steps check the coverage of your tests via the Test
 > Output panel - it should be 100%.
->
-> The full, final versions of [diffusion.py](https://github.com/ImperialCollegeLondon/diffusion/blob/develop/diffusion.py)
-> and [test_diffusion.py](https://github.com/ImperialCollegeLondon/diffusion/blob/develop/test_diffusion.py)
-> are available on GitHub.
->
-> ### Bonus task(s)
+{: .challenge}
+
+The full, final versions of [diffusion.py](https://github.com/ImperialCollegeLondon/diffusion/blob/develop/diffusion.py)
+and [test_diffusion.py](https://github.com/ImperialCollegeLondon/diffusion/blob/develop/test_diffusion.py)
+are available on GitHub.
+
+> ## Bonus tasks
 >
 > - Write a doctest-compatible docstring for `step()` or `heat()`
 > - Write at least one test for our currently untested `linspace()` function
