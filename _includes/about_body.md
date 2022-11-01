@@ -6,9 +6,9 @@ groups on a wide range of projects whilst also organising community events and
 training (such as this) for the benefit of the research community. You can find 
 out more at the [RSE team website][RSE] and the [Imperial RSE Community 
 website][community]. You can also consult the expertise of the RSE team at the 
-weekly [RCS clinic][clinic].
+forthweekly [Code Surgeries][surgery].
 
-[RSE]: https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/research-software-engineering/
+[RSE]: https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/
 [community]: https://www.imperial.ac.uk/computational-methods/rse/
-[clinic]: http://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/attend-a-clinic/
+[surgery]: https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/code-surgeries/
 
