@@ -24,33 +24,42 @@ code such as:
 - disallow nesting more than n deep
 - detect code-smells (patterns that are often bugs, e.g. two functions with the
   same name)
-- static type detection ([mypy](http://mypy-lang.org/)) where we tell the editor
-  what kind of objects (`dict`, `list`, `int`, etc) a function expects
+- requiring all code to be appropriately documented
 
 Consistent styles make a code more consistent and easier to read, whether or not
 you agree with the style. Using an automated linter avoids bike-shedding since
 the linter is the final arbiter.
 
+Linters can also catch common errors such as:
+
+- code that is never executed
+- code with undefined behaviour
+- variables that are never used
+
 ## Why does linting matter?
 
 - Code is read more often than written
+- Ensures all code in a project is consistent, even if contributed by multiple
+  authors
+- Prevent simple bugs and mistakes
+- Linters shortcut the `edit-run-debug and repeat` workflow
 - Setting up a linter in your editor takes 5 minutes
 - Those 5 minutes are redeemed across the lifetime of the project
-- Linters shortcut the `edit-run-debug and repeat` workflow
 
 ## Rules for choosing linters
 
-1. Choose a few
+1. Choose one or more
 1. Stick with them
 
 We chose:
 
 - [flake8](https://pypi.org/project/black/) because it is simple
 - [pylint](https://www.pylint.org/) because it is (too?) extensive
-- [mypy](http://mypy-lang.org/) because it helps keep track of object types -
-  check out the use of [type hints] in Python
 
-[type hints]: https://www.python.org/dev/peps/pep-0484/
+Checkout [GitHub.com: Awesome Linters] to see the range of linters available for
+different languages.
+
+[GitHub.com: Awesome Linters]: https://github.com/caramelomartins/awesome-linters#markdown
 
 > ## Exercise
 >
