@@ -79,8 +79,14 @@ With integers, `+` is an *addition*, for strings it's a *concatenation*.
 - we would have to reinvent how to add numbers, and multiply, and divide them
   e.g.
 
-  ```
+  ```python
   str(int("1") + int("2"))
+  ```
+
+  rather than just:
+
+  ```python
+  1 + 2
   ```
 
 - the wrong data structures can make your code vastly more complicated
@@ -143,6 +149,21 @@ Beware! The following might indicate a list is the wrong data structure:
    - apples and oranges
    - deeply nested list of lists of lists
 
+> ## Tuples
+>
+> Python also has tuples which are very similar to lists. The main difference is
+> that tuples are immutable which means that they can't be altered after
+> creation.
+>
+> ```python
+> >>> a = ("a", "b")
+> >>> a[0] = "c"
+> Traceback (most recent call last):
+>   File "<stdin>", line 1, in <module>
+> TypeError: 'tuple' object does not support item assignment
+> ```
+{: .callout}
+
 > ## Other languages
 > * C++:
 >   - [std::vector](https://en.cppreference.com/w/cpp/container/vector), fast
@@ -155,46 +176,6 @@ Beware! The following might indicate a list is the wrong data structure:
 >     equivalent to numpy arrays.
 > * Fortran: [array](https://www.tutorialspoint.com/fortran/fortran_arrays.htm),
 >     closer to numpy arrays than python lists
-{: .callout}
-
-## Tuples
-
-Tuples are **short** and **immutable** containers of other data.
-
-```
-(1, 2)
-("a", b")
-```
-
-Immutable means once that once created, elements cannot be added, removed or
-replaced:
-
-```python
->>> shape = 2, 4
->>> shape
-(2, 4)
->>> shape[1] = 4
-TypeError: 'tuple' object does not support item assignment
-```
-
-Tuple make sense when:
-
-- you need a short container with only a few elements
-- the list does not need to be modified or should not be modified
-- great for functions returning more than one *thing*
-
-Beware! The following might indicate a tuple is the wrong data structure:
-
-- the elements have no relationship (apples and oranges)
-- more than four or five elements
-- difficult to remember which element is what
-  (is it `result[1]` I need or `result[2]?`)
-
-> ## Other languages
-> * C++: [std::tuple](https://en.cppreference.com/w/cpp/utility/tuple)
-> * R: cran package [tuple](https://cran.r-project.org/web/packages/tuple/index.html)
-> * Julia: tuples and [named tuples](https://docs.julialang.org/en/v1/base/base/#Core.NamedTuple)
-> * Fortran: Nope. Nothing.
 {: .callout}
 
 ## Sets
@@ -296,8 +277,9 @@ Beware! The following might indicate a dict is the wrong data structure:
 >   they were obtained* (assume no duplicates)
 > - A collection relating player names to their achievements
 >
-> Implement the data structures as seems most appropriate and populate them with
-> some example data. Now have a go at writing code for the following actions:
+> You're also told that the following operations on these datastructures will be
+> needed:
+>
 > - get a player's achievements
 > - get a player's first achievement
 > - add a new achievement for a player
@@ -305,8 +287,10 @@ Beware! The following might indicate a dict is the wrong data structure:
 > - get a collection of the achievements a player doesn't have yet
 > - find the achievements "player1" has that "player2" doesn't
 >
-> If you picked the right structures, each action should be able to be
-> implemented as a single line of code.
+> Implement the data structures as seems most appropriate and populate them with
+> some example data. Then have a go at writing code for some of the necessary
+> operations. If you picked the right structures, each action should be able to
+> be implemented as a single line of code.
 >
 > > ## Solution
 > > ```python
@@ -358,7 +342,7 @@ discussed the best approach to managing dependencies for a project already.
 ### Pandas Data Frames
 
 The excellent and very powerful Panda's package is the go to resource for
-dealing with tabular data. Anything you might think of using Excel for Panda's
+dealing with tabular data. Anything you might think of using Excel for, Panda's
 can do better. It leans heavily on NumPy for efficient numerical operations
 whilst providing a high level interface for dealing with rows and columns of
 data via [pandas.DataFrame][pandas].
@@ -559,7 +543,7 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 >     ```
 >
 > 1. Given a word, find and modify its definition
-> 1. Do the same with a `dict`
+> 1. Repeat 1. and 2. with a `dict` as the datastructure.
 > 1. Create a subset dictionary (including definitions) of words rhyming with
 >    "arf" using either the two-`list` or the `dict` implementation
 > 1. If now we want to also encode "noun" and "verb", what data structure could we
@@ -569,23 +553,14 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > > ## Dictionary implemented with lists
 > >
 > > ```python
-> > from typing import List, Text, Tuple
-> >
-> >
-> > def modify_definition(
-> >     word: Text, newdef: Text, words: List[Text], definitions: List[Text]
-> > ) -> List[Text]:
-> >     from copy import copy
-> >
+> > def modify_definition(word, newdef, words, definitions):
 > >     index = words.index(word)
-> >     definitions = copy(definitions)
+> >     definitions = definitions.copy()
 > >     definitions[index] = newdef
 > >     return definitions
 > >
 > >
-> > def find_rhymes(
-> >     rhyme: Text, words: List[Text], definitions: List[Text]
-> > ) -> Tuple[List[Text], List[Text]]:
+> > def find_rhymes(rhyme, words, definitions):
 > >     result_words = []
 > >     result_definitions = []
 > >     for word, definition in zip(words, definitions):
@@ -624,35 +599,18 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > >     assert rhymers[1][0] == definitions[0]
 > >     assert rhymers[1][1] == definitions[2]
 > >     assert rhymers[1][2] == definitions[3]
-> >
-> >
-> > if __name__ == "__main__":
-> >
-> >     # this is one way to include tests.
-> >     # the second session will introduce a better way.
-> >     testme()
 > > ```
 > {: .solution}
-> 
 > > ## Dictionary implemented with a dictionary
 > >
 > > ```python
-> > from typing import List, Text, Tuple, Mapping
-> >
-> >
-> > def modify_definition(
-> >     word: Text, newdef: Text, dictionary: Mapping[Text, Text]
-> > ) -> List[Text]:
-> >     from copy import copy
-> >
-> >     result = copy(dictionary)
+> > def modify_definition(word, newdef, dictionary):
+> >     result = dictionary.copy()
 > >     result[word] = newdef
 > >     return result
 > >
 > >
-> > def find_rhymes(
-> >     rhyme: Text, dictionary: Mapping[Text, Text]
-> > ) -> Tuple[List[Text], List[Text]]:
+> > def find_rhymes(rhyme, dictionary):
 > >     return {
 > >         word: definition
 > >         for word, definition in dictionary.items()
@@ -687,14 +645,8 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > >     assert set(rhymers) == {"barf", "scarf", "snarf"}
 > >     for word in {"barf", "scarf", "snarf"}:
 > >         assert rhymers[word] == dictionary[word]
-> >
-> >
-> > if __name__ == "__main__":
-> >
-> >     testme()
 > > ```
 > {: .solution}
-> 
 > > ## More complex data structures for more complex dictionary
 > >
 > > There can be more than one good answer. It will depend on how the dictionary
