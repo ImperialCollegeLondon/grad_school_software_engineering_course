@@ -59,7 +59,7 @@ We chose:
 Checkout [GitHub.com: Awesome Linters] to see the range of linters available for
 different languages.
 
-[GitHub.com: Awesome Linters]: https://github.com/caramelomartins/awesome-linters#markdown
+[GitHub.com: Awesome Linters]: https://github.com/caramelomartins/awesome-linters
 
 > ## Exercise
 >
