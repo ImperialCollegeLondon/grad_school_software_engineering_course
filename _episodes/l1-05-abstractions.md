@@ -125,11 +125,11 @@ In the code above we have made some choices:
 - saving output files is separate from running computations
 - objects are created in one go
 
-A few examples of what **not** to do.
+## A few examples of what **not** to do.
 
 ### Mixing reading files and creating objects
 
-Objects that do need files to be created are easy to create and re-create,
+Objects that do need files to be created are hard to create and re-create,
 especially during testing.
 
 ```python
@@ -263,7 +263,7 @@ but to modify an input argument. Still, wherever possible avoid doing it.
 
 ### Global variables
 
-**NEVER EVER EVER** use global variables. They make the dataflow complex by
+Avoid the use global variables, when possible. They make the dataflow complex by
 essence.
 
 ```python
@@ -292,7 +292,7 @@ anywhere.
 > best not to use them.
 {: .callout}
 >
-> ## Disentangling a recipe
+> ## Disentangling a recipe (10 min)
 >
 > Disentangle the recipe below into separable concerns and level of details.
 > Ensure the flow of ingredients from transform to transform to final dish is
