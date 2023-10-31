@@ -31,7 +31,7 @@ keypoints:
 We chose [black](https://pypi.org/project/black/) because it has very few
 options with which to fiddle.
 
->## Formatting example
+>## Formatting example (5 min)
 >
 > Using Visual Studio Code:
 >
