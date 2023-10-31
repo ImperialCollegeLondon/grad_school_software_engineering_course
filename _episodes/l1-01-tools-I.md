@@ -62,7 +62,7 @@ It is also the de facto package manager on Imperial's [HPC
 cluster](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/applications/conda/)
 systems.
 
-## Example
+## Example (10 min)
 
 > ## Installing and using an environment
 >
