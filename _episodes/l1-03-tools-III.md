@@ -61,7 +61,7 @@ different languages.
 
 [GitHub.com: Awesome Linters]: https://github.com/caramelomartins/awesome-linters
 
-> ## Exercise
+> ## Exercise (10 min)
 >
 > Setup VS Code:
 >
