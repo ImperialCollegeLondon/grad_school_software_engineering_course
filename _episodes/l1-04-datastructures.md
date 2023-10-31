@@ -265,7 +265,7 @@ Beware! The following might indicate a dict is the wrong data structure:
 > * Fortran: Nope. Nothing.
 {: .callout}
 
-> ## Basic Data Structure Practice
+> ## Basic Data Structure Practice (15 min)
 >
 > You're writing a piece of code to track the achievements of players of a
 > computer game. You've been asked to design the data structures the code will
@@ -524,7 +524,7 @@ Beware! The following might indicate a `dataclass` is the wrong data structure:
 > Don't reinvent the square wheel.
 {: .challenge}
 
-> ## Digital Oxford Dictionary, the wrong way and the right way
+> ## Digital Oxford Dictionary, the wrong way and the right way (10 min)
 > 1. Implement an oxford dictionary with two `list`s, one for words, one for
 > definitions:
 >
