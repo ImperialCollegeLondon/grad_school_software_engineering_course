@@ -56,7 +56,7 @@ with the _exact_ (analytical) solution for the boundary conditions (i.e. the
 temperature of the end being fixed at zero). The test is correct but failing -
 indicating that there is a bug in the code.
 
-## Testing (and fixing!) the code
+## Testing (and fixing!) the code (50 min)
 
 Work by yourself or with a partner on these test-driven development tasks. Don't
 hesitate to ask a demonstrator if you get stuck!
