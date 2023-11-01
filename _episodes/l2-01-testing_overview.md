@@ -135,7 +135,7 @@ codebase that is being exercised by its tests. This can be useful to ensure, for
 instance, that all logical branching points within the code are being used by
 the test inputs.
 
-> ## Testing and Coverage
+> ## Testing and Coverage (5 min)
 >
 > Consider the following Python function:
 >
