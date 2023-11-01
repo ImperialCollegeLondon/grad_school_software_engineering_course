@@ -221,7 +221,7 @@ def recursive_fibonacci(n):
     return n if n <=1 else recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2)
 ```
 
-## Hands-on unit testing
+## Hands-on unit testing (10 min)
 
 > ## Getting started
 >
