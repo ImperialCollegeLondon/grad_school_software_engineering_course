@@ -65,6 +65,18 @@ software design patterns: typical solutions to common problems
   [anti-patterns](https://en.wikipedia.org/wiki/Anti-pattern#Software_engineering),
   i.e. patterns that should **not** be used
 
+### Resources
+
+There are plenty of resources out there that you can follow to better understand 
+design patterns. Here you have a couple that we have found useful:
+
+- [Refactoring.guru](https://refactoring.guru/): Page with general description of
+    patterns, with pseudocode, applicable to any programming language. It also
+    has a section on (surprise!) refactoring your code.
+- [Design patterns in Python](https://stackabuse.com/design-patterns-in-python/):
+    Series of blog posts on the application of several design patterns in Python
+    specifically, with example code.
+
 # Iterator Pattern
 
 Iterators separates _generating items over which to loop_ from _doing the body
