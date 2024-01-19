@@ -80,7 +80,7 @@ systems.
 >    ```yaml
 >    name: course
 >    dependencies:
->      - python==3.9
+>      - python==3.11
 >      - flake8
 >      - pylint
 >      - black
@@ -156,14 +156,14 @@ systems.
 > > usage: conda-env update [-h] [-n ENVIRONMENT | -p PATH] [-f FILE] [--prune]
 > >                         [--json] [-v] [-q]
 > >                         [remote_definition]
-> > 
+> >
 > > Update the current environment based on environment file
-> > 
+> >
 > > Options:
-> > 
+> >
 > > positional arguments:
 > >   remote_definition     remote environment definition / IPython notebook
-> > 
+> >
 > > optional arguments:
 > >   -h, --help            Show this help message and exit.
 > >   -f FILE, --file FILE  environment definition (default: environment.yml)
@@ -182,7 +182,7 @@ systems.
 {: .challenge}
 
 [prune bug]: https://github.com/conda/conda/issues/7279
- 
+
 ## Selecting an environment in Visual Studio Code
 
 If you haven't already, see the [setup guide](../setup) for instructions on how
