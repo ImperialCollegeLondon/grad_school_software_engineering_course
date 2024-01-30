@@ -182,7 +182,6 @@ systems.
 > {: .solution}
 {: .challenge}
 
-[prune bug]: https://github.com/conda/conda/issues/7279
 
 ## Selecting an environment in Visual Studio Code
 
