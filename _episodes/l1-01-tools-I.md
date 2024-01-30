@@ -80,7 +80,7 @@ systems.
 >    ```yaml
 >    name: course
 >    dependencies:
->      - python==3.9
+>      - python==3.11
 >      - flake8
 >      - pylint
 >      - black
@@ -156,14 +156,14 @@ systems.
 > > usage: conda-env update [-h] [-n ENVIRONMENT | -p PATH] [-f FILE] [--prune]
 > >                         [--json] [-v] [-q]
 > >                         [remote_definition]
-> > 
+> >
 > > Update the current environment based on environment file
-> > 
+> >
 > > Options:
-> > 
+> >
 > > positional arguments:
 > >   remote_definition     remote environment definition / IPython notebook
-> > 
+> >
 > > optional arguments:
 > >   -h, --help            Show this help message and exit.
 > >   -f FILE, --file FILE  environment definition (default: environment.yml)
@@ -172,17 +172,17 @@ systems.
 > > {: .output}
 > >
 > > Notice the `--prune` option. From the documentation it looks like we would
-> > need to run `conda env update --prune -f "path_to_environment.yml"`. There
-> > is an extra catch however, there is a long standing [bug][prune bug] in
-> > conda that means that the `--prune` option doesn't work properly. This means
-> > that the only reliable way to remove packages from your environment after
-> > they have been removed from `environment.yml` is to rebuild the environment
-> > from scratch.
+> > need to run `conda env update --prune -f "path_to_environment.yml"`. That
+> > flag is necessary to really uninstall unnecesary packages and update the
+> > environment. After running this command, `import resquest` will fail.
+> >
+> > **Note**: If you are running `conda<23.9.0`, `import request` will still
+> > work as there was a bug before that. You can check your conda version with
+> > `conda --version`.
 > {: .solution}
 {: .challenge}
 
-[prune bug]: https://github.com/conda/conda/issues/7279
- 
+
 ## Selecting an environment in Visual Studio Code
 
 If you haven't already, see the [setup guide](../setup) for instructions on how
