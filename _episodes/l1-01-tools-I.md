@@ -182,7 +182,6 @@ systems.
 > {: .solution}
 {: .challenge}
 
-
 ## Selecting an environment in Visual Studio Code
 
 If you haven't already, see the [setup guide](../setup) for instructions on how
