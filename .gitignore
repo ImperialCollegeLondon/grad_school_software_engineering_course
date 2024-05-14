@@ -1,5 +1,6 @@
 *.pyc
 *~
+*.zip
 .DS_Store
 .ipynb_checkpoints
 .sass-cache

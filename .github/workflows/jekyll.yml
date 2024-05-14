@@ -2,19 +2,23 @@ name: Jekyll site CI
 
 on:
   push:
-    branches: [ gh-pages ]
+    branches: [gh-pages]
   pull_request:
-    branches: [ gh-pages ]
+    branches: [gh-pages]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && cd /srv/jekyll && make site"
+      - uses: actions/checkout@v2
+
+      - name: Generate course.zip
+        working-directory: code
+        run: zip -r course.zip course
+
+      - name: Build the site in the jekyll/builder container
+        run: |
+          docker run \
+          -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+          jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && cd /srv/jekyll && make site"
