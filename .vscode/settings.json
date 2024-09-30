@@ -1,15 +1,10 @@
 {
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "python.linting.enabled": true,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+      },
     "editor.formatOnType": true,
-    "python.formatting.provider": "black",
     "editor.formatOnSave": true,
-    "python.formatting.blackArgs": [
-        "-l 80"
+    "editor.rulers": [
+        88
     ],
-    "python.linting.pylintUseMinimalCheckers": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.mypyEnabled": true
 }
