@@ -229,7 +229,7 @@ def recursive_fibonacci(n):
 >
 > 1. If you haven't already, see the [setup guide](../setup) for instructions on
 >    how to install Visual Studio Code and conda.
-> 1. Download and extract [this zip file](https://github.com/ImperialCollegeLondon/diffusion/archive/master.zip).
+> 1. Download and extract [this zip file](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_diffusion/archive/refs/heads/main.zip).
 >    If using an ICT managed PC please be sure to do this in your user area on the
 >    C: drive i.e. `C:\Users\your_username`
 >    - _Note that files placed here are not persistent so you must remember to take

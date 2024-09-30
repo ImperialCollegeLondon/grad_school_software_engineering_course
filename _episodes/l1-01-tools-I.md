@@ -69,7 +69,7 @@ systems.
 > 1. If you haven't already, see the [setup guide](../setup) for instructions
 >    on how to install Conda and Visual Studio Code.
 >
-> 1. Download this [zip archive](../code/course.zip) and extract it. Start Visual
+> 1. Download this [zip archive](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_messy_code/archive/refs/heads/main.zip) and extract it. Start Visual
 >    Studio Code and select "Open folder..." from the welcome screen. Navigate
 >    to the folder created from the archive and press "Select Folder".
 >
