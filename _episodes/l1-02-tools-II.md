@@ -32,7 +32,7 @@ We chose [black](https://pypi.org/project/black/) because it has very few
 options with which to fiddle.
 
 > ## Formatters in other languages
-> - **R**: [styler](https://styler.r-lib.org/)
+> - **R**: [styler](https://styler.r-lib.org/), with [RStudio integration](https://styler.r-lib.org/reference/styler_addins.html).
 > - **C++**: [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
 > - **Fortran**: [findent](https://github.com/gnikit/findent-pypi) and [fprettify](https://github.com/pseewald/fprettify)
 {: .callout}
