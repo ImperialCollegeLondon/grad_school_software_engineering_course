@@ -13,6 +13,14 @@ keypoints:
 - This stored environment is then easy to audit and recreate
 ---
 
+> ## Other languages
+> This course will focus on Python, but **the general principles and recommendations are
+> equally applicable to any other programming language used in research**. Throughout the
+> episodes, we will include indications on what are the equivalent tools and approaches in
+> other programming languages, such that interested readers can check what they should use 
+> in those cases.
+{: .callout}
+
 ## Python packages
 
 - There are tens of thousands of python packages
@@ -46,6 +54,12 @@ as well. Better known python package managers include
 |manage virtual envs        | ✅       | ❌  | ✅         |
 |easy interface             | ❌       | ✅  | ❌         |
 |fast                       | ❌       | ✅  | ✅         |
+
+> ## Package managers in other languages
+> - **R**: [packrat](https://rstudio.github.io/packrat/) and [checkpoint](https://www.rdocumentation.org/packages/checkpoint/versions/1.0.2)
+> - **C++**: [Conan](https://conan.io/) and [vcpkg](https://vcpkg.io/en/)
+> - **Fortran**: [Fortran Package Manager (FPM)](https://fpm.fortran-lang.org/)
+{: .callout}
 
 ## Rules for choosing a package manager
 
