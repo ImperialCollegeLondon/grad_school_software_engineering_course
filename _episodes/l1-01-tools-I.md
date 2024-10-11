@@ -13,14 +13,6 @@ keypoints:
 - This stored environment is then easy to audit and recreate
 ---
 
-> ## Other languages
-> This course will focus on Python, but **the general principles and recommendations are
-> equally applicable to any other programming language used in research**. Throughout the
-> episodes, we will include indications on what are the equivalent tools and approaches in
-> other programming languages, such that interested readers can check what they should use 
-> in those cases.
-{: .callout}
-
 ## Python packages
 
 - There are tens of thousands of python packages

@@ -69,4 +69,19 @@ To install VS Code follow the instructions
 You should then be able to launch VS Code and see something like:
 ![Screenshot of VS code](fig/vs-code.png)
 
+## Other languages
+
+This course will focus on Python, but **the general principles and recommendations are
+equally applicable to any other programming language used in research**. Throughout the
+episodes, we will include indications on what are the equivalent tools and approaches in
+other programming languages, such that interested readers can check what they should use 
+in those cases.
+
+Some useful links to integrate the Fortran and C++ tools that will be mentioned during the
+course can be found in:
+
+- **C++**: [C/C++ VSCode extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools), including a [full tutorial](https://code.visualstudio.com/docs/languages/cpp) on how to set VSCode to work with C++., but for Windows it might be easier to just use Visual Studio.
+- **Fortran**: [VSCode Modern Fortran extension](https://fortran-lang.github.io/vscode-fortran-support/), which integrates with the linters and formatters and the Fortran Language Server [fortls](https://fortls.fortran-lang.org/).
+
+
 {% include links.md %}
