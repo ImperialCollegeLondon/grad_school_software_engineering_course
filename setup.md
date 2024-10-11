@@ -84,4 +84,47 @@ course can be found in:
 - **Fortran**: [VSCode Modern Fortran extension](https://fortran-lang.github.io/vscode-fortran-support/), which integrates with the linters and formatters and the Fortran Language Server [fortls](https://fortls.fortran-lang.org/).
 
 
+## Codespaces
+
+This course is designed to teach you several fundamental concepts on software engineering
+good practices as well as helping you to setup your computer so you can keep developing your
+own code following these principles once the course is over. However, there are occasions
+when, vor a variety of reasons, installing and running the above tools and those described
+in the course just does not work as expected.
+
+Rather than holding your learning or that of your colleagues, if after a few minutes
+trying to diagnose and solve the problem things are not working, you can run the exercises
+of this course in [GitHub Codespaces](https://github.com/features/codespaces). Once the
+course is over, please [book a Code Surgery with us](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/code-surgeries/)
+and we will help you to fix whatever issue you were facing with your computer. 
+
+To use Codespaces with the course examples:
+
+1. Go to the GitHub repository containing the code for the example.
+2. Click in the green `Code` button, select the `Codespaces` tab and click in `Create codespace on main`
+A new tab will open in your brlowser, launching VSCode in there, creating a suitable virtual
+environment and installing the dependencies.
+
+![](fig/create_codespace.png)
+
+3. At some point, a pop-up message will ask if you want to install the recommended extensions. 
+Say 'yes' and wait until everything is installed. 
+
+![](fig/install_recommended.png)
+
+4. Now, you need to select the new python environment that has been installed. Open any
+python file and click in the Python version number label at the bottom, right corner.
+
+![](fig/choose_python.png)
+
+5. This will display at the top of the window a list of suitable Python environment. Select
+the recommended one, which should be the one that says `('venv')` or `('venv': conda)`.
+
+![](fig/select_venv.png)
+
+And that is all! You should be able to use this VSCode within the Codespace the same way you
+use it locally. You can close the tab and go back to the Codespace from the GitHub repo any
+time you want, and its state will be preserved for some time, but afterwards it will be
+shut down and any information there will be lost.
+
 {% include links.md %}
