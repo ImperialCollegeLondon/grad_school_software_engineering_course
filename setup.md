@@ -69,4 +69,20 @@ To install VS Code follow the instructions
 You should then be able to launch VS Code and see something like:
 ![Screenshot of VS code](fig/vs-code.png)
 
+## Other languages
+
+This course will focus on Python, but **the general principles and recommendations are
+equally applicable to any other programming language used in research**. Throughout the
+episodes, we will include indications on what are the equivalent tools and approaches in
+other programming languages, such that interested readers can check what they should use 
+in those cases.
+
+Some useful links to integrate the R, Fortran and C++ tools that will be mentioned during the
+course can be found in:
+
+- **R**: [RStudio](https://posit.co/download/rstudio-desktop/) is a popular IDE that has a set of tools to help you work productively with R (and also Python). If you don't want to download or install anything, then RStudio is also available on [Posit Cloud for free](https://posit.cloud/plans?utm_source=Website&utm_medium=IDE_Download&_gl=1*1owmnjw*_ga*NTgyNzIxNzg5LjE3MTI1ODc0Mzk.*_ga_2C0WZ1JHG0*MTcyODg5NzQ4My4yNi4wLjE3Mjg4OTc0ODMuMC4wLjA.). Alternatively, you can use [R in VSCode](https://code.visualstudio.com/docs/languages/r) (Refer: [R extension](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r)).
+- **C++**: [C/C++ VSCode extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools), including a [full tutorial](https://code.visualstudio.com/docs/languages/cpp) on how to set VSCode to work with C++., but for Windows it might be easier to just use Visual Studio.
+- **Fortran**: [VSCode Modern Fortran extension](https://fortran-lang.github.io/vscode-fortran-support/), which integrates with the linters and formatters and the Fortran Language Server [fortls](https://fortls.fortran-lang.org/).
+
+
 {% include links.md %}

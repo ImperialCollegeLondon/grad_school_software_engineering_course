@@ -88,6 +88,12 @@ Projects that use pytest:
 > testing methodologies and frameworks
 {: .callout}
 
+> ## Testing in other languages
+> - **R**: [testthat](https://testthat.r-lib.org/)
+> - **C++**: [GoogleTest](https://google.github.io/googletest/), [Boost Test](https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html) and [Catch 2](https://github.com/catchorg/Catch2). See [our C++ testing course using Google Test](https://imperialcollegelondon.github.io/unit_testing_Cpp/).
+> - **Fortran**: [Test-Drive](https://github.com/fortran-lang/test-drive) and [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit). See the [Fibonacci series example](https://github.com/ImperialCollegeLondon/fortran_fibonacci) coded in Fortran. 
+{: .callout}
+
 ### Code editors
 
 We've chosen [Visual Studio Code](https://code.visualstudio.com/) as our

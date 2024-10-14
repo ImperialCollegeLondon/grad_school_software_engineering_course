@@ -47,6 +47,12 @@ as well. Better known python package managers include
 |easy interface             | ❌       | ✅  | ❌         |
 |fast                       | ❌       | ✅  | ✅         |
 
+> ## Package managers in other languages
+> - **R**: [packrat](https://rstudio.github.io/packrat/) and [checkpoint](https://www.rdocumentation.org/packages/checkpoint/versions/1.0.2)
+> - **C++**: [Conan](https://conan.io/) and [vcpkg](https://vcpkg.io/en/)
+> - **Fortran**: [Fortran Package Manager (FPM)](https://fpm.fortran-lang.org/)
+{: .callout}
+
 ## Rules for choosing a package manager
 
 1. Choose one
