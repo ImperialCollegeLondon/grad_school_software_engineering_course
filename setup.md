@@ -89,7 +89,7 @@ course can be found in:
 This course is designed to teach you several fundamental concepts on software engineering
 good practices as well as helping you to setup your computer so you can keep developing your
 own code following these principles once the course is over. However, there are occasions
-when, vor a variety of reasons, installing and running the above tools and those described
+when, for a variety of reasons, installing and running the above tools and those described
 in the course just does not work as expected.
 
 Rather than holding your learning or that of your colleagues, if after a few minutes
