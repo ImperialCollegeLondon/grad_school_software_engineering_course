@@ -100,6 +100,14 @@ options with which to fiddle.
 > {: .solution}
 {: .challenge}
 
+> ## Messy code exercise in Codespaces
+> If you are having trouble setting up your system with `conda` and `vscode`, or running
+> through this exercise locally in your computer:
+> - Visit the [exercise repository in GitHub](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_messy_code).
+> - Run it in Codespaces
+> Check the information at the end of the [setup](../setup) on how to do that.
+{: .callout}
+
 [previous episode]: http://localhost:4000/l1-01-tools-I/index.html#selecting-an-environment-in-visual-studio-code
 
 {% include links.md %}

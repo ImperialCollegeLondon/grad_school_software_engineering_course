@@ -275,6 +275,14 @@ def recursive_fibonacci(n):
 >    demonstrator for help. It is essential for the next exercise.
 {: .challenge}
 
+> ## Diffusion exercise in Codespaces
+> If you are having trouble setting up your system with `conda` and `vscode`, or running
+> through this exercise locally in your computer:
+> - Visit the [exercise repository in GitHub](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_diffusion).
+> - Run it in Codespaces
+> Check the information at the end of the [setup](../setup) on how to do that.
+{: .callout}
+
 ## Advanced topics
 
 ### More pytest plugins
