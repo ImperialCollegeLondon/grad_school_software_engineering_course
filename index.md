@@ -3,27 +3,24 @@ layout: lesson
 root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
-Programming as a researcher can be a very intimidating experience. It
-can feel as though your code isn't "good enough" (as judged by some
-mysterious and opaque criteria), or that you're not coding in the
-"right way". The aim of this course is to help to address some of
-these concerns through an introduction to software engineering for
-researchers. Beyond just programming, software engineering is the
-practice and principle of writing software that is correct,
-sustainable and ready to share with colleagues and the wider research
-community.
 
-This course covers: 
-* Techniques and tools to improve the readability and quality of your code 
-* Structuring your code in a modular fashion to promote reuse and future extension
-* Testing frameworks and how to write tests 
+## About the RSE team
+
+Your instructors are part of Imperial's central Research Software Engineering (RSE)
+team, whose role is to improve the quality, impact and sustainability of research
+software. While most of our work is as hired coders and consultants on research
+projects, we also offer a number of free services, including training courses such as
+this one and one-to-one [code surgeries], where you can get advice and support with
+software development.
+
+You can find more information about our work and the services we offer [on our website].
+
+[on our website]: https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/
+[code surgeries]: https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/code-surgeries/
 
 > ## Prerequisites
 >
 > Any introductory (graduate school) level programming course
 {: .prereq}
-
-<!--- about_body.md is found in the _includes dir -->
-{% include about_body.md %}
 
 {% include links.md %}
