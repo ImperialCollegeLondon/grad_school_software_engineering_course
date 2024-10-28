@@ -87,14 +87,14 @@ course can be found in:
 
 ## Codespaces
 
-This course is designed to teach you several fundamental concepts on software engineering
+This course is designed to teach you several fundamental concepts from software engineering
 good practices as well as helping you to setup your computer so you can keep developing your
 own code following these principles once the course is over. However, there are occasions
 when, for a variety of reasons, installing and running the above tools and those described
 in the course just does not work as expected.
 
-Rather than holding your learning or that of your colleagues, if after a few minutes
-trying to diagnose and solve the problem things are not working, you can run the exercises
+Rather than holding up your learning or that of your colleagues, if after a few minutes
+trying to solve the problem things are still not working, you can run the exercises
 of this course in [GitHub Codespaces](https://github.com/features/codespaces). Once the
 course is over, please [book a Code Surgery with us](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/code-surgeries/)
 and we will help you to fix whatever issue you were facing with your computer. 
