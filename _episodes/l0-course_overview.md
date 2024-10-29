@@ -45,7 +45,7 @@ On completion of this workshop you will be able to:
 
 ## Delivery of the course
 
-Material will be delivered as a lecture with task following the Carpentries teaching
+Material will be delivered as a lecture with tasks following the Carpentries teaching
 style.
 
 - The instructor will walk you through the theoretical material of the course,
