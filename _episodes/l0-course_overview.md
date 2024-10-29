@@ -60,3 +60,5 @@ style.
   pink/orange one if you need support. A helper will go to you.
 - For online sessions, raise your hand if you are done with the exercise and write any
   questions or problems directly into the chat, so a helper can try to solve it.
+
+  {% include links.md %}
