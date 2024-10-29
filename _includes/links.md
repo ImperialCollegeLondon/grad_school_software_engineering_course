@@ -4,7 +4,7 @@
 [ci]: http://communityin.org/
 [coc-reporting]: https://docs.carpentries.org/topic_folders/policies/incident-reporting.html
 [coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
-[concept-maps]: https://carpentries.github.io/instructor-training/05-memory/
+[concept-maps]: https://carpentries.github.io/instructor-training/05-memory
 [contrib-covenant]: https://contributor-covenant.org/
 [contributing]: {{ repo_url }}/blob/{{ source_branch }}/CONTRIBUTING.md
 [cran-checkpoint]: https://cran.r-project.org/package=checkpoint
@@ -12,12 +12,10 @@
 [cran-stringr]: https://cran.r-project.org/package=stringr
 [dc-lessons]: http://www.datacarpentry.org/lessons/
 [email]: mailto:team@carpentries.org
-[github-importer]: https://import.github.com/
 [importer]: https://github.com/new/import
 [jekyll-collection]: https://jekyllrb.com/docs/collections/
 [jekyll-install]: https://jekyllrb.com/docs/installation/
 [jekyll-windows]: http://jekyll-windows.juthilo.com/
-[jekyll]: https://jekyllrb.com/
 [jupyter]: https://jupyter.org/
 [kramdown]: https://kramdown.gettalong.org/
 [lc-lessons]: https://librarycarpentry.org/lessons/
