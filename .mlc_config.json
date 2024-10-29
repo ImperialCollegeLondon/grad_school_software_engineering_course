@@ -1,0 +1,6 @@
+{
+    "ignorePatterns": [
+        "^https://opensource.org/",
+        "^https://turing.ac.uk/"
+    ]
+}
