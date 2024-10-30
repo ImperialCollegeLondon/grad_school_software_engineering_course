@@ -28,8 +28,12 @@ keypoints:
 1. Choose one
 1. Stick with it
 
-We chose [black](https://pypi.org/project/black/) because it has very few
-options with which to fiddle.
+We chose [ruff](https://astral.sh/ruff) because it is modern, comprehensive
+and runs very quickly. The ruff package is a collection of tools for ensuring
+code quality in Python, including a code formatter and linter. We discuss its
+formatter here, but will discuss the linter later as well.
+
+A simpler alternative formatter is [black](https://pypi.org/project/black/), which has fewer options to fiddle with.
 
 > ## Formatters in other languages
 > - **R**: [styler](https://styler.r-lib.org/), with [RStudio integration](https://styler.r-lib.org/reference/styler_addins.html).
