@@ -24,9 +24,7 @@ practice and principle of writing software that is correct,
 sustainable and ready to share with colleagues and the wider research
 community.
 
-Please, if you have not done so, yet, go through [the setup instructions] for the course.
-
-[the setup instructions]: {% link setup.md %}
+Please, if you have not done so, yet, go through [the setup instructions][lesson-setup] for the course.
 
 ## Syllabus 
 
