@@ -15,7 +15,7 @@ keypoints:
 
 ## What is linting?
 
-Linters enforce [style rules](https://lintlyci.github.io/Flake8Rules/) on your
+Linters enforce [style rules](https://docs.astral.sh/ruff/rules/) on your
 code such as:
 
 - disallow one letter variables outside of loops
@@ -51,7 +51,12 @@ Linters can also catch common errors such as:
 1. Choose one or more
 1. Stick with them
 
-We chose:
+We prefer:
+
+- [ruff](https://astral.sh/ruff) for fast and modern general linting
+- [mypy](https://mypy.readthedocs.io/) for preventing type-related code errors
+
+You may also see these linters used by some projects:
 
 - [flake8](https://pypi.org/project/black/) because it is simple
 - [pylint](https://www.pylint.org/) because it is (too?) extensive
