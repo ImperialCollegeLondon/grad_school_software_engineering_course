@@ -58,7 +58,7 @@ We prefer:
 
 You may also see these linters used by some projects:
 
-- [flake8](https://pypi.org/project/black/) because it is simple
+- [flake8](https://flake8.pycqa.org/) because it is simple
 - [pylint](https://www.pylint.org/) because it is (too?) extensive
 
 Checkout [GitHub.com: Awesome Linters] to see the range of linters available for
