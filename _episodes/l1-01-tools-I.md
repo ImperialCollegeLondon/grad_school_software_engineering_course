@@ -87,9 +87,7 @@ systems.
 >    name: course
 >    dependencies:
 >      - python==3.11
->      - flake8
->      - pylint
->      - black
+>      - ruff
 >      - mypy
 >      - requests
 >    ```
