@@ -51,15 +51,15 @@ Linters can also catch common errors such as:
 1. Choose one or more
 1. Stick with them
 
-We prefer:
-
-- [ruff](https://astral.sh/ruff) for fast and modern general linting
-- [mypy](https://mypy.readthedocs.io/) for preventing type-related code errors
+We prefer [ruff](https://astral.sh/ruff) for fast and modern general linting.
+`ruff` is also a great choice for a linter because it incorporates the checks of
+multiple other linters, such as `flake8` and `pydocstyle`, into a single tool.
 
 You may also see these linters used by some projects:
 
 - [flake8](https://flake8.pycqa.org/) because it is simple
 - [pylint](https://www.pylint.org/) because it is (too?) extensive
+- [mypy](https://mypy.readthedocs.io/) for preventing type-related code errors
 
 Checkout [GitHub.com: Awesome Linters] to see the range of linters available for
 different languages.

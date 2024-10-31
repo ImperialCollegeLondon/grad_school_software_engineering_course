@@ -29,7 +29,7 @@ keypoints:
 1. Stick with it
 
 We prefer [ruff](https://astral.sh/ruff) because it is modern, comprehensive
-and runs very quickly. The ruff package is a collection of tools for ensuring
+and runs very quickly. The `ruff` package is a collection of tools for ensuring
 code quality in Python, including a code formatter and linter. We discuss its
 formatter here, but will discuss the linter later as well.
 
