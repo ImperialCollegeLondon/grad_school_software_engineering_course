@@ -11,7 +11,8 @@ Git.
 > ## Important!
 >
 > Make sure that you have the most recent versions of Conda and VSCode. Some
-> features used in this lesson will not work with older versions.
+> features used in this lesson will not work with older versions. The content of this
+> lesson has been tested with Conda version 23.9.0 and VSCode 1.94.2.
 {: .callout}
 
 ## Conda
@@ -20,13 +21,13 @@ Conda is a Python distribution and package manager. We use both features to
 provide the version of Python that is used in these materials and to setup
 self-contained environments.
 
-You can choose to install the full version of [anaconda][] or the more minimal
-[miniconda][]. Either is suitable but make sure to choose the Python 3.*
-version. If prompted, choose to install only for your user account and do not
-install PyCharm.
+You can choose to install the full version of [anaconda] (several gigabytes in size) or
+the more minimal [miniconda]. Either is suitable but we recommend using miniconda. If
+prompted, choose to install only for your user account and to make conda python the
+default for your system.
 
-[anaconda]: https://docs.anaconda.com/anaconda/install/
-[miniconda]: https://docs.conda.io/projects/conda/en/latest/user-guide/install/
+[anaconda]: https://www.anaconda.com/download
+[miniconda]: https://docs.anaconda.com/miniconda/
 
 To test that the installation was successful follow the instructions for your
 operating system below.
