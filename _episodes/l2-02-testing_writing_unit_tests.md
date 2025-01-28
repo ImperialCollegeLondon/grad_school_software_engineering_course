@@ -91,8 +91,11 @@ Projects that use pytest:
 > ## Testing in other languages
 > - **R**: [testthat](https://testthat.r-lib.org/)
 > - **C++**: [GoogleTest](https://google.github.io/googletest/), [Boost Test](https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html) and [Catch 2](https://github.com/catchorg/Catch2). See [our C++ testing course using Google Test](https://imperialcollegelondon.github.io/unit_testing_Cpp/).
-> - **Fortran**: [Test-Drive](https://github.com/fortran-lang/test-drive) and [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit). See the [Fibonacci series example](https://github.com/ImperialCollegeLondon/fortran_fibonacci) coded in Fortran. 
+> - **Fortran**: [Test-Drive](https://github.com/fortran-lang/test-drive) and [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit). See the [Fibonacci series example](https://github.com/ImperialCollegeLondon/fortran_fibonacci) coded in Fortran.
+> - See the Software Sustainability Institute's [Build and Test Examples][build-examples] for many more.
 {: .callout}
+
+[build-examples]: https://github.com/softwaresaved/build_and_test_examples
 
 ### Code editors
 
@@ -276,8 +279,8 @@ def recursive_fibonacci(n):
 {: .challenge}
 
 > ## Diffusion exercise in Codespaces
-> If you are having trouble setting up your system with `conda` and `vscode`, or running
-> through this exercise locally in your computer, you can run it in Codespaces. 
+> If you are having trouble setting up your system with `conda` and `vscode`, or running 
+> through this exercise locally in your computer, you can run it in Codespaces.
 > - Check the information at the end of the [setup](../setup) on how to run Codespaces.
 > - Apply it to [this exercise repository in GitHub](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_diffusion).
 {: .callout}
@@ -322,21 +325,7 @@ def test_recursive_fibonacci(n):
     assert recursive_fibonacci(n) == int((phi ** n - -phi ** -n) / 5 ** 0.5)
 ```
 
-## Taking testing further
-
-### Testing in other languages
-
-- We've discussed tools and approaches for Python but analogues exist for other languages
-- We (the RCS) have had success with:
-  - C++: [Catch2](https://github.com/catchorg/Catch2)
-  - Fortran: [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)
-  - R: [testthat](https://github.com/r-lib/testthat)
-- See the Software Sustainability Institute's [Build and Test
-  Examples][build-examples] for many more
-
-[build-examples]: https://github.com/softwaresaved/build_and_test_examples
-
-### Further resources
+## Further resources
 
 - [`ImperialCollegeLondon/pytest_template_application`][pytest-template]
 - [A tried-and-tested workflow for software quality assurance][workflow]
