@@ -86,7 +86,7 @@ to formalise your tests and take advantage of the above.
 
 This isn't a topic we will discuss in much detail but is worth mentioning as the
 jargon here can be another factor that is intimidating. In fact there are entire
-[websites](https://www.geeksforgeeks.org/types-software-testing/) dedicated to
+[websites](https://www.geeksforgeeks.org/types-software-testing/) - even the [Wikipedia](https://en.wikipedia.org/wiki/Software_testing) - dedicated to
 explaining the different types of testing. Ultimately, however there are only a few
 types of testing that we need to worry about.
 
