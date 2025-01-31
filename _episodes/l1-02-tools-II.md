@@ -47,22 +47,22 @@ A simpler alternative formatter is [black](https://black.readthedocs.io/), which
 >
 > 1. Open the file `messy.py`. Its contents should match:
 >
->    ```python
->    x = {  'a':37,'b':42,
->    'c':927}
->    y = 'hello '+       'world'
->    class foo  (     object  ):
->      def f    (self   ):
->           z =3
->           return       y **2
->       def g(self, x,
->           y=42
->           ):
->          # pylint: disable=missing-docstring
->          return x--y
->    def f  (   a ) :
->       return      37+-a[42-a :  y*3]  # noqa: E203
->    ```
+> ```python
+> x = {  'a':37,'b':42,
+> 'c':927}
+> y = 'hello '+       'world'
+> class foo  (     object  ):
+>    def f    (self   ):
+>        z =3
+>        return       y **2
+>    def g(self, x, # noqa: D102
+>        y=42
+>        ):
+>       return x--y
+> def f  (   a ) :
+>    return      37+-a[42-a :  y*3]
+>
+> ```
 >
 > 1. Ensure that you have activated your "course" conda environment (see
 >    [previous episode])
@@ -85,19 +85,22 @@ A simpler alternative formatter is [black](https://black.readthedocs.io/), which
 > > class foo(object):
 > >     def f(self):
 > >         z = 3
-> >         return y ** 2
+> >         return y**2
 > >
-> >     def g(self, x, y = 42):
-> >         # pylint: disable=missing-docstring
+> >     def g(
+> >         self,
+> >         x,  # noqa: D102
+> >         y=42,
+> >     ):
 > >         return x - -y
 > >
 > >
 > > def f(a):
-> >     return 37 + -a[42 - a : y * 3]  # noqa: E203
-> >
+> >     return 37 + -a[42 - a : y * 3]
 > > ```
 > >
-> > Ah! much better!
+> > Ah! much better! But note that the `# noqa: D102` exclusion instruction is not in
+> > the right line and there's a complain about `g` not having a docstring.
 > >
 > > Still, the sharp-eyed user will notice at least one issue with this code.
 > > *Formatting code does not make it less buggy!*
@@ -106,7 +109,7 @@ A simpler alternative formatter is [black](https://black.readthedocs.io/), which
 
 > ## Messy code exercise in Codespaces
 > If you are having trouble setting up your system with `conda` and `vscode`, or running
-> through this exercise locally in your computer, you can run it in Codespaces. 
+> through this exercise locally in your computer, you can run it in Codespaces.
 > - Check the information at the end of the [setup](../setup) on how to run Codespaces.
 > - Apply it to [this exercise repository in GitHub](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_messy_code).
 {: .callout}
