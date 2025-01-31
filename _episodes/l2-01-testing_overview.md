@@ -86,9 +86,9 @@ to formalise your tests and take advantage of the above.
 
 This isn't a topic we will discuss in much detail but is worth mentioning as the
 jargon here can be another factor that is intimidating. In fact there are entire
-[websites](http://softwaretestingfundamentals.com) dedicated to explaining the
-different types of testing. Ultimately, however there are only a few types of
-testing that we need to worry about.
+[websites](https://www.geeksforgeeks.org/types-software-testing/) - even the [Wikipedia](https://en.wikipedia.org/wiki/Software_testing) - dedicated to
+explaining the different types of testing. Ultimately, however there are only a few
+types of testing that we need to worry about.
 
 #### Unit Testing
 
@@ -154,23 +154,23 @@ the test inputs.
 > by each test case? How many cases would be required to reach 100% coverage?
 >
 > For convenience, some initial terms from the Fibonacci sequence are given
-> below:  
+> below:
 > 0, 1, 1, 2, 3, 5, 8, 13, 21
 >
 > > ## Solution
 > >
 > > ### Case 1 - Use either 0 or 1 as input
 > >
-> > **Correct output:** Same as input  
-> > **Coverage:** First section of if-block  
+> > **Correct output:** Same as input
+> > **Coverage:** First section of if-block
 > > **Reason:** This represents the simplest possible test for the function. The
 > > value of this test is that it exercises only the special case tested for by
 > > the if-block.
 > >
 > > ### Case 2 - Use a value > 1 as input
 > >
-> > **Correct output:** Appropriate value from the Fibonacci sequence  
-> > **Coverage:** All of the code  
+> > **Correct output:** Appropriate value from the Fibonacci sequence
+> > **Coverage:** All of the code
 > > **Reason:** This is a more fully fledged case that is representative of the
 > > majority of the possible range of input values for the function. It covers
 > > not only the special case represented by the first if-block but the general
@@ -178,8 +178,8 @@ the test inputs.
 > >
 > > ### Case 3 - Use a negative value as input
 > >
-> > **Correct output:** Depends...  
-> > **Coverage:** First section of if-block  
+> > **Correct output:** Depends...
+> > **Coverage:** First section of if-block
 > > **Reason:** This represents the case of a possible input to the function
 > > that is outside of its intended usage. At the moment the function will just
 > > return the input value, but whether this is the correct behaviour depends on
@@ -191,8 +191,8 @@ the test inputs.
 > >
 > > ### Case 4 - Use a non-integer input e.g. 3.5
 > >
-> > **Correct output:** Depends...  
-> > **Coverage:** Whole function  
+> > **Correct output:** Depends...
+> > **Coverage:** Whole function
 > > **Reason:** This is similar to case 3, but may not arise in more strongly
 > > typed languages. What should the function do here? Work as is? Raise an
 > > error? Round to the nearest integer?
