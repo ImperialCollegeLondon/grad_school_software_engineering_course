@@ -142,12 +142,12 @@ def main(filename, value):
 > > - Finishing:
 > >   - Combine the dough and the filling prepared as above and...
 > >
-> > Sometimes, there are multiple ways of separating the concerns, so
-> > spend some time upfront thinking on the simplest, yet more reusable
-> > solution for your code.
-> >
 > {: .solution}
 {: .challenge}
+
+Sometimes, there are multiple ways of separating the concerns, so
+spend some time upfront thinking on the simplest, yet more reusable
+solution for your code.
 
 ## Levels of abstraction
 
