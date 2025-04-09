@@ -22,6 +22,178 @@ keypoints:
   structure of the code
 ---
 
+# Structuring your code
+
+> ## Nutella Cake: What's wrong in here?
+>
+> Pour the preparation onto the dough. Wait for it to cool. Once it is cool,
+> sprinkle with icing sugar.
+>
+> The dough is composed of 250g of flour, 125g of butter and one egg yolk. It
+> should be blind-baked at 180°C until golden brown.
+>
+> The preparations consists of 200g of Nutella, 3 large spoonfuls of crème
+> fraîche, 2 egg yolks and 20g of butter.
+>
+> Add the Nutella and the butter to a pot where you have previously mixed the
+> crème fraîche, the egg yolk and the vanilla extract. Cook and mix on low heat
+> until homogeneous.
+>
+> The dough, a pâte sablée, is prepared by lightly mixing by hand a pinch of
+> salt, 250g of flour and 125g of diced butter until the butter is mostly all
+> absorbed. Then add the egg yolk and 30g of cold water. The dough should look
+> like coarse sand, thus its name.
+>
+> Spread the dough into a baking sheet. If using it for a pie with a pre-cooked
+> or raw filling, first cook the dough blind at 200°C until golden brown. If the
+> dough and filling will be cooked together you can partially blind-cook the
+> dough at 180°C for 15mn for added crispiness.
+>
+> Enjoy! It's now ready to serve!
+>
+{: .challenge}
+
+Code is often as unreadable as this recipe, which makes things very hard to yourself
+and other people working in the code. Luckily, there are some rules and principles
+that can be follow to fix this and that are a sign of good quality code.
+
+In this lesson we will cover some of them, using the above recipe as an example,
+when relevant.
+
+## Separation of concerns
+
+**Separation of Concerns (SoC) is a fundamental design principle in software
+engineering that involves dividing a program into distinct sections, each addressing
+a separate concern. A concern is a specific aspect of functionality, behaviour, or
+responsibility within the system.**
+
+One of the first things that could be seen in the recipe above was that it was all
+mixed up, the ingredients with the different steps of the preparation, making it
+impossible to figure out where to look at to find out what to buy or how to prepare
+the dough or the filling.
+
+Like the recipe, a piece of code needs to be split into multiple parts, each of them
+dealing with one aspect of the workflow. This makes the code more readable, and also
+more reusable, since the different parts could be mixed if their functionality where
+clearly separated.
+
+For example, the following code will have clear separation of concerns along the
+whole workflow:
+
+```python
+def main(filename, value):
+  # reading input files is one thing
+  data = read_input(filename)
+
+  # creating complex objects is another
+  simulator = Simulator(data)
+
+  # compute is still something else
+  result = simulator.compute(value)
+
+  # Saving data is another
+  save(result)
+```
+
+> ## What concerns can you identify in the recipe?
+>
+> Using the recipe above, what concerns can you identify? Concerns might be nested!
+>
+> > ## Solution
+> >
+> > The first obvious separation could be between `Ingredients` and
+> > `Preparation`. However, there is also another level between `Dough`
+> > and `Filling`, so a possible structure for the concerns could be:
+> >
+> > - Ingredients
+> >   - Dough:
+> >     - ...
+> >   - Filling:
+> >     - ...
+> >
+> > - Preparation
+> >   - Dough:
+> >     - ...
+> >   - Filling:
+> >     - ...
+> >   - Finishing
+> >
+> {: .solution}
+>
+> > ## Solution 2
+> >
+> > But there is another, more reusable solution, to separate the
+> > `Dough` and the `Filling` first, and then the `Ingredients` and
+> > the `Preparation`. This way, the same `Dough` could be used in
+> > different cake recipes, and the same for the `Filling`.
+> >
+> > - Dough
+> >   - Ingredients:
+> >     - ...
+> >   - Preparation:
+> >     - ...
+> >
+> > - Filling
+> >   - Ingredients:
+> >     - ...
+> >   - Preparation:
+> >     - ...
+> >
+> > - Finishing:
+> >   - Combine the dough and the filling prepared as above and...
+> >
+> > Sometimes, there are multiple ways of separating the concerns, so
+> > spend some time upfront thinking on the simplest, yet more reusable
+> > solution for your code.
+> >
+> {: .solution}
+{: .challenge}
+
+## Levels of abstraction
+
+**Abstraction is a concept in computer science and software engineering that involves generalizing concrete details to focus on more important, generic aspects. It helps in managing complexity by hiding implementation details and exposing only the necessary parts.**
+
+Let's consider the following code:
+
+```python
+def analyse(input_path):
+    data = load_data(input_path)
+
+    # special fix for bad data point
+    data[0].x["january"] = 0
+
+    results = process_data(data)
+    return results
+```
+
+The "special fix" mixes levels of abstraction. Our top level function now depends on
+the structure of `data`. If the way data is stored changes (a low level detail) we
+now also need to change `analyse` which is a high level function directing the flow
+of the program.
+
+The following code encapsulates those low level changes in another function,
+honouring the different levels of abstraction.
+
+```python
+def analyse(input_path):
+    data = load_data(input_path)
+
+    cleaned_data = clean_data(data)
+
+    results = process_data(cleaned_data)
+    return results
+```
+
+Now our `analyse` function does not need to know anything about the inside workings
+of the `data` object.
+
+## Single responsibility principle
+
+
+## Code legibility
+
+
+
 ## Intelligible code?
 
 ```yaml
@@ -44,32 +216,7 @@ Intelligible code aims to:
 function `nothing_to_do_with_c` because of historical implementation detail
 `z`).
 
-## Levels of abstraction
 
-Scientific papers come with separate levels of details:
-
-- abstract -> abstract concepts and no details
-- body -> concrete concepts with some details
-- appendix -> details only fit for a Ph.D. student
-
-Similarly, code should be written with a structure separating different
-levels of details:
-
-```python
-def analyse(input_path):
-    data = load_data(input_path)
-
-    # special fix for bad data point
-    data[0].x["january"] = 0
-
-    results = process_data(data)
-    return results
-```
-
-The "special fix" mixes levels of abstraction. Our top level function now
-depends on the structure of `data`. If the way data is stored changes (a low
-level detail) we now also need to change `analyse` which is a high level
-function directing the flow of the program.
 
 ## Separable concerns
 
@@ -314,35 +461,7 @@ anywhere.
 >    unique bugs, as well as bugs in common.
 >
 >
-> ```md
-> ### Tarte au Nutella
->
-> Poor the preparation onto the dough. Wait for it to cool. Once it is cool,
-> sprinkle with icing sugar.
->
-> The dough is composed of 250g of flour, 125g of butter and one egg yolk. It
-> should be blind-baked at 180°C until golden brown.
->
-> The preparations consists of 200g of Nutella, 3 large spoonfuls of crème
-> fraîche, 2 egg yolks and 20g of butter.
->
-> Add the Nutella and the butter to a pot where you have previously mixed the
-> crème fraîche, the egg yolk and the vanilla extract. Cook and mix on low heat
-> until homogeneous.
->
-> The dough, a pâte sablée, is prepared by lightly mixing by hand a pinch of
-> salt, 250g of flour and 125g of diced butter until the butter is mostly all
-> absorbed. Then add the egg yolk and 30g of cold water. The dough should look
-> like coarse sand, thus its name.
->
-> Spread the dough into a baking sheet. If using it for a pie with a pre-cooked
-> or raw filling, first cook the dough blind at 200°C until golden brown. If the
-> dough and filling will be cooked together you can partially blind-cook the
-> dough at 180°C for 15mn for added crispiness.
->
-> Enjoy! It's now ready to serve!
-> ```
->
-{: .challenge}
+
+
 
 {% include links.md %}
