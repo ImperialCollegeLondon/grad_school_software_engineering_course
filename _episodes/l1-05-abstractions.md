@@ -189,6 +189,83 @@ of the `data` object.
 
 ## Single responsibility principle
 
+**The [Single Responsibility Principle (SRP)] states that a class or module should have
+only one reason to change, meaning it should have only one responsibility or purpose.
+This principle helps in creating more maintainable, reusable, and flexible software
+designs.**
+
+This goes into a deeper level than the abstractions described above, and it is probably
+the one harder to do right, besides its apparent simplicity. It literally means
+that each function or method should do one thing only. This typically means also that
+is short, easier to read, to debug and to re-use.
+
+Let's consider the following code. It uses Pandas to load some data from either an Excel
+file or a CSV file. In the second case, it also manipulates some columns to make sure
+the right ones are there.
+
+```python
+def load_data(filename):
+    if filename.suffix == ".xlsx":
+        data = pd.read_excel(filename, usecols="A:B")
+
+    elif filename.suffix == ".csv":
+        data = pd.read_csv(filename)
+        data["datetime"] = data["date"] + " " + data["time"]
+        data = data.drop(columns=["date", "time"])
+
+    else:
+        raise RuntimeError("The file must be an Excel or a CSV file")
+
+    assert data.columns == ["datetime", "value"]
+    return data
+```
+
+This function is doing too many things and might need to change for several, unrelated
+reasons. If we work on the separation of concerns, we will have functions that:
+
+1. Selects how to read the data based on the extension.
+1. Reads an Excel file
+1. Reads a CSV file
+1. Validates the data structure
+
+```python
+def load_data(filename):
+    """Loads the data using different methods."""
+    if filename.suffix == ".xlsx":
+        data = load_excel(filename)
+    elif filename.suffix == ".csv":
+        data = load_csv(filename)
+    else:
+        raise RuntimeError("The file must be an Excel or a CSV file.")
+    return data
+
+def load_excel(filename):
+    """Loads an Excel file, picking only the first 2 columns."""
+    data = pd.read_excel(filename, usecols="A:B")
+    validate(data)
+    return data
+
+def load_csv(filename):
+    """Loads an CSV file, ensuring the date and time are combined."""
+    data = pd.read_csv(filename)
+    data["datetime"] = data["date"] + " " + data["time"]
+    data = data.drop(columns=["date", "time"])
+    validate(data)
+    return data
+
+def validate_data(data):
+    """Checks that the data has the rigth structure."""
+    assert data.columns == ["datetime", "value"]
+```
+
+The overall length of the code is much more, but now each function does a very specific
+thing, and only one thing, and well documented. The `load_data` function only needs to
+change if more formats are supported. The `load_excel` only if the structure of the
+Excel file changes and the same goes for the `load_csv`. And the validate data one, only
+changes if there are more or different things to validate. The code becomes cleaner,
+easier to read and to re-use.
+
+[Single Responsibility Principle (SRP)]: https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/
 
 ## Code legibility
 
