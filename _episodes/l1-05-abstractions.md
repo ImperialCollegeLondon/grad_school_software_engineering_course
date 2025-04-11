@@ -62,7 +62,7 @@ when relevant.
 
 ## Separation of concerns
 
-**Separation of Concerns (SoC) is a fundamental design principle in software
+**[Separation of Concerns (SoC)] is a fundamental design principle in software
 engineering that involves dividing a program into distinct sections, each addressing
 a separate concern. A concern is a specific aspect of functionality, behaviour, or
 responsibility within the system.**
@@ -148,6 +148,8 @@ def main(filename, value):
 Sometimes, there are multiple ways of separating the concerns, so
 spend some time upfront thinking on the simplest, yet more reusable
 solution for your code.
+
+[Separation of Concerns (SoC)]: https://en.wikipedia.org/wiki/Separation_of_concerns
 
 ## Levels of abstraction
 
@@ -246,7 +248,7 @@ def load_excel(filename):
     return data
 
 def load_csv(filename):
-    """Loads an CSV file, ensuring the date and time are combined."""
+    """Loads a CSV file, ensuring the date and time are combined."""
     data = pd.read_csv(filename)
     data["datetime"] = data["date"] + " " + data["time"]
     data = data.drop(columns=["date", "time"])
@@ -269,14 +271,6 @@ easier to read and to re-use.
 
 ## Code legibility
 
-
-
-## Intelligible code?
-
-```yaml
-Intelligible: Able to be understood; comprehensible
-```
-
 Code is meant to be read by an audience who has infinite knowledge and an
 infinite capacity for misunderstanding:
 
@@ -294,60 +288,6 @@ function `nothing_to_do_with_c` because of historical implementation detail
 `z`).
 
 
-
-## Separable concerns
-
-Scientific papers come with separate sections dealing with separate concerns,
-e.g.:
-
-- `introduction` describes prior work
-- `section I` describes the experimental setup
-- `section II` describes the data analysis methods
-- `section III` contains plots and a discussion  of the results
-
-Similarly, code should be written with a structure separating separable
-concerns:
-
-```python
-def main():
-  # reading input files is one thing
-  data = read_input(filename)
-
-  # creating complex objects is another
-  section_I = SectionI(data)
-
-  # compute is still something else
-  result_I = section_I.compute(some_value)
-
-  # Saving data is another
-  save(result_I)
-
-
-def read_input(filename):
-  """ Reads input data from file. """
-  pass
-
-
-def save(data, filename="saveme.h5"):
-  """ Saves output data to file. """
-  pass
-
-
-class SectionI
-  """ Runs experiment """
-  def __init__(self, some_array):
-      self.some_array = some_array
-
-  def compute(self, y):
-      """ Just does compute, nothing more, nothing less. """
-      pass
-```
-
-In the code above we have made some choices:
-
-- reading input files is separate from creating complex objects
-- saving output files is separate from running computations
-- objects are created in one go
 
 ## A few examples of what **not** to do.
 
@@ -385,31 +325,6 @@ class SectionI
         return result
 ```
 
-### Splitting concerns too far
-
-It's unfortunately common to find objects that need to be created and setup in
-several steps. This is an
-[anti-pattern](https://en.wikipedia.org/wiki/Anti-pattern) (We'll discuss
-patterns in a bit), i.e. something that should be avoided. Creating an object is
-one thing and one thing only. It should be fully usable right after creation.
-
-```python
-sectionI = SectionI(...)
-
-# BAD! just put the initialization in SectionI.__init__
-sectionI.setup(...)
-results = sectionI.run(...)
-```
-
-> ## Paper vs code
->
-> Code should be organized the same way as the paper it will produce. If
-> a concept X is described in one section, and concept Y in another, then X
-> should be one function or class, and Y another.
->
-> That's because the primary purpose of paper and code is to communicate with
-> other people, including your future self.
-{: .callout}
 
 ## Dataflow
 
@@ -485,7 +400,7 @@ get `b` the data is now forced to flow first through `compute_a`.
 Some languages unfortunately are designed so sometimes you don't have any choice
 but to modify an input argument. Still, wherever possible avoid doing it.
 
-### Global variables
+## Use of global variables
 
 Avoid the use global variables, when possible. They make the dataflow complex by
 essence.
@@ -502,43 +417,19 @@ def compute_a(measurements):
 
 Now the result of `compute_a` has a hidden dependency. It's never clear whether
 calling it twice with the same input (`measurements`) will yield the same
-result.
+result, as `SOME_GLOBAL_VARIABLE` might have changed.
 
 In general make sure that all variables have the most limited scope possible. If
 they're only needed within a single function define them there. Wherever
-possible treat variables with wide scope as constants (or make them actual
+possible treat variables with wide scope as **constants** (or make them actual
 constants if your language supports it) so you know they're not being modified
 anywhere.
 
-> ## Dear Fortran 90 users
->
-> Module variables are global. They can be modified anywhere, anytime. It's
-> best not to use them.
-{: .callout}
->
-> ## Disentangling a recipe (10 min)
->
-> Disentangle the recipe below into separable concerns and level of details.
-> Ensure the flow of ingredients from transform to transform to final dish is
-> clear.
->
-> 1. Write the solution as a recipe. Be sure to delete steps and information
->    irrelevant to the recipe. Deleting code is GOOD! (if it's under version
->    control)
-> 1. Can you identify different levels of abstractions?
-> 1. Can you identify different concerns?
-> 1. Can you identify what is data and what are transformations of the data?
-> 1. Write the solution as pseudo-code in your favorite language. Pseudo-code
->    doesn't have to run, but it has to make sense. Or write a solution as a
->    diagram, if that's your thing (e.g.
->    [UML](https://en.wikipedia.org/wiki/Unified_Modeling_Language), [Sequence
->    diagram](https://en.wikipedia.org/wiki/Sequence_diagram)).
-> 1. Can you spot inconsistencies in the original recipe? That's what happens
->    when code is copy-pasted. Invariably, versions diverge until each has set of
->    unique bugs, as well as bugs in common.
->
->
-
+Having said that, there are situations where global variables are needed, or are
+unavoidable. A typical example would be accessing a database. That database is just one,
+accessible anywhere in the program, and might change in different places. There is no
+way around that, but just make sure that measures are in place to ensure that the state
+of the database is known at any given time.
 
 
 {% include links.md %}
