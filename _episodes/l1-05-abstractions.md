@@ -7,6 +7,7 @@ questions:
 objectives:
 - Explain the expression "separation of concerns"
 - Explain the expression "levels of abstractions"
+- Explain the expression "single responsibility principle"
 - Explain the expression "dataflow"
 - Analyze an algorithm for levels of abstractions, separable concerns and
   dataflow
@@ -153,7 +154,7 @@ solution for your code.
 
 ## Levels of abstraction
 
-**Abstraction is a concept in computer science and software engineering that involves generalizing concrete details to focus on more important, generic aspects. It helps in managing complexity by hiding implementation details and exposing only the necessary parts.**
+**[Abstraction] is a concept in computer science and software engineering that involves generalizing concrete details to focus on more important, generic aspects. It helps in managing complexity by hiding implementation details and exposing only the necessary parts.**
 
 Let's consider the following code:
 
@@ -189,6 +190,8 @@ def analyse(input_path):
 Now our `analyse` function does not need to know anything about the inside workings
 of the `data` object.
 
+[Abstraction]: https://www.geeksforgeeks.org/why-are-abstractions-important-in-system-design/
+
 ## Single responsibility principle
 
 **The [Single Responsibility Principle (SRP)] states that a class or module should have
@@ -222,17 +225,18 @@ def load_data(filename):
     return data
 ```
 
-This function is doing too many things and might need to change for several, unrelated
-reasons. If we work on the separation of concerns, we will have functions that:
+This function is doing too many things despite being just 13 lines long, and might need
+to change for several, unrelated reasons. If we work on the separation of concerns, we
+will have several functions that:
 
-1. Selects how to read the data based on the extension.
-1. Reads an Excel file
-1. Reads a CSV file
-1. Validates the data structure
+1. Select how to read the data based on the extension.
+1. Read an Excel file
+1. Read a CSV file
+1. Validate the data structure
 
 ```python
 def load_data(filename):
-    """Loads the data using different methods."""
+    """Select how to load the data based on the file extension."""
     if filename.suffix == ".xlsx":
         data = load_excel(filename)
     elif filename.suffix == ".csv":
@@ -256,7 +260,7 @@ def load_csv(filename):
     return data
 
 def validate_data(data):
-    """Checks that the data has the rigth structure."""
+    """Checks that the data has the right structure."""
     assert data.columns == ["datetime", "value"]
 ```
 
@@ -271,60 +275,101 @@ easier to read and to re-use.
 
 ## Code legibility
 
-Code is meant to be read by an audience who has infinite knowledge and an
-infinite capacity for misunderstanding:
+Code is often meant to be read by an audience who has either not so much familiarity
+with it or has not work on it for a while. This audience is normally future-**you**
+reading past-**you**'s code.
 
-- knows more about general relativity than Einstein
-- given a point with coordinate `point[0], point[1], point[2]`, can't remember
-  whether whether `0` corresponds to `x`, `y`, or `z`
-
-This audience is future-**you** reading past-**you**'s code.
+For example, given a point with coordinates `point[0]`, `point[1]`, `point[2]`, what do
+each of them mean? Does `0` corresponds to `x`, `y`, or `z`? Or is it `r`, `theta` or
+`z`? Or something else altogether?
 
 Intelligible code aims to:
 
-- avoid sources of confusion (what does index `0` reference?)
-- lessen the cognitive load (ah! before using `c` don't forget to call the
-function `nothing_to_do_with_c` because of historical implementation detail
-`z`).
+- Use descriptive names for variables and functions. The times where names should fit
+within 8 characters, and whole lines be less than 72 are long past.
+- Avoid sources of confusion (What does index `0` reference?)
+- Lessen the cognitive load (Before using `c` don't forget to call the function
+`nothing_to_do_with_c` because of historical implementation detail).
 
+Some aspects of code legibility will be sorted - or at least flagged out - by the
+formatters and linters already discussed, but others do require a concious effort by the
+developer.
 
+## Use of global variables
 
-## A few examples of what **not** to do.
+While global variables were common in the past, they have become less and less popular
+due to the problems they might bring to the code. Avoid the use global variables, when
+possible. They make the dataflow complex by essence.
 
-### Mixing reading files and creating objects
-
-Objects that do need files to be created are hard to create and re-create,
-especially during testing.
+Let's consider the following code:
 
 ```python
-class SectionI
+SOME_GLOBAL_VARIABLE = 42
+
+def compute_a(measurements):
+    ...
+    result *= SOME_GLOBAL_VARIABLE
+    return result
+```
+
+Now the result of `compute_a` has a hidden dependency. It's never clear whether
+calling it twice with the same input `measurements` will yield the same result, as
+`SOME_GLOBAL_VARIABLE` might have changed.
+
+In general make sure that all variables have the most limited scope possible. If
+they're only needed within a single function define them there. Wherever
+possible treat variables with wide scope as **constants** (or make them actual
+constants if your language supports it) so you know they're not being modified
+anywhere.
+
+Having said that, there are situations where global variables are needed, or are just
+unavoidable. A typical example would be accessing a database. That database is just one,
+accessible anywhere in the program, and might change in different places. There is no
+way around that, but just make sure that measures are in place to ensure that the state
+of the database is known at any given time.
+
+
+## Mixing IO and creating objects or making calculations
+
+Input and output (IO) operations are tricky because they depend on the state of the system - the input file(s) contents - and change the state of the system - creating
+new file(s). They need to be handle with care and, indeed, some pure functional
+languages like [Haskell] consider them *dirty* operations because of that.
+
+The general rule is that IO operations should happen within their own functions or
+methods, and and just pass their contents around. This is just direct conclusion of the
+[Separation of concerns](#separation-of-concerns) principle described above, as applied
+to IO operations.
+
+For example, objects that do need files to be created are hard to create and re-create,
+especially during testing. Make the *contents* of the file an input for the object
+creation function, instead of the filename or file object. You might want to use
+factory methods to support this approach.
+
+For example, don't do this:
+
+```python
+class MyModel
     def __init__(self, some_array):
         self.some_array = array
         # BAD!! Now you need to carry this file around every time you want to
-        # instantiate SectionI
+        # instantiate MyModel
         self.aaa = read_aaa("somefile.aaa")
 ```
 
-### Mixing computing stuff and IO
-
-Below, it the compute has a hidden baggage: it can't operate without reading
-from file. It's not a pure function of `self`, `b`, and `filename`. Run it
-twice with exactly the same `self` and the same `b` and the same `filename`,
-and the results might still be different.
-
-It creates file artifacts. Littering is a crime and hidden files are litter.
+Do this instead, so you can instantiate `MyModel` without having the file at hand:
 
 ```python
-class SectionI
-    def run(self, b, filename="somefile.aaa"):
-        # BAD!! hidden dependency on the content of the file
+class MyModel
+    @classmethod
+    def from_file(cls, array, filename):
         aaa = read_aaa(filename)
-        ...
-        # BAD! Compute functions should not litter.
-        save(result, "somefile")
-        return result
-```
+        return cls(array, aaa)
 
+    def __init__(self, some_array, aaa):
+        self.some_array = array
+        self.aaa = aaa
+```
+[Haskell]: https://www.haskell.org/
 
 ## Dataflow
 
@@ -400,36 +445,6 @@ get `b` the data is now forced to flow first through `compute_a`.
 Some languages unfortunately are designed so sometimes you don't have any choice
 but to modify an input argument. Still, wherever possible avoid doing it.
 
-## Use of global variables
-
-Avoid the use global variables, when possible. They make the dataflow complex by
-essence.
-
-```python
-SOME_GLOBAL_VARIABLE = "a"
-
-def compute_a(measurements):
-
-    ...
-    result *= SOME_GLOBAL_VARIABLE
-    return result
-```
-
-Now the result of `compute_a` has a hidden dependency. It's never clear whether
-calling it twice with the same input (`measurements`) will yield the same
-result, as `SOME_GLOBAL_VARIABLE` might have changed.
-
-In general make sure that all variables have the most limited scope possible. If
-they're only needed within a single function define them there. Wherever
-possible treat variables with wide scope as **constants** (or make them actual
-constants if your language supports it) so you know they're not being modified
-anywhere.
-
-Having said that, there are situations where global variables are needed, or are
-unavoidable. A typical example would be accessing a database. That database is just one,
-accessible anywhere in the program, and might change in different places. There is no
-way around that, but just make sure that measures are in place to ensure that the state
-of the database is known at any given time.
 
 
 {% include links.md %}
