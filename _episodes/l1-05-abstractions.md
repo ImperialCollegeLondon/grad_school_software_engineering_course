@@ -373,7 +373,8 @@ class MyModel
 
 ## Dataflow
 
-A code is a sequence of transformations on data, e.g.:
+Often code is just a sequence of transformations on data, so if we have the
+following set of actions:
 
 1. data `measurements` is read from input
 1. data `a` and `b` are produced from `measurements`, independently
@@ -386,16 +387,13 @@ def read_experiment(filename):
     ...
     return measurements
 
-
 def compute_a(measurements):
     ...
     return a
 
-
 def compute_b(measurements):
     ...
     return b
-
 
 def compute_result(a, b):
     ...
@@ -410,21 +408,29 @@ def compute_result(a, b):
 1. One function/class to compute `Result`: It takes `a` and `b` as input and
   returns the result `result`:
 
-Here are things that should **not** happen:
-
 ### Unnecessary arguments and tangled dependencies
 
-Did we not say the result depends on `a` and `b` alone? The next programmer to
-look at the code (e.g. future you) won't know that. Computing `result` is no
-longer separate from `measurements`.
+What sometimes happens is that there is unnecessary arguments and tangled
+dependencies that can make the code harder to understand and, indeed, be a
+source of errors.
+
+Look at the following alternative code:
 
 ```python
-# BAD! Unnecessary arguments. Now result depends on a, b, experiment
-def compute_result(a, b, experiment):
+# BAD! Unnecessary arguments. Now result depends on a, b, AND measurements
+def compute_result(a, b, measurements):
     pass
 ```
 
+Did we not say the result depends on `a` and `b` alone? The next programmer to look at
+the code (e.g. future you) won't know that. Computing `result` is no longer separate
+from `measurements`.
+
 ### Modifying an input argument
+
+Some languages are designed so sometimes you don't have any choice but to modify an
+input argument. Still, wherever possible avoid doing it because if you do not, other
+functions using that input argument will need to know who used it first!
 
 If possible avoid doing this.
 
@@ -434,17 +440,41 @@ def compute_a(measurements):
     ...
 
 def compute_b(measurements):
-    measurements[1] *= 0.5
+    some_result = measurements[1] * 0.5
+    ...
+
+def compute(measurements):
+    compute_a(measurements)
+    compute_b(measurements)
     ...
 ```
 
-Now `compute_a` has to take place before `compute_b` because `compute_a` chose
-to modify it's argument, and thus `compute_b` was hacked to undo the damage. To
-get `b` the data is now forced to flow first through `compute_a`.
+If `compute_a` takes place before `compute_b` the result would be different than if it
+is the other way around. However, there is no clue in the `compute` function indicating
+that is the case.
 
-Some languages unfortunately are designed so sometimes you don't have any choice
-but to modify an input argument. Still, wherever possible avoid doing it.
+If you do need to modify the inputs then provide then as outputs of the function, such
+that it is clear by successive functions that they are using modified version of the
+inputs.
 
+```python
+def compute_a(measurements):
+    measurements[1] *= 2
+    ...
+    return measurements
 
+def compute_b(measurements):
+    some_result = measurements[1] * 0.5
+    ...
+    return some_result
+
+def compute(measurements):
+    measurements = compute_a(measurements)
+    some_result = compute_b(measurements)
+    ...
+```
+
+Now it is clear that `compute_b` is using a `measurements` object that has been
+outputted by `compute_a` and, therefore, it should expect any changes made by it.
 
 {% include links.md %}
