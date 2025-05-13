@@ -323,10 +323,10 @@ constants if your language supports it) so you know they're not being modified
 anywhere.
 
 Having said that, there are situations where global variables are needed, or are just
-unavoidable. A typical example would be accessing a database. That database is just one,
-accessible anywhere in the program, and might change in different places. There is no
-way around that, but just make sure that measures are in place to ensure that the state
-of the database is known at any given time.
+unavoidable. A typical example would be accessing a database. That database is just one
+of such global variables, accessible anywhere in the program, and might change in
+different places. There is no way around that, but just make sure that measures are in
+place to ensure that the state of the database is known at any given time.
 
 
 ## Mixing IO and creating objects or making calculations
