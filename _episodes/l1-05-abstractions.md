@@ -33,7 +33,7 @@ keypoints:
 > The dough is composed of 250g of flour, 125g of butter and one egg yolk. It
 > should be blind-baked at 180°C until golden brown.
 >
-> The preparations consists of 200g of Nutella, 3 large spoonfuls of crème
+> The preparation consists of 200g of Nutella, 3 large spoonfuls of crème
 > fraîche, 2 egg yolks and 20g of butter.
 >
 > Add the Nutella and the butter to a pot where you have previously mixed the
@@ -55,8 +55,8 @@ keypoints:
 {: .challenge}
 
 Code is often as unreadable as this recipe, which makes things very hard to yourself
-and other people working in the code. Luckily, there are some rules and principles
-that can be follow to fix this and that are a sign of good quality code.
+and other people working on the code. Luckily, there are some rules and principles
+that can be followed to fix this and are a sign of good quality code.
 
 In this lesson we will cover some of them, using the above recipe as an example,
 when relevant.
@@ -68,14 +68,14 @@ engineering that involves dividing a program into distinct sections, each addres
 a separate concern. A concern is a specific aspect of functionality, behaviour, or
 responsibility within the system.**
 
-One of the first things that could be seen in the recipe above was that it was all
-mixed up, the ingredients with the different steps of the preparation, making it
-impossible to figure out where to look at to find out what to buy or how to prepare
-the dough or the filling.
+One of the first issues with the recipe above was that all the different elements
+were mixed up. The ingredients and the different steps of the preparation are all
+described together, making it impossible to figure out where to look to find out
+what to buy or how to prepare the dough or the filling.
 
-Like the recipe, a piece of code needs to be split into multiple parts, each of them
+Like the recipe, a piece of code should be split into multiple parts, each of them
 dealing with one aspect of the workflow. This makes the code more readable, and also
-more reusable, since the different parts could be mixed if their functionality where
+more reusable, since the different parts could be mixed if their functionality were
 clearly separated.
 
 For example, the following code will have clear separation of concerns along the
@@ -259,7 +259,7 @@ def load_csv(filename):
     validate(data)
     return data
 
-def validate_data(data):
+def validate(data):
     """Checks that the data has the right structure."""
     assert data.columns == ["datetime", "value"]
 ```
@@ -292,7 +292,7 @@ within 8 characters, and whole lines be less than 72 are long past.
 `nothing_to_do_with_c` because of historical implementation detail).
 
 Some aspects of code legibility will be sorted - or at least flagged out - by the
-formatters and linters already discussed, but others do require a concious effort by the
+formatters and linters already discussed, but others do require a conscious effort by the
 developer.
 
 ## Use of global variables
@@ -332,15 +332,15 @@ of the database is known at any given time.
 ## Mixing IO and creating objects or making calculations
 
 Input and output (IO) operations are tricky because they depend on the state of the system - the input file(s) contents - and change the state of the system - creating
-new file(s). They need to be handle with care and, indeed, some pure functional
+new file(s). They need to be handled with care and, indeed, some pure functional
 languages like [Haskell] consider them *dirty* operations because of that.
 
 The general rule is that IO operations should happen within their own functions or
-methods, and and just pass their contents around. This is just direct conclusion of the
+methods, and and just pass their contents around. This is a direct conclusion of the
 [Separation of concerns](#separation-of-concerns) principle described above, as applied
 to IO operations.
 
-For example, objects that do need files to be created are hard to create and re-create,
+For example, objects that need files to be created are hard to create and re-create,
 especially during testing. Make the *contents* of the file an input for the object
 creation function, instead of the filename or file object. You might want to use
 factory methods to support this approach.
@@ -410,7 +410,7 @@ def compute_result(a, b):
 
 ### Unnecessary arguments and tangled dependencies
 
-What sometimes happens is that there is unnecessary arguments and tangled
+What sometimes happens is that there are unnecessary arguments and tangled
 dependencies that can make the code harder to understand and, indeed, be a
 source of errors.
 
@@ -453,8 +453,8 @@ If `compute_a` takes place before `compute_b` the result would be different than
 is the other way around. However, there is no clue in the `compute` function indicating
 that is the case.
 
-If you do need to modify the inputs then provide then as outputs of the function, such
-that it is clear by successive functions that they are using modified version of the
+If you do need to modify the inputs then provide them as outputs of the function, such
+that it is clear by successive functions that they are using modified versions of the
 inputs.
 
 ```python
