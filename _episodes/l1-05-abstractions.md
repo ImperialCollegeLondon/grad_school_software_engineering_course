@@ -273,7 +273,9 @@ easier to read and to re-use.
 
 [Single Responsibility Principle (SRP)]: https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/
 
-## Code legibility
+## Other considerations
+
+### Code legibility
 
 Code is often meant to be read by an audience who has either not so much familiarity
 with it or has not work on it for a while. This audience is normally future-**you**
@@ -295,7 +297,7 @@ Some aspects of code legibility will be sorted - or at least flagged out - by th
 formatters and linters already discussed, but others do require a conscious effort by the
 developer.
 
-## Use of global variables
+### Use of global variables
 
 While global variables were common in the past, they have become less and less popular
 due to the problems they might bring to the code. Avoid the use global variables, when
@@ -329,9 +331,10 @@ different places. There is no way around that, but just make sure that measures 
 place to ensure that the state of the database is known at any given time.
 
 
-## Mixing IO and creating objects or making calculations
+### Mixing IO and creating objects or making calculations
 
-Input and output (IO) operations are tricky because they depend on the state of the system - the input file(s) contents - and change the state of the system - creating
+Input and output (IO) operations are tricky because they depend on the state of the
+system - the input file(s) contents - and change the state of the system - creating
 new file(s). They need to be handled with care and, indeed, some pure functional
 languages like [Haskell] consider them *dirty* operations because of that.
 
@@ -371,7 +374,7 @@ class MyModel
 ```
 [Haskell]: https://www.haskell.org/
 
-## Dataflow
+### Dataflow
 
 Often code is just a sequence of transformations on data, so if we have the
 following set of actions:
