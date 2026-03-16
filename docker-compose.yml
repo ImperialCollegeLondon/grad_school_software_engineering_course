@@ -8,6 +8,6 @@ services:
     entrypoint: ["/bin/sh"]
     command:
       - -c
-      - Rscript -e 'sandpaper::serve("/home/rstudio/lessons/rse_further_git_course", host="0.0.0.0")'
+      - Rscript -e 'sandpaper::serve("/home/rstudio/lessons/grad_school_software_engineering_course", host="0.0.0.0")'
     volumes:
-      - ./:/home/rstudio/lessons/rse_further_git_course
+      - ./:/home/rstudio/lessons/grad_school_software_engineering_course
