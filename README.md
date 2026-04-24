@@ -1,6 +1,6 @@
 # Essential Software Engineering for Researchers
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 This repository contains materials taught as part of the Imperial College
@@ -78,6 +78,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mwoodbri"><img src="https://avatars.githubusercontent.com/u/1724545?v=4?s=100" width="100px;" alt="Mark Woodbridge"/><br /><sub><b>Mark Woodbridge</b></sub></a><br /><a href="#content-mwoodbri" title="Content">🖋</a> <a href="#example-mwoodbri" title="Examples">💡</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mdavezac"><img src="https://avatars.githubusercontent.com/u/2745737?v=4?s=100" width="100px;" alt="Mayeul d'Avezac"/><br /><sub><b>Mayeul d'Avezac</b></sub></a><br /><a href="#content-mdavezac" title="Content">🖋</a> <a href="#example-mdavezac" title="Examples">💡</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AdrianDAlessandro"><img src="https://avatars.githubusercontent.com/u/40875798?v=4?s=100" width="100px;" alt="Adrian D'Alessandro"/><br /><sub><b>Adrian D'Alessandro</b></sub></a><br /><a href="#content-AdrianDAlessandro" title="Content">🖋</a> <a href="#example-AdrianDAlessandro" title="Examples">💡</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://dandavies99.github.io"><img src="https://avatars.githubusercontent.com/u/5871253?v=4?s=100" width="100px;" alt="Dan Davies"/><br /><sub><b>Dan Davies</b></sub></a><br /><a href="#content-dandavies99" title="Content">🖋</a> <a href="#example-dandavies99" title="Examples">💡</a></td>
     </tr>
   </tbody>
 </table>
