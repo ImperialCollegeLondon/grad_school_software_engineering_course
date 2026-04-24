@@ -37,6 +37,16 @@
         "content",
         "example"
       ]
+    },
+    {
+      "login": "mwoodbri",
+      "name": "Mark Woodbridge",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1724545?v=4",
+      "profile": "https://github.com/mwoodbri",
+      "contributions": [
+        "content",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 7,
