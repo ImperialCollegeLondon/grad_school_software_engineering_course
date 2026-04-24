@@ -67,6 +67,16 @@
         "content",
         "example"
       ]
+    },
+    {
+      "login": "dandavies99",
+      "name": "Dan Davies",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5871253?v=4",
+      "profile": "http://dandavies99.github.io",
+      "contributions": [
+        "content",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 7,
