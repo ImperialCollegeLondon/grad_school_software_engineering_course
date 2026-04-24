@@ -75,7 +75,8 @@ To install VS Code follow the instructions
 [here](https://code.visualstudio.com).
 
 You should then be able to launch VS Code and see something like:
-![Screenshot of VS code](fig/vs-code.png)
+
+![Screenshot of VS code](fig/vs-code.png){alt='Landing page of the VS Code editor'}
 
 ## Other languages
 
@@ -129,24 +130,24 @@ To use Codespaces with the course examples:
 VSCode in there, creating a suitable virtual environment and installing the
 dependencies.
 
-![](fig/create_codespace.png)
+![](fig/create_codespace.png){alt='Screenshot of dialog in GitHub to see existing Codespaces and to create new ones.'}
 
 1. At some point, a pop-up message will ask if you want to install the
 recommended extensions. Say 'yes' and wait until everything is installed.
 
-![](fig/install_recommended.png)
+![](fig/install_recommended.png){alt='Screenshot of confirmation dialog in VS Code asking if recommended extensions should be installed.'}
 
 1. Now, you need to select the new python environment that has been installed.
 Open any python file and click in the Python version number label at the bottom,
 right corner.
 
-![](fig/choose_python.png)
+![](fig/choose_python.png){alt='Screenshot of VS Code with an arrow pointing to the bottom bar where the current Python environment is indicated.'}
 
 1. This will display at the top of the window a list of suitable Python
 environment. Select the recommended one, which should be the one that says
 `('venv')` or `('venv': conda)`.
 
-![](fig/select_venv.png)
+![](fig/select_venv.png){alt='Screenshot of VS Code showing the selector of available Pyton environment to choose from.'}
 
 And that is all! You should be able to use this VSCode within the Codespace the
 same way you use it locally. You can close the tab and go back to the Codespace
