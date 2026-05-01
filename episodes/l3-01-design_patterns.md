@@ -58,9 +58,9 @@ software design patterns: typical solutions to common problems
     or simplify the creation of similar objects into a single function.
 - [Adapter](https://en.wikipedia.org/wiki/Adapter_pattern) pattern interfaces
   one class to be used in an another
-- [More](https://en.wikipedia.org/wiki/Software_design_pattern) and
-  [more](https://refactoring.guru/design-patterns) and
-  [more](https://stackoverflow.com/) patterns
+- [The Wikipedia entry](https://en.wikipedia.org/wiki/Software_design_pattern) and
+  [Refactoring Guru site](https://refactoring.guru/design-patterns) detail more
+  design patterns
 - And let's not forget
   [anti-patterns](https://en.wikipedia.org/wiki/Anti-pattern#Software_engineering),
   i.e. patterns that should **not** be used
