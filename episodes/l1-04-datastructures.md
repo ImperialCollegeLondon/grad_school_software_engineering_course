@@ -180,7 +180,7 @@ TypeError: 'tuple' object does not support item assignment
     operation.
   - [std::list](https://en.cppreference.com/w/cpp/container/list). No direct
     access to element i. Fast insert, append, splice operations.
-- R: [list](http://www.r-tutor.com/r-introduction/list)
+- R: [list](https://www.r-tutor.com/r-introduction/list)
 - Julia: [Array](https://docs.julialang.org/en/v1/manual/arrays/), also
     equivalent to numpy arrays.
 - Fortran: [array](https://www.tutorialspoint.com/fortran/fortran_arrays.htm),
@@ -539,11 +539,11 @@ above or those below:
   only take a few *values*, e.g. colors. Often useful for configuration options.
 - [numpy arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
   (multidimensional array of numbers)
-- [xarray arrays](http://xarray.pydata.org/en/stable/) (multi-dimensional
+- [xarray arrays](https://xarray.pydata.org/en/stable/) (multi-dimensional
   arrays that can be indexed with rich objects, e.g. an array indexed by
   dates or by longitude and latitude, rather than by the numbers 0, 1, 2, 3)
-- [xarray datasets](http://xarray.pydata.org/en/stable/) (collections of
-  named [xarray arrays](http://xarray.pydata.org/en/stable/) that share some
+- [xarray datasets](https://xarray.pydata.org/en/stable/) (collections of
+  named [xarray arrays](https://xarray.pydata.org/en/stable/) that share some
   dimensions.)
 
 Don't reinvent the square wheel.

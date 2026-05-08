@@ -41,7 +41,7 @@ ways to render the lesson locally, and even how to write new episodes.
 Please see the current list of [issues][FIXME] for ideas for contributing to
 this repository. For making your contribution, we use the GitHub flow, which is
 nicely explained in the chapter [Contributing to a
-Project](http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) in Pro
+Project](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) in Pro
 Git by Scott Chacon.
 
 Look for the tag
@@ -78,7 +78,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mwoodbri"><img src="https://avatars.githubusercontent.com/u/1724545?v=4?s=100" width="100px;" alt="Mark Woodbridge"/><br /><sub><b>Mark Woodbridge</b></sub></a><br /><a href="#content-mwoodbri" title="Content">🖋</a> <a href="#example-mwoodbri" title="Examples">💡</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mdavezac"><img src="https://avatars.githubusercontent.com/u/2745737?v=4?s=100" width="100px;" alt="Mayeul d'Avezac"/><br /><sub><b>Mayeul d'Avezac</b></sub></a><br /><a href="#content-mdavezac" title="Content">🖋</a> <a href="#example-mdavezac" title="Examples">💡</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AdrianDAlessandro"><img src="https://avatars.githubusercontent.com/u/40875798?v=4?s=100" width="100px;" alt="Adrian D'Alessandro"/><br /><sub><b>Adrian D'Alessandro</b></sub></a><br /><a href="#content-AdrianDAlessandro" title="Content">🖋</a> <a href="#example-AdrianDAlessandro" title="Examples">💡</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://dandavies99.github.io"><img src="https://avatars.githubusercontent.com/u/5871253?v=4?s=100" width="100px;" alt="Dan Davies"/><br /><sub><b>Dan Davies</b></sub></a><br /><a href="#content-dandavies99" title="Content">🖋</a> <a href="#example-dandavies99" title="Examples">💡</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://dandavies99.github.io"><img src="https://avatars.githubusercontent.com/u/5871253?v=4?s=100" width="100px;" alt="Dan Davies"/><br /><sub><b>Dan Davies</b></sub></a><br /><a href="#content-dandavies99" title="Content">🖋</a> <a href="#example-dandavies99" title="Examples">💡</a></td>
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/"><img src="https://avatars.githubusercontent.com/u/23149834?v=4?s=100" width="100px;" alt="Alex Dewar"/><br /><sub><b>Alex Dewar</b></sub></a><br /><a href="#content-alexdewar" title="Content">🖋</a> <a href="#example-alexdewar" title="Examples">💡</a></td>
