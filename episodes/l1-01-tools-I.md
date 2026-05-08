@@ -82,7 +82,7 @@ systems.
 
 ## Installing and using an environment
 
-1. If you haven't already, see the [setup guide](../setup) for instructions
+1. If you haven't already, see the [setup guide][setup] for instructions
    on how to install Conda and Visual Studio Code.
 
 1. Download this [zip archive](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_messy_code/archive/refs/heads/main.zip) and extract it. Start Visual
@@ -201,7 +201,7 @@ work as there was a bug before that. You can check your conda version with
 
 ## Selecting an environment in Visual Studio Code
 
-If you haven't already, see the [setup guide](../setup) for instructions on how
+If you haven't already, see the [setup guide][setup] for instructions on how
 to install Visual Studio (VS) Code.
 
 The simplest option for all platforms is to set the interpreter via the Command
