@@ -131,7 +131,7 @@ through this exercise locally in your computer, you can run it in Codespaces.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-[previous episode]: http://localhost:4000/l1-01-tools-I/index.html#selecting-an-environment-in-visual-studio-code
+[previous episode]: l1-01-tools-I.html#selecting-an-environment-in-visual-studio-code
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
