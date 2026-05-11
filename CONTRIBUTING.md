@@ -20,8 +20,8 @@ mistake, some awkward wording, or a factual error.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.com/ImperialCollegeLondon/grad_school_software_engineering_lesson>,
-    which can be viewed at <https://imperialcollegelondon.github.io/grad_school_software_engineering_lesson>.
+    please work in <https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course>,
+    which can be viewed at <https://imperialcollegelondon.github.io/grad_school_software_engineering_course>.
 
 ## What to Contribute
 
@@ -60,21 +60,21 @@ maintainers are community volunteers and have final say over what gets merged
 into the lesson.  To use the web interface for contributing to a lesson:
 
 1.  Fork the originating repository to your GitHub profile.
-2.  Within your version of the forked repository, move to the `gh-pages` branch
-    and create a new branch for each significant change being made.
+2.  Within your version of the forked repository, create a new branch for each
+    significant change being made.
 3.  Navigate to the file(s) you wish to change within the new branches and make
     revisions as required.
 4.  Commit all changed files within the appropriate branches.
 5.  Create individual pull requests from each of your changed branches
-    to the `gh-pages` branch within the originating repository.
+    to the `main` branch within the originating repository.
 6.  If you receive feedback, make changes using your issue-specific branches of
     the forked repository and the pull requests will update automatically.
 7.  Repeat as needed until all feedback has been addressed.
 
-When starting work, please make sure your clone of the originating `gh-pages`
+When starting work, please make sure your clone of the originating `main`
 branch is up-to-date before creating your own revision-specific branch(es) from
 there.  Additionally, please only work from your newly-created branch(es) and
-*not* your clone of the originating `gh-pages` branch.  Lastly, published copies
+*not* your clone of the originating `main` branch.  Lastly, published copies
 of all the lessons are available in the `gh-pages` branch of the originating
 repository for reference while revising.
 
