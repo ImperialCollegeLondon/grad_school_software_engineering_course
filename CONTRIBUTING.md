@@ -75,7 +75,7 @@ When starting work, please make sure your clone of the originating `main`
 branch is up-to-date before creating your own revision-specific branch(es) from
 there.  Additionally, please only work from your newly-created branch(es) and
 *not* your clone of the originating `main` branch.  Lastly, published copies
-of all the lessons are available in the `main` branch of the originating
+of all the lessons are available in the `gh-pages` branch of the originating
 repository for reference while revising.
 
 [github]: https://github.com
