@@ -20,8 +20,8 @@ mistake, some awkward wording, or a factual error.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.com/ImperialCollegeLondon/grad_school_software_engineering_lesson>,
-    which can be viewed at <https://imperialcollegelondon.github.io/grad_school_software_engineering_lesson>.
+    please work in <https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course>,
+    which can be viewed at <https://imperialcollegelondon.github.io/grad_school_software_engineering_course>.
 
 ## What to Contribute
 
