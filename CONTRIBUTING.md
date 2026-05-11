@@ -60,7 +60,8 @@ maintainers are community volunteers and have final say over what gets merged
 into the lesson.  To use the web interface for contributing to a lesson:
 
 1.  Fork the originating repository to your GitHub profile.
-2.  Within your version of the forked repository, create a new branch for each significant change being made.
+2.  Within your version of the forked repository, create a new branch for each
+    significant change being made.
 3.  Navigate to the file(s) you wish to change within the new branches and make
     revisions as required.
 4.  Commit all changed files within the appropriate branches.
