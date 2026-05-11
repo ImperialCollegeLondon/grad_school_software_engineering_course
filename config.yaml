@@ -76,7 +76,7 @@ episodes:
 - l1-05-abstractions.md
 - l2-01-testing_overview.md
 - l2-02-testing_writing_unit_tests.md
-#- l2-03-unit_testing_challenge.md
+- l2-03-unit_testing_challenge.md
 - l3-01-design_patterns.md
 
 # Information for Learners
