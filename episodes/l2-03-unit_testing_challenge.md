@@ -39,13 +39,19 @@ The function `heat()` in `diffusion.py` attempts to implement a **step-wise
 numerical approximation** via a [finite difference
 method](https://en.wikipedia.org/wiki/Finite_difference_method):
 
-![u_{i}^{t+1}=ru_{i+1}^{t}+(1-2r)u_{i}^{t}+ru_{i-1}^{t}](https://latex.codecogs.com/png.latex?u_{i}^{t&plus;1}=ru_{i&plus;1}^{t}&plus;(1-2r)u_{i}^{t}&plus;ru_{i-1}^{t})
+$$
+u_{i}^{t+1}=ru_{i+1}^{t}+(1-2r)u_{i}^{t}+ru_{i-1}^{t}
+$$
 
 This relates the temperature `u` at a specific location `i` and time point `t`
 to the temperature at the previous time point and neighbouring locations. `r` is
-defined as follows, where `α` is the thermal diffusivity: ![r=\frac{\alpha
+defined as follows, where `α` is the thermal diffusivity:
+
+$$
+r=\frac{\alpha
 \Delta t}{\Delta
-x^2}](https://latex.codecogs.com/png.latex?r=\frac{\alpha\Delta&space;t}{\Delta&space;x^2})
+x^2}
+$$
 
 We approach this problem by representing `u` as a Python list. Elements within
 the list correspond to positions along the rod, `i=0` is the first element,
@@ -53,7 +59,7 @@ the list correspond to positions along the rod, `i=0` is the first element,
 loop. Each iteration, according to the finite difference equation above, we
 calculate values for the new elements of `u`.
 
-![](../fig/heat_equation_implementation.png)
+![Heat equation implementation](../fig/heat_equation_implementation.png)
 
 The `test_heat()` function in `test_diffusion.py` compares this _approximation_
 with the _exact_ (analytical) solution for the boundary conditions (i.e. the
@@ -157,7 +163,12 @@ We want the `step()` function to
 [raise](https://docs.python.org/3/tutorial/errors.html#raising-exceptions) an
 [Exception](https://docs.python.org/3/tutorial/errors.html#exceptions) when
 the following [stability condition](https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis)
-_isn't_ met: ![r\leq\frac{1}{2}](https://latex.codecogs.com/png.latex?r\leq\frac{1}{2})
+_isn't_ met:
+
+$$
+r\leq\frac{1}{2}
+$$
+
 Add a new test `test_step_unstable`, similar to `test_step` but that invokes
 `step` with an `alpha` equal to `0.1` and expects an `Exception` to be
 raised. Check that this test fails before making it pass by modifying
