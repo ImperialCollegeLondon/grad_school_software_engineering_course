@@ -322,7 +322,19 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="l3-01-design_patterns.html">9. Advanced Topic: Design Patterns</a>
+        <a href="l2-03-unit_testing_challenge.html">9. Unit Testing Challenge</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="l3-01-design_patterns.html">10. Advanced Topic: Design Patterns</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -961,7 +973,7 @@ it.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>After saving, the code should be automatically formatted to:</p>
 <div class="codewrapper sourceCode" id="cb2">
@@ -2337,7 +2349,7 @@ might be nested!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The first obvious separation could be between
 <code>Ingredients</code> and <code>Preparation</code>. However, there is
@@ -2383,7 +2395,7 @@ so a possible structure for the concerns could be:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Solution 2 </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>But there is another, more reusable solution, to separate the
 <code>Dough</code> and the <code>Filling</code> first, and then the
@@ -3010,7 +3022,7 @@ given below:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="case-1---use-either-0-or-1-as-input">Case 1 - Use either 0 or 1 as input<a class="anchor" aria-label="anchor" href="#case-1---use-either-0-or-1-as-input"></a>
@@ -3620,6 +3632,351 @@ Jupyter, benchmark, Hypothesis etc</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</section></section><section id="aio-l2-03-unit_testing_challenge"><p>Content from <a href="l2-03-unit_testing_challenge.html">Unit Testing Challenge</a></p>
+<hr>
+<p>Last updated on 2026-05-11 |
+
+        <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/l2-03-unit_testing_challenge.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do I apply unit tests to research code?</li>
+<li>How can I use unit tests to improve my code?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Use unit tests to fix some incorrectly-implemented scientific
+code</li>
+<li>Refactor code to make it easier to test</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="introduction-to-your-challenge">Introduction to your challenge<a class="anchor" aria-label="anchor" href="#introduction-to-your-challenge"></a>
+</h2>
+<hr class="half-width">
+<p>You have inherited some buggy code from a previous member of your
+research group: it has a unit test but it is currently failing. Your job
+is to refactor the code and write some extra tests in order to identify
+the problem, fix the code and make it more robust.</p>
+<p>The code solves the heat equation, also known as the <a href="https://github.com/betterscientificsoftware/hello-heat-equation" class="external-link">“Hello
+World” of Scientific Computing</a>. It models transient heat conduction
+in a metal rod i.e. it describes the temperature at a distance from one
+end of the rod at a given time, according to some initial and boundary
+temperatures and the thermal diffusivity of the material:</p>
+<figure><img src="https://raw.githubusercontent.com/betterscientificsoftware/images/master/Blog_0719_HeatEqnBar.png" alt="Metal Rod" class="figure mx-auto d-block"><div class="figcaption">Metal Rod</div>
+</figure><p>The function <code>heat()</code> in <code>diffusion.py</code>
+attempts to implement a <strong>step-wise numerical
+approximation</strong> via a <a href="https://en.wikipedia.org/wiki/Finite_difference_method" class="external-link">finite
+difference method</a>:</p>
+<p><span class="math display">\[
+u_{i}^{t+1}=ru_{i+1}^{t}+(1-2r)u_{i}^{t}+ru_{i-1}^{t}
+\]</span></p>
+<p>This relates the temperature <code>u</code> at a specific location
+<code>i</code> and time point <code>t</code> to the temperature at the
+previous time point and neighbouring locations. <code>r</code> is
+defined as follows, where <code>α</code> is the thermal diffusivity:</p>
+<p><span class="math display">\[
+r=\frac{\alpha
+\Delta t}{\Delta
+x^2}
+\]</span></p>
+<p>We approach this problem by representing <code>u</code> as a Python
+list. Elements within the list correspond to positions along the rod,
+<code>i=0</code> is the first element, <code>i=1</code> is the second
+and so on. In order to increment <code>t</code> we update <code>u</code>
+in a loop. Each iteration, according to the finite difference equation
+above, we calculate values for the new elements of <code>u</code>.</p>
+<figure><img src="../fig/heat_equation_implementation.png" alt="Heat equation implementation" class="figure mx-auto d-block"><div class="figcaption">Heat equation implementation</div>
+</figure><p>The <code>test_heat()</code> function in
+<code>test_diffusion.py</code> compares this <em>approximation</em> with
+the <em>exact</em> (analytical) solution for the boundary conditions
+(i.e. the temperature of the end being fixed at zero). The test is
+correct but failing - indicating that there is a bug in the code.</p>
+</section><section><h2 class="section-heading" id="testing-and-fixing-the-code-50-min">Testing (and fixing!) the code (50 min)<a class="anchor" aria-label="anchor" href="#testing-and-fixing-the-code-50-min"></a>
+</h2>
+<hr class="half-width">
+<p>Work by yourself or with a partner on these test-driven development
+tasks. Don’t hesitate to ask a demonstrator if you get stuck!</p>
+<div id="separation-of-concerns" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="separation-of-concerns" class="callout-inner">
+<h3 class="callout-title">Separation of concerns</h3>
+<div class="callout-content">
+<p>First we’ll refactor the code, increasing its modularity. We’ll
+extract the code that performs a single time step into a new function
+that can be verified in isolation via a new unit test:</p>
+<ol style="list-style-type: decimal">
+<li>In <code>diffusion.py</code> move the logic that updates
+<code>u</code> within the loop in the <code>heat()</code> function to a
+new top-level function:</li>
+</ol>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="kw">def</span> step(u, dx, dt, alpha):</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a>  …</span></code></pre>
+</div>
+<p><em>Hint: the loop in <code>heat()</code> should now look like
+this:</em></p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(nt <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a>  u <span class="op">=</span> step(u, dx, dt, alpha)</span></code></pre>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Run the existing test to ensure that it executes without any Python
+errors. It should still fail.</li>
+<li>Add a test for our new <code>step()</code> function:</li>
+</ol>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="kw">def</span> test_step():</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a>  <span class="cf">assert</span> step(…) <span class="op">==</span> …</span></code></pre>
+</div>
+<p>It should call <code>step()</code> with suitable values for
+<code>u</code> (the temperatures at time <code>t</code>),
+<code>dx</code>, <code>dt</code> and <code>alpha</code>. It should
+<code>assert</code> that the resulting temperatures (i.e. at time
+<code>t+1</code>) match those suggested by the equation above. Use
+<code>approx</code> if necessary.</p>
+<p>Hint: <code>step([0, 1, 1, 0], 0.04, 0.02,   0.01)</code> is a
+suitable invocation. These values will give <code>r=0.125</code>. It
+will return a list of the form <code>[0, ?, ?, 0]</code>. You’ll need to
+calculate the missing values manually using the equation in order to
+compare the expected and actual values.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Assuming that this test fails, fix it by changing the code in the
+<code>step()</code> function to match the equation - correcting the
+original bug. Once you’ve done this all the tests should pass.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  Solution 1
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<p>Your test should look something like this:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="co"># test_diffusion.py</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="kw">def</span> test_step():</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a>    <span class="cf">assert</span> step([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>], <span class="fl">0.04</span>, <span class="fl">0.02</span>, <span class="fl">0.01</span>) <span class="op">==</span> [<span class="dv">0</span>, <span class="fl">0.875</span>, <span class="fl">0.875</span>, <span class="dv">0</span>]</span></code></pre>
+</div>
+<p>Your final (fixed!) <code>step()</code> function should look like
+this. The original error was a result of some over-zealous
+copy-and-pasting.</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="co"># diffusion.py</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a><span class="kw">def</span> step(u, dx, dt, alpha):</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a>    r <span class="op">=</span> alpha <span class="op">*</span> dt <span class="op">/</span> dx <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1" aria-label="code-block-5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1" aria-label="code-block-5-5"></a>    <span class="cf">return</span> (</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1" aria-label="code-block-5-6"></a>        u[:<span class="dv">1</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1" aria-label="code-block-5-7"></a>        <span class="op">+</span> [</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1" aria-label="code-block-5-8"></a>            r <span class="op">*</span> u[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> r) <span class="op">*</span> u[i] <span class="op">+</span> r <span class="op">*</span> u[i <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1" aria-label="code-block-5-9"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(u) <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1" aria-label="code-block-5-10"></a>        ]</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1" aria-label="code-block-5-11"></a>        <span class="op">+</span> u[<span class="op">-</span><span class="dv">1</span>:]</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1" aria-label="code-block-5-12"></a>    )</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Now we’ll add some further tests to ensure the code is more suitable
+for publication.</p>
+<div id="testing-for-exceptions" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="testing-for-exceptions" class="callout-inner">
+<h3 class="callout-title">Testing for exceptions</h3>
+<div class="callout-content">
+<p>We want the <code>step()</code> function to <a href="https://docs.python.org/3/tutorial/errors.html#raising-exceptions" class="external-link">raise</a>
+an <a href="https://docs.python.org/3/tutorial/errors.html#exceptions" class="external-link">Exception</a>
+when the following <a href="https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis" class="external-link">stability
+condition</a> <em>isn’t</em> met:</p>
+<p><span class="math display">\[
+r\leq\frac{1}{2}
+\]</span></p>
+<p>Add a new test <code>test_step_unstable</code>, similar to
+<code>test_step</code> but that invokes <code>step</code> with an
+<code>alpha</code> equal to <code>0.1</code> and expects an
+<code>Exception</code> to be raised. Check that this test fails before
+making it pass by modifying <code>diffusion.py</code> to raise an
+<code>Exception</code> appropriately.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">
+  Solution 2
+  </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="co"># test_diffusion.py</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a><span class="kw">def</span> test_step_unstable():</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a>    <span class="cf">with</span> pytest.raises(<span class="pp">Exception</span>):</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a>        step([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>], <span class="fl">0.04</span>, <span class="fl">0.02</span>, <span class="fl">0.1</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1" aria-label="code-block-6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1" aria-label="code-block-6-6"></a><span class="co"># diffusion.py</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1" aria-label="code-block-6-7"></a><span class="kw">def</span> step(u, dx, dt, alpha):</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1" aria-label="code-block-6-8"></a>    r <span class="op">=</span> alpha <span class="op">*</span> dt <span class="op">/</span> dx <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1" aria-label="code-block-6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1" aria-label="code-block-6-10"></a>    <span class="cf">if</span> r <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1" aria-label="code-block-6-11"></a>        <span class="cf">raise</span> <span class="pp">Exception</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1" aria-label="code-block-6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1" aria-label="code-block-6-13"></a>    …</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="adding-parametrisation" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="adding-parametrisation" class="callout-inner">
+<h3 class="callout-title">Adding parametrisation</h3>
+<div class="callout-content">
+<p>Parametrise <code>test_heat()</code> to ensure the approximation is
+valid for some other combinations of <code>L</code> and
+<code>tmax</code> (ensuring that the stability condition remains
+true).</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">
+  Solution 3
+  </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="co"># test_diffusion.py</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="at">@pytest.mark.parametrize</span>(<span class="st">"L,tmax"</span>, [(<span class="dv">1</span>, <span class="fl">0.5</span>), (<span class="dv">2</span>, <span class="fl">0.5</span>), (<span class="dv">1</span>, <span class="dv">1</span>)])</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a><span class="kw">def</span> test_heat(L, tmax):</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a>  nt <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1" aria-label="code-block-7-5"></a>  nx <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1" aria-label="code-block-7-6"></a>  alpha <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1" aria-label="code-block-7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1" aria-label="code-block-7-8"></a>  …</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="adding-parametrisation" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="adding-parametrisation" class="callout-inner">
+<h3 class="callout-title">Adding parametrisation<em>
+(continued)</em>
+</h3>
+<div class="callout-content">
+<p>After completing these two steps check the coverage of your tests via
+the Test Output panel - it should be 100%.</p>
+</div>
+</div>
+</div>
+<p>The full, final versions of <a href="https://github.com/ImperialCollegeLondon/diffusion/blob/develop/diffusion.py" class="external-link">diffusion.py</a>
+and <a href="https://github.com/ImperialCollegeLondon/diffusion/blob/develop/test_diffusion.py" class="external-link">test_diffusion.py</a>
+are available on GitHub.</p>
+<div id="bonus-tasks" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="bonus-tasks" class="callout-inner">
+<h3 class="callout-title">Bonus tasks</h3>
+<div class="callout-content">
+<ul>
+<li>Write a doctest-compatible docstring for <code>step()</code> or
+<code>heat()</code>
+</li>
+<li>Write at least one test for our currently untested
+<code>linspace()</code> function
+<ul>
+<li><em>Hint: you may find inspiration in <a href="https://github.com/numpy/numpy/blob/021163b5e2293286b26d22bdae51305da634e74d/numpy/core/tests/test_function_base.py#L222" class="external-link">numpy’s
+test cases</a>, but bear in mind that its <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html" class="external-link">version
+of linspace</a> is more capable than ours.</em></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul>
+<li>Writing unit tests can reveal issues with code that otherwise
+appears to run correctly</li>
+<li>Adding unit tests can improve software structure: isolating logical
+distinct code for testing often involves untangling complex
+structures</li>
+<li>pytest can be used to add simple tests for python code but also be
+leveraged for more complex uses like parametrising tests and adding
+tests to docstrings</li>
+</ul>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
 </section></section><section id="aio-l3-01-design_patterns"><p>Content from <a href="l3-01-design_patterns.html">Advanced Topic: Design Patterns</a></p>
 <hr>
 <p>Last updated on 2026-05-11 |
@@ -3881,7 +4238,7 @@ foot gun).</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3924,7 +4281,7 @@ element, what about after the second element?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3973,7 +4330,7 @@ element, what about after the second element?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4211,7 +4568,7 @@ about the compute inside the loop</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Ring generator </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4240,7 +4597,7 @@ about the compute inside the loop</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Ring generator with tweakable norm </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
