@@ -187,9 +187,9 @@ optional arguments:
 Notice the `--prune` option. From the documentation it looks like we would
 need to run `conda env update --prune -f "path_to_environment.yml"`. That
 flag is necessary to really uninstall unnecesary packages and update the
-environment. After running this command, `import resquest` will fail.
+environment. After running this command, `import requests` will fail.
 
-**Note**: If you are running `conda<23.9.0`, `import request` will still
+**Note**: If you are running `conda<23.9.0`, `import requests` will still
 work as there was a bug before that. You can check your conda version with
 `conda --version`.
 
