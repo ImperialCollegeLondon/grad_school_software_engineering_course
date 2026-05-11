@@ -140,11 +140,9 @@ systems.
    requests.__file__
    ```
 
-   ```
+   ```output
    'C:\\ProgramData\\Anaconda3\\envs\\course\\lib\\site-packages\\requests\\__init__.py'
    ```
-
-   {: .output}
 
    The file path you see will vary but note that it is within a directory
    called `course` that contains all of the files for the virtual environment
