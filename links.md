@@ -28,6 +28,7 @@ any links that you are not going to use.
 [paper-now]: https://github.com/PeerJ/paper-now
 [python-gapminder]: https://swcarpentry.github.io/python-novice-gapminder/
 [pyyaml]: https://pypi.python.org/pypi/PyYAML
+[setup]: ../learners/setup.md
 [swc-lessons]: https://software-carpentry.org/lessons/
 [swc-releases]: https://github.com/swcarpentry/swc-releases
 [training]: https://carpentries.github.io/instructor-training/
