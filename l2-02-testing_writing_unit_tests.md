@@ -263,7 +263,7 @@ def recursive_fibonacci(n):
 
 ### Setting up our editor
 
-1. If you haven't already, see the [setup guide](../setup) for instructions on
+1. If you haven't already, see the [setup guide][setup] for instructions on
    how to install Visual Studio Code and conda.
 1. Download and extract [this zip file](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_diffusion/archive/refs/heads/main.zip).
    If using an ICT managed PC please be sure to do this in your user area on the
@@ -300,7 +300,7 @@ conda env create --file "path_to_environment.yml"
 1. Switch to the **Test** perspective by clicking on the flask icon on the
    left-hand toolbar. From here you can **Run All Tests**, and **Show Test
    Output** to view the coverage report (see [Lesson
-   1](../l2-01-testing_overview/) for more on coverage)
+   1](l2-01-testing_overview.md) for more on coverage)
 1. **Important**: If you aren't able to run the test then please ask a
    demonstrator for help. It is essential for the next exercise.
 
@@ -313,7 +313,7 @@ conda env create --file "path_to_environment.yml"
 If you are having trouble setting up your system with `conda` and `vscode`, or running
 through this exercise locally in your computer, you can run it in Codespaces.
 
-- Check the information at the end of the [setup](../setup) on how to run Codespaces.
+- Check the information in the [setup][setup#codespaces] instructions on how to run Codespaces.
 - Apply it to [this exercise repository in GitHub](https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_diffusion).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

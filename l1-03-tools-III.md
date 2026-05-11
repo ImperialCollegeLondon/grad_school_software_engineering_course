@@ -73,7 +73,7 @@ different languages.
 
 - **R**: [lintr](https://lintr.r-lib.org/), with [RStudio integration](https://lintr.r-lib.org/articles/editors.html).
 - **C++**: [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) and
-[CppCheck](http://cppcheck.net/), although compilers can give lots of helpful
+[CppCheck](https://cppcheck.net/), although compilers can give lots of helpful
 linter-type warnings. For `gcc` and `clang`, it's a good idea to pass the
 `-Wall`, `-Wextra` and `-Wpedantic` flags to get extra ones.
 - **Fortran**: [fortran-linter](https://pypi.org/project/fortran-linter) and
