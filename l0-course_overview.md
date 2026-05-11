@@ -30,7 +30,7 @@ sustainable and ready to share with colleagues and the wider research
 community.
 
 Please, if you have not done so, yet, go through
-[the setup instructions][lesson-setup] for the course.
+[the setup instructions][setup] for the course.
 
 ## Syllabus
 
