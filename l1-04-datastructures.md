@@ -364,8 +364,8 @@ discussed the best approach to managing dependencies for a project already.
 
 ### Pandas Data Frames
 
-The excellent and very powerful Panda's package is the go to resource for
-dealing with tabular data. Anything you might think of using Excel for, Panda's
+The excellent and very powerful Pandas package is the go to resource for
+dealing with tabular data. Anything you might think of using Excel for, Pandas
 can do better. It leans heavily on NumPy for efficient numerical operations
 whilst providing a high level interface for dealing with rows and columns of
 data via [pandas.DataFrame][pandas].
@@ -457,7 +457,7 @@ smallest_dist, nearest_index = balltree.query([centre], k=1)
 
 Another type of data structure that spans many different research domains are
 graphs/networks. There are many complex algorithms that can be applied to graphs
-so checkout the NetworkX library for its [data structures][networkx].
+so check out the NetworkX library for its [data structures][networkx].
 
 [networkx]: https://networkx.org/documentation/stable/tutorial.html
 
@@ -554,7 +554,7 @@ Don't reinvent the square wheel.
 
 ## Digital Oxford Dictionary, the wrong way and the right way (10 min)
 
-1. Implement an oxford dictionary with two `list`s, one for words, one for
+1. Implement an Oxford dictionary with two `list`s, one for words, one for
 definitions:
 
    ```yaml
@@ -758,7 +758,7 @@ first_example = {
 @dataclass(frozen=True)
 class Word:
     word: Text
-    category: Text
+    category: Category
 
 
 second_example = {

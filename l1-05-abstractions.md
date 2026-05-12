@@ -284,7 +284,7 @@ validate. The code becomes cleaner, easier to read and to re-use.
 ### Code legibility
 
 Code is often meant to be read by an audience who has either not so much familiarity
-with it or has not work on it for a while. This audience is normally future-**you**
+with it or has not worked on it for a while. This audience is normally future-**you**
 reading past-**you**'s code.
 
 For example, given a point with coordinates `point[0]`, `point[1]`, `point[2]`,

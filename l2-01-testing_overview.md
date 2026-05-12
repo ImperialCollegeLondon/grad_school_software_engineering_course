@@ -8,7 +8,7 @@ exercises: 5
 
 - Why test my software?
 - How can I test my software?
-- How much testing is 'enough'?"
+- How much testing is 'enough'?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
