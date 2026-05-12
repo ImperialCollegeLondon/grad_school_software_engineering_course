@@ -126,29 +126,29 @@ and we will help you to fix whatever issue you were facing with your computer.
 To use Codespaces with the course examples:
 
 1. Go to the GitHub repository containing the code for the example.
-2. Click in the green `Code` button, select the `Codespaces` tab and click in
-`Create codespace on main`. A new tab will open in your brlowser, launching
+1. Click in the green `Code` button, select the `Codespaces` tab and click in
+`Create codespace on main`. A new tab will open in your browser, launching
 VSCode in there, creating a suitable virtual environment and installing the
 dependencies.
 
-![](fig/create_codespace.png){alt='Screenshot of dialog in GitHub to see existing Codespaces and to create new ones.'}
+    ![](fig/create_codespace.png){alt='Screenshot of dialog in GitHub to see existing Codespaces and to create new ones.'}
 
 1. At some point, a pop-up message will ask if you want to install the
 recommended extensions. Say 'yes' and wait until everything is installed.
 
-![](fig/install_recommended.png){alt='Screenshot of confirmation dialog in VS Code asking if recommended extensions should be installed.'}
+    ![](fig/install_recommended.png){alt='Screenshot of confirmation dialog in VS Code asking if recommended extensions should be installed.'}
 
 1. Now, you need to select the new python environment that has been installed.
 Open any python file and click in the Python version number label at the bottom,
 right corner.
 
-![](fig/choose_python.png){alt='Screenshot of VS Code with an arrow pointing to the bottom bar where the current Python environment is indicated.'}
+    ![](fig/choose_python.png){alt='Screenshot of VS Code with an arrow pointing to the bottom bar where the current Python environment is indicated.'}
 
 1. This will display at the top of the window a list of suitable Python
 environment. Select the recommended one, which should be the one that says
 `('venv')` or `('venv': conda)`.
 
-![](fig/select_venv.png){alt='Screenshot of VS Code showing the selector of available Pyton environment to choose from.'}
+    ![](fig/select_venv.png){alt='Screenshot of VS Code showing the selector of available Pyton environment to choose from.'}
 
 And that is all! You should be able to use this VSCode within the Codespace the
 same way you use it locally. You can close the tab and go back to the Codespace
