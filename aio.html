@@ -767,7 +767,7 @@ interpreter:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>After completing step 7 you will find that the package has not been
 removed from the environment even after being removed from
@@ -846,7 +846,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-l1-02-tools-II"><p>Content from <a href="l1-02-tools-II.html">Tools II: Code Formatters</a></p>
 <hr>
-<p>Last updated on 2026-05-11 |
+<p>Last updated on 2026-05-12 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/l1-02-tools-II.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1000,7 +1000,7 @@ it.</li>
 <span id="cb2-19"><a href="#cb2-19" tabindex="-1" aria-label="code-block-2-19"></a>    <span class="cf">return</span> <span class="dv">37</span> <span class="op">+</span> <span class="op">-</span>a[<span class="dv">42</span> <span class="op">-</span> a : y <span class="op">*</span> <span class="dv">3</span>]</span></code></pre>
 </div>
 <p>Ah! much better! But note that the <code># noqa: D102</code>
-exclusion instruction is not in the right line and there’s a complain
+exclusion instruction is not in the right line and there’s a complaint
 about <code>g</code> not having a docstring.</p>
 <p>Still, the sharp-eyed user will notice at least one issue with this
 code. <em>Formatting code does not make it less buggy!</em></p>
@@ -1020,8 +1020,8 @@ code. <em>Formatting code does not make it less buggy!</em></p>
 <code>conda</code> and <code>vscode</code>, or running through this
 exercise locally in your computer, you can run it in Codespaces.</p>
 <ul>
-<li>Check the information in the [setup][setup#codespaces] instructions
-on how to run Codespaces.</li>
+<li>Check the information in the <a href="index.html#codespaces">setup</a> instructions on how to run
+Codespaces.</li>
 <li>Apply it to <a href="https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_messy_code" class="external-link">this
 exercise repository in GitHub</a>.</li>
 </ul>
@@ -1227,7 +1227,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-l1-04-datastructures"><p>Content from <a href="l1-04-datastructures.html">Data Structures</a></p>
 <hr>
-<p>Last updated on 2026-05-11 |
+<p>Last updated on 2026-05-12 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/l1-04-datastructures.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1687,9 +1687,9 @@ dependencies for a project already.</p>
 <div class="section level3">
 <h3 id="pandas-data-frames">Pandas Data Frames<a class="anchor" aria-label="anchor" href="#pandas-data-frames"></a>
 </h3>
-<p>The excellent and very powerful Panda’s package is the go to resource
+<p>The excellent and very powerful Pandas package is the go to resource
 for dealing with tabular data. Anything you might think of using Excel
-for, Panda’s can do better. It leans heavily on NumPy for efficient
+for, Pandas can do better. It leans heavily on NumPy for efficient
 numerical operations whilst providing a high level interface for dealing
 with rows and columns of data via <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" class="external-link">pandas.DataFrame</a>.</p>
 <div class="codewrapper sourceCode" id="cb19">
@@ -1782,7 +1782,7 @@ library.</p>
 <hr class="half-width">
 <p>Another type of data structure that spans many different research
 domains are graphs/networks. There are many complex algorithms that can
-be applied to graphs so checkout the NetworkX library for its <a href="https://networkx.org/documentation/stable/tutorial.html" class="external-link">data
+be applied to graphs so check out the NetworkX library for its <a href="https://networkx.org/documentation/stable/tutorial.html" class="external-link">data
 structures</a>.</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1903,7 +1903,7 @@ the right way (10 min)</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
 <li>
-<p>Implement an oxford dictionary with two <code>list</code>s, one
+<p>Implement an Oxford dictionary with two <code>list</code>s, one
 for words, one for definitions:</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2129,7 +2129,7 @@ dictionary.</p>
 <span id="cb26-52"><a href="#cb26-52" tabindex="-1" aria-label="code-block-26-52"></a><span class="at">@dataclass</span>(frozen<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb26-53"><a href="#cb26-53" tabindex="-1" aria-label="code-block-26-53"></a><span class="kw">class</span> Word:</span>
 <span id="cb26-54"><a href="#cb26-54" tabindex="-1" aria-label="code-block-26-54"></a>    word: Text</span>
-<span id="cb26-55"><a href="#cb26-55" tabindex="-1" aria-label="code-block-26-55"></a>    category: Text</span>
+<span id="cb26-55"><a href="#cb26-55" tabindex="-1" aria-label="code-block-26-55"></a>    category: Category</span>
 <span id="cb26-56"><a href="#cb26-56" tabindex="-1" aria-label="code-block-26-56"></a></span>
 <span id="cb26-57"><a href="#cb26-57" tabindex="-1" aria-label="code-block-26-57"></a></span>
 <span id="cb26-58"><a href="#cb26-58" tabindex="-1" aria-label="code-block-26-58"></a>second_example <span class="op">=</span> {</span>
@@ -2215,7 +2215,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-l1-05-abstractions"><p>Content from <a href="l1-05-abstractions.html">Structuring code</a></p>
 <hr>
-<p>Last updated on 2026-03-13 |
+<p>Last updated on 2026-05-12 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/l1-05-abstractions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2569,7 +2569,7 @@ re-use.</p>
 <h3 id="code-legibility">Code legibility<a class="anchor" aria-label="anchor" href="#code-legibility"></a>
 </h3>
 <p>Code is often meant to be read by an audience who has either not so
-much familiarity with it or has not work on it for a while. This
+much familiarity with it or has not worked on it for a while. This
 audience is normally future-<strong>you</strong> reading
 past-<strong>you</strong>’s code.</p>
 <p>For example, given a point with coordinates <code>point[0]</code>,
@@ -2820,7 +2820,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-l2-01-testing_overview"><p>Content from <a href="l2-01-testing_overview.html">Testing Overview</a></p>
 <hr>
-<p>Last updated on 2026-03-13 |
+<p>Last updated on 2026-05-12 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/l2-01-testing_overview.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2836,7 +2836,7 @@ any links that you are not going to use.
 <ul>
 <li>Why test my software?</li>
 <li>How can I test my software?</li>
-<li>How much testing is ‘enough’?”</li>
+<li>How much testing is ‘enough’?</li>
 </ul>
 </div>
 </div>
@@ -3018,7 +3018,7 @@ given below:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="case-1---use-either-0-or-1-as-input">Case 1 - Use either 0 or 1 as input<a class="anchor" aria-label="anchor" href="#case-1---use-either-0-or-1-as-input"></a>
@@ -3121,7 +3121,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-l2-02-testing_writing_unit_tests"><p>Content from <a href="l2-02-testing_writing_unit_tests.html">Writing unit tests</a></p>
 <hr>
-<p>Last updated on 2026-05-11 |
+<p>Last updated on 2026-05-12 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/l2-02-testing_writing_unit_tests.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3518,8 +3518,8 @@ exercise.</li>
 <code>conda</code> and <code>vscode</code>, or running through this
 exercise locally in your computer, you can run it in Codespaces.</p>
 <ul>
-<li>Check the information in the [setup][setup#codespaces] instructions
-on how to run Codespaces.</li>
+<li>Check the information in the <a href="index.html#codespaces">setup</a> instructions on how to run
+Codespaces.</li>
 <li>Apply it to <a href="https://github.com/ImperialCollegeLondon/grad_school_sw_engineering_diffusion" class="external-link">this
 exercise repository in GitHub</a>.</li>
 </ul>
@@ -3567,7 +3567,7 @@ can check for regressions in your Jupyter notebooks (see also <a href="https://g
 <li>
 <a href="https://hypothesis.readthedocs.io/en/latest/" class="external-link">Hypothesis</a>
 provides property-based testing, which is useful for verifying edge
-cases):</li>
+cases:</li>
 </ul>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3776,7 +3776,7 @@ original bug. Once you’ve done this all the tests should pass.</li>
   Solution 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Your test should look something like this:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -3842,7 +3842,7 @@ making it pass by modifying <code>diffusion.py</code> to raise an
   Solution 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3887,7 +3887,7 @@ true).</p>
   Solution 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
