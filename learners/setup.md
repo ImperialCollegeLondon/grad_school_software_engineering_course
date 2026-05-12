@@ -1,7 +1,5 @@
 ---
 title: Setup
-aliases:
-    "setup.html"
 ---
 
 Completing this course requires you to have access to computer with some
