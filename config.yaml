@@ -97,3 +97,7 @@ profiles:
 carpentry_description: Lesson Description
 url: "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/"
 lang: en
+
+project:
+  resources:
+    - setup.html
