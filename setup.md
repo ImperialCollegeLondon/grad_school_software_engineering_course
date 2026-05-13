@@ -124,7 +124,7 @@ and we will help you to fix whatever issue you were facing with your computer.
 To use Codespaces with the course examples:
 
 1. Go to the GitHub repository containing the code for the example.
-1. Click in the green `Code` button, select the `Codespaces` tab and click in
+1. Click on the green `Code` button, select the `Codespaces` tab and click on
 `Create codespace on main`. A new tab will open in your browser, launching
 VSCode in there, creating a suitable virtual environment and installing the
 dependencies.
@@ -136,14 +136,14 @@ recommended extensions. Say 'yes' and wait until everything is installed.
 
     ![](fig/install_recommended.png){alt='Screenshot of confirmation dialog in VS Code asking if recommended extensions should be installed.'}
 
-1. Now, you need to select the new python environment that has been installed.
-Open any python file and click in the Python version number label at the bottom,
+1. Now, you need to select the new Python environment that has been installed.
+Open any Python file and click on the Python version number label at the bottom,
 right corner.
 
     ![](fig/choose_python.png){alt='Screenshot of VS Code with an arrow pointing to the bottom bar where the current Python environment is indicated.'}
 
 1. This will display at the top of the window a list of suitable Python
-environment. Select the recommended one, which should be the one that says
+environments. Select the recommended one, which should be the one that says
 `('venv')` or `('venv': conda)`.
 
     ![](fig/select_venv.png){alt='Screenshot of VS Code showing the selector of available Pyton environment to choose from.'}

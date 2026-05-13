@@ -96,7 +96,7 @@ systems.
    ```yaml
    name: course
    dependencies:
-     - python==3.11
+     - python==3.12
      - ruff
      - mypy
      - requests

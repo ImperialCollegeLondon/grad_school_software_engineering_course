@@ -61,7 +61,7 @@ style.
 - There are also exercises in **orange boxes**. The instructor will give you
 time to try to do them yourself before going through the solution. This is
 often available in a folded part of the orange box, so you can check it at any time.
-- When doing exercises, put a green sticker in your computer whenever you are
+- When doing exercises, put a green sticker on your computer whenever you are
 done, or a pink/orange one if you need support. A helper will go to you.
 - For online sessions, raise your hand if you are done with the exercise and
 write any questions or problems directly into the chat, so a helper can try to
