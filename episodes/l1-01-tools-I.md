@@ -95,6 +95,8 @@ systems.
 
    ```yaml
    name: course
+   channels:
+     - defaults
    dependencies:
      - python==3.12
      - ruff
