@@ -45,8 +45,6 @@ On completion of this workshop you will be able to:
 - Be confident in the quality of your code for collaboration and publication
 - Apply appropriate quality assurance software tools to your code
 - Write tests to check the correctness of your code
-- Understand how and where to access support from the Research Computing Service
- at Imperial College
 
 ## Delivery of the course
 
@@ -56,11 +54,11 @@ style.
 - The instructor will walk you through the theoretical material of the course,
   demonstrating the execution of the relevant code and instructions. **You are highly
   encouraged to code along** and execute the instructions at the same time.
-- Throughout the lessons, there are **yellow boxes** highlighting particularly
+- Throughout the lessons, there are **grey boxes** highlighting particularly
   challenging or important concepts.
-- There are also exercises in **orange boxes**. The instructor will give you
+- There are also exercises in **yellow boxes**. The instructor will give you
 time to try to do them yourself before going through the solution. This is
-often available in a folded part of the orange box, so you can check it at any time.
+often available in a folded part of the yellow box, so you can check it at any time.
 - When doing exercises, put a green sticker on your computer whenever you are
 done, or a pink/orange one if you need support. A helper will go to you.
 - For online sessions, raise your hand if you are done with the exercise and
