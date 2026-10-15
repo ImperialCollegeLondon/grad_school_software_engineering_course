@@ -352,6 +352,12 @@ chosen an incorrect data structure.
 
 ## Advanced data structures
 
+::::::::::::::::::::::::::::::::: instructor
+
+This section can be skipped if short on time
+
+::::::::::::::::::::::::::::::::::::::::::::
+
 Whilst basic data structures provide the fundamental building blocks of a piece
 of software, there are many more sophisticated structures suited to specialised
 tasks. In this section we'll take a brief look at a variety of different data
