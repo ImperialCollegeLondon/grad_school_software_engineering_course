@@ -363,6 +363,13 @@ will already have published an implementation of it and its strongly recommended
 to use an available version rather than try to write one from scratch. We've
 discussed the best approach to managing dependencies for a project already.
 
+:::::::::::::::::::::::::::::::::: callout
+
+All of the examples below show python-specific data structures. However, there
+will be an equivalent data structure available in whichever language you use.
+
+::::::::::::::::::::::::::::::::::::::::::
+
 ### Pandas Data Frames
 
 The excellent and very powerful Pandas package is the go to resource for
