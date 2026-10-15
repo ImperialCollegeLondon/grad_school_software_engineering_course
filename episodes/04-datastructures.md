@@ -413,47 +413,6 @@ dataframe[dataframe["col1"] == 0]
 dataframe.groupby("col1")
 ```
 
-### Balltrees
-
-A common requirement across many fields is working with data points within a 2d,
-3d or higher dimensioned space where you often need to work with distances
-between points. It is tempting in this case to reach for lists or arrays but
-balltrees provide an interesting and very performant alternative in some
-cases. An implementation is provided in Python by the [scikit-learn][] library.
-
-[scikit-learn]: https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html
-
-```python
-# Which point is closest to the centre of a 2-d space?
-
-points = [
-    [0.1, 0.1],
-    [1.0, 0.1],
-    [0.2, 0.2],
-    [0.1, 0.3],
-    [0.9, 0.2],
-    [0.2, 0.3],
-]
-centre = [0.5, 0.5] # centre of our space
-
-# Using lists
-
-distances = []
-for i, point in enumerate(points):
-    dist = ((centre[0] - point[0])**2 + (centre[1] - point[1])**2)**0.5
-    distances.append(dist)
-
-smallest_dist = sorted(distances)[0]
-nearest_index = distances.index(smallest_dist)
-
-# vs
-
-from sklearn.neighbors import BallTree
-
-balltree = BallTree(points)
-smallest_dist, nearest_index = balltree.query([centre], k=1)
-```
-
 ## Graphs and Networks
 
 Another type of data structure that spans many different research domains are
@@ -551,8 +510,8 @@ above or those below:
 - [named tuples](https://docs.python.org/3/library/collections.html#collections.namedtuple)
 - [counters](https://docs.python.org/3/library/collections.html#collections.Counter)
 - [dates](https://docs.python.org/3/library/datetime.html)
-- [enum](https://docs.python.org/3/library/enum.html) represent objects that can
-  only take a few *values*, e.g. colors. Often useful for configuration options.
+- [enum](https://docs.python.org/3/library/enum.html) (represent objects that can
+  only take a few *values*, e.g. colors. Often useful for configuration options)
 - [numpy arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
   (multidimensional array of numbers)
 - [xarray arrays](https://xarray.pydata.org/en/stable/) (multi-dimensional
@@ -560,7 +519,9 @@ above or those below:
   dates or by longitude and latitude, rather than by the numbers 0, 1, 2, 3)
 - [xarray datasets](https://xarray.pydata.org/en/stable/) (collections of
   named [xarray arrays](https://xarray.pydata.org/en/stable/) that share some
-  dimensions.)
+  dimensions)
+- [balltrees](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html)
+  (more performant representation of 2D or 3D points)
 
 Don't reinvent the wheel.
 
