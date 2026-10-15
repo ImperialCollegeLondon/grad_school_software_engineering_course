@@ -68,16 +68,16 @@ contact: 'ict-rse-team@imperial.ac.uk' # FIXME
 
 # Order of episodes in your lesson
 episodes:
-- l0-course_overview.md
-- l1-01-tools-I.md
-- l1-02-tools-II.md
-- l1-03-tools-III.md
-- l1-04-datastructures.md
-- l1-05-abstractions.md
-- l2-01-testing_overview.md
-- l2-02-testing_writing_unit_tests.md
-- l2-03-unit_testing_challenge.md
-- l3-01-design_patterns.md
+- 00-course_overview.md
+- 01-tools-I.md
+- 02-tools-II.md
+- 03-tools-III.md
+- 04-datastructures.md
+- 05-abstractions.md
+- 06-testing_overview.md
+- 07-testing_writing_unit_tests.md
+- 08-unit_testing_challenge.md
+- 09-design_patterns.md
 
 # Information for Learners
 learners:
