@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/00-course_overview.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/01-tools-I.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/02-tools-II.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/03-tools-III.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/04-datastructures.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/05-abstractions.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/06-testing_overview.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/07-testing_writing_unit_tests.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/08-unit_testing_challenge.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/09-design_patterns.html</loc>
+  </url>
+  <url>
     <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/404.html</loc>
   </url>
   <url>
@@ -20,6 +50,36 @@
   </url>
   <url>
     <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/index.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/00-course_overview.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/01-tools-I.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/02-tools-II.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/03-tools-III.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/04-datastructures.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/05-abstractions.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/06-testing_overview.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/07-testing_writing_unit_tests.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/08-unit_testing_challenge.html</loc>
+  </url>
+  <url>
+    <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/09-design_patterns.html</loc>
   </url>
   <url>
     <loc>https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/404.html</loc>
