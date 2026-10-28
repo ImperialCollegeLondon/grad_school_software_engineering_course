@@ -145,6 +145,7 @@ Lists make sense when:
    ```python
    >>> velocities_x = [0.3, 0.5, 0.1]
    >>> velocities_x[1]  # e.g. could be velocity a point x=1
+   0.5
    ```
 
 Beware! The following might indicate a list is the wrong data structure:
@@ -351,6 +352,12 @@ chosen an incorrect data structure.
 
 ## Advanced data structures
 
+::::::::::::::::::::::::::::::::: instructor
+
+This section can be skipped if short on time
+
+::::::::::::::::::::::::::::::::::::::::::::
+
 Whilst basic data structures provide the fundamental building blocks of a piece
 of software, there are many more sophisticated structures suited to specialised
 tasks. In this section we'll take a brief look at a variety of different data
@@ -361,6 +368,13 @@ libraries. As a rule of thumb, for any data structure you can think of somebody
 will already have published an implementation of it and its strongly recommended
 to use an available version rather than try to write one from scratch. We've
 discussed the best approach to managing dependencies for a project already.
+
+:::::::::::::::::::::::::::::::::: callout
+
+All of the examples below show python-specific data structures. However, there
+will be an equivalent data structure available in whichever language you use.
+
+::::::::::::::::::::::::::::::::::::::::::
 
 ### Pandas Data Frames
 
@@ -412,47 +426,6 @@ dataframe[dataframe["col1"] == 0]
 dataframe.groupby("col1")
 ```
 
-### Balltrees
-
-A common requirement across many fields is working with data points within a 2d,
-3d or higher dimensioned space where you often need to work with distances
-between points. It is tempting in this case to reach for lists or arrays but
-balltrees provide an interesting and very performant alternative in some
-cases. An implementation is provided in Python by the [scikit-learn][] library.
-
-[scikit-learn]: https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html
-
-```python
-# Which point is closest to the centre of a 2-d space?
-
-points = [
-    [0.1, 0.1],
-    [1.0, 0.1],
-    [0.2, 0.2],
-    [0.1, 0.3],
-    [0.9, 0.2],
-    [0.2, 0.3],
-]
-centre = [0.5, 0.5] # centre of our space
-
-# Using lists
-
-distances = []
-for i, point in enumerate(points):
-    dist = ((centre[0] - point[0])**2 + (centre[1] - point[1])**2)**0.5
-    distances.append(dist)
-
-smallest_dist = sorted(distances)[0]
-nearest_index = distances.index(smallest_dist)
-
-# vs
-
-from sklearn.neighbors import BallTree
-
-balltree = BallTree(points)
-smallest_dist, nearest_index = balltree.query([centre], k=1)
-```
-
 ## Graphs and Networks
 
 Another type of data structure that spans many different research domains are
@@ -496,35 +469,50 @@ graph.subgraph([1,2,4])
 Python (>= 3.7) makes it easy to create custom data structures.
 
 ```python
->>> from typing import List, Text
->>> from dataclasses import dataclass
->>> @dataclass
-... class MyData:
-...   a_list: List[int]
-...   b_string: Text = "something something"
->>> data = MyData([1, 2])
->>> data
-MyData(a_list=[1, 2], b_string='something something')
+from dataclasses import dataclass
+
+@dataclass
+class MyData:
+    a_list: list[int]
+    b_string: str = "something something"
+```
+
+Which allows you to create an object and access its fields
+
+```python
+>>> data = MyData(a_list=[1, 2], b_string="my string")
 >>> data.a_list
 [1, 2]
+>>> data.b_string
+'my string'
+```
+
+Values with defaults are possible
+
+```python
+>>> data = MyData(a_list=[1, 2])
+>>> data
+MyData(a_list=[1, 2], b_string='something something')
 ```
 
 Data classes make sense when:
 
+- you have dictionary-like data with keys and values, but the values are of
+  mixed types (like above)
 - you have a collections of related data that does not fit a more primitive type
 - you already have a class and you don't want to write standard functions like
-  `__init__`, `__repr__`, `__ge__`, etc..
+  `__init__`, `__repr__`, `__ge__`, etc...
 
 Beware! The following might indicate a `dataclass` is the wrong data structure:
 
 - you do need specialized `__init__` behaviours (just use a class)
 - single huge mother of all classes that does everything (split into smaller
   specialized classes and/or stand-alone functions)
-- a `dict`, `list` or `numpy` array would do the job. Everybody knows what a
-  `numpy` array is and how to use it. But even your future self might not know
-  how to use your very special class.
+- a `dict`, `list` or `numpy` array would do the job. There is documentation
+  available online for built-in and common data types. But even your future self
+  might not know how to use your very special class.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::: challenge
+::::::::::::::::::::::::::::::::::::::::::::::::::::: callout
 
 ## Exploring data structures
 
@@ -535,8 +523,8 @@ above or those below:
 - [named tuples](https://docs.python.org/3/library/collections.html#collections.namedtuple)
 - [counters](https://docs.python.org/3/library/collections.html#collections.Counter)
 - [dates](https://docs.python.org/3/library/datetime.html)
-- [enum](https://docs.python.org/3/library/enum.html) represent objects that can
-  only take a few *values*, e.g. colors. Often useful for configuration options.
+- [enum](https://docs.python.org/3/library/enum.html) (represent objects that can
+  only take a few *values*, e.g. colors. Often useful for configuration options)
 - [numpy arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
   (multidimensional array of numbers)
 - [xarray arrays](https://xarray.pydata.org/en/stable/) (multi-dimensional
@@ -544,9 +532,11 @@ above or those below:
   dates or by longitude and latitude, rather than by the numbers 0, 1, 2, 3)
 - [xarray datasets](https://xarray.pydata.org/en/stable/) (collections of
   named [xarray arrays](https://xarray.pydata.org/en/stable/) that share some
-  dimensions.)
+  dimensions)
+- [balltrees](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html)
+  (more performant representation of 2D or 3D points)
 
-Don't reinvent the square wheel.
+Don't reinvent the wheel.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -704,7 +694,6 @@ words (rows) are seldom accessed one at a time. Instead, most operations are
 carried out over subsets of the dictionary.
 
 ```python
-from typing import Text
 from enum import Enum, auto
 from dataclasses import dataclass
 from pandas import DataFrame, Series
@@ -717,7 +706,7 @@ class Category(Enum):
 @dataclass
 class Definition:
     category: Category
-    text: Text
+    text: str
 
 first_example = {
     "barf": [
@@ -727,7 +716,7 @@ first_example = {
     ],
     "morph": [
         Definition(
-            Category.VERB, "(verb) change shape as via computer animation"
+            Category.VERB, "change shape as via computer animation"
         )
     ],
     "scarf": [
