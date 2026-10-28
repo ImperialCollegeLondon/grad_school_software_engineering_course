@@ -1251,7 +1251,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-04-datastructures"><p>Content from <a href="04-datastructures.html">Data Structures</a></p>
 <hr>
-<p>Last updated on 2026-10-15 |
+<p>Last updated on 2026-10-28 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/04-datastructures.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1432,7 +1432,8 @@ be found in most other languages.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="op">&gt;&gt;&gt;</span> velocities_x <span class="op">=</span> [<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.1</span>]</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="op">&gt;&gt;&gt;</span> velocities_x[<span class="dv">1</span>]  <span class="co"># e.g. could be velocity a point x=1</span></span></code></pre>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="op">&gt;&gt;&gt;</span> velocities_x[<span class="dv">1</span>]  <span class="co"># e.g. could be velocity a point x=1</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a><span class="fl">0.5</span></span></code></pre>
 </div>
 </li>
 </ul>
@@ -1708,6 +1709,19 @@ think of somebody will already have published an implementation of it
 and its strongly recommended to use an available version rather than try
 to write one from scratch. We’ve discussed the best approach to managing
 dependencies for a project already.</p>
+<div id="callout6" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>All of the examples below show python-specific data structures.
+However, there will be an equivalent data structure available in
+whichever language you use.</p>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="pandas-data-frames">Pandas Data Frames<a class="anchor" aria-label="anchor" href="#pandas-data-frames"></a>
 </h3>
@@ -1758,49 +1772,6 @@ with rows and columns of data via <a href="https://pandas.pydata.org/pandas-docs
 <span id="cb19-37"><a href="#cb19-37" tabindex="-1" aria-label="code-block-19-37"></a>dataframe.groupby(<span class="st">"col1"</span>)</span></code></pre>
 </div>
 </div>
-<div class="section level3">
-<h3 id="balltrees">Balltrees<a class="anchor" aria-label="anchor" href="#balltrees"></a>
-</h3>
-<p>A common requirement across many fields is working with data points
-within a 2d, 3d or higher dimensioned space where you often need to work
-with distances between points. It is tempting in this case to reach for
-lists or arrays but balltrees provide an interesting and very performant
-alternative in some cases. An implementation is provided in Python by
-the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html" class="external-link">scikit-learn</a>
-library.</p>
-<div class="codewrapper sourceCode" id="cb20">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="co"># Which point is closest to the centre of a 2-d space?</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a></span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1" aria-label="code-block-20-3"></a>points <span class="op">=</span> [</span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1" aria-label="code-block-20-4"></a>    [<span class="fl">0.1</span>, <span class="fl">0.1</span>],</span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1" aria-label="code-block-20-5"></a>    [<span class="fl">1.0</span>, <span class="fl">0.1</span>],</span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1" aria-label="code-block-20-6"></a>    [<span class="fl">0.2</span>, <span class="fl">0.2</span>],</span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1" aria-label="code-block-20-7"></a>    [<span class="fl">0.1</span>, <span class="fl">0.3</span>],</span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1" aria-label="code-block-20-8"></a>    [<span class="fl">0.9</span>, <span class="fl">0.2</span>],</span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1" aria-label="code-block-20-9"></a>    [<span class="fl">0.2</span>, <span class="fl">0.3</span>],</span>
-<span id="cb20-10"><a href="#cb20-10" tabindex="-1" aria-label="code-block-20-10"></a>]</span>
-<span id="cb20-11"><a href="#cb20-11" tabindex="-1" aria-label="code-block-20-11"></a>centre <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0.5</span>] <span class="co"># centre of our space</span></span>
-<span id="cb20-12"><a href="#cb20-12" tabindex="-1" aria-label="code-block-20-12"></a></span>
-<span id="cb20-13"><a href="#cb20-13" tabindex="-1" aria-label="code-block-20-13"></a><span class="co"># Using lists</span></span>
-<span id="cb20-14"><a href="#cb20-14" tabindex="-1" aria-label="code-block-20-14"></a></span>
-<span id="cb20-15"><a href="#cb20-15" tabindex="-1" aria-label="code-block-20-15"></a>distances <span class="op">=</span> []</span>
-<span id="cb20-16"><a href="#cb20-16" tabindex="-1" aria-label="code-block-20-16"></a><span class="cf">for</span> i, point <span class="kw">in</span> <span class="bu">enumerate</span>(points):</span>
-<span id="cb20-17"><a href="#cb20-17" tabindex="-1" aria-label="code-block-20-17"></a>    dist <span class="op">=</span> ((centre[<span class="dv">0</span>] <span class="op">-</span> point[<span class="dv">0</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (centre[<span class="dv">1</span>] <span class="op">-</span> point[<span class="dv">1</span>])<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span>
-<span id="cb20-18"><a href="#cb20-18" tabindex="-1" aria-label="code-block-20-18"></a>    distances.append(dist)</span>
-<span id="cb20-19"><a href="#cb20-19" tabindex="-1" aria-label="code-block-20-19"></a></span>
-<span id="cb20-20"><a href="#cb20-20" tabindex="-1" aria-label="code-block-20-20"></a>smallest_dist <span class="op">=</span> <span class="bu">sorted</span>(distances)[<span class="dv">0</span>]</span>
-<span id="cb20-21"><a href="#cb20-21" tabindex="-1" aria-label="code-block-20-21"></a>nearest_index <span class="op">=</span> distances.index(smallest_dist)</span>
-<span id="cb20-22"><a href="#cb20-22" tabindex="-1" aria-label="code-block-20-22"></a></span>
-<span id="cb20-23"><a href="#cb20-23" tabindex="-1" aria-label="code-block-20-23"></a><span class="co"># vs</span></span>
-<span id="cb20-24"><a href="#cb20-24" tabindex="-1" aria-label="code-block-20-24"></a></span>
-<span id="cb20-25"><a href="#cb20-25" tabindex="-1" aria-label="code-block-20-25"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> BallTree</span>
-<span id="cb20-26"><a href="#cb20-26" tabindex="-1" aria-label="code-block-20-26"></a></span>
-<span id="cb20-27"><a href="#cb20-27" tabindex="-1" aria-label="code-block-20-27"></a>balltree <span class="op">=</span> BallTree(points)</span>
-<span id="cb20-28"><a href="#cb20-28" tabindex="-1" aria-label="code-block-20-28"></a>smallest_dist, nearest_index <span class="op">=</span> balltree.query([centre], k<span class="op">=</span><span class="dv">1</span>)</span></code></pre>
-</div>
-</div>
 </section><section><h2 class="section-heading" id="graphs-and-networks">Graphs and Networks<a class="anchor" aria-label="anchor" href="#graphs-and-networks"></a>
 </h2>
 <hr class="half-width">
@@ -1808,64 +1779,79 @@ library.</p>
 domains are graphs/networks. There are many complex algorithms that can
 be applied to graphs so check out the NetworkX library for its <a href="https://networkx.org/documentation/stable/tutorial.html" class="external-link">data
 structures</a>.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a>edges <span class="op">=</span> [</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1" aria-label="code-block-21-3"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1" aria-label="code-block-21-4"></a>    [<span class="dv">2</span>, <span class="dv">4</span>],</span>
-<span id="cb21-5"><a href="#cb21-5" tabindex="-1" aria-label="code-block-21-5"></a>    [<span class="dv">3</span>, <span class="dv">1</span>]</span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1" aria-label="code-block-21-6"></a>]</span>
-<span id="cb21-7"><a href="#cb21-7" tabindex="-1" aria-label="code-block-21-7"></a></span>
-<span id="cb21-8"><a href="#cb21-8" tabindex="-1" aria-label="code-block-21-8"></a><span class="co"># Using lists</span></span>
-<span id="cb21-9"><a href="#cb21-9" tabindex="-1" aria-label="code-block-21-9"></a></span>
-<span id="cb21-10"><a href="#cb21-10" tabindex="-1" aria-label="code-block-21-10"></a><span class="co"># get the degree (number of connected edges) of node 1</span></span>
-<span id="cb21-11"><a href="#cb21-11" tabindex="-1" aria-label="code-block-21-11"></a></span>
-<span id="cb21-12"><a href="#cb21-12" tabindex="-1" aria-label="code-block-21-12"></a>degree_of_1 <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb21-13"><a href="#cb21-13" tabindex="-1" aria-label="code-block-21-13"></a><span class="cf">for</span> edge <span class="kw">in</span> edges:</span>
-<span id="cb21-14"><a href="#cb21-14" tabindex="-1" aria-label="code-block-21-14"></a>    <span class="cf">if</span> <span class="dv">1</span> <span class="kw">in</span> edge:</span>
-<span id="cb21-15"><a href="#cb21-15" tabindex="-1" aria-label="code-block-21-15"></a>        degree_of_1 <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb21-16"><a href="#cb21-16" tabindex="-1" aria-label="code-block-21-16"></a></span>
-<span id="cb21-17"><a href="#cb21-17" tabindex="-1" aria-label="code-block-21-17"></a><span class="co"># vs</span></span>
-<span id="cb21-18"><a href="#cb21-18" tabindex="-1" aria-label="code-block-21-18"></a></span>
-<span id="cb21-19"><a href="#cb21-19" tabindex="-1" aria-label="code-block-21-19"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
-<span id="cb21-20"><a href="#cb21-20" tabindex="-1" aria-label="code-block-21-20"></a></span>
-<span id="cb21-21"><a href="#cb21-21" tabindex="-1" aria-label="code-block-21-21"></a>graph <span class="op">=</span> nx.Graph(edges)</span>
-<span id="cb21-22"><a href="#cb21-22" tabindex="-1" aria-label="code-block-21-22"></a></span>
-<span id="cb21-23"><a href="#cb21-23" tabindex="-1" aria-label="code-block-21-23"></a><span class="co"># get the degree (number of connected edges) of node 1</span></span>
-<span id="cb21-24"><a href="#cb21-24" tabindex="-1" aria-label="code-block-21-24"></a>graph.degree[<span class="dv">1</span>]</span>
-<span id="cb21-25"><a href="#cb21-25" tabindex="-1" aria-label="code-block-21-25"></a></span>
-<span id="cb21-26"><a href="#cb21-26" tabindex="-1" aria-label="code-block-21-26"></a><span class="co"># easy to perform more advanced graph operations e.g.</span></span>
-<span id="cb21-27"><a href="#cb21-27" tabindex="-1" aria-label="code-block-21-27"></a>graph.subgraph([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a>edges <span class="op">=</span> [</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1" aria-label="code-block-20-3"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1" aria-label="code-block-20-4"></a>    [<span class="dv">2</span>, <span class="dv">4</span>],</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1" aria-label="code-block-20-5"></a>    [<span class="dv">3</span>, <span class="dv">1</span>]</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1" aria-label="code-block-20-6"></a>]</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1" aria-label="code-block-20-7"></a></span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1" aria-label="code-block-20-8"></a><span class="co"># Using lists</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1" aria-label="code-block-20-9"></a></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1" aria-label="code-block-20-10"></a><span class="co"># get the degree (number of connected edges) of node 1</span></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1" aria-label="code-block-20-11"></a></span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1" aria-label="code-block-20-12"></a>degree_of_1 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1" aria-label="code-block-20-13"></a><span class="cf">for</span> edge <span class="kw">in</span> edges:</span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1" aria-label="code-block-20-14"></a>    <span class="cf">if</span> <span class="dv">1</span> <span class="kw">in</span> edge:</span>
+<span id="cb20-15"><a href="#cb20-15" tabindex="-1" aria-label="code-block-20-15"></a>        degree_of_1 <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb20-16"><a href="#cb20-16" tabindex="-1" aria-label="code-block-20-16"></a></span>
+<span id="cb20-17"><a href="#cb20-17" tabindex="-1" aria-label="code-block-20-17"></a><span class="co"># vs</span></span>
+<span id="cb20-18"><a href="#cb20-18" tabindex="-1" aria-label="code-block-20-18"></a></span>
+<span id="cb20-19"><a href="#cb20-19" tabindex="-1" aria-label="code-block-20-19"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb20-20"><a href="#cb20-20" tabindex="-1" aria-label="code-block-20-20"></a></span>
+<span id="cb20-21"><a href="#cb20-21" tabindex="-1" aria-label="code-block-20-21"></a>graph <span class="op">=</span> nx.Graph(edges)</span>
+<span id="cb20-22"><a href="#cb20-22" tabindex="-1" aria-label="code-block-20-22"></a></span>
+<span id="cb20-23"><a href="#cb20-23" tabindex="-1" aria-label="code-block-20-23"></a><span class="co"># get the degree (number of connected edges) of node 1</span></span>
+<span id="cb20-24"><a href="#cb20-24" tabindex="-1" aria-label="code-block-20-24"></a>graph.degree[<span class="dv">1</span>]</span>
+<span id="cb20-25"><a href="#cb20-25" tabindex="-1" aria-label="code-block-20-25"></a></span>
+<span id="cb20-26"><a href="#cb20-26" tabindex="-1" aria-label="code-block-20-26"></a><span class="co"># easy to perform more advanced graph operations e.g.</span></span>
+<span id="cb20-27"><a href="#cb20-27" tabindex="-1" aria-label="code-block-20-27"></a>graph.subgraph([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>])</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="custom-data-structures-data-classes">Custom data structures: Data classes<a class="anchor" aria-label="anchor" href="#custom-data-structures-data-classes"></a>
 </h2>
 <hr class="half-width">
 <p>Python (&gt;= 3.7) makes it easy to create custom data
 structures.</p>
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1" aria-label="code-block-21-3"></a><span class="at">@dataclass</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1" aria-label="code-block-21-4"></a><span class="kw">class</span> MyData:</span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1" aria-label="code-block-21-5"></a>    a_list: <span class="bu">list</span>[<span class="bu">int</span>]</span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1" aria-label="code-block-21-6"></a>    b_string: <span class="bu">str</span> <span class="op">=</span> <span class="st">"something something"</span></span></code></pre>
+</div>
+<p>Which allows you to create an object and access its fields</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> typing <span class="im">import</span> List, Text</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1" aria-label="code-block-22-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">@</span>dataclass</span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1" aria-label="code-block-22-4"></a>... <span class="kw">class</span> MyData:</span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1" aria-label="code-block-22-5"></a>...   a_list: List[<span class="bu">int</span>]</span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1" aria-label="code-block-22-6"></a>...   b_string: Text <span class="op">=</span> <span class="st">"something something"</span></span>
-<span id="cb22-7"><a href="#cb22-7" tabindex="-1" aria-label="code-block-22-7"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> MyData([<span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb22-8"><a href="#cb22-8" tabindex="-1" aria-label="code-block-22-8"></a><span class="op">&gt;&gt;&gt;</span> data</span>
-<span id="cb22-9"><a href="#cb22-9" tabindex="-1" aria-label="code-block-22-9"></a>MyData(a_list<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">2</span>], b_string<span class="op">=</span><span class="st">'something something'</span>)</span>
-<span id="cb22-10"><a href="#cb22-10" tabindex="-1" aria-label="code-block-22-10"></a><span class="op">&gt;&gt;&gt;</span> data.a_list</span>
-<span id="cb22-11"><a href="#cb22-11" tabindex="-1" aria-label="code-block-22-11"></a>[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> MyData(a_list<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">2</span>], b_string<span class="op">=</span><span class="st">"my string"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a><span class="op">&gt;&gt;&gt;</span> data.a_list</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1" aria-label="code-block-22-3"></a>[<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1" aria-label="code-block-22-4"></a><span class="op">&gt;&gt;&gt;</span> data.b_string</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1" aria-label="code-block-22-5"></a><span class="co">'my string'</span></span></code></pre>
+</div>
+<p>Values with defaults are possible</p>
+<div class="codewrapper sourceCode" id="cb23">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> MyData(a_list<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a><span class="op">&gt;&gt;&gt;</span> data</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1" aria-label="code-block-23-3"></a>MyData(a_list<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">2</span>], b_string<span class="op">=</span><span class="st">'something something'</span>)</span></code></pre>
 </div>
 <p>Data classes make sense when:</p>
 <ul>
+<li>you have dictionary-like data with keys and values, but the values
+are of mixed types (like above)</li>
 <li>you have a collections of related data that does not fit a more
 primitive type</li>
 <li>you already have a class and you don’t want to write standard
 functions like <code>__init__</code>, <code>__repr__</code>,
-<code>__ge__</code>, etc..</li>
+<code>__ge__</code>, etc…</li>
 </ul>
 <p>Beware! The following might indicate a <code>dataclass</code> is the
 wrong data structure:</p>
@@ -1875,15 +1861,15 @@ class)</li>
 <li>single huge mother of all classes that does everything (split into
 smaller specialized classes and/or stand-alone functions)</li>
 <li>a <code>dict</code>, <code>list</code> or <code>numpy</code> array
-would do the job. Everybody knows what a <code>numpy</code> array is and
-how to use it. But even your future self might not know how to use your
-very special class.</li>
+would do the job. There is documentation available online for built-in
+and common data types. But even your future self might not know how to
+use your very special class.</li>
 </ul>
-<div id="exploring-data-structures" class="callout challenge">
+<div id="exploring-data-structures" class="callout">
 <div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
+<i class="callout-icon" data-feather="bell"></i>
 </div>
-<span class="callout-header">Challenge</span>
+<span class="callout-header">Callout</span>
 <div id="exploring-data-structures" class="callout-inner">
 <h3 class="callout-title">Exploring data structures</h3>
 <div class="callout-content">
@@ -1897,8 +1883,8 @@ tuples</a></li>
 <li><a href="https://docs.python.org/3/library/datetime.html" class="external-link">dates</a></li>
 <li>
 <a href="https://docs.python.org/3/library/enum.html" class="external-link">enum</a>
-represent objects that can only take a few <em>values</em>, e.g. colors.
-Often useful for configuration options.</li>
+(represent objects that can only take a few <em>values</em>,
+e.g. colors. Often useful for configuration options)</li>
 <li>
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html" class="external-link">numpy
 arrays</a> (multidimensional array of numbers)</li>
@@ -1910,9 +1896,12 @@ numbers 0, 1, 2, 3)</li>
 <li>
 <a href="https://xarray.pydata.org/en/stable/" class="external-link">xarray datasets</a>
 (collections of named <a href="https://xarray.pydata.org/en/stable/" class="external-link">xarray arrays</a> that share
-some dimensions.)</li>
+some dimensions)</li>
+<li>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html" class="external-link">balltrees</a>
+(more performant representation of 2D or 3D points)</li>
 </ul>
-<p>Don’t reinvent the square wheel.</p>
+<p>Don’t reinvent the wheel.</p>
 </div>
 </div>
 </div>
@@ -1929,20 +1918,20 @@ the right way (10 min)</h3>
 <li>
 <p>Implement an Oxford dictionary with two <code>list</code>s, one
 for words, one for definitions:</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="fu">barf</span><span class="kw">:</span><span class="at"> (verb) eject the contents of the stomach through the mouth</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a><span class="fu">morph</span><span class="kw">:</span><span class="at"> (verb) change shape as via computer animation</span></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1" aria-label="code-block-23-3"></a><span class="fu">scarf</span><span class="kw">:</span><span class="at"> (noun) a garment worn around the head or neck or shoulders for warmth</span></span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1" aria-label="code-block-23-4"></a><span class="at">  or decoration</span></span>
-<span id="cb23-5"><a href="#cb23-5" tabindex="-1" aria-label="code-block-23-5"></a><span class="fu">snarf</span><span class="kw">:</span><span class="at"> (verb) make off with belongings of others</span></span>
-<span id="cb23-6"><a href="#cb23-6" tabindex="-1" aria-label="code-block-23-6"></a><span class="fu">sound</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb23-7"><a href="#cb23-7" tabindex="-1" aria-label="code-block-23-7"></a>  (verb) emit or cause to emit sound.</span>
-<span id="cb23-8"><a href="#cb23-8" tabindex="-1" aria-label="code-block-23-8"></a>  (noun) vibrations that travel through the air or another medium</span>
-<span id="cb23-9"><a href="#cb23-9" tabindex="-1" aria-label="code-block-23-9"></a><span class="fu">surf</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb23-10"><a href="#cb23-10" tabindex="-1" aria-label="code-block-23-10"></a>  (verb) switch channels, on television</span>
-<span id="cb23-11"><a href="#cb23-11" tabindex="-1" aria-label="code-block-23-11"></a>  (noun) waves breaking on the shore</span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="fu">barf</span><span class="kw">:</span><span class="at"> (verb) eject the contents of the stomach through the mouth</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1" aria-label="code-block-24-2"></a><span class="fu">morph</span><span class="kw">:</span><span class="at"> (verb) change shape as via computer animation</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1" aria-label="code-block-24-3"></a><span class="fu">scarf</span><span class="kw">:</span><span class="at"> (noun) a garment worn around the head or neck or shoulders for warmth</span></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1" aria-label="code-block-24-4"></a><span class="at">  or decoration</span></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1" aria-label="code-block-24-5"></a><span class="fu">snarf</span><span class="kw">:</span><span class="at"> (verb) make off with belongings of others</span></span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1" aria-label="code-block-24-6"></a><span class="fu">sound</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1" aria-label="code-block-24-7"></a>  (verb) emit or cause to emit sound.</span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1" aria-label="code-block-24-8"></a>  (noun) vibrations that travel through the air or another medium</span>
+<span id="cb24-9"><a href="#cb24-9" tabindex="-1" aria-label="code-block-24-9"></a><span class="fu">surf</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb24-10"><a href="#cb24-10" tabindex="-1" aria-label="code-block-24-10"></a>  (verb) switch channels, on television</span>
+<span id="cb24-11"><a href="#cb24-11" tabindex="-1" aria-label="code-block-24-11"></a>  (noun) waves breaking on the shore</span></code></pre>
 </div>
 </li>
 <li><p>Given a word, find and modify its definition</p></li>
@@ -1966,52 +1955,52 @@ noun?</p></li>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="kw">def</span> modify_definition(word, newdef, words, definitions):</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1" aria-label="code-block-24-2"></a>    index <span class="op">=</span> words.index(word)</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1" aria-label="code-block-24-3"></a>    definitions <span class="op">=</span> definitions.copy()</span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1" aria-label="code-block-24-4"></a>    definitions[index] <span class="op">=</span> newdef</span>
-<span id="cb24-5"><a href="#cb24-5" tabindex="-1" aria-label="code-block-24-5"></a>    <span class="cf">return</span> definitions</span>
-<span id="cb24-6"><a href="#cb24-6" tabindex="-1" aria-label="code-block-24-6"></a></span>
-<span id="cb24-7"><a href="#cb24-7" tabindex="-1" aria-label="code-block-24-7"></a><span class="kw">def</span> find_rhymes(rhyme, words, definitions):</span>
-<span id="cb24-8"><a href="#cb24-8" tabindex="-1" aria-label="code-block-24-8"></a>    result_words <span class="op">=</span> []</span>
-<span id="cb24-9"><a href="#cb24-9" tabindex="-1" aria-label="code-block-24-9"></a>    result_definitions <span class="op">=</span> []</span>
-<span id="cb24-10"><a href="#cb24-10" tabindex="-1" aria-label="code-block-24-10"></a>    <span class="cf">for</span> word, definition <span class="kw">in</span> <span class="bu">zip</span>(words, definitions):</span>
-<span id="cb24-11"><a href="#cb24-11" tabindex="-1" aria-label="code-block-24-11"></a>        <span class="cf">if</span> word.endswith(rhyme):</span>
-<span id="cb24-12"><a href="#cb24-12" tabindex="-1" aria-label="code-block-24-12"></a>            result_words.append(word)</span>
-<span id="cb24-13"><a href="#cb24-13" tabindex="-1" aria-label="code-block-24-13"></a>            result_definitions.append(definition)</span>
-<span id="cb24-14"><a href="#cb24-14" tabindex="-1" aria-label="code-block-24-14"></a>    <span class="cf">return</span> result_words, result_definitions</span>
-<span id="cb24-15"><a href="#cb24-15" tabindex="-1" aria-label="code-block-24-15"></a></span>
-<span id="cb24-16"><a href="#cb24-16" tabindex="-1" aria-label="code-block-24-16"></a><span class="kw">def</span> testme():</span>
-<span id="cb24-17"><a href="#cb24-17" tabindex="-1" aria-label="code-block-24-17"></a>    words <span class="op">=</span> [<span class="st">"barf"</span>, <span class="st">"morph"</span>, <span class="st">"scarf"</span>, <span class="st">"snarf"</span>, <span class="st">"sound"</span>, <span class="st">"surf"</span>]</span>
-<span id="cb24-18"><a href="#cb24-18" tabindex="-1" aria-label="code-block-24-18"></a>    definitions <span class="op">=</span> [</span>
-<span id="cb24-19"><a href="#cb24-19" tabindex="-1" aria-label="code-block-24-19"></a>        <span class="st">"(verb) eject the contents of the stomach through the mouth"</span>,</span>
-<span id="cb24-20"><a href="#cb24-20" tabindex="-1" aria-label="code-block-24-20"></a>        <span class="st">"(verb) change shape as via computer animation"</span>,</span>
-<span id="cb24-21"><a href="#cb24-21" tabindex="-1" aria-label="code-block-24-21"></a>        (</span>
-<span id="cb24-22"><a href="#cb24-22" tabindex="-1" aria-label="code-block-24-22"></a>            <span class="st">"(noun) a garment worn around the head or neck or shoulders for"</span></span>
-<span id="cb24-23"><a href="#cb24-23" tabindex="-1" aria-label="code-block-24-23"></a>            <span class="st">"warmth or decoration"</span></span>
-<span id="cb24-24"><a href="#cb24-24" tabindex="-1" aria-label="code-block-24-24"></a>        ),</span>
-<span id="cb24-25"><a href="#cb24-25" tabindex="-1" aria-label="code-block-24-25"></a>        <span class="st">"(verb) make off with belongings of others"</span>,</span>
-<span id="cb24-26"><a href="#cb24-26" tabindex="-1" aria-label="code-block-24-26"></a>        (</span>
-<span id="cb24-27"><a href="#cb24-27" tabindex="-1" aria-label="code-block-24-27"></a>            <span class="st">"(verb) emit or cause to emit sound."</span></span>
-<span id="cb24-28"><a href="#cb24-28" tabindex="-1" aria-label="code-block-24-28"></a>            <span class="st">"(noun) vibrations that travel through the air or another medium"</span></span>
-<span id="cb24-29"><a href="#cb24-29" tabindex="-1" aria-label="code-block-24-29"></a>        ),</span>
-<span id="cb24-30"><a href="#cb24-30" tabindex="-1" aria-label="code-block-24-30"></a>        (</span>
-<span id="cb24-31"><a href="#cb24-31" tabindex="-1" aria-label="code-block-24-31"></a>            <span class="st">"(verb) switch channels, on television"</span></span>
-<span id="cb24-32"><a href="#cb24-32" tabindex="-1" aria-label="code-block-24-32"></a>            <span class="st">"(noun) waves breaking on the shore"</span></span>
-<span id="cb24-33"><a href="#cb24-33" tabindex="-1" aria-label="code-block-24-33"></a>        ),</span>
-<span id="cb24-34"><a href="#cb24-34" tabindex="-1" aria-label="code-block-24-34"></a>    ]</span>
-<span id="cb24-35"><a href="#cb24-35" tabindex="-1" aria-label="code-block-24-35"></a></span>
-<span id="cb24-36"><a href="#cb24-36" tabindex="-1" aria-label="code-block-24-36"></a>    newdefs <span class="op">=</span> modify_definition(<span class="st">"morph"</span>, <span class="st">"aaa"</span>, words, definitions)</span>
-<span id="cb24-37"><a href="#cb24-37" tabindex="-1" aria-label="code-block-24-37"></a>    <span class="cf">assert</span> newdefs[<span class="dv">1</span>] <span class="op">==</span> <span class="st">"aaa"</span></span>
-<span id="cb24-38"><a href="#cb24-38" tabindex="-1" aria-label="code-block-24-38"></a></span>
-<span id="cb24-39"><a href="#cb24-39" tabindex="-1" aria-label="code-block-24-39"></a>    rhymers <span class="op">=</span> find_rhymes(<span class="st">"arf"</span>, words, definitions)</span>
-<span id="cb24-40"><a href="#cb24-40" tabindex="-1" aria-label="code-block-24-40"></a>    <span class="cf">assert</span> <span class="bu">set</span>(rhymers[<span class="dv">0</span>]) <span class="op">==</span> {<span class="st">"barf"</span>, <span class="st">"scarf"</span>, <span class="st">"snarf"</span>}</span>
-<span id="cb24-41"><a href="#cb24-41" tabindex="-1" aria-label="code-block-24-41"></a>    <span class="cf">assert</span> rhymers[<span class="dv">1</span>][<span class="dv">0</span>] <span class="op">==</span> definitions[<span class="dv">0</span>]</span>
-<span id="cb24-42"><a href="#cb24-42" tabindex="-1" aria-label="code-block-24-42"></a>    <span class="cf">assert</span> rhymers[<span class="dv">1</span>][<span class="dv">1</span>] <span class="op">==</span> definitions[<span class="dv">2</span>]</span>
-<span id="cb24-43"><a href="#cb24-43" tabindex="-1" aria-label="code-block-24-43"></a>    <span class="cf">assert</span> rhymers[<span class="dv">1</span>][<span class="dv">2</span>] <span class="op">==</span> definitions[<span class="dv">3</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="kw">def</span> modify_definition(word, newdef, words, definitions):</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a>    index <span class="op">=</span> words.index(word)</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a>    definitions <span class="op">=</span> definitions.copy()</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1" aria-label="code-block-25-4"></a>    definitions[index] <span class="op">=</span> newdef</span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1" aria-label="code-block-25-5"></a>    <span class="cf">return</span> definitions</span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1" aria-label="code-block-25-6"></a></span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1" aria-label="code-block-25-7"></a><span class="kw">def</span> find_rhymes(rhyme, words, definitions):</span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1" aria-label="code-block-25-8"></a>    result_words <span class="op">=</span> []</span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1" aria-label="code-block-25-9"></a>    result_definitions <span class="op">=</span> []</span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1" aria-label="code-block-25-10"></a>    <span class="cf">for</span> word, definition <span class="kw">in</span> <span class="bu">zip</span>(words, definitions):</span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1" aria-label="code-block-25-11"></a>        <span class="cf">if</span> word.endswith(rhyme):</span>
+<span id="cb25-12"><a href="#cb25-12" tabindex="-1" aria-label="code-block-25-12"></a>            result_words.append(word)</span>
+<span id="cb25-13"><a href="#cb25-13" tabindex="-1" aria-label="code-block-25-13"></a>            result_definitions.append(definition)</span>
+<span id="cb25-14"><a href="#cb25-14" tabindex="-1" aria-label="code-block-25-14"></a>    <span class="cf">return</span> result_words, result_definitions</span>
+<span id="cb25-15"><a href="#cb25-15" tabindex="-1" aria-label="code-block-25-15"></a></span>
+<span id="cb25-16"><a href="#cb25-16" tabindex="-1" aria-label="code-block-25-16"></a><span class="kw">def</span> testme():</span>
+<span id="cb25-17"><a href="#cb25-17" tabindex="-1" aria-label="code-block-25-17"></a>    words <span class="op">=</span> [<span class="st">"barf"</span>, <span class="st">"morph"</span>, <span class="st">"scarf"</span>, <span class="st">"snarf"</span>, <span class="st">"sound"</span>, <span class="st">"surf"</span>]</span>
+<span id="cb25-18"><a href="#cb25-18" tabindex="-1" aria-label="code-block-25-18"></a>    definitions <span class="op">=</span> [</span>
+<span id="cb25-19"><a href="#cb25-19" tabindex="-1" aria-label="code-block-25-19"></a>        <span class="st">"(verb) eject the contents of the stomach through the mouth"</span>,</span>
+<span id="cb25-20"><a href="#cb25-20" tabindex="-1" aria-label="code-block-25-20"></a>        <span class="st">"(verb) change shape as via computer animation"</span>,</span>
+<span id="cb25-21"><a href="#cb25-21" tabindex="-1" aria-label="code-block-25-21"></a>        (</span>
+<span id="cb25-22"><a href="#cb25-22" tabindex="-1" aria-label="code-block-25-22"></a>            <span class="st">"(noun) a garment worn around the head or neck or shoulders for"</span></span>
+<span id="cb25-23"><a href="#cb25-23" tabindex="-1" aria-label="code-block-25-23"></a>            <span class="st">"warmth or decoration"</span></span>
+<span id="cb25-24"><a href="#cb25-24" tabindex="-1" aria-label="code-block-25-24"></a>        ),</span>
+<span id="cb25-25"><a href="#cb25-25" tabindex="-1" aria-label="code-block-25-25"></a>        <span class="st">"(verb) make off with belongings of others"</span>,</span>
+<span id="cb25-26"><a href="#cb25-26" tabindex="-1" aria-label="code-block-25-26"></a>        (</span>
+<span id="cb25-27"><a href="#cb25-27" tabindex="-1" aria-label="code-block-25-27"></a>            <span class="st">"(verb) emit or cause to emit sound."</span></span>
+<span id="cb25-28"><a href="#cb25-28" tabindex="-1" aria-label="code-block-25-28"></a>            <span class="st">"(noun) vibrations that travel through the air or another medium"</span></span>
+<span id="cb25-29"><a href="#cb25-29" tabindex="-1" aria-label="code-block-25-29"></a>        ),</span>
+<span id="cb25-30"><a href="#cb25-30" tabindex="-1" aria-label="code-block-25-30"></a>        (</span>
+<span id="cb25-31"><a href="#cb25-31" tabindex="-1" aria-label="code-block-25-31"></a>            <span class="st">"(verb) switch channels, on television"</span></span>
+<span id="cb25-32"><a href="#cb25-32" tabindex="-1" aria-label="code-block-25-32"></a>            <span class="st">"(noun) waves breaking on the shore"</span></span>
+<span id="cb25-33"><a href="#cb25-33" tabindex="-1" aria-label="code-block-25-33"></a>        ),</span>
+<span id="cb25-34"><a href="#cb25-34" tabindex="-1" aria-label="code-block-25-34"></a>    ]</span>
+<span id="cb25-35"><a href="#cb25-35" tabindex="-1" aria-label="code-block-25-35"></a></span>
+<span id="cb25-36"><a href="#cb25-36" tabindex="-1" aria-label="code-block-25-36"></a>    newdefs <span class="op">=</span> modify_definition(<span class="st">"morph"</span>, <span class="st">"aaa"</span>, words, definitions)</span>
+<span id="cb25-37"><a href="#cb25-37" tabindex="-1" aria-label="code-block-25-37"></a>    <span class="cf">assert</span> newdefs[<span class="dv">1</span>] <span class="op">==</span> <span class="st">"aaa"</span></span>
+<span id="cb25-38"><a href="#cb25-38" tabindex="-1" aria-label="code-block-25-38"></a></span>
+<span id="cb25-39"><a href="#cb25-39" tabindex="-1" aria-label="code-block-25-39"></a>    rhymers <span class="op">=</span> find_rhymes(<span class="st">"arf"</span>, words, definitions)</span>
+<span id="cb25-40"><a href="#cb25-40" tabindex="-1" aria-label="code-block-25-40"></a>    <span class="cf">assert</span> <span class="bu">set</span>(rhymers[<span class="dv">0</span>]) <span class="op">==</span> {<span class="st">"barf"</span>, <span class="st">"scarf"</span>, <span class="st">"snarf"</span>}</span>
+<span id="cb25-41"><a href="#cb25-41" tabindex="-1" aria-label="code-block-25-41"></a>    <span class="cf">assert</span> rhymers[<span class="dv">1</span>][<span class="dv">0</span>] <span class="op">==</span> definitions[<span class="dv">0</span>]</span>
+<span id="cb25-42"><a href="#cb25-42" tabindex="-1" aria-label="code-block-25-42"></a>    <span class="cf">assert</span> rhymers[<span class="dv">1</span>][<span class="dv">1</span>] <span class="op">==</span> definitions[<span class="dv">2</span>]</span>
+<span id="cb25-43"><a href="#cb25-43" tabindex="-1" aria-label="code-block-25-43"></a>    <span class="cf">assert</span> rhymers[<span class="dv">1</span>][<span class="dv">2</span>] <span class="op">==</span> definitions[<span class="dv">3</span>]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2024,47 +2013,47 @@ noun?</p></li>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="kw">def</span> modify_definition(word, newdef, dictionary):</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a>    result <span class="op">=</span> dictionary.copy()</span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a>    result[word] <span class="op">=</span> newdef</span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1" aria-label="code-block-25-4"></a>    <span class="cf">return</span> result</span>
-<span id="cb25-5"><a href="#cb25-5" tabindex="-1" aria-label="code-block-25-5"></a></span>
-<span id="cb25-6"><a href="#cb25-6" tabindex="-1" aria-label="code-block-25-6"></a><span class="kw">def</span> find_rhymes(rhyme, dictionary):</span>
-<span id="cb25-7"><a href="#cb25-7" tabindex="-1" aria-label="code-block-25-7"></a>    <span class="cf">return</span> {</span>
-<span id="cb25-8"><a href="#cb25-8" tabindex="-1" aria-label="code-block-25-8"></a>        word: definition</span>
-<span id="cb25-9"><a href="#cb25-9" tabindex="-1" aria-label="code-block-25-9"></a>        <span class="cf">for</span> word, definition <span class="kw">in</span> dictionary.items()</span>
-<span id="cb25-10"><a href="#cb25-10" tabindex="-1" aria-label="code-block-25-10"></a>        <span class="cf">if</span> word.endswith(rhyme)</span>
-<span id="cb25-11"><a href="#cb25-11" tabindex="-1" aria-label="code-block-25-11"></a>    }</span>
-<span id="cb25-12"><a href="#cb25-12" tabindex="-1" aria-label="code-block-25-12"></a></span>
-<span id="cb25-13"><a href="#cb25-13" tabindex="-1" aria-label="code-block-25-13"></a><span class="kw">def</span> testme():</span>
-<span id="cb25-14"><a href="#cb25-14" tabindex="-1" aria-label="code-block-25-14"></a>    dictionary <span class="op">=</span> {</span>
-<span id="cb25-15"><a href="#cb25-15" tabindex="-1" aria-label="code-block-25-15"></a>        <span class="st">"barf"</span>: <span class="st">"(verb) eject the contents of the stomach through the mouth"</span>,</span>
-<span id="cb25-16"><a href="#cb25-16" tabindex="-1" aria-label="code-block-25-16"></a>        <span class="st">"morph"</span>: <span class="st">"(verb) change shape as via computer animation"</span>,</span>
-<span id="cb25-17"><a href="#cb25-17" tabindex="-1" aria-label="code-block-25-17"></a>        <span class="st">"scarf"</span>: (</span>
-<span id="cb25-18"><a href="#cb25-18" tabindex="-1" aria-label="code-block-25-18"></a>            <span class="st">"(noun) a garment worn around the head or neck or shoulders for"</span></span>
-<span id="cb25-19"><a href="#cb25-19" tabindex="-1" aria-label="code-block-25-19"></a>            <span class="st">"warmth or decoration"</span></span>
-<span id="cb25-20"><a href="#cb25-20" tabindex="-1" aria-label="code-block-25-20"></a>        ),</span>
-<span id="cb25-21"><a href="#cb25-21" tabindex="-1" aria-label="code-block-25-21"></a>        <span class="st">"snarf"</span>: <span class="st">"(verb) make off with belongings of others"</span>,</span>
-<span id="cb25-22"><a href="#cb25-22" tabindex="-1" aria-label="code-block-25-22"></a>        <span class="st">"sound"</span>: (</span>
-<span id="cb25-23"><a href="#cb25-23" tabindex="-1" aria-label="code-block-25-23"></a>            <span class="st">"(verb) emit or cause to emit sound."</span></span>
-<span id="cb25-24"><a href="#cb25-24" tabindex="-1" aria-label="code-block-25-24"></a>            <span class="st">"(noun) vibrations that travel through the air or another medium"</span></span>
-<span id="cb25-25"><a href="#cb25-25" tabindex="-1" aria-label="code-block-25-25"></a>        ),</span>
-<span id="cb25-26"><a href="#cb25-26" tabindex="-1" aria-label="code-block-25-26"></a>        <span class="st">"surf"</span>: (</span>
-<span id="cb25-27"><a href="#cb25-27" tabindex="-1" aria-label="code-block-25-27"></a>            <span class="st">"(verb) switch channels, on television"</span></span>
-<span id="cb25-28"><a href="#cb25-28" tabindex="-1" aria-label="code-block-25-28"></a>            <span class="st">"(noun) waves breaking on the shore"</span></span>
-<span id="cb25-29"><a href="#cb25-29" tabindex="-1" aria-label="code-block-25-29"></a>        ),</span>
-<span id="cb25-30"><a href="#cb25-30" tabindex="-1" aria-label="code-block-25-30"></a>    }</span>
-<span id="cb25-31"><a href="#cb25-31" tabindex="-1" aria-label="code-block-25-31"></a></span>
-<span id="cb25-32"><a href="#cb25-32" tabindex="-1" aria-label="code-block-25-32"></a>    newdict <span class="op">=</span> modify_definition(<span class="st">"morph"</span>, <span class="st">"aaa"</span>, dictionary)</span>
-<span id="cb25-33"><a href="#cb25-33" tabindex="-1" aria-label="code-block-25-33"></a>    <span class="cf">assert</span> newdict[<span class="st">"morph"</span>] <span class="op">==</span> <span class="st">"aaa"</span></span>
-<span id="cb25-34"><a href="#cb25-34" tabindex="-1" aria-label="code-block-25-34"></a></span>
-<span id="cb25-35"><a href="#cb25-35" tabindex="-1" aria-label="code-block-25-35"></a>    rhymers <span class="op">=</span> find_rhymes(<span class="st">"arf"</span>, dictionary)</span>
-<span id="cb25-36"><a href="#cb25-36" tabindex="-1" aria-label="code-block-25-36"></a>    <span class="cf">assert</span> <span class="bu">set</span>(rhymers) <span class="op">==</span> {<span class="st">"barf"</span>, <span class="st">"scarf"</span>, <span class="st">"snarf"</span>}</span>
-<span id="cb25-37"><a href="#cb25-37" tabindex="-1" aria-label="code-block-25-37"></a>    <span class="cf">for</span> word <span class="kw">in</span> {<span class="st">"barf"</span>, <span class="st">"scarf"</span>, <span class="st">"snarf"</span>}:</span>
-<span id="cb25-38"><a href="#cb25-38" tabindex="-1" aria-label="code-block-25-38"></a>        <span class="cf">assert</span> rhymers[word] <span class="op">==</span> dictionary[word]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="kw">def</span> modify_definition(word, newdef, dictionary):</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1" aria-label="code-block-26-2"></a>    result <span class="op">=</span> dictionary.copy()</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1" aria-label="code-block-26-3"></a>    result[word] <span class="op">=</span> newdef</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1" aria-label="code-block-26-4"></a>    <span class="cf">return</span> result</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1" aria-label="code-block-26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1" aria-label="code-block-26-6"></a><span class="kw">def</span> find_rhymes(rhyme, dictionary):</span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1" aria-label="code-block-26-7"></a>    <span class="cf">return</span> {</span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1" aria-label="code-block-26-8"></a>        word: definition</span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1" aria-label="code-block-26-9"></a>        <span class="cf">for</span> word, definition <span class="kw">in</span> dictionary.items()</span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1" aria-label="code-block-26-10"></a>        <span class="cf">if</span> word.endswith(rhyme)</span>
+<span id="cb26-11"><a href="#cb26-11" tabindex="-1" aria-label="code-block-26-11"></a>    }</span>
+<span id="cb26-12"><a href="#cb26-12" tabindex="-1" aria-label="code-block-26-12"></a></span>
+<span id="cb26-13"><a href="#cb26-13" tabindex="-1" aria-label="code-block-26-13"></a><span class="kw">def</span> testme():</span>
+<span id="cb26-14"><a href="#cb26-14" tabindex="-1" aria-label="code-block-26-14"></a>    dictionary <span class="op">=</span> {</span>
+<span id="cb26-15"><a href="#cb26-15" tabindex="-1" aria-label="code-block-26-15"></a>        <span class="st">"barf"</span>: <span class="st">"(verb) eject the contents of the stomach through the mouth"</span>,</span>
+<span id="cb26-16"><a href="#cb26-16" tabindex="-1" aria-label="code-block-26-16"></a>        <span class="st">"morph"</span>: <span class="st">"(verb) change shape as via computer animation"</span>,</span>
+<span id="cb26-17"><a href="#cb26-17" tabindex="-1" aria-label="code-block-26-17"></a>        <span class="st">"scarf"</span>: (</span>
+<span id="cb26-18"><a href="#cb26-18" tabindex="-1" aria-label="code-block-26-18"></a>            <span class="st">"(noun) a garment worn around the head or neck or shoulders for"</span></span>
+<span id="cb26-19"><a href="#cb26-19" tabindex="-1" aria-label="code-block-26-19"></a>            <span class="st">"warmth or decoration"</span></span>
+<span id="cb26-20"><a href="#cb26-20" tabindex="-1" aria-label="code-block-26-20"></a>        ),</span>
+<span id="cb26-21"><a href="#cb26-21" tabindex="-1" aria-label="code-block-26-21"></a>        <span class="st">"snarf"</span>: <span class="st">"(verb) make off with belongings of others"</span>,</span>
+<span id="cb26-22"><a href="#cb26-22" tabindex="-1" aria-label="code-block-26-22"></a>        <span class="st">"sound"</span>: (</span>
+<span id="cb26-23"><a href="#cb26-23" tabindex="-1" aria-label="code-block-26-23"></a>            <span class="st">"(verb) emit or cause to emit sound."</span></span>
+<span id="cb26-24"><a href="#cb26-24" tabindex="-1" aria-label="code-block-26-24"></a>            <span class="st">"(noun) vibrations that travel through the air or another medium"</span></span>
+<span id="cb26-25"><a href="#cb26-25" tabindex="-1" aria-label="code-block-26-25"></a>        ),</span>
+<span id="cb26-26"><a href="#cb26-26" tabindex="-1" aria-label="code-block-26-26"></a>        <span class="st">"surf"</span>: (</span>
+<span id="cb26-27"><a href="#cb26-27" tabindex="-1" aria-label="code-block-26-27"></a>            <span class="st">"(verb) switch channels, on television"</span></span>
+<span id="cb26-28"><a href="#cb26-28" tabindex="-1" aria-label="code-block-26-28"></a>            <span class="st">"(noun) waves breaking on the shore"</span></span>
+<span id="cb26-29"><a href="#cb26-29" tabindex="-1" aria-label="code-block-26-29"></a>        ),</span>
+<span id="cb26-30"><a href="#cb26-30" tabindex="-1" aria-label="code-block-26-30"></a>    }</span>
+<span id="cb26-31"><a href="#cb26-31" tabindex="-1" aria-label="code-block-26-31"></a></span>
+<span id="cb26-32"><a href="#cb26-32" tabindex="-1" aria-label="code-block-26-32"></a>    newdict <span class="op">=</span> modify_definition(<span class="st">"morph"</span>, <span class="st">"aaa"</span>, dictionary)</span>
+<span id="cb26-33"><a href="#cb26-33" tabindex="-1" aria-label="code-block-26-33"></a>    <span class="cf">assert</span> newdict[<span class="st">"morph"</span>] <span class="op">==</span> <span class="st">"aaa"</span></span>
+<span id="cb26-34"><a href="#cb26-34" tabindex="-1" aria-label="code-block-26-34"></a></span>
+<span id="cb26-35"><a href="#cb26-35" tabindex="-1" aria-label="code-block-26-35"></a>    rhymers <span class="op">=</span> find_rhymes(<span class="st">"arf"</span>, dictionary)</span>
+<span id="cb26-36"><a href="#cb26-36" tabindex="-1" aria-label="code-block-26-36"></a>    <span class="cf">assert</span> <span class="bu">set</span>(rhymers) <span class="op">==</span> {<span class="st">"barf"</span>, <span class="st">"scarf"</span>, <span class="st">"snarf"</span>}</span>
+<span id="cb26-37"><a href="#cb26-37" tabindex="-1" aria-label="code-block-26-37"></a>    <span class="cf">for</span> word <span class="kw">in</span> {<span class="st">"barf"</span>, <span class="st">"scarf"</span>, <span class="st">"snarf"</span>}:</span>
+<span id="cb26-38"><a href="#cb26-38" tabindex="-1" aria-label="code-block-26-38"></a>        <span class="cf">assert</span> rhymers[word] <span class="op">==</span> dictionary[word]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2096,118 +2085,117 @@ refined).</p>
 problems where individual words (rows) are seldom accessed one at a
 time. Instead, most operations are carried out over subsets of the
 dictionary.</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="im">from</span> typing <span class="im">import</span> Text</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1" aria-label="code-block-26-2"></a><span class="im">from</span> enum <span class="im">import</span> Enum, auto</span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1" aria-label="code-block-26-3"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
-<span id="cb26-4"><a href="#cb26-4" tabindex="-1" aria-label="code-block-26-4"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame, Series</span>
-<span id="cb26-5"><a href="#cb26-5" tabindex="-1" aria-label="code-block-26-5"></a></span>
-<span id="cb26-6"><a href="#cb26-6" tabindex="-1" aria-label="code-block-26-6"></a></span>
-<span id="cb26-7"><a href="#cb26-7" tabindex="-1" aria-label="code-block-26-7"></a><span class="kw">class</span> Category(Enum):</span>
-<span id="cb26-8"><a href="#cb26-8" tabindex="-1" aria-label="code-block-26-8"></a>    NOUN <span class="op">=</span> auto</span>
-<span id="cb26-9"><a href="#cb26-9" tabindex="-1" aria-label="code-block-26-9"></a>    VERB <span class="op">=</span> auto</span>
-<span id="cb26-10"><a href="#cb26-10" tabindex="-1" aria-label="code-block-26-10"></a></span>
-<span id="cb26-11"><a href="#cb26-11" tabindex="-1" aria-label="code-block-26-11"></a><span class="at">@dataclass</span></span>
-<span id="cb26-12"><a href="#cb26-12" tabindex="-1" aria-label="code-block-26-12"></a><span class="kw">class</span> Definition:</span>
-<span id="cb26-13"><a href="#cb26-13" tabindex="-1" aria-label="code-block-26-13"></a>    category: Category</span>
-<span id="cb26-14"><a href="#cb26-14" tabindex="-1" aria-label="code-block-26-14"></a>    text: Text</span>
-<span id="cb26-15"><a href="#cb26-15" tabindex="-1" aria-label="code-block-26-15"></a></span>
-<span id="cb26-16"><a href="#cb26-16" tabindex="-1" aria-label="code-block-26-16"></a>first_example <span class="op">=</span> {</span>
-<span id="cb26-17"><a href="#cb26-17" tabindex="-1" aria-label="code-block-26-17"></a>    <span class="st">"barf"</span>: [</span>
-<span id="cb26-18"><a href="#cb26-18" tabindex="-1" aria-label="code-block-26-18"></a>        Definition(</span>
-<span id="cb26-19"><a href="#cb26-19" tabindex="-1" aria-label="code-block-26-19"></a>            Category.VERB, <span class="st">"eject the contents of the stomach through the mouth"</span></span>
-<span id="cb26-20"><a href="#cb26-20" tabindex="-1" aria-label="code-block-26-20"></a>        )</span>
-<span id="cb26-21"><a href="#cb26-21" tabindex="-1" aria-label="code-block-26-21"></a>    ],</span>
-<span id="cb26-22"><a href="#cb26-22" tabindex="-1" aria-label="code-block-26-22"></a>    <span class="st">"morph"</span>: [</span>
-<span id="cb26-23"><a href="#cb26-23" tabindex="-1" aria-label="code-block-26-23"></a>        Definition(</span>
-<span id="cb26-24"><a href="#cb26-24" tabindex="-1" aria-label="code-block-26-24"></a>            Category.VERB, <span class="st">"(verb) change shape as via computer animation"</span></span>
-<span id="cb26-25"><a href="#cb26-25" tabindex="-1" aria-label="code-block-26-25"></a>        )</span>
-<span id="cb26-26"><a href="#cb26-26" tabindex="-1" aria-label="code-block-26-26"></a>    ],</span>
-<span id="cb26-27"><a href="#cb26-27" tabindex="-1" aria-label="code-block-26-27"></a>    <span class="st">"scarf"</span>: [</span>
-<span id="cb26-28"><a href="#cb26-28" tabindex="-1" aria-label="code-block-26-28"></a>        Definition(</span>
-<span id="cb26-29"><a href="#cb26-29" tabindex="-1" aria-label="code-block-26-29"></a>            Category.NOUN,</span>
-<span id="cb26-30"><a href="#cb26-30" tabindex="-1" aria-label="code-block-26-30"></a>            <span class="st">"a garment worn around the head or neck or shoulders for"</span></span>
-<span id="cb26-31"><a href="#cb26-31" tabindex="-1" aria-label="code-block-26-31"></a>            <span class="st">"warmth or decoration"</span>,</span>
-<span id="cb26-32"><a href="#cb26-32" tabindex="-1" aria-label="code-block-26-32"></a>        )</span>
-<span id="cb26-33"><a href="#cb26-33" tabindex="-1" aria-label="code-block-26-33"></a>    ],</span>
-<span id="cb26-34"><a href="#cb26-34" tabindex="-1" aria-label="code-block-26-34"></a>    <span class="st">"snarf"</span>: [</span>
-<span id="cb26-35"><a href="#cb26-35" tabindex="-1" aria-label="code-block-26-35"></a>        Definition(Category.VERB, <span class="st">"make off with belongings of others"</span>)</span>
-<span id="cb26-36"><a href="#cb26-36" tabindex="-1" aria-label="code-block-26-36"></a>    ],</span>
-<span id="cb26-37"><a href="#cb26-37" tabindex="-1" aria-label="code-block-26-37"></a>    <span class="st">"sound"</span>: [</span>
-<span id="cb26-38"><a href="#cb26-38" tabindex="-1" aria-label="code-block-26-38"></a>        Definition(Category.VERB, <span class="st">"emit or cause to emit sound."</span>),</span>
-<span id="cb26-39"><a href="#cb26-39" tabindex="-1" aria-label="code-block-26-39"></a>        Definition(</span>
-<span id="cb26-40"><a href="#cb26-40" tabindex="-1" aria-label="code-block-26-40"></a>            Category.NOUN,</span>
-<span id="cb26-41"><a href="#cb26-41" tabindex="-1" aria-label="code-block-26-41"></a>            <span class="st">"vibrations that travel through the air or another medium"</span>,</span>
-<span id="cb26-42"><a href="#cb26-42" tabindex="-1" aria-label="code-block-26-42"></a>        ),</span>
-<span id="cb26-43"><a href="#cb26-43" tabindex="-1" aria-label="code-block-26-43"></a>    ],</span>
-<span id="cb26-44"><a href="#cb26-44" tabindex="-1" aria-label="code-block-26-44"></a>    <span class="st">"surf"</span>: [</span>
-<span id="cb26-45"><a href="#cb26-45" tabindex="-1" aria-label="code-block-26-45"></a>        Definition(Category.VERB, <span class="st">"switch channels, on television"</span>),</span>
-<span id="cb26-46"><a href="#cb26-46" tabindex="-1" aria-label="code-block-26-46"></a>        Definition(Category.NOUN, <span class="st">"waves breaking on the shore"</span>),</span>
-<span id="cb26-47"><a href="#cb26-47" tabindex="-1" aria-label="code-block-26-47"></a>    ],</span>
-<span id="cb26-48"><a href="#cb26-48" tabindex="-1" aria-label="code-block-26-48"></a>}</span>
-<span id="cb26-49"><a href="#cb26-49" tabindex="-1" aria-label="code-block-26-49"></a><span class="co"># frozen makes Word immutable (the same way a tuple is immutable)</span></span>
-<span id="cb26-50"><a href="#cb26-50" tabindex="-1" aria-label="code-block-26-50"></a><span class="co"># One practical consequence is that dataclass will make Word work as a</span></span>
-<span id="cb26-51"><a href="#cb26-51" tabindex="-1" aria-label="code-block-26-51"></a><span class="co"># dictionary key: Word is hashable</span></span>
-<span id="cb26-52"><a href="#cb26-52" tabindex="-1" aria-label="code-block-26-52"></a><span class="at">@dataclass</span>(frozen<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb26-53"><a href="#cb26-53" tabindex="-1" aria-label="code-block-26-53"></a><span class="kw">class</span> Word:</span>
-<span id="cb26-54"><a href="#cb26-54" tabindex="-1" aria-label="code-block-26-54"></a>    word: Text</span>
-<span id="cb26-55"><a href="#cb26-55" tabindex="-1" aria-label="code-block-26-55"></a>    category: Category</span>
-<span id="cb26-56"><a href="#cb26-56" tabindex="-1" aria-label="code-block-26-56"></a></span>
-<span id="cb26-57"><a href="#cb26-57" tabindex="-1" aria-label="code-block-26-57"></a></span>
-<span id="cb26-58"><a href="#cb26-58" tabindex="-1" aria-label="code-block-26-58"></a>second_example <span class="op">=</span> {</span>
-<span id="cb26-59"><a href="#cb26-59" tabindex="-1" aria-label="code-block-26-59"></a>    Word(</span>
-<span id="cb26-60"><a href="#cb26-60" tabindex="-1" aria-label="code-block-26-60"></a>        <span class="st">"barf"</span>, Category.VERB</span>
-<span id="cb26-61"><a href="#cb26-61" tabindex="-1" aria-label="code-block-26-61"></a>    ): <span class="st">"eject the contents of the stomach through the mouth"</span>,</span>
-<span id="cb26-62"><a href="#cb26-62" tabindex="-1" aria-label="code-block-26-62"></a>    Word(<span class="st">"morph"</span>, Category.VERB): <span class="st">"change shape as via computer animation"</span>,</span>
-<span id="cb26-63"><a href="#cb26-63" tabindex="-1" aria-label="code-block-26-63"></a>    Word(<span class="st">"scarf"</span>, Category.NOUN): (</span>
-<span id="cb26-64"><a href="#cb26-64" tabindex="-1" aria-label="code-block-26-64"></a>        <span class="st">"a garment worn around the head or neck or shoulders for"</span></span>
-<span id="cb26-65"><a href="#cb26-65" tabindex="-1" aria-label="code-block-26-65"></a>        <span class="st">"warmth or decoration"</span></span>
-<span id="cb26-66"><a href="#cb26-66" tabindex="-1" aria-label="code-block-26-66"></a>    ),</span>
-<span id="cb26-67"><a href="#cb26-67" tabindex="-1" aria-label="code-block-26-67"></a>    Word(<span class="st">"snarf"</span>, Category.VERB): <span class="st">"make off with belongings of others"</span>,</span>
-<span id="cb26-68"><a href="#cb26-68" tabindex="-1" aria-label="code-block-26-68"></a>    Word(<span class="st">"sound"</span>, Category.VERB): <span class="st">"emit or cause to emit sound."</span>,</span>
-<span id="cb26-69"><a href="#cb26-69" tabindex="-1" aria-label="code-block-26-69"></a>    Word(</span>
-<span id="cb26-70"><a href="#cb26-70" tabindex="-1" aria-label="code-block-26-70"></a>        <span class="st">"sound"</span>, Category.NOUN</span>
-<span id="cb26-71"><a href="#cb26-71" tabindex="-1" aria-label="code-block-26-71"></a>    ): <span class="st">"vibrations that travel through the air or another medium"</span>,</span>
-<span id="cb26-72"><a href="#cb26-72" tabindex="-1" aria-label="code-block-26-72"></a>    Word(<span class="st">"surf"</span>, Category.VERB): <span class="st">"switch channels, on television"</span>,</span>
-<span id="cb26-73"><a href="#cb26-73" tabindex="-1" aria-label="code-block-26-73"></a>    Word(<span class="st">"surf"</span>, Category.NOUN): <span class="st">"waves breaking on the shore"</span>,</span>
-<span id="cb26-74"><a href="#cb26-74" tabindex="-1" aria-label="code-block-26-74"></a>}</span>
-<span id="cb26-75"><a href="#cb26-75" tabindex="-1" aria-label="code-block-26-75"></a></span>
-<span id="cb26-76"><a href="#cb26-76" tabindex="-1" aria-label="code-block-26-76"></a><span class="co"># Do conda install pandas first!!!</span></span>
-<span id="cb26-77"><a href="#cb26-77" tabindex="-1" aria-label="code-block-26-77"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb26-78"><a href="#cb26-78" tabindex="-1" aria-label="code-block-26-78"></a></span>
-<span id="cb26-79"><a href="#cb26-79" tabindex="-1" aria-label="code-block-26-79"></a>third_example <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb26-80"><a href="#cb26-80" tabindex="-1" aria-label="code-block-26-80"></a>    {</span>
-<span id="cb26-81"><a href="#cb26-81" tabindex="-1" aria-label="code-block-26-81"></a>        <span class="st">"words"</span>: [</span>
-<span id="cb26-82"><a href="#cb26-82" tabindex="-1" aria-label="code-block-26-82"></a>            <span class="st">"barf"</span>,</span>
-<span id="cb26-83"><a href="#cb26-83" tabindex="-1" aria-label="code-block-26-83"></a>            <span class="st">"morph"</span>,</span>
-<span id="cb26-84"><a href="#cb26-84" tabindex="-1" aria-label="code-block-26-84"></a>            <span class="st">"scarf"</span>,</span>
-<span id="cb26-85"><a href="#cb26-85" tabindex="-1" aria-label="code-block-26-85"></a>            <span class="st">"snarf"</span>,</span>
-<span id="cb26-86"><a href="#cb26-86" tabindex="-1" aria-label="code-block-26-86"></a>            <span class="st">"sound"</span>,</span>
-<span id="cb26-87"><a href="#cb26-87" tabindex="-1" aria-label="code-block-26-87"></a>            <span class="st">"sound"</span>,</span>
-<span id="cb26-88"><a href="#cb26-88" tabindex="-1" aria-label="code-block-26-88"></a>            <span class="st">"surf"</span>,</span>
-<span id="cb26-89"><a href="#cb26-89" tabindex="-1" aria-label="code-block-26-89"></a>            <span class="st">"surf"</span>,</span>
-<span id="cb26-90"><a href="#cb26-90" tabindex="-1" aria-label="code-block-26-90"></a>        ],</span>
-<span id="cb26-91"><a href="#cb26-91" tabindex="-1" aria-label="code-block-26-91"></a>        <span class="st">"definitions"</span>: [</span>
-<span id="cb26-92"><a href="#cb26-92" tabindex="-1" aria-label="code-block-26-92"></a>            <span class="st">"eject the contents of the stomach through the mouth"</span>,</span>
-<span id="cb26-93"><a href="#cb26-93" tabindex="-1" aria-label="code-block-26-93"></a>            <span class="st">"change shape as via computer animation"</span>,</span>
-<span id="cb26-94"><a href="#cb26-94" tabindex="-1" aria-label="code-block-26-94"></a>            (</span>
-<span id="cb26-95"><a href="#cb26-95" tabindex="-1" aria-label="code-block-26-95"></a>                <span class="st">"a garment worn around the head or neck or shoulders for"</span></span>
-<span id="cb26-96"><a href="#cb26-96" tabindex="-1" aria-label="code-block-26-96"></a>                <span class="st">"warmth or decoration"</span></span>
-<span id="cb26-97"><a href="#cb26-97" tabindex="-1" aria-label="code-block-26-97"></a>            ),</span>
-<span id="cb26-98"><a href="#cb26-98" tabindex="-1" aria-label="code-block-26-98"></a>            <span class="st">"make off with belongings of others"</span>,</span>
-<span id="cb26-99"><a href="#cb26-99" tabindex="-1" aria-label="code-block-26-99"></a>            <span class="st">"emit or cause to emit sound."</span>,</span>
-<span id="cb26-100"><a href="#cb26-100" tabindex="-1" aria-label="code-block-26-100"></a>            <span class="st">"vibrations that travel through the air or another medium"</span>,</span>
-<span id="cb26-101"><a href="#cb26-101" tabindex="-1" aria-label="code-block-26-101"></a>            <span class="st">"switch channels, on television"</span>,</span>
-<span id="cb26-102"><a href="#cb26-102" tabindex="-1" aria-label="code-block-26-102"></a>            <span class="st">"waves breaking on the shore"</span>,</span>
-<span id="cb26-103"><a href="#cb26-103" tabindex="-1" aria-label="code-block-26-103"></a>        ],</span>
-<span id="cb26-104"><a href="#cb26-104" tabindex="-1" aria-label="code-block-26-104"></a>        <span class="st">"category"</span>: pd.Series(</span>
-<span id="cb26-105"><a href="#cb26-105" tabindex="-1" aria-label="code-block-26-105"></a>            [<span class="st">"verb"</span>, <span class="st">"verb"</span>, <span class="st">"noun"</span>, <span class="st">"verb"</span>, <span class="st">"verb"</span>, <span class="st">"noun"</span>, <span class="st">"verb"</span>, <span class="st">"noun"</span>],</span>
-<span id="cb26-106"><a href="#cb26-106" tabindex="-1" aria-label="code-block-26-106"></a>            dtype<span class="op">=</span><span class="st">"category"</span>,</span>
-<span id="cb26-107"><a href="#cb26-107" tabindex="-1" aria-label="code-block-26-107"></a>        ),</span>
-<span id="cb26-108"><a href="#cb26-108" tabindex="-1" aria-label="code-block-26-108"></a>    }</span>
-<span id="cb26-109"><a href="#cb26-109" tabindex="-1" aria-label="code-block-26-109"></a>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="im">from</span> enum <span class="im">import</span> Enum, auto</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1" aria-label="code-block-27-3"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame, Series</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1" aria-label="code-block-27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1" aria-label="code-block-27-5"></a></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1" aria-label="code-block-27-6"></a><span class="kw">class</span> Category(Enum):</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1" aria-label="code-block-27-7"></a>    NOUN <span class="op">=</span> auto</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1" aria-label="code-block-27-8"></a>    VERB <span class="op">=</span> auto</span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1" aria-label="code-block-27-9"></a></span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1" aria-label="code-block-27-10"></a><span class="at">@dataclass</span></span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1" aria-label="code-block-27-11"></a><span class="kw">class</span> Definition:</span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1" aria-label="code-block-27-12"></a>    category: Category</span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1" aria-label="code-block-27-13"></a>    text: <span class="bu">str</span></span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1" aria-label="code-block-27-14"></a></span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1" aria-label="code-block-27-15"></a>first_example <span class="op">=</span> {</span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1" aria-label="code-block-27-16"></a>    <span class="st">"barf"</span>: [</span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1" aria-label="code-block-27-17"></a>        Definition(</span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1" aria-label="code-block-27-18"></a>            Category.VERB, <span class="st">"eject the contents of the stomach through the mouth"</span></span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1" aria-label="code-block-27-19"></a>        )</span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1" aria-label="code-block-27-20"></a>    ],</span>
+<span id="cb27-21"><a href="#cb27-21" tabindex="-1" aria-label="code-block-27-21"></a>    <span class="st">"morph"</span>: [</span>
+<span id="cb27-22"><a href="#cb27-22" tabindex="-1" aria-label="code-block-27-22"></a>        Definition(</span>
+<span id="cb27-23"><a href="#cb27-23" tabindex="-1" aria-label="code-block-27-23"></a>            Category.VERB, <span class="st">"change shape as via computer animation"</span></span>
+<span id="cb27-24"><a href="#cb27-24" tabindex="-1" aria-label="code-block-27-24"></a>        )</span>
+<span id="cb27-25"><a href="#cb27-25" tabindex="-1" aria-label="code-block-27-25"></a>    ],</span>
+<span id="cb27-26"><a href="#cb27-26" tabindex="-1" aria-label="code-block-27-26"></a>    <span class="st">"scarf"</span>: [</span>
+<span id="cb27-27"><a href="#cb27-27" tabindex="-1" aria-label="code-block-27-27"></a>        Definition(</span>
+<span id="cb27-28"><a href="#cb27-28" tabindex="-1" aria-label="code-block-27-28"></a>            Category.NOUN,</span>
+<span id="cb27-29"><a href="#cb27-29" tabindex="-1" aria-label="code-block-27-29"></a>            <span class="st">"a garment worn around the head or neck or shoulders for"</span></span>
+<span id="cb27-30"><a href="#cb27-30" tabindex="-1" aria-label="code-block-27-30"></a>            <span class="st">"warmth or decoration"</span>,</span>
+<span id="cb27-31"><a href="#cb27-31" tabindex="-1" aria-label="code-block-27-31"></a>        )</span>
+<span id="cb27-32"><a href="#cb27-32" tabindex="-1" aria-label="code-block-27-32"></a>    ],</span>
+<span id="cb27-33"><a href="#cb27-33" tabindex="-1" aria-label="code-block-27-33"></a>    <span class="st">"snarf"</span>: [</span>
+<span id="cb27-34"><a href="#cb27-34" tabindex="-1" aria-label="code-block-27-34"></a>        Definition(Category.VERB, <span class="st">"make off with belongings of others"</span>)</span>
+<span id="cb27-35"><a href="#cb27-35" tabindex="-1" aria-label="code-block-27-35"></a>    ],</span>
+<span id="cb27-36"><a href="#cb27-36" tabindex="-1" aria-label="code-block-27-36"></a>    <span class="st">"sound"</span>: [</span>
+<span id="cb27-37"><a href="#cb27-37" tabindex="-1" aria-label="code-block-27-37"></a>        Definition(Category.VERB, <span class="st">"emit or cause to emit sound."</span>),</span>
+<span id="cb27-38"><a href="#cb27-38" tabindex="-1" aria-label="code-block-27-38"></a>        Definition(</span>
+<span id="cb27-39"><a href="#cb27-39" tabindex="-1" aria-label="code-block-27-39"></a>            Category.NOUN,</span>
+<span id="cb27-40"><a href="#cb27-40" tabindex="-1" aria-label="code-block-27-40"></a>            <span class="st">"vibrations that travel through the air or another medium"</span>,</span>
+<span id="cb27-41"><a href="#cb27-41" tabindex="-1" aria-label="code-block-27-41"></a>        ),</span>
+<span id="cb27-42"><a href="#cb27-42" tabindex="-1" aria-label="code-block-27-42"></a>    ],</span>
+<span id="cb27-43"><a href="#cb27-43" tabindex="-1" aria-label="code-block-27-43"></a>    <span class="st">"surf"</span>: [</span>
+<span id="cb27-44"><a href="#cb27-44" tabindex="-1" aria-label="code-block-27-44"></a>        Definition(Category.VERB, <span class="st">"switch channels, on television"</span>),</span>
+<span id="cb27-45"><a href="#cb27-45" tabindex="-1" aria-label="code-block-27-45"></a>        Definition(Category.NOUN, <span class="st">"waves breaking on the shore"</span>),</span>
+<span id="cb27-46"><a href="#cb27-46" tabindex="-1" aria-label="code-block-27-46"></a>    ],</span>
+<span id="cb27-47"><a href="#cb27-47" tabindex="-1" aria-label="code-block-27-47"></a>}</span>
+<span id="cb27-48"><a href="#cb27-48" tabindex="-1" aria-label="code-block-27-48"></a><span class="co"># frozen makes Word immutable (the same way a tuple is immutable)</span></span>
+<span id="cb27-49"><a href="#cb27-49" tabindex="-1" aria-label="code-block-27-49"></a><span class="co"># One practical consequence is that dataclass will make Word work as a</span></span>
+<span id="cb27-50"><a href="#cb27-50" tabindex="-1" aria-label="code-block-27-50"></a><span class="co"># dictionary key: Word is hashable</span></span>
+<span id="cb27-51"><a href="#cb27-51" tabindex="-1" aria-label="code-block-27-51"></a><span class="at">@dataclass</span>(frozen<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb27-52"><a href="#cb27-52" tabindex="-1" aria-label="code-block-27-52"></a><span class="kw">class</span> Word:</span>
+<span id="cb27-53"><a href="#cb27-53" tabindex="-1" aria-label="code-block-27-53"></a>    word: Text</span>
+<span id="cb27-54"><a href="#cb27-54" tabindex="-1" aria-label="code-block-27-54"></a>    category: Category</span>
+<span id="cb27-55"><a href="#cb27-55" tabindex="-1" aria-label="code-block-27-55"></a></span>
+<span id="cb27-56"><a href="#cb27-56" tabindex="-1" aria-label="code-block-27-56"></a></span>
+<span id="cb27-57"><a href="#cb27-57" tabindex="-1" aria-label="code-block-27-57"></a>second_example <span class="op">=</span> {</span>
+<span id="cb27-58"><a href="#cb27-58" tabindex="-1" aria-label="code-block-27-58"></a>    Word(</span>
+<span id="cb27-59"><a href="#cb27-59" tabindex="-1" aria-label="code-block-27-59"></a>        <span class="st">"barf"</span>, Category.VERB</span>
+<span id="cb27-60"><a href="#cb27-60" tabindex="-1" aria-label="code-block-27-60"></a>    ): <span class="st">"eject the contents of the stomach through the mouth"</span>,</span>
+<span id="cb27-61"><a href="#cb27-61" tabindex="-1" aria-label="code-block-27-61"></a>    Word(<span class="st">"morph"</span>, Category.VERB): <span class="st">"change shape as via computer animation"</span>,</span>
+<span id="cb27-62"><a href="#cb27-62" tabindex="-1" aria-label="code-block-27-62"></a>    Word(<span class="st">"scarf"</span>, Category.NOUN): (</span>
+<span id="cb27-63"><a href="#cb27-63" tabindex="-1" aria-label="code-block-27-63"></a>        <span class="st">"a garment worn around the head or neck or shoulders for"</span></span>
+<span id="cb27-64"><a href="#cb27-64" tabindex="-1" aria-label="code-block-27-64"></a>        <span class="st">"warmth or decoration"</span></span>
+<span id="cb27-65"><a href="#cb27-65" tabindex="-1" aria-label="code-block-27-65"></a>    ),</span>
+<span id="cb27-66"><a href="#cb27-66" tabindex="-1" aria-label="code-block-27-66"></a>    Word(<span class="st">"snarf"</span>, Category.VERB): <span class="st">"make off with belongings of others"</span>,</span>
+<span id="cb27-67"><a href="#cb27-67" tabindex="-1" aria-label="code-block-27-67"></a>    Word(<span class="st">"sound"</span>, Category.VERB): <span class="st">"emit or cause to emit sound."</span>,</span>
+<span id="cb27-68"><a href="#cb27-68" tabindex="-1" aria-label="code-block-27-68"></a>    Word(</span>
+<span id="cb27-69"><a href="#cb27-69" tabindex="-1" aria-label="code-block-27-69"></a>        <span class="st">"sound"</span>, Category.NOUN</span>
+<span id="cb27-70"><a href="#cb27-70" tabindex="-1" aria-label="code-block-27-70"></a>    ): <span class="st">"vibrations that travel through the air or another medium"</span>,</span>
+<span id="cb27-71"><a href="#cb27-71" tabindex="-1" aria-label="code-block-27-71"></a>    Word(<span class="st">"surf"</span>, Category.VERB): <span class="st">"switch channels, on television"</span>,</span>
+<span id="cb27-72"><a href="#cb27-72" tabindex="-1" aria-label="code-block-27-72"></a>    Word(<span class="st">"surf"</span>, Category.NOUN): <span class="st">"waves breaking on the shore"</span>,</span>
+<span id="cb27-73"><a href="#cb27-73" tabindex="-1" aria-label="code-block-27-73"></a>}</span>
+<span id="cb27-74"><a href="#cb27-74" tabindex="-1" aria-label="code-block-27-74"></a></span>
+<span id="cb27-75"><a href="#cb27-75" tabindex="-1" aria-label="code-block-27-75"></a><span class="co"># Do conda install pandas first!!!</span></span>
+<span id="cb27-76"><a href="#cb27-76" tabindex="-1" aria-label="code-block-27-76"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb27-77"><a href="#cb27-77" tabindex="-1" aria-label="code-block-27-77"></a></span>
+<span id="cb27-78"><a href="#cb27-78" tabindex="-1" aria-label="code-block-27-78"></a>third_example <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb27-79"><a href="#cb27-79" tabindex="-1" aria-label="code-block-27-79"></a>    {</span>
+<span id="cb27-80"><a href="#cb27-80" tabindex="-1" aria-label="code-block-27-80"></a>        <span class="st">"words"</span>: [</span>
+<span id="cb27-81"><a href="#cb27-81" tabindex="-1" aria-label="code-block-27-81"></a>            <span class="st">"barf"</span>,</span>
+<span id="cb27-82"><a href="#cb27-82" tabindex="-1" aria-label="code-block-27-82"></a>            <span class="st">"morph"</span>,</span>
+<span id="cb27-83"><a href="#cb27-83" tabindex="-1" aria-label="code-block-27-83"></a>            <span class="st">"scarf"</span>,</span>
+<span id="cb27-84"><a href="#cb27-84" tabindex="-1" aria-label="code-block-27-84"></a>            <span class="st">"snarf"</span>,</span>
+<span id="cb27-85"><a href="#cb27-85" tabindex="-1" aria-label="code-block-27-85"></a>            <span class="st">"sound"</span>,</span>
+<span id="cb27-86"><a href="#cb27-86" tabindex="-1" aria-label="code-block-27-86"></a>            <span class="st">"sound"</span>,</span>
+<span id="cb27-87"><a href="#cb27-87" tabindex="-1" aria-label="code-block-27-87"></a>            <span class="st">"surf"</span>,</span>
+<span id="cb27-88"><a href="#cb27-88" tabindex="-1" aria-label="code-block-27-88"></a>            <span class="st">"surf"</span>,</span>
+<span id="cb27-89"><a href="#cb27-89" tabindex="-1" aria-label="code-block-27-89"></a>        ],</span>
+<span id="cb27-90"><a href="#cb27-90" tabindex="-1" aria-label="code-block-27-90"></a>        <span class="st">"definitions"</span>: [</span>
+<span id="cb27-91"><a href="#cb27-91" tabindex="-1" aria-label="code-block-27-91"></a>            <span class="st">"eject the contents of the stomach through the mouth"</span>,</span>
+<span id="cb27-92"><a href="#cb27-92" tabindex="-1" aria-label="code-block-27-92"></a>            <span class="st">"change shape as via computer animation"</span>,</span>
+<span id="cb27-93"><a href="#cb27-93" tabindex="-1" aria-label="code-block-27-93"></a>            (</span>
+<span id="cb27-94"><a href="#cb27-94" tabindex="-1" aria-label="code-block-27-94"></a>                <span class="st">"a garment worn around the head or neck or shoulders for"</span></span>
+<span id="cb27-95"><a href="#cb27-95" tabindex="-1" aria-label="code-block-27-95"></a>                <span class="st">"warmth or decoration"</span></span>
+<span id="cb27-96"><a href="#cb27-96" tabindex="-1" aria-label="code-block-27-96"></a>            ),</span>
+<span id="cb27-97"><a href="#cb27-97" tabindex="-1" aria-label="code-block-27-97"></a>            <span class="st">"make off with belongings of others"</span>,</span>
+<span id="cb27-98"><a href="#cb27-98" tabindex="-1" aria-label="code-block-27-98"></a>            <span class="st">"emit or cause to emit sound."</span>,</span>
+<span id="cb27-99"><a href="#cb27-99" tabindex="-1" aria-label="code-block-27-99"></a>            <span class="st">"vibrations that travel through the air or another medium"</span>,</span>
+<span id="cb27-100"><a href="#cb27-100" tabindex="-1" aria-label="code-block-27-100"></a>            <span class="st">"switch channels, on television"</span>,</span>
+<span id="cb27-101"><a href="#cb27-101" tabindex="-1" aria-label="code-block-27-101"></a>            <span class="st">"waves breaking on the shore"</span>,</span>
+<span id="cb27-102"><a href="#cb27-102" tabindex="-1" aria-label="code-block-27-102"></a>        ],</span>
+<span id="cb27-103"><a href="#cb27-103" tabindex="-1" aria-label="code-block-27-103"></a>        <span class="st">"category"</span>: pd.Series(</span>
+<span id="cb27-104"><a href="#cb27-104" tabindex="-1" aria-label="code-block-27-104"></a>            [<span class="st">"verb"</span>, <span class="st">"verb"</span>, <span class="st">"noun"</span>, <span class="st">"verb"</span>, <span class="st">"verb"</span>, <span class="st">"noun"</span>, <span class="st">"verb"</span>, <span class="st">"noun"</span>],</span>
+<span id="cb27-105"><a href="#cb27-105" tabindex="-1" aria-label="code-block-27-105"></a>            dtype<span class="op">=</span><span class="st">"category"</span>,</span>
+<span id="cb27-106"><a href="#cb27-106" tabindex="-1" aria-label="code-block-27-106"></a>        ),</span>
+<span id="cb27-107"><a href="#cb27-107" tabindex="-1" aria-label="code-block-27-107"></a>    }</span>
+<span id="cb27-108"><a href="#cb27-108" tabindex="-1" aria-label="code-block-27-108"></a>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -2370,7 +2358,7 @@ might be nested!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The first obvious separation could be between
 <code>Ingredients</code> and <code>Preparation</code>. However, there is
@@ -2416,7 +2404,7 @@ so a possible structure for the concerns could be:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Solution 2 </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>But there is another, more reusable solution, to separate the
 <code>Dough</code> and the <code>Filling</code> first, and then the
@@ -3800,7 +3788,7 @@ original bug. Once you’ve done this all the tests should pass.</li>
   Solution 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Your test should look something like this:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -3866,7 +3854,7 @@ making it pass by modifying <code>diffusion.py</code> to raise an
   Solution 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3911,7 +3899,7 @@ true).</p>
   Solution 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4255,7 +4243,7 @@ foot gun).</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4298,7 +4286,7 @@ element, what about after the second element?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4347,7 +4335,7 @@ element, what about after the second element?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4585,7 +4573,7 @@ about the compute inside the loop</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Ring generator </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4614,7 +4602,7 @@ about the compute inside the loop</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Ring generator with tweakable norm </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4727,8 +4715,8 @@ any links that you are not going to use.
   "url": "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/aio.html",
   "identifier": "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/aio.html",
   "dateCreated": "2019-12-11",
-  "dateModified": "2026-10-27",
-  "datePublished": "2026-10-27"
+  "dateModified": "2026-10-28",
+  "datePublished": "2026-10-28"
 }
 
   </script><script>
