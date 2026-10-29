@@ -164,6 +164,8 @@ Sometimes, there are multiple ways of separating the concerns, so
 spend some time upfront thinking on the simplest, yet more reusable
 solution for your code.
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::: spoiler
+
 SoC encourages us to separate distinct concerns, but how do we decide which functionality belongs together, and which should be separated? One useful guideline is the Single Responsibility Principle (SRP).
 
 **The [Single Responsibility Principle (SRP)] states that a class or module should have
@@ -207,6 +209,8 @@ def validate(data):
 1. `validate` exists only to ensure that input data is in a format suitable for processing, and only changes if the application's data requirements change.
 
 Notice how each function does a very specific well-documented thing. By grouping functionality according to its responsibilities, changes can often be confined to the relevant parts of the code, without affecting unrelated functionality. Furthermore, the code cleaner, easier to read and to re-use.
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 [Separation of Concerns (SoC)]: https://en.wikipedia.org/wiki/Separation_of_concerns
 [Single Responsibility Principle (SRP)]: https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/
