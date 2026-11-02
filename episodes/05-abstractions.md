@@ -337,17 +337,20 @@ program, and might change in different places. There is no way around that,
 but just make sure that measures are in place to ensure that the state of the
 database is known at any given time.
 
-### Mixing IO and creating objects or making calculations
+### Object Creation: avoid side-effects and hidden dependencies
+
+It should be clear exactly what is required and what will happen when Creating (or
+initialising) objects in software. This is a natural consequence of the
+[Separation of concerns](#separation-of-concerns) principle described above. A
+particular example of this is when an object requires the contents of a file in
+order to be created.
 
 Input and output (IO) operations are tricky because they depend on the state of
-the system - the input file(s) contents - and change the state of the system - creating
-new file(s). They need to be handled with care and, indeed, some pure functional
-languages like [Haskell] consider them *dirty* operations because of that.
-
-The general rule is that IO operations should happen within their own functions
-or methods, and and just pass their contents around. This is a direct
-conclusion of the [Separation of concerns](#separation-of-concerns) principle
-described above, as applied to IO operations.
+the system (the input files' contents) and change the state of the system (creating
+new files). They need to be handled with care and, indeed, some pure functional
+languages like [Haskell] consider them *dirty* operations because of that. The
+general rule is that IO operations should happen within their own functions or
+methods, and the rest of the code should just pass their contents around.
 
 For example, objects that need files to be created are hard to create and re-create,
 especially during testing. Make the *contents* of the file an input for the object
