@@ -793,7 +793,7 @@ interpreter:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>After completing step 7 you will find that the package has not been
 removed from the environment even after being removed from
@@ -2244,7 +2244,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-05-abstractions"><p>Content from <a href="05-abstractions.html">Structuring code</a></p>
 <hr>
-<p>Last updated on 2026-10-15 |
+<p>Last updated on 2026-11-05 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/05-abstractions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 25 minutes</p>
@@ -2346,7 +2346,7 @@ concerns along the whole workflow:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="kw">def</span> main(filename, value):</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a>  <span class="co"># reading input files is one thing</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a>  data <span class="op">=</span> read_input(filename)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a>  data <span class="op">=</span> load_data(filename)</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a>  <span class="co"># creating complex objects is another</span></span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a>  simulator <span class="op">=</span> Simulator(data)</span>
@@ -2374,9 +2374,9 @@ might be nested!</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+  <h4 class="accordion-header" id="headingSolution1"> Solution 1 </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The first obvious separation could be between
 <code>Ingredients</code> and <code>Preparation</code>. However, there is
@@ -2409,7 +2409,20 @@ so a possible structure for the concerns could be:</p>
 <li>…</li>
 </ul>
 </li>
-<li>Finishing</li>
+</ul>
+</li>
+<li>Finishing
+<ul>
+<li>Dough:
+<ul>
+<li>…</li>
+</ul>
+</li>
+<li>Filling:
+<ul>
+<li>…</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2422,7 +2435,7 @@ so a possible structure for the concerns could be:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Solution 2 </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>But there is another, more reusable solution, to separate the
 <code>Dough</code> and the <code>Filling</code> first, and then the
@@ -2442,6 +2455,11 @@ same for the <code>Filling</code>.</p>
 <li>…</li>
 </ul>
 </li>
+<li>Finishing:
+<ul>
+<li>…</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Filling
@@ -2456,8 +2474,11 @@ same for the <code>Filling</code>.</p>
 <li>…</li>
 </ul>
 </li>
-<li>Finishing:</li>
-<li>Combine the dough and the filling prepared as above and…</li>
+<li>Finishing:
+<ul>
+<li>…</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2468,6 +2489,78 @@ same for the <code>Filling</code>.</p>
 <p>Sometimes, there are multiple ways of separating the concerns, so
 spend some time upfront thinking on the simplest, yet more reusable
 solution for your code.</p>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Show details </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div class="accordion-body">
+<p>SoC encourages us to separate distinct concerns, but how do we decide
+which functionality belongs together, and which should be separated? One
+useful guideline is the Single Responsibility Principle (SRP).</p>
+<p><strong>The <a href="https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/" class="external-link">Single
+Responsibility Principle (SRP)</a> states that a class or module should
+have only one reason to change, meaning it should have only one
+responsibility or purpose. This principle helps in creating more
+maintainable, reusable, and flexible software designs.</strong></p>
+<p>SRP helps to enforce SoC by ensuring that code is grouped together
+such that there is a single purpose for it to exist, and only needs to
+change when that single purpose changes. For instance, the following
+code strongly adheres to the SRP:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="kw">def</span> load_data(filename):</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a>    <span class="co">"""Select how to load the data based on the file extension."""</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a>    <span class="cf">if</span> filename.suffix <span class="op">==</span> <span class="st">".xlsx"</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a>        data <span class="op">=</span> load_excel(filename)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a>    <span class="cf">elif</span> filename.suffix <span class="op">==</span> <span class="st">".csv"</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a>        data <span class="op">=</span> load_csv(filename)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1" aria-label="code-block-2-7"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1" aria-label="code-block-2-8"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"The file must be an Excel or a CSV file."</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1" aria-label="code-block-2-9"></a>    validate(data)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1" aria-label="code-block-2-10"></a>    <span class="cf">return</span> data</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1" aria-label="code-block-2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1" aria-label="code-block-2-12"></a><span class="kw">def</span> load_excel(filename):</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1" aria-label="code-block-2-13"></a>    <span class="co">"""Loads an Excel file, picking only the first 2 columns."""</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1" aria-label="code-block-2-14"></a>    <span class="cf">return</span> pd.read_excel(filename, usecols<span class="op">=</span><span class="st">"A:B"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1" aria-label="code-block-2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1" aria-label="code-block-2-16"></a><span class="kw">def</span> load_csv(filename):</span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1" aria-label="code-block-2-17"></a>    <span class="co">"""Loads a CSV file, ensuring the date and time are combined."""</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1" aria-label="code-block-2-18"></a>    data <span class="op">=</span> pd.read_csv(filename)</span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1" aria-label="code-block-2-19"></a>    data[<span class="st">"datetime"</span>] <span class="op">=</span> data[<span class="st">"date"</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> data[<span class="st">"time"</span>]</span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1" aria-label="code-block-2-20"></a>    <span class="cf">return</span> data[[<span class="st">"datetime"</span>, <span class="st">"value"</span>]]</span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1" aria-label="code-block-2-21"></a></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1" aria-label="code-block-2-22"></a><span class="kw">def</span> validate(data):</span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1" aria-label="code-block-2-23"></a>    <span class="co">"""Checks that the data has the right structure."""</span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1" aria-label="code-block-2-24"></a>    <span class="cf">if</span> <span class="bu">list</span>(data.columns) <span class="op">!=</span> [<span class="st">"datetime"</span>, <span class="st">"value"</span>]:</span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1" aria-label="code-block-2-25"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Unexpected data columns"</span>)</span></code></pre>
+</div>
+<ol style="list-style-type: decimal">
+<li>
+<code>load_data</code> exists to read and validate data from
+differently formatted files. The only reason it might need to change is
+if a new file format is added or removed.</li>
+<li>
+<code>load_excel</code> exists to read data from an Excel file, and
+only changes if the layout of the Excel file does.</li>
+<li>Similarly, <code>load_csv</code> only changes if the CSV file layout
+changes.</li>
+<li>
+<code>validate</code> exists only to ensure that input data is in a
+format suitable for processing, and only changes if the application’s
+data requirements change.</li>
+</ol>
+<p>Notice how each function does a very specific well-documented thing.
+By grouping functionality according to its responsibilities, changes can
+often be confined to the relevant parts of the code, without affecting
+unrelated functionality. Furthermore, the code cleaner, easier to read
+and to re-use.</p>
+</div>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="levels-of-abstraction">Levels of abstraction<a class="anchor" aria-label="anchor" href="#levels-of-abstraction"></a>
 </h2>
 <hr class="half-width">
@@ -2477,17 +2570,17 @@ generalizing concrete details to focus on more important, generic
 aspects. It helps in managing complexity by hiding implementation
 details and exposing only the necessary parts.</strong></p>
 <p>Let’s consider the following code:</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="kw">def</span> analyse(input_path):</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a>    data <span class="op">=</span> load_data(input_path)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a>    <span class="co"># special fix for bad data point</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a>    data[<span class="dv">0</span>].x[<span class="st">"january"</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1" aria-label="code-block-2-7"></a>    results <span class="op">=</span> process_data(data)</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1" aria-label="code-block-2-8"></a>    <span class="cf">return</span> results</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="kw">def</span> analyse(input_path):</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a>    data <span class="op">=</span> load_data(input_path)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a>    <span class="co"># special fix for bad data point</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a>    data[<span class="dv">0</span>].x[<span class="st">"january"</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1" aria-label="code-block-3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1" aria-label="code-block-3-7"></a>    results <span class="op">=</span> process_data(data)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1" aria-label="code-block-3-8"></a>    <span class="cf">return</span> results</span></code></pre>
 </div>
 <p>The “special fix” mixes levels of abstraction. Our top level function
 now depends on the structure of <code>data</code>. If the way data is
@@ -2496,102 +2589,19 @@ stored changes (a low level detail) we now also need to change
 of the program.</p>
 <p>The following code encapsulates those low level changes in another
 function, honouring the different levels of abstraction.</p>
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="kw">def</span> analyse(input_path):</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a>    data <span class="op">=</span> load_data(input_path)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a>    cleaned_data <span class="op">=</span> clean_data(data)</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1" aria-label="code-block-3-6"></a>    results <span class="op">=</span> process_data(cleaned_data)</span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1" aria-label="code-block-3-7"></a>    <span class="cf">return</span> results</span></code></pre>
-</div>
-<p>Now our <code>analyse</code> function does not need to know anything
-about the inside workings of the <code>data</code> object.</p>
-</section><section><h2 class="section-heading" id="single-responsibility-principle">Single responsibility principle<a class="anchor" aria-label="anchor" href="#single-responsibility-principle"></a>
-</h2>
-<hr class="half-width">
-<p><strong>The <a href="https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/" class="external-link">Single
-Responsibility Principle (SRP)</a> states that a class or module should
-have only one reason to change, meaning it should have only one
-responsibility or purpose. This principle helps in creating more
-maintainable, reusable, and flexible software designs.</strong></p>
-<p>This goes into a deeper level than the abstractions described above,
-and it is probably the one harder to do right, besides its apparent
-simplicity. It literally means that each function or method should do
-one thing only. This typically means also that is short, easier to read,
-to debug and to re-use.</p>
-<p>Let’s consider the following code. It uses Pandas to load some data
-from either an Excel file or a CSV file. In the second case, it also
-manipulates some columns to make sure the right ones are there.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="kw">def</span> load_data(filename):</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a>    <span class="cf">if</span> filename.suffix <span class="op">==</span> <span class="st">".xlsx"</span>:</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a>        data <span class="op">=</span> pd.read_excel(filename, usecols<span class="op">=</span><span class="st">"A:B"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a>    <span class="cf">elif</span> filename.suffix <span class="op">==</span> <span class="st">".csv"</span>:</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a>        data <span class="op">=</span> pd.read_csv(filename)</span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a>        data[<span class="st">"datetime"</span>] <span class="op">=</span> data[<span class="st">"date"</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> data[<span class="st">"time"</span>]</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1" aria-label="code-block-4-8"></a>        data <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">"date"</span>, <span class="st">"time"</span>])</span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1" aria-label="code-block-4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1" aria-label="code-block-4-10"></a>    <span class="cf">else</span>:</span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1" aria-label="code-block-4-11"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"The file must be an Excel or a CSV file"</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1" aria-label="code-block-4-12"></a></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1" aria-label="code-block-4-13"></a>    <span class="cf">assert</span> data.columns <span class="op">==</span> [<span class="st">"datetime"</span>, <span class="st">"value"</span>]</span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1" aria-label="code-block-4-14"></a>    <span class="cf">return</span> data</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="kw">def</span> analyse(input_path):</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a>    data <span class="op">=</span> load_data(input_path)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a>    cleaned_data <span class="op">=</span> clean_data(data)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a>    results <span class="op">=</span> process_data(cleaned_data)</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a>    <span class="cf">return</span> results</span></code></pre>
 </div>
-<p>This function is doing too many things despite being just 13 lines
-long, and might need to change for several, unrelated reasons. If we
-work on the separation of concerns, we will have several functions
-that:</p>
-<ol style="list-style-type: decimal">
-<li>Select how to read the data based on the extension.</li>
-<li>Read an Excel file</li>
-<li>Read a CSV file</li>
-<li>Validate the data structure</li>
-</ol>
-<div class="codewrapper sourceCode" id="cb5">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="kw">def</span> load_data(filename):</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a>    <span class="co">"""Select how to load the data based on the file extension."""</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a>    <span class="cf">if</span> filename.suffix <span class="op">==</span> <span class="st">".xlsx"</span>:</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1" aria-label="code-block-5-4"></a>        data <span class="op">=</span> load_excel(filename)</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1" aria-label="code-block-5-5"></a>    <span class="cf">elif</span> filename.suffix <span class="op">==</span> <span class="st">".csv"</span>:</span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1" aria-label="code-block-5-6"></a>        data <span class="op">=</span> load_csv(filename)</span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1" aria-label="code-block-5-7"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1" aria-label="code-block-5-8"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"The file must be an Excel or a CSV file."</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1" aria-label="code-block-5-9"></a>    <span class="cf">return</span> data</span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1" aria-label="code-block-5-10"></a></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1" aria-label="code-block-5-11"></a><span class="kw">def</span> load_excel(filename):</span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1" aria-label="code-block-5-12"></a>    <span class="co">"""Loads an Excel file, picking only the first 2 columns."""</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1" aria-label="code-block-5-13"></a>    data <span class="op">=</span> pd.read_excel(filename, usecols<span class="op">=</span><span class="st">"A:B"</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1" aria-label="code-block-5-14"></a>    validate(data)</span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1" aria-label="code-block-5-15"></a>    <span class="cf">return</span> data</span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1" aria-label="code-block-5-16"></a></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1" aria-label="code-block-5-17"></a><span class="kw">def</span> load_csv(filename):</span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1" aria-label="code-block-5-18"></a>    <span class="co">"""Loads a CSV file, ensuring the date and time are combined."""</span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1" aria-label="code-block-5-19"></a>    data <span class="op">=</span> pd.read_csv(filename)</span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1" aria-label="code-block-5-20"></a>    data[<span class="st">"datetime"</span>] <span class="op">=</span> data[<span class="st">"date"</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> data[<span class="st">"time"</span>]</span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1" aria-label="code-block-5-21"></a>    data <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">"date"</span>, <span class="st">"time"</span>])</span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1" aria-label="code-block-5-22"></a>    validate(data)</span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1" aria-label="code-block-5-23"></a>    <span class="cf">return</span> data</span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1" aria-label="code-block-5-24"></a></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1" aria-label="code-block-5-25"></a><span class="kw">def</span> validate(data):</span>
-<span id="cb5-26"><a href="#cb5-26" tabindex="-1" aria-label="code-block-5-26"></a>    <span class="co">"""Checks that the data has the right structure."""</span></span>
-<span id="cb5-27"><a href="#cb5-27" tabindex="-1" aria-label="code-block-5-27"></a>    <span class="cf">assert</span> data.columns <span class="op">==</span> [<span class="st">"datetime"</span>, <span class="st">"value"</span>]</span></code></pre>
-</div>
-<p>The overall length of the code is much more, but now each function
-does a very specific thing, and only one thing, and well documented. The
-<code>load_data</code> function only needs to change if more formats are
-supported. The <code>load_excel</code> only if the structure of the
-Excel file changes and the same goes for the <code>load_csv</code>. And
-the validate data one, only changes if there are more or different
-things to validate. The code becomes cleaner, easier to read and to
-re-use.</p>
+<p>Now our <code>analyse</code> function does not need to know anything
+about the inside workings of the <code>data</code> object.</p>
 </section><section><h2 class="section-heading" id="other-considerations">Other considerations<a class="anchor" aria-label="anchor" href="#other-considerations"></a>
 </h2>
 <hr class="half-width">
@@ -2630,15 +2640,15 @@ and less popular due to the problems they might bring to the code. Avoid
 the use global variables, when possible. They make the dataflow complex
 by essence.</p>
 <p>Let’s consider the following code:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a>SOME_GLOBAL_VARIABLE <span class="op">=</span> <span class="dv">42</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a><span class="kw">def</span> compute_a(measurements):</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a>    ...</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1" aria-label="code-block-6-5"></a>    result <span class="op">*=</span> SOME_GLOBAL_VARIABLE</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1" aria-label="code-block-6-6"></a>    <span class="cf">return</span> result</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a>SOME_GLOBAL_VARIABLE <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a><span class="kw">def</span> compute_a(measurements):</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1" aria-label="code-block-5-4"></a>    ...</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1" aria-label="code-block-5-5"></a>    result <span class="op">*=</span> SOME_GLOBAL_VARIABLE</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1" aria-label="code-block-5-6"></a>    <span class="cf">return</span> result</span></code></pre>
 </div>
 <p>Now the result of <code>compute_a</code> has a hidden dependency.
 It’s never clear whether calling it twice with the same input
@@ -2675,30 +2685,30 @@ the file an input for the object creation function, instead of the
 filename or file object. You might want to use factory methods to
 support this approach.</p>
 <p>For example, don’t do this:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="kw">class</span> MyModel</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, some_array):</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a>        <span class="va">self</span>.some_array <span class="op">=</span> array</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a>        <span class="co"># BAD!! Now you need to carry this file around every time you want to</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1" aria-label="code-block-6-5"></a>        <span class="co"># instantiate MyModel</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1" aria-label="code-block-6-6"></a>        <span class="va">self</span>.aaa <span class="op">=</span> read_aaa(<span class="st">"somefile.aaa"</span>)</span></code></pre>
+</div>
+<p>Do this instead, so you can instantiate <code>MyModel</code> without
+having the file at hand:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="kw">class</span> MyModel</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, some_array):</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a>        <span class="va">self</span>.some_array <span class="op">=</span> array</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a>        <span class="co"># BAD!! Now you need to carry this file around every time you want to</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1" aria-label="code-block-7-5"></a>        <span class="co"># instantiate MyModel</span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1" aria-label="code-block-7-6"></a>        <span class="va">self</span>.aaa <span class="op">=</span> read_aaa(<span class="st">"somefile.aaa"</span>)</span></code></pre>
-</div>
-<p>Do this instead, so you can instantiate <code>MyModel</code> without
-having the file at hand:</p>
-<div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="kw">class</span> MyModel</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a>    <span class="at">@classmethod</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a>    <span class="kw">def</span> from_file(cls, array, filename):</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a>        aaa <span class="op">=</span> read_aaa(filename)</span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1" aria-label="code-block-8-5"></a>        <span class="cf">return</span> cls(array, aaa)</span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1" aria-label="code-block-8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1" aria-label="code-block-8-7"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, some_array, aaa):</span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1" aria-label="code-block-8-8"></a>        <span class="va">self</span>.some_array <span class="op">=</span> array</span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1" aria-label="code-block-8-9"></a>        <span class="va">self</span>.aaa <span class="op">=</span> aaa</span></code></pre>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a>    <span class="at">@classmethod</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a>    <span class="kw">def</span> from_file(cls, array, filename):</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a>        aaa <span class="op">=</span> read_aaa(filename)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1" aria-label="code-block-7-5"></a>        <span class="cf">return</span> cls(array, aaa)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1" aria-label="code-block-7-6"></a></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1" aria-label="code-block-7-7"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, some_array, aaa):</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1" aria-label="code-block-7-8"></a>        <span class="va">self</span>.some_array <span class="op">=</span> array</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1" aria-label="code-block-7-9"></a>        <span class="va">self</span>.aaa <span class="op">=</span> aaa</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -2715,24 +2725,24 @@ have the following set of actions:</p>
 </li>
 </ol>
 <p>The code should reflect that structure:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="kw">def</span> read_experiment(filename):</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a>    ...</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a>    <span class="cf">return</span> measurements</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1" aria-label="code-block-9-4"></a></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1" aria-label="code-block-9-5"></a><span class="kw">def</span> compute_a(measurements):</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1" aria-label="code-block-9-6"></a>    ...</span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1" aria-label="code-block-9-7"></a>    <span class="cf">return</span> a</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1" aria-label="code-block-9-8"></a></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1" aria-label="code-block-9-9"></a><span class="kw">def</span> compute_b(measurements):</span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1" aria-label="code-block-9-10"></a>    ...</span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1" aria-label="code-block-9-11"></a>    <span class="cf">return</span> b</span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1" aria-label="code-block-9-12"></a></span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1" aria-label="code-block-9-13"></a><span class="kw">def</span> compute_result(a, b):</span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1" aria-label="code-block-9-14"></a>    ...</span>
-<span id="cb9-15"><a href="#cb9-15" tabindex="-1" aria-label="code-block-9-15"></a>    <span class="cf">return</span> result</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="kw">def</span> read_experiment(filename):</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a>    ...</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a>    <span class="cf">return</span> measurements</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1" aria-label="code-block-8-5"></a><span class="kw">def</span> compute_a(measurements):</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1" aria-label="code-block-8-6"></a>    ...</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1" aria-label="code-block-8-7"></a>    <span class="cf">return</span> a</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1" aria-label="code-block-8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1" aria-label="code-block-8-9"></a><span class="kw">def</span> compute_b(measurements):</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1" aria-label="code-block-8-10"></a>    ...</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1" aria-label="code-block-8-11"></a>    <span class="cf">return</span> b</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1" aria-label="code-block-8-12"></a></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1" aria-label="code-block-8-13"></a><span class="kw">def</span> compute_result(a, b):</span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1" aria-label="code-block-8-14"></a>    ...</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1" aria-label="code-block-8-15"></a>    <span class="cf">return</span> result</span></code></pre>
 </div>
 <ol style="list-style-type: decimal">
 <li>One function to read <code>Experiment</code>
@@ -2757,12 +2767,12 @@ have the following set of actions:</p>
 tangled dependencies that can make the code harder to understand and,
 indeed, be a source of errors.</p>
 <p>Look at the following alternative code:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="co"># BAD! Unnecessary arguments. Now result depends on a, b, AND measurements</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="kw">def</span> compute_result(a, b, measurements):</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a>    <span class="cf">pass</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="co"># BAD! Unnecessary arguments. Now result depends on a, b, AND measurements</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="kw">def</span> compute_result(a, b, measurements):</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a>    <span class="cf">pass</span></span></code></pre>
 </div>
 <p>Did we not say the result depends on <code>a</code> and
 <code>b</code> alone? The next programmer to look at the code
@@ -2777,21 +2787,21 @@ but to modify an input argument. Still, wherever possible avoid doing it
 because if you do not, other functions using that input argument will
 need to know who used it first!</p>
 <p>If possible avoid doing this.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="kw">def</span> compute_a(measurements):</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a>    measurements[<span class="dv">1</span>] <span class="op">*=</span> <span class="dv">2</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a>    ...</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a><span class="kw">def</span> compute_b(measurements):</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a>    some_result <span class="op">=</span> measurements[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.5</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1" aria-label="code-block-11-7"></a>    ...</span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1" aria-label="code-block-11-8"></a></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1" aria-label="code-block-11-9"></a><span class="kw">def</span> compute(measurements):</span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1" aria-label="code-block-11-10"></a>    compute_a(measurements)</span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1" aria-label="code-block-11-11"></a>    compute_b(measurements)</span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1" aria-label="code-block-11-12"></a>    ...</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="kw">def</span> compute_a(measurements):</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a>    measurements[<span class="dv">1</span>] <span class="op">*=</span> <span class="dv">2</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a>    ...</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1" aria-label="code-block-10-5"></a><span class="kw">def</span> compute_b(measurements):</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1" aria-label="code-block-10-6"></a>    some_result <span class="op">=</span> measurements[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.5</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1" aria-label="code-block-10-7"></a>    ...</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1" aria-label="code-block-10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1" aria-label="code-block-10-9"></a><span class="kw">def</span> compute(measurements):</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1" aria-label="code-block-10-10"></a>    compute_a(measurements)</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1" aria-label="code-block-10-11"></a>    compute_b(measurements)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1" aria-label="code-block-10-12"></a>    ...</span></code></pre>
 </div>
 <p>If <code>compute_a</code> takes place before <code>compute_b</code>
 the result would be different than if it is the other way around.
@@ -2800,23 +2810,23 @@ indicating that is the case.</p>
 <p>If you do need to modify the inputs then provide them as outputs of
 the function, such that it is clear by successive functions that they
 are using modified versions of the inputs.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="kw">def</span> compute_a(measurements):</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a>    measurements[<span class="dv">1</span>] <span class="op">*=</span> <span class="dv">2</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a>    ...</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a>    <span class="cf">return</span> measurements</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1" aria-label="code-block-12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1" aria-label="code-block-12-6"></a><span class="kw">def</span> compute_b(measurements):</span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1" aria-label="code-block-12-7"></a>    some_result <span class="op">=</span> measurements[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.5</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1" aria-label="code-block-12-8"></a>    ...</span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1" aria-label="code-block-12-9"></a>    <span class="cf">return</span> some_result</span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1" aria-label="code-block-12-10"></a></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1" aria-label="code-block-12-11"></a><span class="kw">def</span> compute(measurements):</span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1" aria-label="code-block-12-12"></a>    measurements <span class="op">=</span> compute_a(measurements)</span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1" aria-label="code-block-12-13"></a>    some_result <span class="op">=</span> compute_b(measurements)</span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1" aria-label="code-block-12-14"></a>    ...</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="kw">def</span> compute_a(measurements):</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a>    measurements[<span class="dv">1</span>] <span class="op">*=</span> <span class="dv">2</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a>    ...</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a>    <span class="cf">return</span> measurements</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a><span class="kw">def</span> compute_b(measurements):</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1" aria-label="code-block-11-7"></a>    some_result <span class="op">=</span> measurements[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.5</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1" aria-label="code-block-11-8"></a>    ...</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1" aria-label="code-block-11-9"></a>    <span class="cf">return</span> some_result</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1" aria-label="code-block-11-10"></a></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1" aria-label="code-block-11-11"></a><span class="kw">def</span> compute(measurements):</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1" aria-label="code-block-11-12"></a>    measurements <span class="op">=</span> compute_a(measurements)</span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1" aria-label="code-block-11-13"></a>    some_result <span class="op">=</span> compute_b(measurements)</span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1" aria-label="code-block-11-14"></a>    ...</span></code></pre>
 </div>
 <p>Now it is clear that <code>compute_b</code> is using a
 <code>measurements</code> object that has been outputted by
@@ -4265,7 +4275,7 @@ foot gun).</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4308,7 +4318,7 @@ element, what about after the second element?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4357,7 +4367,7 @@ element, what about after the second element?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4595,7 +4605,7 @@ about the compute inside the loop</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Ring generator </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4624,7 +4634,7 @@ about the compute inside the loop</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Ring generator with tweakable norm </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4737,8 +4747,8 @@ any links that you are not going to use.
   "url": "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/aio.html",
   "identifier": "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/aio.html",
   "dateCreated": "2019-12-11",
-  "dateModified": "2026-11-03",
-  "datePublished": "2026-11-03"
+  "dateModified": "2026-11-05",
+  "datePublished": "2026-11-05"
 }
 
   </script><script>
