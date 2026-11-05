@@ -85,7 +85,7 @@ whole workflow:
 ```python
 def main(filename, value):
   # reading input files is one thing
-  data = read_input(filename)
+  data = load_data(filename)
 
   # creating complex objects is another
   simulator = Simulator(data)
@@ -105,7 +105,7 @@ Using the recipe above, what concerns can you identify? Concerns might be nested
 
 ::::::::::::::::::::::::::::::::::::: solution
 
-## Solution
+## Solution 1
 
 The first obvious separation could be between `Ingredients` and
 `Preparation`. However, there is also another level between `Dough`
@@ -116,12 +116,18 @@ and `Filling`, so a possible structure for the concerns could be:
     - ...
   - Filling:
     - ...
+
 - Preparation
   - Dough:
     - ...
   - Filling:
     - ...
-  - Finishing
+
+- Finishing
+  - Dough:
+    - ...
+  - Filling:
+    - ...
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -139,6 +145,8 @@ different cake recipes, and the same for the `Filling`.
     - ...
   - Preparation:
     - ...
+  - Finishing:
+    - ...
 
 - Filling
   - Ingredients:
@@ -146,7 +154,7 @@ different cake recipes, and the same for the `Filling`.
   - Preparation:
     - ...
   - Finishing:
-  - Combine the dough and the filling prepared as above and...
+    - ...
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -156,7 +164,56 @@ Sometimes, there are multiple ways of separating the concerns, so
 spend some time upfront thinking on the simplest, yet more reusable
 solution for your code.
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::: spoiler
+
+SoC encourages us to separate distinct concerns, but how do we decide which functionality belongs together, and which should be separated? One useful guideline is the Single Responsibility Principle (SRP).
+
+**The [Single Responsibility Principle (SRP)] states that a class or module should have
+only one reason to change, meaning it should have only one responsibility or purpose.
+This principle helps in creating more maintainable, reusable, and flexible software
+designs.**
+
+SRP helps to enforce SoC by ensuring that code is grouped together such that there is a single purpose for it to exist, and only needs to change when that single purpose changes. For instance, the following code strongly adheres to the SRP:
+
+```python
+def load_data(filename):
+    """Select how to load the data based on the file extension."""
+    if filename.suffix == ".xlsx":
+        data = load_excel(filename)
+    elif filename.suffix == ".csv":
+        data = load_csv(filename)
+    else:
+        raise RuntimeError("The file must be an Excel or a CSV file.")
+    validate(data)
+    return data
+
+def load_excel(filename):
+    """Loads an Excel file, picking only the first 2 columns."""
+    return pd.read_excel(filename, usecols="A:B")
+
+def load_csv(filename):
+    """Loads a CSV file, ensuring the date and time are combined."""
+    data = pd.read_csv(filename)
+    data["datetime"] = data["date"] + " " + data["time"]
+    return data[["datetime", "value"]]
+
+def validate(data):
+    """Checks that the data has the right structure."""
+    if list(data.columns) != ["datetime", "value"]:
+        raise ValueError("Unexpected data columns")
+```
+
+1. `load_data` exists to read and validate data from differently formatted files. The only reason it might need to change is if a new file format is added or removed.
+1. `load_excel` exists to read data from an Excel file, and only changes if the layout of the Excel file does.
+1. Similarly, `load_csv` only changes if the CSV file layout changes.
+1. `validate` exists only to ensure that input data is in a format suitable for processing, and only changes if the application's data requirements change.
+
+Notice how each function does a very specific well-documented thing. By grouping functionality according to its responsibilities, changes can often be confined to the relevant parts of the code, without affecting unrelated functionality. Furthermore, the code cleaner, easier to read and to re-use.
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 [Separation of Concerns (SoC)]: https://en.wikipedia.org/wiki/Separation_of_concerns
+[Single Responsibility Principle (SRP)]: https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/
 
 ## Levels of abstraction
 
@@ -197,87 +254,6 @@ Now our `analyse` function does not need to know anything about the inside worki
 of the `data` object.
 
 [Abstraction]: https://www.geeksforgeeks.org/why-are-abstractions-important-in-system-design/
-
-## Single responsibility principle
-
-**The [Single Responsibility Principle (SRP)] states that a class or module should have
-only one reason to change, meaning it should have only one responsibility or purpose.
-This principle helps in creating more maintainable, reusable, and flexible software
-designs.**
-
-This goes into a deeper level than the abstractions described above, and it is probably
-the one harder to do right, besides its apparent simplicity. It literally means
-that each function or method should do one thing only. This typically means also that
-is short, easier to read, to debug and to re-use.
-
-Let's consider the following code. It uses Pandas to load some data from either an Excel
-file or a CSV file. In the second case, it also manipulates some columns to make sure
-the right ones are there.
-
-```python
-def load_data(filename):
-    if filename.suffix == ".xlsx":
-        data = pd.read_excel(filename, usecols="A:B")
-
-    elif filename.suffix == ".csv":
-        data = pd.read_csv(filename)
-        data["datetime"] = data["date"] + " " + data["time"]
-        data = data.drop(columns=["date", "time"])
-
-    else:
-        raise RuntimeError("The file must be an Excel or a CSV file")
-
-    assert data.columns == ["datetime", "value"]
-    return data
-```
-
-This function is doing too many things despite being just 13 lines long, and
-might need to change for several, unrelated reasons. If we work on the
-separation of concerns, we will have several functions that:
-
-1. Select how to read the data based on the extension.
-1. Read an Excel file
-1. Read a CSV file
-1. Validate the data structure
-
-```python
-def load_data(filename):
-    """Select how to load the data based on the file extension."""
-    if filename.suffix == ".xlsx":
-        data = load_excel(filename)
-    elif filename.suffix == ".csv":
-        data = load_csv(filename)
-    else:
-        raise RuntimeError("The file must be an Excel or a CSV file.")
-    return data
-
-def load_excel(filename):
-    """Loads an Excel file, picking only the first 2 columns."""
-    data = pd.read_excel(filename, usecols="A:B")
-    validate(data)
-    return data
-
-def load_csv(filename):
-    """Loads a CSV file, ensuring the date and time are combined."""
-    data = pd.read_csv(filename)
-    data["datetime"] = data["date"] + " " + data["time"]
-    data = data.drop(columns=["date", "time"])
-    validate(data)
-    return data
-
-def validate(data):
-    """Checks that the data has the right structure."""
-    assert data.columns == ["datetime", "value"]
-```
-
-The overall length of the code is much more, but now each function does a very specific
-thing, and only one thing, and well documented. The `load_data` function only
-needs to change if more formats are supported. The `load_excel` only if the
-structure of the Excel file changes and the same goes for the `load_csv`. And
-the validate data one, only changes if there are more or different things to
-validate. The code becomes cleaner, easier to read and to re-use.
-
-[Single Responsibility Principle (SRP)]: https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/
 
 ## Other considerations
 
