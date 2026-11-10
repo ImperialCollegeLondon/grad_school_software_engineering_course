@@ -370,7 +370,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Structuring code</h1>
-        <p>Last updated on 2026-11-05 |
+        <p>Last updated on 2026-11-06 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/05-abstractions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -745,16 +745,20 @@ no way around that, but just make sure that measures are in place to
 ensure that the state of the database is known at any given time.</p>
 </div>
 <div class="section level3">
-<h3 id="mixing-io-and-creating-objects-or-making-calculations">Mixing IO and creating objects or making calculations<a class="anchor" aria-label="anchor" href="#mixing-io-and-creating-objects-or-making-calculations"></a></h3>
+<h3 id="object-creation-avoid-side-effects-and-hidden-dependencies">Object Creation: avoid side-effects and hidden dependencies<a class="anchor" aria-label="anchor" href="#object-creation-avoid-side-effects-and-hidden-dependencies"></a></h3>
+<p>It should be clear exactly what is required and what will happen when
+Creating (or initialising) objects in software. This is a natural
+consequence of the <a href="#separation-of-concerns">Separation of
+concerns</a> principle described above. A particular example of this is
+when an object requires the contents of a file in order to be
+created.</p>
 <p>Input and output (IO) operations are tricky because they depend on
-the state of the system - the input file(s) contents - and change the
-state of the system - creating new file(s). They need to be handled with
-care and, indeed, some pure functional languages like <a href="https://www.haskell.org/" class="external-link">Haskell</a> consider them <em>dirty</em>
-operations because of that.</p>
-<p>The general rule is that IO operations should happen within their own
-functions or methods, and and just pass their contents around. This is a
-direct conclusion of the <a href="#separation-of-concerns">Separation of
-concerns</a> principle described above, as applied to IO operations.</p>
+the state of the system (the input files’ contents) and change the state
+of the system (creating new files). They need to be handled with care
+and, indeed, some pure functional languages like <a href="https://www.haskell.org/" class="external-link">Haskell</a> consider them <em>dirty</em>
+operations because of that. The general rule is that IO operations
+should happen within their own functions or methods, and the rest of the
+code should just pass their contents around.</p>
 <p>For example, objects that need files to be created are hard to create
 and re-create, especially during testing. Make the <em>contents</em> of
 the file an input for the object creation function, instead of the
@@ -985,8 +989,8 @@ any links that you are not going to use.
   "url": "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/05-abstractions.html",
   "identifier": "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/instructor/05-abstractions.html",
   "dateCreated": "2019-12-11",
-  "dateModified": "2026-11-05",
-  "datePublished": "2026-11-05"
+  "dateModified": "2026-11-06",
+  "datePublished": "2026-11-10"
 }
 
   </script><script>

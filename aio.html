@@ -791,7 +791,7 @@ interpreter:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>After completing step 7 you will find that the package has not been
 removed from the environment even after being removed from
@@ -997,7 +997,7 @@ it.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>After saving, the code should be automatically formatted to:</p>
 <div class="codewrapper sourceCode" id="cb2">
@@ -1659,7 +1659,7 @@ action should be able to be implemented as a single line of code.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1953,7 +1953,7 @@ noun?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Dictionary implemented with lists </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2011,7 +2011,7 @@ noun?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Dictionary implemented with a dictionary </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2064,7 +2064,7 @@ noun?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> More complex data structures for more complex dictionary </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>There can be more than one good answer. It will depend on how the
 dictionary is meant to be used later throughout the code.</p>
@@ -2227,7 +2227,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-05-abstractions"><p>Content from <a href="05-abstractions.html">Structuring code</a></p>
 <hr>
-<p>Last updated on 2026-11-05 |
+<p>Last updated on 2026-11-06 |
 
         <a href="https://github.com/ImperialCollegeLondon/grad_school_software_engineering_course/edit/main/episodes/05-abstractions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2650,17 +2650,21 @@ no way around that, but just make sure that measures are in place to
 ensure that the state of the database is known at any given time.</p>
 </div>
 <div class="section level3">
-<h3 id="mixing-io-and-creating-objects-or-making-calculations">Mixing IO and creating objects or making calculations<a class="anchor" aria-label="anchor" href="#mixing-io-and-creating-objects-or-making-calculations"></a>
+<h3 id="object-creation-avoid-side-effects-and-hidden-dependencies">Object Creation: avoid side-effects and hidden dependencies<a class="anchor" aria-label="anchor" href="#object-creation-avoid-side-effects-and-hidden-dependencies"></a>
 </h3>
+<p>It should be clear exactly what is required and what will happen when
+Creating (or initialising) objects in software. This is a natural
+consequence of the <a href="#separation-of-concerns">Separation of
+concerns</a> principle described above. A particular example of this is
+when an object requires the contents of a file in order to be
+created.</p>
 <p>Input and output (IO) operations are tricky because they depend on
-the state of the system - the input file(s) contents - and change the
-state of the system - creating new file(s). They need to be handled with
-care and, indeed, some pure functional languages like <a href="https://www.haskell.org/" class="external-link">Haskell</a> consider them <em>dirty</em>
-operations because of that.</p>
-<p>The general rule is that IO operations should happen within their own
-functions or methods, and and just pass their contents around. This is a
-direct conclusion of the <a href="#separation-of-concerns">Separation of
-concerns</a> principle described above, as applied to IO operations.</p>
+the state of the system (the input files’ contents) and change the state
+of the system (creating new files). They need to be handled with care
+and, indeed, some pure functional languages like <a href="https://www.haskell.org/" class="external-link">Haskell</a> consider them <em>dirty</em>
+operations because of that. The general rule is that IO operations
+should happen within their own functions or methods, and the rest of the
+code should just pass their contents around.</p>
 <p>For example, objects that need files to be created are hard to create
 and re-create, especially during testing. Make the <em>contents</em> of
 the file an input for the object creation function, instead of the
@@ -3798,7 +3802,7 @@ original bug. Once you’ve done this all the tests should pass.</li>
   Solution 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Your test should look something like this:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -3864,7 +3868,7 @@ making it pass by modifying <code>diffusion.py</code> to raise an
   Solution 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3909,7 +3913,7 @@ true).</p>
   Solution 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4725,8 +4729,8 @@ any links that you are not going to use.
   "url": "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/aio.html",
   "identifier": "https://imperialcollegelondon.github.io/grad_school_software_engineering_course/aio.html",
   "dateCreated": "2019-12-11",
-  "dateModified": "2026-11-05",
-  "datePublished": "2026-11-05"
+  "dateModified": "2026-11-10",
+  "datePublished": "2026-11-10"
 }
 
   </script><script>
